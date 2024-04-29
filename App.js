@@ -13,9 +13,9 @@ export default function App() {
             <ImageBackground source={background} style={{height:'100%', width:'100%', flex: 5, justifyContent:'center'}}>
                 <Text style={{textShadowOffset: {height: 2} ,textShadowRadius:5 ,textShadowColor:'black', fontWeight:'bold',opacity:0.75, fontSize:60, color:'white',paddingLeft:'15%', paddingTop:'25%'}}>CineLibra</Text>
             </ImageBackground>
-            <View style={{flex:8, backgroundColor:'white'}}>
+            <View style={{flex:8, backgroundColor:'white', shadowColor:'black', shadowRadius:20, shadowOffset: {height:-10, width:0}, shadowOpacity:0.7}}>
                 <SafeAreaView style={styles.container}>
-                    <View style={{minWidth:'100%',flexDirection:'column', justifyContent:'space-evenly', flex:1, paddingVertical:'5%', paddingHorizontal:'10%', backgroundColor:'white'}}>
+                    <View style={{minWidth:'100%',flexDirection:'column', justifyContent:'space-evenly', flex:1, paddingVertical:'5%', paddingHorizontal:'10%', backgroundColor:'white', }}>
                         <Text style={{alignSelf:'center', fontWeight:'bold', fontSize:20, paddingVertical:'5%'}}>Welcome! Lets get you started.</Text>
                         <LoginTextfield value={'e-mail'}/>
                         <LoginTextfield value={'password'}/>

@@ -17,6 +17,8 @@ export  const LoginButton = ({message}) =>{
                 shadowOffset:{height: '5%'},
                 justifyContent:"center",
                 alignItems:"center",
+                borderWidth:2,
+                borderColor:'#DA805D',
             }} >
                 <Text style={{fontSize:20,fontWeight:"bold", color:'white'}} >{message}</Text>
             </View>
