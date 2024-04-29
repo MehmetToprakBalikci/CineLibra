@@ -1,18 +1,15 @@
-import { NavigationContainer } from '@react-navigation/native';
-import {Text, View,SafeAreaView, StyleSheet} from 'react-native';
-import { Navigator } from './.expo/Navigator';
 
+import {Text, View,SafeAreaView, StyleSheet} from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import {Navigator} from './Navigator'
 export default function App() {
   return (
 
     <NavigationContainer>
-
-      <Navigator />
-      
-    </NavigationContainer>
-
-   
     
+      <Navigator />
+
+    </NavigationContainer>
     
   );
 }
