@@ -17,17 +17,19 @@ export const Navigator = () => {
     return (
 
         <Stack.Navigator>
-            <Stack.Screen name="startPage" component={StartPage} options={{
+
+            <Stack.Screen name="StartPage" component={StartPage} options={{
                 headerShown:false,
 
             }}/>
-            <Stack.Screen name="signupPage" component={SignupPage} options={{
+            <Stack.Screen name="SignupPage" component={SignupPage} options={{
 
-                title:'SignUpPage',
+            title:'SignUpPage',
 
             }}/>
+            
             <Stack.Screen name="searchPage" component={SearchPage} options={{
-                title:'searchPage'
+                title:'SearchPage'
             }}/>
 
         </Stack.Navigator>

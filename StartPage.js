@@ -25,10 +25,16 @@ export default function StartPage() {
                             <LoginButton message={'Continue With Google'}/>
                             <LoginButton message={'Log In'}/>
                         </View>
-                        <TouchableOpacity onPress={() => navigation.navigate('searchPage')}>
+                        <TouchableOpacity onPress={() => {navigation.navigate('SignupPage')}}>
                             <LoginButton message={'Sign Up'}/>
                         </TouchableOpacity>
-                        <Text style={{alignSelf:'center', marginTop:'10%'}}>Don't have an account? Sign Up!</Text>
+                        <View style={{margin:'10%' , flexDirection:'row'}}>
+                            <Text style={{alignSelf:'center'}}>Don't have an account?</Text>
+                            <TouchableOpacity onPress={() => navigation.navigate('SignupPage')}>
+                                <Text style={{marginLeft:10, fontWeight:'bold'} }> Sign Up!</Text>
+                            </TouchableOpacity>
+
+                        </View>
                     </View>
                 </SafeAreaView>
             </View>

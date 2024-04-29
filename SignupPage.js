@@ -1,4 +1,4 @@
-import { Button, Image, ImageBackground, StyleSheet, Text, View ,StatusBar, TextInput, TouchableOpacity, SafeAreaView} from 'react-native';
+import { Button, Image, ImageBackground, StyleSheet, Text, View ,StatusBar, TextInput, TouchableOpacity, SafeAreaView, TouchableOpacityComponent} from 'react-native';
 
 
 import { AntDesign } from '@expo/vector-icons';
@@ -21,7 +21,7 @@ export default function SignupPage() {
                         <LoginTextfield value={'e-mail'}/>
                         <LoginTextfield value={'password'}/>
                         <View style={{flexDirection:'row', justifyContent:'space-between', backgroundColor:'white', marginTop:'5%'}}>
-                            <LoginButton message={'W/ Google'}/>
+                            <LoginButton message={'W/ Google'}/> 
                             <LoginButton message={'Sign Up'}/>
                         </View>
                     </View>
