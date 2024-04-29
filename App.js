@@ -1,34 +1,50 @@
-import { Button, Image, ImageBackground, StyleSheet, Text, View ,StatusBar, TextInput, TouchableOpacity, SafeAreaView} from 'react-native';
+import {
+    Button,
+    Image,
+    ImageBackground,
+    StyleSheet,
+    Text,
+    View,
+    StatusBar,
+    TextInput,
+    TouchableOpacity,
+    SafeAreaView,
+    ScrollView
+} from 'react-native';
 
 
 import { AntDesign } from '@expo/vector-icons';
 
 import { LoginButton } from './LoginButton';
 import {LoginTextfield} from "./LoginTextfield";
+import React from "react";
+import {PosterComponent} from "./PosterComponent";
+import {SearchTextfield} from "./SearchTextfield";
 
 const background = require('./bg.jpg')
 export default function App() {
+    const [number, onChangeNumber] = React.useState('');
     return (
-        <View style={{flex:5}}>
-            <ImageBackground source={background} style={{height:'100%', width:'100%', flex: 5, justifyContent:'center'}}>
-                <Text style={{textShadowOffset: {height: 2} ,textShadowRadius:5 ,textShadowColor:'black', fontWeight:'bold',opacity:0.75, fontSize:60, color:'white',paddingLeft:'15%', paddingTop:'25%'}}>CineLibra</Text>
+        <View style={{flex:1}}>
+            <ImageBackground source={background} style={{height:'110%', width:'100%', flex: 0.3, justifyContent:'flex-end', alignItems:'center'}}>
+                <View style={{backgroundColor:'red' ,flexDirection:'row', flex:1, paddingHorizontal:'7%', marginRight:'78%', marginTop:'14%'}}>
+                    <LoginButton message={'<'}/>
+                </View>
+                <SearchTextfield value={'Search'}/>
             </ImageBackground>
-            <View style={{flex:8, backgroundColor:'white', shadowColor:'black', shadowRadius:20, shadowOffset: {height:-10, width:0}, shadowOpacity:0.7}}>
-                <SafeAreaView style={styles.container}>
-                    <View style={{minWidth:'100%',flexDirection:'column', justifyContent:'space-evenly', flex:1, paddingVertical:'5%', paddingHorizontal:'10%', backgroundColor:'white', }}>
-                        <Text style={{alignSelf:'center', fontWeight:'bold', fontSize:20, paddingVertical:'5%'}}>Welcome! Lets get you started.</Text>
-                        <LoginTextfield value={'e-mail'}/>
-                        <LoginTextfield value={'password'}/>
-                        <View style={{alignItems:'center', flexDirection:'row', justifyContent:'space-between', backgroundColor:'white', flex: 1}}>
-                            <LoginButton message={'Continue With Google'}/>
-                            <LoginButton message={'Log In'}/>
-                        </View>
-
-                        <LoginButton message={'Sign Up'}/>
-                        <Text style={{alignSelf:'center', marginTop:'10%'}}>Don't have an account? Sign Up!</Text>
+            <ScrollView style={{shadowOffset:{height: -10} ,shadowRadius:100 ,shadowOpacity:1 ,shadowColor:'black' ,flex:1, backgroundColor:'white', borderRadius:10}}>
+                <SafeAreaView style={{flex:1}}>
+                    <View style={{flexDirection:'row', justifyContent:'space-evenly', flex:1, paddingVertical:'2%', paddingHorizontal:'7%'}}>
+                        <Text style={{marginRight:'20%', flex:1, fontWeight:'bold', fontSize:16, marginTop:'7%'}}>Search Results</Text>
+                        <LoginButton message={'Filter'}/>
+                    </View>
+                    <View style={{flex:1}}>
+                        <PosterComponent title={'JOKER'} explanation={'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris'}/>
+                        <PosterComponent title={'JOKER'} explanation={'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris'}/>
+                        <PosterComponent title={'JOKER'} explanation={'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris'}/>
                     </View>
                 </SafeAreaView>
-            </View>
+            </ScrollView>
         </View>
     );
 }
