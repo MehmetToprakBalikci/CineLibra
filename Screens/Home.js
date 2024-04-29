@@ -3,8 +3,8 @@
 import { View, Text, TouchableOpacityComponent, TouchableOpacity, SafeAreaView } from 'react-native'
 import React from 'react'
 
-import { MyButton } from '../Components/Mybutton'
 import { useNavigation, useNavigationState } from '@react-navigation/native'
+import { MyButton } from '../Components/Mybutton'
 
 export default function Home() {
     const navigation = useNavigation()
