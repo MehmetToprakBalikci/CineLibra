@@ -13,7 +13,7 @@ export const Navigator = () => {
         <Stack.Navigator>
 
             <Stack.Screen name = 'Home' component={Home} 
-            options={{title:'HomePage'}}/>
+            options={{title:'HomePage', headerShown:false} }/>
             <Stack.Screen name='LogIn' component={LogIn}/>
 
 

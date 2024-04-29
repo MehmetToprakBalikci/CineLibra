@@ -9,10 +9,20 @@ import { useNavigation, useNavigationState } from '@react-navigation/native'
 export default function Home() {
     const navigation = useNavigation()
   return (
-    <View style={{flex:1 , backgroundColor:'gray', alignItems:'center' , justifyContent:'center'}}>
-      <Text style={{marginBottom:10}}>HomePage</Text>
+    <View style={{flex:1 , 
+    backgroundColor:'gray', 
+    alignItems:'center' , 
+    justifyContent:'center'}}>
+      <View style={{ backgroundColor:'gray' ,flex:1 , alignItems:'center' , justifyContent:'center'}}>
+      <Text style={{
+         marginBottom:10, 
+         backgroundColor:'white' , 
+         textAlign:'center' ,
+          justifyContent:'center',
+          alignItems:'center'}}>HomePage</Text>
+      </View>
 
-      <TouchableOpacity onPress={()=> navigation.navigate('LogIn')}> 
+      <TouchableOpacity  style ={{flex:1,backgroundColor:"gray" , alignItems:'center',justifyContent:'center'} }onPress={()=> navigation.navigate('LogIn')}> 
         <MyButton message={'LogIn'} />
       </TouchableOpacity>
       
