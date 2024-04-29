@@ -3,15 +3,11 @@ import { Button, Image, ImageBackground, StyleSheet, Text, View ,StatusBar, Text
 
 import { AntDesign } from '@expo/vector-icons';
 
-import { LoginButton } from './LoginButton';
-import {LoginTextfield} from "./LoginTextfield";
-import { useNavigation } from '@react-navigation/native';
+import { LoginButton } from '../Components/LoginButton';
+import {LoginTextfield} from "../Components/LoginTextfield";
 
-const background = require('./bg.jpg')
-export default function App() {
-
-    const navigation = useNavigation()
-    
+const background = require('../assets/bg.jpg')
+export default function StartPage() {
     return (
         <View style={{flex:5}}>
             <ImageBackground source={background} style={{height:'100%', width:'100%', flex: 5, justifyContent:'center'}}>
