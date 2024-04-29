@@ -7,6 +7,7 @@ export default function App() {
       <Text>Welcome to CineLibra, </Text>
       <Text>       Enjoy          </Text>
       <StatusBar style="auto" />
+        
     </View>
   );
 }
