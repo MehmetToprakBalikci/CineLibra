@@ -5,9 +5,11 @@ import { AntDesign } from '@expo/vector-icons';
 
 import { LoginButton } from './LoginButton';
 import {LoginTextfield} from "./LoginTextfield";
+import {useNavigation} from "@react-navigation/native";
 
 const background = require('./bg.jpg')
-export default function App() {
+export default function StartPage() {
+    const navigation = useNavigation()
     return (
         <View style={{flex:5}}>
             <ImageBackground source={background} style={{height:'100%', width:'100%', flex: 5, justifyContent:'center'}}>
@@ -23,8 +25,9 @@ export default function App() {
                             <LoginButton message={'Continue With Google'}/>
                             <LoginButton message={'Log In'}/>
                         </View>
-
-                        <LoginButton message={'Sign Up'}/>
+                        <TouchableOpacity onPress={() => navigation.navigate('searchPage')}>
+                            <LoginButton message={'Sign Up'}/>
+                        </TouchableOpacity>
                         <Text style={{alignSelf:'center', marginTop:'10%'}}>Don't have an account? Sign Up!</Text>
                     </View>
                 </SafeAreaView>

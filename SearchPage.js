@@ -22,7 +22,7 @@ import {PosterComponent} from "./PosterComponent";
 import {SearchTextfield} from "./SearchTextfield";
 
 const background = require('./bg.jpg')
-export default function App() {
+export default function SearchPage() {
     const [number, onChangeNumber] = React.useState('');
     return (
         <View style={{flex:1}}>

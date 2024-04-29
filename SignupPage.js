@@ -7,7 +7,7 @@ import { LoginButton } from './LoginButton';
 import {LoginTextfield} from "./LoginTextfield";
 
 const background = require('./bg.jpg')
-export default function App() {
+export default function SignupPage() {
     return (
         <View style={{flex:5}}>
             <ImageBackground source={background} style={{height:'100%', width:'100%', flex: 6, justifyContent:'center'}}>
