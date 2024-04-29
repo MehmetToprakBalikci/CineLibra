@@ -21,8 +21,14 @@ export default function SignupPage() {
                         <LoginTextfield value={'e-mail'}/>
                         <LoginTextfield value={'password'}/>
                         <View style={{flexDirection:'row', justifyContent:'space-between', backgroundColor:'white', marginTop:'5%'}}>
-                            <LoginButton message={'W/ Google'}/> 
-                            <LoginButton message={'Sign Up'}/>
+                            <TouchableOpacity>
+                                <LoginButton message={'W/ Google'}/>
+                            </TouchableOpacity>
+                           
+                            <TouchableOpacity>
+                                <LoginButton message={'Sign Up'}/>
+                            </TouchableOpacity> 
+                            
                         </View>
                     </View>
                 </SafeAreaView>

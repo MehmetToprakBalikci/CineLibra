@@ -23,7 +23,10 @@ export default function StartPage() {
                         <LoginTextfield value={'password'}/>
                         <View style={{alignItems:'center', flexDirection:'row', justifyContent:'space-between', backgroundColor:'white', flex: 1}}>
                             <LoginButton message={'Continue With Google'}/>
-                            <LoginButton message={'Log In'}/>
+                            <TouchableOpacity>
+                                <LoginButton message={'Log In'}/>   
+                            </TouchableOpacity>
+                            
                         </View>
                         <TouchableOpacity onPress={() => {navigation.navigate('SignupPage')}}>
                             <LoginButton message={'Sign Up'}/>
