@@ -28,7 +28,7 @@ export const Navigator = () => {
 
             }}/>
             
-            <Stack.Screen name="searchPage" component={SearchPage} options={{
+            <Stack.Screen name="SearchPage" component={SearchPage} options={{
                 title:'SearchPage'
             }}/>
 
