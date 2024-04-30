@@ -21,15 +21,13 @@ export default function StartPage() {
                         <Text style={{alignSelf:'center', fontWeight:'bold', fontSize:20, paddingVertical:'5%'}}>Welcome! Lets get you started.</Text>
                         <LoginTextfield value={'e-mail'}/>
                         <LoginTextfield value={'password'}/>
-                        <View style={{alignItems:'center', flexDirection:'row', justifyContent:'space-between', backgroundColor:'white', flex: 1}}>
-                            <LoginButton message={'Continue With Google'}/>
-                            <TouchableOpacity>
-                                <LoginButton message={'Log In'}/>   
-                            </TouchableOpacity>
+                        <View style={{alignItems:'center', flexDirection:'row',justifyContent:'center', backgroundColor:'red', flex: 1}}>
+                            <LoginButton message={'Continue With Google'} style={{width:"100%"}}/>
+        
                             
                         </View>
-                        <TouchableOpacity onPress={() => {navigation.navigate('SignupPage')}}>
-                            <LoginButton message={'Sign Up'}/>
+                        <TouchableOpacity >
+                            <LoginButton message={'Log In'}/>
                         </TouchableOpacity>
                         <View style={{margin:'10%' , flexDirection:'row'}}>
                             <Text style={{alignSelf:'center'}}>Don't have an account?</Text>
