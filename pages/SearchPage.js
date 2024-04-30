@@ -15,13 +15,12 @@ import {
 
 import { AntDesign } from '@expo/vector-icons';
 
-import { LoginButton } from './LoginButton';
-import {LoginTextfield} from "./LoginTextfield";
+import { LoginButton } from '../components/LoginButton';
 import React from "react";
-import {PosterComponent} from "./PosterComponent";
-import {SearchTextfield} from "./SearchTextfield";
+import {PosterComponent} from "../components/PosterComponent";
+import {SearchTextfield} from "../components/SearchTextfield";
 
-const background = require('./bg.jpg')
+const background = require('../assets/bg.jpg')
 export default function SearchPage() {
     const [number, onChangeNumber] = React.useState('');
     return (

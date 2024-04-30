@@ -9,14 +9,18 @@ export  const LoginButton = ({message}) =>{
             <View style={{width:'100%',
                 height:50,
                 paddingHorizontal:'3%',
+                marginVertical:'3%',
                 backgroundColor:'#EB916E',
                 borderRadius:15,
+
                 shadowRadius:5,
                 shadowColor:'gray',
                 shadowOpacity:0.5,
                 shadowOffset:{height: '5%'},
+
                 justifyContent:"center",
                 alignItems:"center",
+
                 borderWidth:2,
                 borderColor:'#DA805D',
             }} >
