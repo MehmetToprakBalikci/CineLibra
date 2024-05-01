@@ -3,13 +3,13 @@ import {View, StyleSheet, TextInput} from 'react-native';
 
 
 
-export  const LoginTextfield = ({value}) =>{
+export  const LoginPasswordField = ({value}) =>{
     const [number, onChangeNumber] = React.useState('');
     return(
         <View style={{flex:0.75, justifyContent:'center'}}>
             <TextInput
                 style={{
-                    maxWidth:'100%' ,
+                    maxWidth:'100%',
                     width:'100%',
                     shadowRadius:5,
                     shadowColor:'gray',
@@ -21,8 +21,7 @@ export  const LoginTextfield = ({value}) =>{
                     fontWeight:'normal',
                     borderColor:'gray',
                     borderWidth:2,
-                    backgroundColor:'#F0F0F0'
-            }}
+                    backgroundColor:'#F0F0F0'}}
                 placeholder={value}
                 keyboardType={'email-address'}
                 textAlign={'center'}

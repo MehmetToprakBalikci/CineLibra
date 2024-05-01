@@ -5,30 +5,29 @@ import { AntDesign } from '@expo/vector-icons';
 
 import { LoginButton } from '../components/LoginButton';
 import {LoginTextfield} from "../components/LoginTextfield";
-import {useNavigation} from "@react-navigation/native";
-import {LoginPasswordField} from "../components/LoginPasswordField";
+import {StackActions, useNavigation} from "@react-navigation/native";
 
 const background = require('../assets/bg_25blur.png')
 export default function StartPage() {
     const navigation = useNavigation()
     return (
         <View style={{flex:5}}>
-            <ImageBackground source={background} style={{height:'110%', width:'100%', flex: 5, justifyContent:'center'}}>
-                <Text style={{textShadowOffset: {height: 2} ,textShadowRadius:5 ,textShadowColor:'black', fontWeight:'bold',opacity:0.75, fontSize:60, color:'white',paddingLeft:'15%', paddingTop:'10%'}}>CineLibra</Text>
-            </ImageBackground>
+            <View style={{flex:5, backgroundColor:'transparent'}}>
+
+            </View>
             <View style={{flex:8, backgroundColor:'white', borderRadius:15, shadowColor:'black', shadowRadius:20, shadowOffset:{height:5}, shadowOpacity:1}}>
                 <SafeAreaView style={styles.container}>
                     <View style={{minWidth:'100%',flexDirection:'column', justifyContent:'space-evenly', flex:1, rowGap:'10%', paddingTop:'5%', paddingHorizontal:'10%'}}>
                         <Text style={{alignSelf:'center', fontWeight:'bold', fontSize:20, paddingVertical:'5%'}}>Welcome! Lets get you started.</Text>
                         <LoginTextfield value={'Username'}/>
                         <LoginTextfield value={'e-mail'}/>
-                        <LoginPasswordField value={'Password'}/>
+                        <LoginTextfield value={'Password'}/>
 
                         <TouchableOpacity onPress={()=> navigation.navigate('HomePage')}>
                             <LoginButton message={'Sign Up'}/>
                         </TouchableOpacity>
 
-                        <TouchableOpacity onPress={()=> navigation.navigate('SearchPage')} >
+                        <TouchableOpacity onPress={()=> navigation.dispatch(StackActions.pop(1))} >
                             <LoginButton message={'Continue W/ Google'}/>
                         </TouchableOpacity>
                     </View>

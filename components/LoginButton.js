@@ -6,12 +6,12 @@ import { TouchableOpacity } from "react-native"
 export  const LoginButton = ({message}) =>{
     return(
         <View style={{padding: 0}}>
-            <View style={{width:'100%',
+            <View style={{maxWidth:'100%' ,width:'100%',
                 height:50,
                 paddingHorizontal:'3%',
                 marginVertical:'3%',
                 backgroundColor:'#EB916E',
-                borderRadius:15,
+                borderRadius:50,
 
                 shadowRadius:5,
                 shadowColor:'gray',
@@ -24,7 +24,7 @@ export  const LoginButton = ({message}) =>{
                 borderWidth:2,
                 borderColor:'#DA805D',
             }} >
-                <Text style={{fontSize:20,fontWeight:"bold", color:'white'}} >{message}</Text>
+                <Text style={{fontSize:20,fontWeight:'400', color:'white'}} >{message}</Text>
             </View>
         </View>
     )

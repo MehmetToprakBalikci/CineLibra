@@ -2,10 +2,11 @@
 
 
 
-import {createStackNavigator} from '@react-navigation/stack'
+import {CardStyleInterpolators, createStackNavigator} from '@react-navigation/stack'
 import StartPage from './pages/StartPage';
 import SignupPage from './pages/SignupPage';
 import SearchPage from './pages/SearchPage';
+import AltSignupPage from './pages/AltSignupPage';
 
 
 import { useNavigation } from '@react-navigation/native';
@@ -23,9 +24,22 @@ export const Navigator = () => {
                 headerShown:false,
 
             }}/>
+
+            <Stack.Screen name="AltSignupPage" component={AltSignupPage} options={{
+                headerShown:false,
+                title:'SignUpPage',
+                gestureDirection:'vertical',
+                cardStyleInterpolator: CardStyleInterpolators.forModalPresentationIOS,
+                presentation: 'transparentModal',
+
+            }}/>
+
             <Stack.Screen name="SignupPage" component={SignupPage} options={{
-            headerShown:false,
-            title:'SignUpPage',
+                headerShown:false,
+                title:'SignUpPage',
+                cardShadowEnabled:true,
+                gestureDirection:'vertical',
+                cardStyleInterpolator: CardStyleInterpolators.forModalPresentationIOS
 
             }}/>
 
@@ -35,7 +49,8 @@ export const Navigator = () => {
             }}/>
             <Stack.Screen name="HomePage" component={HomePage} options={{
                 headerShown:false,
-                title:'HomePage'
+                title:'HomePage',
+                gestureEnabled:false,
             }}/>
         </Stack.Navigator>
     )
