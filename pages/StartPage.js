@@ -5,12 +5,12 @@ import {LoginPasswordField} from '../components/LoginPasswordField'
 import {LoginTextfield} from "../components/LoginTextfield";
 import {useNavigation} from "@react-navigation/native";
 
-const background = require('../assets/bg_25blur.png')
+const background = require('../assets/bg.jpg')
 export default function StartPage() {
     const navigation = useNavigation()
     return (
         <View style={{flex:5}}>
-            <ImageBackground source={background} style={styles.backgroundImage}>
+            <ImageBackground source={background} blurRadius={35} style={styles.backgroundImage}>
                 <Text style={styles.titleText}>CineLibra</Text>
             </ImageBackground>
             <View style={styles.cardStyle}>

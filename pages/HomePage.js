@@ -7,7 +7,7 @@ import {useNavigation} from "@react-navigation/native";
 export default function HomePage(props) {
   const background = require('../assets/bg.jpg')
   return (
-    <ImageBackground source={background} blurRadius={50}>
+    <ImageBackground source={background} blurRadius={200}>
       <SafeAreaView style={{}}>
         <View style={styles.leftBarRow}>
           <LeftBar style={styles.leftBar}></LeftBar>

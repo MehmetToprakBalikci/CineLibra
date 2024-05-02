@@ -15,24 +15,9 @@ export default function StartPage() {
             <View style={{flex:5, backgroundColor:'transparent'}}>
 
             </View>
-            <View style={{
-                flex:8,
-                backgroundColor:'white',
-                borderRadius:15,
-                shadowColor:'black',
-                shadowRadius:20,
-                shadowOffset:{height:5},
-                shadowOpacity:1
-            }}>
+            <View style={styles.cardStyle}>
                 <SafeAreaView style={styles.container}>
-                    <View style={{
-                        minWidth:'100%',
-                        flexDirection:'column',
-                        justifyContent:'space-evenly',
-                        flex:1, rowGap:'10%',
-                        paddingTop:'5%',
-                        paddingHorizontal:'10%'
-                    }}>
+                    <View style={styles.signupLayout}>
                         <Text style={{alignSelf:'center', fontWeight:'bold', fontSize:20, paddingVertical:'5%'}}>Welcome! Lets get you started.</Text>
                         <LoginTextfield value={'Username'}/>
                         <LoginTextfield value={'e-mail'}/>
@@ -59,5 +44,23 @@ const styles = StyleSheet.create({
         justifyContent:'center',
         alignItems:'center',
 
-    }
+    },
+    cardStyle: {
+        flex:8,
+        backgroundColor:'white',
+        borderRadius:15,
+        shadowColor:'black',
+        shadowRadius:20,
+        shadowOffset:{height:5},
+        shadowOpacity:1
+    },
+    signupLayout: {
+        minWidth:'100%',
+        flexDirection:'column',
+        justifyContent:'space-evenly',
+        flex:1,
+        rowGap:'10%',
+        paddingTop:'5%',
+        paddingHorizontal:'10%'
+    },
 });

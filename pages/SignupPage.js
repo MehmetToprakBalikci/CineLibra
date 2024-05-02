@@ -41,7 +41,7 @@ export default function StartPage() {
 const styles = StyleSheet.create({
 
     container: {
-        flex: 1,//flex 1 tum ekrani kaplayacak
+        flex: 1,
         justifyContent:'center',
         alignItems:'center',
 
