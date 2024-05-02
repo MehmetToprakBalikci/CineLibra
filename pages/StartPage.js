@@ -1,7 +1,4 @@
-import { Button, Image, ImageBackground, StyleSheet, Text, View ,StatusBar, TextInput, TouchableOpacity, SafeAreaView} from 'react-native';
-
-
-import { AntDesign } from '@expo/vector-icons';
+import { ImageBackground, StyleSheet, Text, View , TouchableOpacity, SafeAreaView} from 'react-native';
 
 import { LoginButton } from '../components/LoginButton';
 import {LoginPasswordField} from '../components/LoginPasswordField'
@@ -13,36 +10,13 @@ export default function StartPage() {
     const navigation = useNavigation()
     return (
         <View style={{flex:5}}>
-            <ImageBackground source={background} style={{
-                height:'110%',
-                width:'100%',
-                flex: 5,
-                justifyContent:'center'
-            }}>
-                <Text style={{
-                    textShadowOffset: {height: 2} ,
-                    textShadowRadius:5 ,
-                    textShadowColor:'black',
-                    fontWeight:'bold',opacity:0.75,
-                    fontSize:60, color:'white',
-                    paddingLeft:'15%',
-                    paddingTop:'10%'
-                }}>CineLibra</Text>
+            <ImageBackground source={background} style={styles.backgroundImage}>
+                <Text style={styles.titleText}>CineLibra</Text>
             </ImageBackground>
-            <View style={{flex:8,
-                backgroundColor:'white',
-                borderRadius:15, shadowColor:'black',
-                shadowRadius:30,
-                shadowOffset:{height:5},
-                shadowOpacity:1}}>
+            <View style={styles.cardStyle}>
                 <SafeAreaView style={styles.container}>
-                    <View style={{minWidth:'100%',
-                        flexDirection:'column',
-                        justifyContent:'space-evenly',
-                        flex:1, rowGap:'10%',
-                        paddingTop:'5%',
-                        paddingHorizontal:'10%'
-                    }}>
+                    <View style={styles.loginLayout}>
+
                         <Text style={{alignSelf:'center', fontWeight:'bold', fontSize:20, paddingVertical:'5%'}}>Welcome! Lets get you started.</Text>
                         <LoginTextfield value={'e-mail'} style={{keyboardType:'email-address'}}/>
                         <LoginPasswordField value={'password'}/>
@@ -72,9 +46,41 @@ export default function StartPage() {
 const styles = StyleSheet.create({
 
     container: {
-        flex: 1,//flex 1 tum ekrani kaplayacak
+        flex: 1,
         justifyContent:'center',
         alignItems:'center',
 
+    },
+    loginLayout: {
+        minWidth:'100%',
+        flexDirection:'column',
+        justifyContent:'space-evenly',
+        flex:1,
+        rowGap:'10%',
+        paddingTop:'5%',
+        paddingHorizontal:'10%',
+    },
+    backgroundImage: {
+        height:'110%',
+        width:'100%',
+        flex: 5,
+        justifyContent:'center'
+    },
+    titleText: {
+        textShadowOffset: {height: 2} ,
+        textShadowRadius:5 ,
+        textShadowColor:'black',
+        fontWeight:'bold',opacity:0.75,
+        fontSize:60, color:'white',
+        alignSelf:'center',
+        paddingTop:'10%'
+    },
+    cardStyle: {
+        flex:8,
+        backgroundColor:'white',
+        borderRadius:15, shadowColor:'black',
+        shadowRadius:30,
+        shadowOffset:{height:5},
+        shadowOpacity:1
     }
 });

@@ -1,19 +1,23 @@
 import React, { Component } from "react";
-import { StyleSheet, View, Text } from "react-native";
+import {StyleSheet, View, Text, ImageBackground, SafeAreaView} from "react-native";
 import SearchBar from "../components/searchBar";
 import LeftBar from "../components/leftBar";
 import Lists from "../components/lists";
 import {useNavigation} from "@react-navigation/native";
 export default function HomePage(props) {
+  const background = require('../assets/bg.jpg')
   return (
-    <View style={styles.container}>
-    <View style={styles.leftBarRow}>
-      <LeftBar style={styles.leftBar}></LeftBar>
-      <Text style={styles.cinelibra}>CINELIBRA</Text>
-    </View>
-    <SearchBar style={styles.searchBar}></SearchBar>
-    <Lists style={styles.lists}></Lists>
-  </View>
+    <ImageBackground source={background} blurRadius={50}>
+      <SafeAreaView style={{}}>
+        <View style={styles.leftBarRow}>
+          <LeftBar style={styles.leftBar}></LeftBar>
+        </View>
+
+        <SearchBar style={styles.searchBar}></SearchBar>
+
+        <Lists style={styles.lists}></Lists>
+      </SafeAreaView>
+  </ImageBackground>
   );
 }
 
@@ -24,16 +28,6 @@ const styles = StyleSheet.create({
   leftBar: {
     height: 41,
     width: 40
-  },
-  cinelibra: {
-    color: "rgba(0,0,0,1)",
-    height: 34,
-    width: 104,
-    fontSize: 20,
-    textAlign: "center",
-    marginLeft: 85,
-    marginTop: 15,
-    fontWeight:'bold'
   },
   leftBarRow: {
     height: 41,

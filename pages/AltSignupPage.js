@@ -15,19 +15,34 @@ export default function StartPage() {
             <View style={{flex:5, backgroundColor:'transparent'}}>
 
             </View>
-            <View style={{flex:8, backgroundColor:'white', borderRadius:15, shadowColor:'black', shadowRadius:20, shadowOffset:{height:5}, shadowOpacity:1}}>
+            <View style={{
+                flex:8,
+                backgroundColor:'white',
+                borderRadius:15,
+                shadowColor:'black',
+                shadowRadius:20,
+                shadowOffset:{height:5},
+                shadowOpacity:1
+            }}>
                 <SafeAreaView style={styles.container}>
-                    <View style={{minWidth:'100%',flexDirection:'column', justifyContent:'space-evenly', flex:1, rowGap:'10%', paddingTop:'5%', paddingHorizontal:'10%'}}>
+                    <View style={{
+                        minWidth:'100%',
+                        flexDirection:'column',
+                        justifyContent:'space-evenly',
+                        flex:1, rowGap:'10%',
+                        paddingTop:'5%',
+                        paddingHorizontal:'10%'
+                    }}>
                         <Text style={{alignSelf:'center', fontWeight:'bold', fontSize:20, paddingVertical:'5%'}}>Welcome! Lets get you started.</Text>
                         <LoginTextfield value={'Username'}/>
                         <LoginTextfield value={'e-mail'}/>
                         <LoginTextfield value={'Password'}/>
 
-                        <TouchableOpacity onPress={()=> navigation.navigate('HomePage')}>
+                        <TouchableOpacity onPress={()=> navigation.dispatch(StackActions.pop(1))}>
                             <LoginButton message={'Sign Up'}/>
                         </TouchableOpacity>
 
-                        <TouchableOpacity onPress={()=> navigation.dispatch(StackActions.pop(1))} >
+                        <TouchableOpacity>
                             <LoginButton message={'Continue W/ Google'}/>
                         </TouchableOpacity>
                     </View>

@@ -9,9 +9,10 @@ function Movie(props) {
         style={styles.button}
       ></TouchableOpacity>
       <Image
-        source={require("../assets/1pdfLvkbY9ohJlCjQH2CZjjYVvJ.png")}
-        resizeMode="cover"
-        style={styles.image}
+          borderRadius={10}
+          source={require("../assets/1pdfLvkbY9ohJlCjQH2CZjjYVvJ.png")}
+          resizeMode="cover"
+          style={styles.image}
       ></Image>
       <Text style={styles.loremIpsum}>Lorem Ipsum</Text>
     </View>
@@ -25,17 +26,17 @@ const styles = StyleSheet.create({
   },
   button: {
     left: 0,
-    width: 120,
+    width: '50%',
     height: 170,
     position: "absolute",
     top: 0
   },
   image: {
-    width: 90,
-    height: 133
+    width: '80%',
+    height: '80%'
   },
   loremIpsum: {
-    
+
     color: "#121212"
   }
 });
