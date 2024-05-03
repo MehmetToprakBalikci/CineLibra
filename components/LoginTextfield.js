@@ -24,6 +24,7 @@ export  const LoginTextfield = ({value,isSecure}) =>{
                     backgroundColor:'#F0F0F0'
             }}
                 placeholder={value}
+                secureTextEntry={isSecure}
                 keyboardType={'email-address'}
                 textAlign={'center'}
                 autoComplete={"off"}

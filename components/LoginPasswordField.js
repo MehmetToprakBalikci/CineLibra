@@ -23,6 +23,7 @@ export  const LoginPasswordField = ({value}) =>{
                     borderWidth:2,
                     backgroundColor:'#F0F0F0'}}
                 placeholder={value}
+                secureTextEntry={true}
                 keyboardType={'email-address'}
                 textAlign={'center'}
                 autoComplete={"off"}
