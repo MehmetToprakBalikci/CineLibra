@@ -22,10 +22,10 @@ export default function StartPage() {
                     <View style={styles.loginLayout}>
 
                         <Text style={{alignSelf:'center', fontWeight:'bold', fontSize:20, paddingVertical:'5%'}}>Welcome! Lets get you started.</Text>
-                        <LoginTextfield value={'e-mail'} style={{keyboardType:'email-address'}}/>
-                        <LoginPasswordField value={'password'}/>
+                        <LoginTextfield value='e-mail' isSecure={false}/>
+                        <LoginTextfield value='password' isSecure={true}/>
 
-                        <TouchableOpacity onPress={()=> navigation.navigate('HomePage')}>
+                        <TouchableOpacity onPress={()=> {console.log("login pressed"); navigation.navigate('HomePage')}}>
                             <LoginButton message={'Log In'}/>
                         </TouchableOpacity>
 
@@ -46,6 +46,7 @@ export default function StartPage() {
         </View>
     );
 }
+export default StartPage;
 
 const styles = StyleSheet.create({
 
