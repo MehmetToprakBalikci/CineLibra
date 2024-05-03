@@ -53,6 +53,11 @@ export const Navigator = () => {
                 title:'MoviePage',
                 gestureDirection:'horizontal',
             }}/>
+            <Stack.Screen name="ProfilePage" component={ProfilePage} options={{
+                headerShown:false,
+                
+                
+            }}/>
         </Stack.Navigator>
     )
 }

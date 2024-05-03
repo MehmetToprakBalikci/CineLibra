@@ -53,6 +53,9 @@ export default function StartPage() {
                         <TouchableOpacity>
                             <LoginButton message={'Continue W/ Google'}/>
                         </TouchableOpacity>
+                        <TouchableOpacity onPress={()=> navigation.navigate('ProfilePage')}>
+                            <LoginButton message={'Profile'}/>
+                        </TouchableOpacity>
 
                         <View style={{paddingTop:'10%', flexDirection:'row', justifyContent:'center'}}>
                             <Text style={{alignSelf:'center', color:text_color}}>Don't have an account?</Text>
