@@ -18,9 +18,8 @@ export default function ProfilePage() {
             <AntDesign name="arrowleft" size={'35%'} color="black" style={sytles.arrowLeft} />
         </TouchableOpacity>
 
-        <View style={{flex:1 , alignItems:'center' ,flexDirection:'row' , marginLeft:'20%' , marginBottom:"5%"}}>
-            <Image source={require('/Users/menes/Desktop/CineLibra/assets/ProfilPhoto.jpeg')} style={{width:'30%',height:"100%" ,borderRadius:100,
-            marginRight:20}}/>
+        <View style={{flex:1 , alignItems:'center',justifyContent:'center',flexDirection:'row' , marginBottom:"7%"}}>
+            <Image source={require('/Users/menes/Desktop/CineLibra/assets/ProfilPhoto.jpeg')} style={sytles.image}/>
             <Text style={{fontSize:'20%'}}>Muhammed Enes</Text>
         </View>
 
@@ -38,9 +37,16 @@ export default function ProfilePage() {
 const sytles = StyleSheet.create({
 
     arrowLeft : {
-        marginLeft:15,
-        
+        marginLeft:15
+    }, 
+    image :{
+        width:'30%',
+        height:"80%" ,
+        borderRadius:200,
+        marginRight:20
     }
+
+    
 
 
 
