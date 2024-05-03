@@ -15,7 +15,10 @@ const Drawer = createDrawerNavigator();
 const SwitchHomePanel = () => {
   return (
     <Drawer.Navigator   drawerContent={props=> <CustomDrawer {...props}  />} screenOptions={{headerShown:false}} >
+<<<<<<< HEAD
     
+=======
+>>>>>>> c3f1f52 (Navigation bar  plus some small fixes were  done)
 
     <Drawer.Screen name="Search" component={HomePage}  options={{
        drawerIcon: ({color})=> (
