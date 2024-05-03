@@ -6,7 +6,6 @@ import Profile from '../../screens/Profile';
 import SignOutScreen from '../../screens/SignOutScreen';
 import CustomDrawer from '../../components/CustomDrawer';
 import Ionicons from 'react-native-vector-icons/Ionicons'
-import CustomSwitchIcon from '../../components/CustomSwitchIcon';
 import HomePage from '../HomePage';
 import SearchPage from '../SearchPage';
 
@@ -15,7 +14,7 @@ const Drawer = createDrawerNavigator();
 
 const SwitchHomePanel = () => {
   return (
-    <Drawer.Navigator   drawerContent={props=> <CustomDrawer {...props} />}  >
+    <Drawer.Navigator   drawerContent={props=> <CustomDrawer {...props}  />} screenOptions={{headerShown:false}} >
 
     <Drawer.Screen name="Search" component={HomePage}  options={{
        drawerIcon: ({color})=> (
