@@ -1,7 +1,6 @@
 // SwitchPanel.js
 import React from 'react';
 import { createDrawerNavigator, DrawerContentScrollView, DrawerItemList, DrawerItem } from '@react-navigation/drawer';
-import StartPage from '../StartPage';
 import Profile from '../../screens/Profile';
 import SignOutScreen from '../../screens/SignOutScreen';
 import CustomDrawer from '../../components/CustomDrawer';
@@ -9,7 +8,7 @@ import Ionicons from 'react-native-vector-icons/Ionicons'
 import CustomSwitchIcon from '../../components/CustomSwitchIcon';
 import HomePage from '../HomePage';
 import SearchPage from '../SearchPage';
-import SignUpPage from '../SignupPage';
+import StartPage from '../AltSignupPage';
 import ItemDetailPage from '../ItemDetailPage';
 
 const Drawer = createDrawerNavigator();
@@ -18,7 +17,7 @@ const Drawer = createDrawerNavigator();
 
 const SwitchItemDetailPage = () => {
   return (
-    <Drawer.Navigator  drawerContent={props=> <CustomDrawer {...props} />}  >
+    <Drawer.Navigator   drawerContent={props=> <CustomDrawer {...props}  />} screenOptions={{headerShown:false}} >
 
 <Drawer.Screen name="Current" component={ItemDetailPage}  options={{
        drawerIcon: ({color})=> (

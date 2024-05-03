@@ -1,7 +1,7 @@
 
 import {CardStyleInterpolators, createStackNavigator} from '@react-navigation/stack'
 import StartPage from './pages/StartPage';
-import SignupPage from './pages/SignupPage';
+import SignupPage from './pages/AltSignupPage';
 import SearchPage from './pages/SearchPage';
 //import AltSignupPage from './pages/AltSignupPage';
 
@@ -11,6 +11,7 @@ import HomePage from "./pages/HomePage";
 import SwitchHomePanel from './pages/SwitchPanels/SwitchInHomePage';
 import SwitchItemDetailPage from './pages/SwitchPanels/SwitchItemDetailPage';
 import SignOutScreen from './screens/SignOutScreen';
+import AltSignUpPage from './pages/AltSignupPage'
 
 const Stack = createStackNavigator();
 
@@ -25,9 +26,7 @@ export const Navigator = () => {
 
             }}/>
 
-          
-
-            <Stack.Screen name="SignupPage" component={SignOutScreen} options={{
+             <Stack.Screen name="AltSignupPage" component={AltSignUpPage} options={{
                 headerShown:false,
                 title:'SignUpPage',
                 cardShadowEnabled:true,
@@ -36,7 +35,7 @@ export const Navigator = () => {
 
             }}/>
 
-            <Stack.Screen name="SearchPage" component={SwitchItemDetailPage} options={{
+            <Stack.Screen name="SearchPage" component={SearchPage} options={{
                 headerShown:false,
                 title:'SearchPage'
             }}/>
