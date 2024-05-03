@@ -1,28 +1,15 @@
-import {
-    ImageBackground,
-    StyleSheet,
-    Text,
-    View,
-    TouchableOpacity,
-    SafeAreaView,
-    Appearance,
-    KeyboardAvoidingView
-} from 'react-native';
+import { ImageBackground, StyleSheet, Text, View , TouchableOpacity, SafeAreaView} from 'react-native';
 
 import { LoginButton } from '../components/LoginButton';
 import {LoginPasswordField} from '../components/LoginPasswordField'
 import {LoginTextfield} from "../components/LoginTextfield";
-import {useNavigation} from "@react-navigation/native"
-import {colorProfile} from "../components/colorProfile"
+import {useNavigation} from "@react-navigation/native";
 
-const background = require('../assets/bg_alt.jpg')
-
-export default function StartPage() {
-
-    const navigation = useNavigation()
-
+const background = require('../assets/bg.jpg')
+ const StartPage= () => {
+    const navigation = useNavigation();
     return (
-        <KeyboardAvoidingView style={{flex:5}}>
+        <View style={{flex:5}}>
             <ImageBackground source={background} blurRadius={35} style={styles.backgroundImage}>
                 <Text style={styles.titleText}>CineLibra</Text>
             </ImageBackground>
@@ -30,11 +17,11 @@ export default function StartPage() {
                 <SafeAreaView style={styles.container}>
                     <View style={styles.loginLayout}>
 
-                        <Text style={{color:'black' ,alignSelf:'center', fontWeight:'bold', fontSize:20, paddingVertical:'5%'}}>Welcome! Lets get you started.</Text>
-                        <LoginTextfield value={'e-mail'} style={{keyboardType:'email-address'}}/>
-                        <LoginPasswordField value={'password'}/>
+                        <Text style={{alignSelf:'center', fontWeight:'bold', fontSize:20, paddingVertical:'5%'}}>Welcome! Lets get you started.</Text>
+                        <LoginTextfield value='e-mail' isSecure={false}/>
+                        <LoginTextfield value='password' isSecure={true}/>
 
-                        <TouchableOpacity onPress={()=> navigation.navigate('HomePage')}>
+                        <TouchableOpacity onPress={()=> {console.log("login pressed"); navigation.navigate('HomePage')}}>
                             <LoginButton message={'Log In'}/>
                         </TouchableOpacity>
 
@@ -43,18 +30,19 @@ export default function StartPage() {
                         </TouchableOpacity>
 
                         <View style={{margin:'10%' , flexDirection:'row'}}>
-                            <Text style={{alignSelf:'center', color:'black'}}>Don't have an account?</Text>
+                            <Text style={{alignSelf:'center'}}>Don't have an account?</Text>
                             <TouchableOpacity onPress={() => navigation.navigate('AltSignupPage')}>
-                                <Text style={{marginLeft:'10%', fontWeight:'bold', color:'rgb(255, 103, 0)' }}> Sign Up!</Text>
+                                <Text style={{textShadowOffset:{height: 1, width:0} ,textShadowRadius:1 ,textShadowColor:'gray' ,marginLeft:'10%', fontWeight:'bold', color:'#EF996A'} }> Sign Up!</Text>
                             </TouchableOpacity>
 
                         </View>
                     </View>
                 </SafeAreaView>
             </View>
-        </KeyboardAvoidingView>
+        </View>
     );
 }
+export default StartPage;
 
 const styles = StyleSheet.create({
 
@@ -83,10 +71,8 @@ const styles = StyleSheet.create({
         textShadowOffset: {height: 2} ,
         textShadowRadius:5 ,
         textShadowColor:'black',
-        fontWeight:'bold',
-        opacity:0.75,
-        fontSize:60,
-        color:'rgb(249, 246, 247)',
+        fontWeight:'bold',opacity:0.75,
+        fontSize:60, color:'white',
         alignSelf:'center',
         paddingTop:'10%'
     },
