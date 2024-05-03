@@ -4,7 +4,7 @@ import MovieList from "./movieList";
 
 function Lists(props) {
   return (
-    <View style={[styles.container, props.style]}>
+    <View style={styles.container}>
       <MovieList style={styles.movieList} Text={'Popular Movies'}></MovieList>
       <MovieList style={styles.movieList} Text={'Latest Movies'}></MovieList>
       <MovieList style={styles.movieList} Text={'Recommended For You'}></MovieList>
@@ -14,23 +14,10 @@ function Lists(props) {
 
 const styles = StyleSheet.create({
   container: {
-    alignItems: "flex-start",
-    justifyContent: "flex-start"
+      flex:1,
   },
   movieList: {
-    width: 450,
-    height: 200,
-    margin: 0
-  },
-  movieList2: {
-    width: 450,
-    height: 200,
-    margin: 0
-  },
-  movieList3: {
-    width: 450,
-    height: 200,
-    margin: 0
+      height: '100%',
   }
 });
 

@@ -21,25 +21,21 @@ function SearchBar(props) {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: "#E6E6E6",
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",
-    borderRadius: 8
+    borderRadius: 20
   },
   search: {
-    color: "#121212",
+    color: 'rgba(255, 255, 255, 0.6)',
     opacity: 0.6,
     margin: 10
   },
   inputLeftIcon1: {
-    color: "#000",
-    fontSize: 20,
-    height: 22,
-    width: 20,
-    padding: 0,
+    color: 'rgba(255, 255, 255, 0.4)',
+    fontSize:20,
     alignSelf: "center",
-    margin: 10
+    margin: 8,
   }
 });
 

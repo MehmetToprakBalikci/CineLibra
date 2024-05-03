@@ -4,81 +4,53 @@ import Movie from "./movie";
 
 function MovieList(props) {
   return (
-    <View style={[styles.container, props.style]}>
-      <Text style={styles.listName}>{props.Text}</Text>
-      <View style={styles.scrollArea}>
-        <ScrollView
-          horizontal={true}
-          contentContainerStyle={styles.scrollArea_contentContainerStyle}
-        >
-          <View style={styles.movieRow}>
-            <Movie style={styles.movie}></Movie>
-            <Movie style={styles.movie2}></Movie>
-            <Movie style={styles.movie3}></Movie>
-            <Movie style={styles.movie4}></Movie>
-            <Movie style={styles.movie5}></Movie>
-            <Movie style={styles.movie6}></Movie>
-          </View>
-        </ScrollView>
+      <View style={styles.container}>
+
+        <View style={styles.textContainer}>
+          <Text style={styles.listName}>{props.Text}</Text>
+        </View>
+
+          <ScrollView
+              horizontal={true}
+              showsHorizontalScrollIndicator={false}
+          >
+            <View style={styles.movieRow}>
+              <Movie/>
+              <Movie/>
+              <Movie/>
+              <Movie/>
+              <Movie/>
+              <Movie/>
+            </View>
+
+          </ScrollView>
       </View>
-    </View>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    justifyContent: "center"
+    flex:1,
   },
   listName: {
-    color: "#121212",
-    margin: 0,
-    padding: 0,
-    paddingRight: 0,
-    paddingBottom: 0,
-    textAlign: "center",
+    color: 'rgba(255, 255, 255, 1.0)',
     fontSize: 16,
-    height: 21,
-    alignSelf: "flex-start",
     fontWeight:'bold'
   },
-  scrollArea: {
-    width: 450,
-    height: 170
-  },
-  scrollArea_contentContainerStyle: {
-    width: 720,
-    height: 170,
-    flexDirection: "row"
-  },
-  movie: {
-    width: 120,
-    height: 170
-  },
-  movie2: {
-    width: 120,
-    height: 170
-  },
-  movie3: {
-    width: 120,
-    height: 170
-  },
-  movie4: {
-    width: 120,
-    height: 170
-  },
-  movie5: {
-    width: 120,
-    height: 170
-  },
-  movie6: {
-    width: 120,
-    height: 170
-  },
   movieRow: {
-    height: 170,
+    height: '95%',
     flexDirection: "row",
     flex: 1,
-    marginRight: -270
+    marginVertical:'1%',
+  },
+  textContainer: {
+    paddingHorizontal:'5%',
+    paddingVertical:'2%',
+    borderBottomColor:'rgba(20, 20, 20, 0.5)',
+    borderTopColor:'rgba(20, 20, 20, 0.5)',
+    borderBottomWidth: 2,
+    borderTopWidth: 2,
+    backgroundColor:'rgba(0, 0, 0, 0.3)',
   }
 });
 

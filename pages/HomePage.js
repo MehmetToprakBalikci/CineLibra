@@ -7,15 +7,19 @@ import {useNavigation} from "@react-navigation/native";
 export default function HomePage(props) {
   const background = require('../assets/bg.jpg')
   return (
-    <ImageBackground source={background} blurRadius={200}>
-      <SafeAreaView style={{}}>
+    <ImageBackground source={background} blurRadius={200} style={{flex:1}}>
+
+      <SafeAreaView style={styles.safeArea}>
+
         <View style={styles.leftBarRow}>
-          <LeftBar style={styles.leftBar}></LeftBar>
+          <LeftBar/>
+          <SearchBar style={styles.searchBar}></SearchBar>
         </View>
 
-        <SearchBar style={styles.searchBar}></SearchBar>
+        <View style={styles.listView}>
+          <Lists style={styles.lists}></Lists>
+        </View>
 
-        <Lists style={styles.lists}></Lists>
       </SafeAreaView>
   </ImageBackground>
   );
@@ -23,32 +27,29 @@ export default function HomePage(props) {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1
-  },
-  leftBar: {
-    height: 41,
-    width: 40
+    flex: 1,
   },
   leftBarRow: {
-    height: 41,
+    height: '7%',
     flexDirection: "row",
-    marginTop: 41,
-    marginLeft: 17,
-    marginRight: 136
+    marginHorizontal: '5%',
+    justifyContent:'space-between'
   },
   searchBar: {
-    height: 38,
-    width: 344,
-    borderWidth: 1,
-    borderColor: "#000000",
-    backgroundColor: "rgba(15,15, 15,0.1)",
-    marginTop: 18,
-    marginLeft: 17
+    height: '80%',
+    width: '80%',
+    backgroundColor: "rgba(0, 0, 0 ,0.3)",
   },
   lists: {
-    height: 637,
-    width: 375,
-    marginTop: 37
+    height: '100%',
+    width: '100%',
+  },
+  listView: {
+    flex:1
+  },
+  safeArea: {
+    flex:1,
+    backgroundColor:'rgba(0, 0, 0, 0.5)',
   }
 });
 
