@@ -27,7 +27,8 @@ function MovieList(props) {
 
 const styles = StyleSheet.create({
   container: {
-    justifyContent: "center"
+    justifyContent: "center",
+    
   },
   listName: {
     color: "#121212",
@@ -38,6 +39,7 @@ const styles = StyleSheet.create({
     textAlign: "center",
     fontSize: 16,
     height: 21,
+    marginLeft:10,
     alignSelf: "flex-start",
     fontWeight:'bold'
   },

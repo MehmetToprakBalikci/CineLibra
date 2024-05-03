@@ -20,7 +20,7 @@ const styles = StyleSheet.create({
   movieList: {
     width: 450,
     height: 200,
-    margin: 0
+    margin: 0,
   },
   movieList2: {
     width: 450,

@@ -11,6 +11,7 @@ import AltSignupPage from './pages/AltSignupPage';
 
 import { useNavigation } from '@react-navigation/native';
 import HomePage from "./pages/HomePage";
+import ProfilePage from './pages/ProfilePage';
 
 const Stack = createStackNavigator();
 
@@ -51,6 +52,11 @@ export const Navigator = () => {
                 headerShown:false,
                 title:'HomePage',
                 gestureEnabled:false,
+            }}/>
+            <Stack.Screen name="ProfilePage" component={ProfilePage} options={{
+                headerShown:false,
+                
+                
             }}/>
         </Stack.Navigator>
     )
