@@ -21,8 +21,8 @@ export default function StartPage() {
                     <View style={{minWidth:'100%',flexDirection:'column', justifyContent:'space-evenly', flex:1, rowGap:'10%', paddingTop:'5%', paddingHorizontal:'10%'}}>
                         <Text style={{alignSelf:'center', fontWeight:'bold', fontSize:20, paddingVertical:'5%'}}>Welcome! Lets get you started.</Text>
                         <LoginTextfield value={'Username'}/>
-                        <LoginTextfield value={'e-mail'}/>
-                        <LoginPasswordField value={'Password'}/>
+                        <LoginTextfield value={'e-mail'} false/>
+                        <LoginTextfield value='Password'true/>
 
                         <TouchableOpacity onPress={()=> navigation.navigate('HomePage')}>
                             <LoginButton message={'Sign Up'}/>

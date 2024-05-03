@@ -3,7 +3,7 @@ import {View, StyleSheet, TextInput} from 'react-native';
 
 
 
-export  const LoginTextfield = ({value}) =>{
+export  const LoginTextfield = ({value,isSecure}) =>{
     const [number, onChangeNumber] = React.useState('');
     return(
         <View style={{flex:0.75, justifyContent:'center'}}>
