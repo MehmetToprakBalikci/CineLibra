@@ -13,7 +13,7 @@ export default function HomePage(props) {
 
         <View style={styles.leftBarRow}>
           <LeftBar/>
-          <SearchBar style={styles.searchBar}></SearchBar>
+          <SearchBar style={styles.searchBar} value={'Search'}></SearchBar>
         </View>
 
         <View style={styles.listView}>

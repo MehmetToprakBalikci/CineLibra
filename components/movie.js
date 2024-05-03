@@ -27,7 +27,6 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     width:130,
-    flex:1
   },
   imageButton: {
     width: '95%',
@@ -37,10 +36,12 @@ const styles = StyleSheet.create({
   image: {
     width: '100%',
     height: '100%',
-    borderRadius:5
+    borderRadius:5,
+    borderColor:'rgba(190, 190, 190, 1)',
+    borderWidth:1,
   },
   loremIpsum: {
-    color: 'rgba(255, 255, 255, 1.0)'
+    color: 'rgba(255, 255, 255, 0.6)',
   }
 });
 

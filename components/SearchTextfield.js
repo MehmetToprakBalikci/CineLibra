@@ -5,6 +5,7 @@ import {View, StyleSheet, TextInput} from 'react-native';
 
 export  const SearchTextfield = ({value}) =>{
     const [number, onChangeNumber] = React.useState('');
+    const color = 'rgba(255, 255, 255, 1.0)'
     return(
         <View style={{flex:1, justifyContent:'center', backgroundColor:'red'}}>
             <TextInput
@@ -13,7 +14,9 @@ export  const SearchTextfield = ({value}) =>{
                 placeholder={value}
                 keyboardType={'email-address'}
                 textAlign={'center'}
-                onChangeNumber={onChangeNumber}/>
+                onChangeNumber={onChangeNumber}
+                placeholderTextColor={color}
+            />
         </View>
     )
 }

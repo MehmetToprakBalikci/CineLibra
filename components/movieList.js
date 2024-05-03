@@ -33,7 +33,7 @@ const styles = StyleSheet.create({
     flex:1,
   },
   listName: {
-    color: 'rgba(255, 255, 255, 1.0)',
+    color: 'rgba(255, 255, 255, 0.5)',
     fontSize: 16,
     fontWeight:'bold'
   },
@@ -51,7 +51,7 @@ const styles = StyleSheet.create({
     borderBottomWidth: 2,
     borderTopWidth: 2,
     backgroundColor:'rgba(0, 0, 0, 0.3)',
-  }
+  },
 });
 
 export default MovieList;
