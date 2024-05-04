@@ -12,19 +12,19 @@ export  const LoginButton = ({message}) =>{
                 height:50,
                 paddingHorizontal:'3%',
                 marginVertical:'3%',
-                backgroundColor:'rgb(235, 126, 72)',
+                backgroundColor:'rgb(242, 97, 63)',
                 borderRadius:50,
 
                 shadowRadius:5,
                 shadowColor:'gray',
-                shadowOpacity:0.4,
+                shadowOpacity:0.0,
                 shadowOffset:{height: '5%'},
 
                 justifyContent:"center",
                 alignItems:"center",
 
                 borderWidth:2,
-                borderColor:'rgb(205, 103, 0)',
+                borderColor:'rgb(155, 57, 34)',
             }} >
                 <Text style={{fontSize:20,fontWeight:'400', color:'white'}} >{message}</Text>
             </View>

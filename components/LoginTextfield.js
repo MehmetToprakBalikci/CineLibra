@@ -13,15 +13,15 @@ export  const LoginTextfield = ({value,isSecure}) =>{
                     width:'100%',
                     shadowRadius:5,
                     shadowColor:'gray',
-                    shadowOpacity:0.4,
+                    shadowOpacity:0.0,
                     shadowOffset:{height: 4},
                     paddingVertical:'4%',
                     borderRadius:50,
                     fontSize:16,
                     fontWeight:'normal',
-                    borderColor:'rgb(209, 206, 207)',
+                    borderColor:'rgb(120, 120, 120)',
                     borderWidth:2,
-                    backgroundColor:'rgb(229, 226, 227)'
+                    backgroundColor:'rgb(160, 160, 160)'
             }}
                 placeholder={value}
                 secureTextEntry={isSecure}
