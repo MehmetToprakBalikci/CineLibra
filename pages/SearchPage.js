@@ -5,7 +5,7 @@ import LeftBar from "../components/leftBar";
 import Lists from "../components/lists";
 import {useNavigation} from "@react-navigation/native";
 import SearchList from "../components/searchList";
-export default function HomePage(props) {
+export default function SearchPage(props) {
     const background = require('../assets/bg_alt.jpg')
     return (
         <ImageBackground source={background} blurRadius={200} style={{flex:1}}>

@@ -2,7 +2,7 @@
 
 
 
-import {CardStyleInterpolators, createStackNavigator} from '@react-navigation/stack'
+import {CardStyleInterpolators, createStackNavigator, TransitionPresets, TransitionSpecs} from '@react-navigation/stack'
 import StartPage from './pages/StartPage';
 import SignupPage from './pages/SignupPage';
 import SearchPage from './pages/SearchPage';
@@ -45,7 +45,9 @@ export const Navigator = () => {
 
             <Stack.Screen name="SearchPage" component={SearchPage} options={{
                 headerShown:false,
-                title:'SearchPage'
+                title:'SearchPage',
+                gestureDirection:'horizontal',
+                gestureEnabled:true,
             }}/>
             <Stack.Screen name="HomePage" component={HomePage} options={{
                 headerShown:false,
