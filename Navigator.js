@@ -11,6 +11,7 @@ import AltSignupPage from './pages/AltSignupPage';
 
 import { useNavigation } from '@react-navigation/native';
 import HomePage from "./pages/HomePage";
+import SwitchItemDetailPage from "./pages/SwitchPanels/SwitchItemDetailPage";
 
 const Stack = createStackNavigator();
 
@@ -50,6 +51,11 @@ export const Navigator = () => {
                 gestureEnabled:true,
             }}/>
             <Stack.Screen name="HomePage" component={HomePage} options={{
+                headerShown:false,
+                title:'HomePage',
+                gestureEnabled:false,
+            }}/>
+            <Stack.Screen name="ItemDetailPage" component={SwitchItemDetailPage} options={{
                 headerShown:false,
                 title:'HomePage',
                 gestureEnabled:false,
