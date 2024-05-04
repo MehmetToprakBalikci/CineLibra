@@ -30,7 +30,7 @@ export default function StartPage() {
                 <SafeAreaView style={styles.container}>
                     <View style={styles.loginLayout}>
 
-                        <Text style={{color:'rgb(249, 246, 247)' ,alignSelf:'center', fontWeight:'bold', fontSize:20, paddingVertical:'5%'}}>Welcome! Lets get you started.</Text>
+                        <Text style={{color:'black' ,alignSelf:'center', fontWeight:'bold', fontSize:20, paddingVertical:'5%'}}>Welcome! Lets get you started.</Text>
                         <LoginTextfield value={'e-mail'} style={{keyboardType:'email-address'}}/>
                         <LoginPasswordField value={'password'}/>
 
@@ -43,9 +43,9 @@ export default function StartPage() {
                         </TouchableOpacity>
 
                         <View style={{margin:'10%' , flexDirection:'row'}}>
-                            <Text style={{alignSelf:'center', color:'rgb(249, 246, 247)'}}>Don't have an account?</Text>
+                            <Text style={{alignSelf:'center', color:'black'}}>Don't have an account?</Text>
                             <TouchableOpacity onPress={() => navigation.navigate('AltSignupPage')}>
-                                <Text style={{marginLeft:'10%', fontWeight:'bold', color:'rgb(249, 246, 247)' }}> Sign Up!</Text>
+                                <Text style={{marginLeft:'10%', fontWeight:'bold', color:'rgb(255, 103, 0)' }}> Sign Up!</Text>
                             </TouchableOpacity>
 
                         </View>

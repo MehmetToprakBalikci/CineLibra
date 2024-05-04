@@ -1,5 +1,8 @@
 
-import {CardStyleInterpolators, createStackNavigator} from '@react-navigation/stack'
+
+
+
+import {CardStyleInterpolators, createStackNavigator, TransitionPresets, TransitionSpecs} from '@react-navigation/stack'
 import StartPage from './pages/StartPage';
 import SignupPage from './pages/AltSignupPage';
 import SearchPage from './pages/SearchPage';
@@ -26,7 +29,16 @@ export const Navigator = () => {
 
             }}/>
 
-             <Stack.Screen name="AltSignupPage" component={AltSignUpPage} options={{
+            <Stack.Screen name="AltSignupPage" component={AltSignupPage} options={{
+                headerShown:false,
+                title:'SignUpPage',
+                gestureDirection:'vertical',
+                cardStyleInterpolator: CardStyleInterpolators.forModalPresentationIOS,
+                presentation: 'transparentModal',
+
+            }}/>
+
+            <Stack.Screen name="SignupPage" component={SignupPage} options={{
                 headerShown:false,
                 title:'SignUpPage',
                 cardShadowEnabled:true,
@@ -37,7 +49,9 @@ export const Navigator = () => {
 
             <Stack.Screen name="SearchPage" component={SearchPage} options={{
                 headerShown:false,
-                title:'SearchPage'
+                title:'SearchPage',
+                gestureDirection:'horizontal',
+                gestureEnabled:true,
             }}/>
             <Stack.Screen name="HomePage" component={SwitchHomePanel} options={{
                 headerShown:false,
@@ -46,8 +60,6 @@ export const Navigator = () => {
             }}/>
              <Stack.Screen name="ItemDetailPage" component={SwitchItemDetailPage} options={{
                 headerShown:false,
-                title:'HomePage',
-                gestureEnabled:false,
                 title:'HomePage',
                 gestureEnabled:false,
             }}/>

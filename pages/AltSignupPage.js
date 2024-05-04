@@ -6,7 +6,7 @@ import { AntDesign } from '@expo/vector-icons';
 import { LoginButton } from '../components/LoginButton';
 import {LoginTextfield} from "../components/LoginTextfield";
 import {StackActions, useNavigation} from "@react-navigation/native";
-export default function StartPage() {
+export default function AltStartPage() {
     const navigation = useNavigation()
     return (
         <View style={{flex:5}}>
@@ -16,7 +16,7 @@ export default function StartPage() {
             <View style={styles.cardStyle}>
                 <SafeAreaView style={styles.container}>
                     <View style={styles.signupLayout}>
-                        <Text style={{color:'rgb(249, 246, 247)' ,alignSelf:'center', fontWeight:'bold', fontSize:20, paddingVertical:'5%'}}>Sign up now to continue.</Text>
+                        <Text style={{alignSelf:'center', fontWeight:'bold', fontSize:20, paddingVertical:'5%'}}>Sign up now to continue.</Text>
                         <LoginTextfield value={'Username'}/>
                         <LoginTextfield value={'e-mail'}/>
                         <LoginTextfield value={'Password'}/>
@@ -45,7 +45,7 @@ const styles = StyleSheet.create({
     },
     cardStyle: {
         flex:8,
-        backgroundColor:'rgb(30, 30, 30)',
+        backgroundColor:'rgb(249, 246, 247)',
         borderRadius:15,
         shadowColor:'black',
         shadowRadius:20,

@@ -9,7 +9,7 @@ import {useNavigation} from "@react-navigation/native";
 import {LoginPasswordField} from "../components/LoginPasswordField";
 
 const background = require('../assets/bg.jpg')
-export default function StartPage() {
+export default function SignupPage() {
     const navigation = useNavigation()
     return (
         <View style={{flex:5}}>
