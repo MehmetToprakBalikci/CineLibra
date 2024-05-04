@@ -5,7 +5,6 @@ import CustomSwitchIcon from './CustomSwitchIcon'
 
 
 const CustomDrawer = (props) => {
-  console.log(props);
   return (
     <View style={styles.container} >
      <ImageBackground source={require('../assets/bg.jpg')} style={styles.imageBackgroundStyle}></ImageBackground>

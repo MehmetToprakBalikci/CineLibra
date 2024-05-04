@@ -1,10 +1,12 @@
 import React, { Component } from "react";
-import {StyleSheet, View, Text, ImageBackground, SafeAreaView} from "react-native";
+import {StyleSheet, View, Text, ImageBackground, SafeAreaView,TouchableOpacity} from "react-native";
 import SearchBar from "../components/searchBar";
 import Lists from "../components/lists";
 import LeftBar from "../components/LeftBar";
+import { useNavigation } from "@react-navigation/native";
 export default function HomePage(props) {
   const background = require('../assets/bg_alt.jpg')
+  const navigator = useNavigation();
   return (
     <ImageBackground source={background} blurRadius={200} style={{flex:1}}>
 
@@ -14,6 +16,7 @@ export default function HomePage(props) {
         <LeftBar/>
           <SearchBar style={styles.searchBar} value={'Search'}></SearchBar>
         </View>
+       
 
         <View style={styles.listView}>
           <Lists style={styles.lists}></Lists>

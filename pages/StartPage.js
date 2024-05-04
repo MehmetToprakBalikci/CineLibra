@@ -69,9 +69,10 @@ const styles = StyleSheet.create({
         flexDirection:'column',
         justifyContent:'space-evenly',
         flex:1,
-        rowGap:'10%',
+        //rowGap:'10%',
         paddingTop:'5%',
         paddingHorizontal:'10%',
+        paddingBottom: '10%'
     },
     backgroundImage: {
         height:'110%',
