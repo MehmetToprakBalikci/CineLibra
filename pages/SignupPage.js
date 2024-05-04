@@ -8,7 +8,7 @@ import {LoginTextfield} from "../components/LoginTextfield";
 import {useNavigation} from "@react-navigation/native";
 import {LoginPasswordField} from "../components/LoginPasswordField";
 
-const background = require('../assets/bg_25blur.png')
+const background = require('../assets/bg.jpg')
 export default function StartPage() {
     const navigation = useNavigation()
     return (

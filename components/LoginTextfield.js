@@ -13,15 +13,15 @@ export  const LoginTextfield = ({value}) =>{
                     width:'100%',
                     shadowRadius:5,
                     shadowColor:'gray',
-                    shadowOpacity:0.5,
+                    shadowOpacity:0.0,
                     shadowOffset:{height: 4},
                     paddingVertical:'4%',
                     borderRadius:50,
                     fontSize:16,
                     fontWeight:'normal',
-                    borderColor:'gray',
+                    borderColor:'rgb(120, 120, 120)',
                     borderWidth:2,
-                    backgroundColor:'#F0F0F0'
+                    backgroundColor:'rgb(160, 160, 160)'
             }}
                 placeholder={value}
                 keyboardType={'email-address'}
