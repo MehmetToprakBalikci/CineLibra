@@ -1,13 +1,17 @@
-import { ImageBackground, StyleSheet, Text, View , TouchableOpacity, SafeAreaView} from 'react-native';
+import {ImageBackground, StyleSheet, Text, View, TouchableOpacity, SafeAreaView, Appearance} from 'react-native';
 
 import { LoginButton } from '../components/LoginButton';
 import {LoginPasswordField} from '../components/LoginPasswordField'
 import {LoginTextfield} from "../components/LoginTextfield";
-import {useNavigation} from "@react-navigation/native";
+import {useNavigation} from "@react-navigation/native"
+import {colorProfile} from "../components/colorProfile"
 
 const background = require('../assets/bg.jpg')
+
 export default function StartPage() {
+
     const navigation = useNavigation()
+
     return (
         <View style={{flex:5}}>
             <ImageBackground source={background} blurRadius={35} style={styles.backgroundImage}>
@@ -32,7 +36,7 @@ export default function StartPage() {
                         <View style={{margin:'10%' , flexDirection:'row'}}>
                             <Text style={{alignSelf:'center'}}>Don't have an account?</Text>
                             <TouchableOpacity onPress={() => navigation.navigate('AltSignupPage')}>
-                                <Text style={{textShadowOffset:{height: 1, width:0} ,textShadowRadius:1 ,textShadowColor:'gray' ,marginLeft:'10%', fontWeight:'bold', color:'#EF996A'} }> Sign Up!</Text>
+                                <Text style={{textShadowOffset:{height: 1, width:0} ,textShadowRadius:1 ,textShadowColor:'gray' ,marginLeft:'10%', fontWeight:'bold', color:{} }}> Sign Up!</Text>
                             </TouchableOpacity>
 
                         </View>
