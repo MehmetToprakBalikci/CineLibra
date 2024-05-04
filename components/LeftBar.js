@@ -8,10 +8,11 @@ import Icon from "react-native-vector-icons/Feather";
 
 function LeftBar(props) {
   const navigator = useNavigation();
+  console.log("navigator");
   return (
     <View style={[styles.container, props.style]}>
-      <View style={styles.iconStack}>
-        <Icon name="menu" style={styles.icon}></Icon>
+       <View style={styles.iconStack}>
+       <Icon name="menu" style={styles.icon}></Icon>
         <TouchableOpacity  style={styles.button}
           onPress={() => navigator.openDrawer()}
 

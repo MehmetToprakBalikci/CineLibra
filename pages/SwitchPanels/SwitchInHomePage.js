@@ -1,14 +1,13 @@
 // SwitchPanel.js
 import React from 'react';
 import { createDrawerNavigator, DrawerContentScrollView, DrawerItemList, DrawerItem } from '@react-navigation/drawer';
-import StartPage from '../StartPage';
 import Profile from '../../screens/Profile';
 import SignOutScreen from '../../screens/SignOutScreen';
 import CustomDrawer from '../../components/CustomDrawer';
 import Ionicons from 'react-native-vector-icons/Ionicons'
 import HomePage from '../HomePage';
 import SearchPage from '../SearchPage';
-
+import StartPage from '../StartPage';
 const Drawer = createDrawerNavigator();
 
 

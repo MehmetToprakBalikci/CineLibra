@@ -14,6 +14,7 @@ const SignOutScreen = () => {
 
     // Navigate to the sign-in screen after signing out
    navigation.navigate("StartPage")
+   return <View />;
  }
 
 export default SignOutScreen;

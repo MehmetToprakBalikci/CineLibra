@@ -15,6 +15,7 @@ import SwitchHomePanel from './pages/SwitchPanels/SwitchInHomePage';
 import SwitchItemDetailPage from './pages/SwitchPanels/SwitchItemDetailPage';
 import SignOutScreen from './screens/SignOutScreen';
 import AltSignUpPage from './pages/AltSignupPage'
+import SwitchSearchPage from './pages/SwitchPanels/SwitchSearchPage';
 
 const Stack = createStackNavigator();
 
@@ -47,7 +48,7 @@ export const Navigator = () => {
 
             }}/>
 
-            <Stack.Screen name="SearchPage" component={SearchPage} options={{
+            <Stack.Screen name="SearchPage" component={SwitchSearchPage} options={{
                 headerShown:false,
                 title:'SearchPage',
                 gestureDirection:'horizontal',
