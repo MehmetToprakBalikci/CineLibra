@@ -3,11 +3,12 @@ import { ImageBackground, StyleSheet, Text, View , TouchableOpacity, SafeAreaVie
 import { LoginButton } from '../components/LoginButton';
 import {LoginPasswordField} from '../components/LoginPasswordField'
 import {LoginTextfield} from "../components/LoginTextfield";
-import {useNavigation} from "@react-navigation/native";
+import {useNavigation} from "@react-navigation/native"
+import {colorProfile} from "../components/colorProfile"
 
 const background = require('../assets/bg.jpg')
- const StartPage= () => {
-    const navigation = useNavigation();
+export default function StartPage() {
+    const navigation = useNavigation()
     return (
         <View style={{flex:5}}>
             <ImageBackground source={background} blurRadius={35} style={styles.backgroundImage}>
@@ -42,7 +43,6 @@ const background = require('../assets/bg.jpg')
         </View>
     );
 }
-export default StartPage;
 
 const styles = StyleSheet.create({
 
