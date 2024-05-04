@@ -37,7 +37,7 @@ const SwitchItemDetailPage = () => {
       }} />
    
       
-      <Drawer.Screen name="SignOut" component={SignOutScreen}  options={{
+      <Drawer.Screen name="SignOut" component={StartPage}  options={{
        drawerIcon: ({color})=> (
         <Ionicons name="log-out" size={20} color={color} />
        )

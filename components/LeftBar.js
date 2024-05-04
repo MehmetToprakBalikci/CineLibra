@@ -3,15 +3,18 @@ import React, { Component } from "react";
 import { StyleSheet, View, TouchableOpacity } from "react-native";
 import Icon from "react-native-vector-icons/Feather";
 
+
+
+
 function LeftBar(props) {
   const navigator = useNavigation();
   return (
     <View style={[styles.container, props.style]}>
       <View style={styles.iconStack}>
         <Icon name="menu" style={styles.icon}></Icon>
-        <TouchableOpacity
+        <TouchableOpacity  style={styles.button}
           onPress={() => navigator.openDrawer()}
-          style={styles.button}
+
         ></TouchableOpacity>
       </View>
     </View>
