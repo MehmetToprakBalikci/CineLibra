@@ -6,7 +6,7 @@ import {CardStyleInterpolators, createStackNavigator, TransitionPresets, Transit
 import StartPage from './pages/StartPage';
 import SignupPage from './pages/AltSignupPage';
 import SearchPage from './pages/SearchPage';
-//import AltSignupPage from './pages/AltSignupPage';
+import AltSignupPage from './pages/AltSignupPage';
 
 
 import { useNavigation } from '@react-navigation/native';
