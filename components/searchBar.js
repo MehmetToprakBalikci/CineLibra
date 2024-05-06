@@ -3,12 +3,16 @@ import { StyleSheet, View, Text, Touchable, TouchableOpacity, TextInput, Keyboar
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 import {useNavigation} from "@react-navigation/native";
 
+import {colors} from "./colorProfile"
+const text_color = colors.text_color
+const text_color_weak = colors.text_color_weak
+
 function SearchBar(props) {
     const navigation = useNavigation()
   return (
     <View style={[styles.container, props.style]}>
       <KeyboardAvoidingView>
-      <TextInput style={styles.search} placeholder = {'Search...'} />
+      <TextInput style={styles.search} placeholder = {'Search...'} placeholderTextColor={text_color_weak} />
       </KeyboardAvoidingView>
 
         <TouchableOpacity onPress={() => navigation.navigate('SearchPage')}>
@@ -27,12 +31,12 @@ const styles = StyleSheet.create({
     borderRadius: 20
   },
   search: {
-    color: 'rgba(255, 255, 255, 0.6)',
+    color: text_color_weak,
     opacity: 0.6,
     margin: 10
   },
   inputLeftIcon1: {
-    color: 'rgba(255, 255, 255, 0.4)',
+    color: text_color_weak,
     fontSize:20,
     alignSelf: "center",
     margin: 8,

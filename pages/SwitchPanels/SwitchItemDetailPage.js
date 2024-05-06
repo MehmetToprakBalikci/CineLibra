@@ -30,14 +30,14 @@ const SwitchItemDetailPage = () => {
         <Ionicons name= "search-outline" size={20} color={color}/>
        )
       }} />
-    
+
     <Drawer.Screen name="Profile" component={Profile}  options={{
        drawerIcon: ({color})=> (
         <Ionicons name= "person-outline" size={20} color={color}/>
        )
       }} />
-   
-      
+
+
       <Drawer.Screen name="SignOut" component={SignOutScreen}  options={{
        drawerIcon: ({color})=> (
         <Ionicons name="log-out" size={20} color={color} />

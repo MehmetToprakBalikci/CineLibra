@@ -1,9 +1,14 @@
 import React, { Component } from "react";
-import {StyleSheet, View, Text, ImageBackground, SafeAreaView,TouchableOpacity} from "react-native";
+import {StyleSheet, View, Text, ImageBackground, SafeAreaView, TouchableOpacity, StatusBar} from "react-native";
 import SearchBar from "../components/searchBar";
 import Lists from "../components/lists";
 import LeftBar from "../components/LeftBar";
 import { useNavigation } from "@react-navigation/native";
+import {colors} from "../components/colorProfile"
+
+const bg_filter_color = colors.bg_filter_color
+const opacity_color = colors.opacity_color
+
 export default function HomePage(props) {
   const background = require('../assets/bg_alt.jpg')
   const navigator = useNavigation();
@@ -16,7 +21,7 @@ export default function HomePage(props) {
         <LeftBar/>
           <SearchBar style={styles.searchBar} value={'Search'}></SearchBar>
         </View>
-       
+
 
         <View style={styles.listView}>
           <Lists style={styles.lists}></Lists>
@@ -34,13 +39,13 @@ const styles = StyleSheet.create({
   leftBarRow: {
     height: '7%',
     flexDirection: "row",
-    marginHorizontal: '5%',
+    marginHorizontal: '3%',
     justifyContent:'space-between'
   },
   searchBar: {
     height: '80%',
     width: '80%',
-    backgroundColor: "rgba(0, 0, 0 ,0.3)",
+    backgroundColor: opacity_color,
   },
   lists: {
     height: '100%',
@@ -51,6 +56,6 @@ const styles = StyleSheet.create({
   },
   safeArea: {
     flex:1,
-    backgroundColor:'rgba(0, 0, 0, 0.5)',
+    backgroundColor:bg_filter_color,
   }
 });

@@ -3,6 +3,16 @@ import React, { Component } from "react";
 import { StyleSheet, View, TouchableOpacity } from "react-native";
 import Icon from "react-native-vector-icons/Feather";
 
+import {colors} from "./colorProfile"
+
+const main_strong = colors.main_strong
+const main_weak = colors.main_weak
+const accent_weak = colors.accent_weak
+const accent_strong = colors.accent_strong
+const text_color = colors.text_color
+const text_color_weak = colors.text_color_weak
+const main_color = colors.main
+const accent_color = colors.accent
 
 
 
@@ -24,17 +34,13 @@ function LeftBar(props) {
 const styles = StyleSheet.create({
   container: {},
   icon: {
-    top: 0,
-    left: 0,
     position: "absolute",
-    color: "rgba(128,128,128,1)",
+    color: text_color_weak,
     fontSize: 40,
     width: 40,
     height: 41
   },
   button: {
-    top: 0,
-    left: 0,
     width: 40,
     height: 41,
     position: "absolute"

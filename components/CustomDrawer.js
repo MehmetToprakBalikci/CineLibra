@@ -7,7 +7,7 @@ import CustomSwitchIcon from './CustomSwitchIcon'
 const CustomDrawer = (props) => {
   return (
     <View style={styles.container} >
-     <ImageBackground source={require('../assets/bg.jpg')} style={styles.imageBackgroundStyle}></ImageBackground>
+     <ImageBackground source={require('../assets/bg.jpg')}></ImageBackground>
 
     <DrawerContentScrollView {...props} contentContainerStyle={{backgroundColor:'#8200d6'}}>
       <ImageBackground source = {require('../assets/menu-bg.jpeg')} style={{padding:20}}>
@@ -17,16 +17,16 @@ const CustomDrawer = (props) => {
      </ImageBackground>
           <View style={styles.menuItem}>
           <DrawerItemList {...props} />
-          </View>  
-      
+          </View>
+
     </DrawerContentScrollView>
     <View style={styles.switchIcon}>
     <CustomSwitchIcon/>
     </View>
   </View>
-  
-    
-    
+
+
+
   )
 }
 
@@ -58,10 +58,10 @@ const styles = StyleSheet.create({
     paddingRight:'10%',
     paddingVertical:40,
     marginTop:'20%'
-    
+
     },
-   
-    
+
+
 
 
 });
