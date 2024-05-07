@@ -8,8 +8,9 @@ import Ionicons from 'react-native-vector-icons/Ionicons'
 import CustomSwitchIcon from '../../components/CustomSwitchIcon';
 import HomePage from '../HomePage';
 import SearchPage from '../SearchPage';
-import StartPage from '../AltSignupPage';
+import StartPage from '../StartPage';
 import ItemDetailPage from '../ItemDetailPage';
+import SwitchHomePanel from './SwitchInHomePage';
 
 const Drawer = createDrawerNavigator();
 
@@ -24,7 +25,7 @@ const SwitchItemDetailPage = () => {
         <Ionicons name="arrow-back" size={20} color={color}/>
        )
       }} />
-      <Drawer.Screen name="Search" component={HomePage}  options={{
+      <Drawer.Screen name="Search" component={SwitchHomePanel}  options={{
        drawerIcon: ({color})=> (
         <Ionicons name= "search-outline" size={20} color={color}/>
        )

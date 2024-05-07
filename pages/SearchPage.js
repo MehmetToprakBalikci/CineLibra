@@ -1,53 +1,32 @@
-import {
-    Button,
-    Image,
-    ImageBackground,
-    StyleSheet,
-    Text,
-    View,
-    StatusBar,
-    TextInput,
-    TouchableOpacity,
-    SafeAreaView,
-    ScrollView
-} from 'react-native';
+import React, { Component } from "react";
+import {StyleSheet, View, Text, ImageBackground, SafeAreaView, ScrollView} from "react-native";
+import SearchBar from "../components/searchBar";
+import LeftBar from "../components/LeftBar";
+import Lists from "../components/lists";
+import {useNavigation} from "@react-navigation/native";
+import SearchList from "../components/searchList";
+import {colors} from "../components/colorProfile"
 
-
-import { AntDesign } from '@expo/vector-icons';
-
-import { LoginButton } from '../components/LoginButton';
-import React from "react";
-import {PosterComponent} from "../components/PosterComponent";
-import {SearchTextfield} from "../components/SearchTextfield";
-
-
-const background = require('../assets/bg.jpg')
-export default function SearchPage() {
-    const [number, onChangeNumber] = React.useState('');
+const bg_filter_color = colors.bg_filter_color
+const opacity_color = colors.opacity_color
+export default function SearchPage(props) {
+    const background = require('../assets/bg_alt.jpg')
     return (
-          
-        <View style={{flex:1}}>
-              <ImageBackground source={background} style={{height:'110%', width:'100%', flex: 0.3, justifyContent:'flex-end', alignItems:'center'}}>
-                <View style={{backgroundColor:'red' ,flexDirection:'row', flex:1, paddingHorizontal:'7%', marginRight:'78%', marginTop:'14%'}}>
-                    <LoginButton message={'<'}/>
+        <ImageBackground source={background} blurRadius={200} style={{flex:1}}>
+
+            <SafeAreaView style={styles.safeArea}>
+
+                <View style={styles.leftBarRow}>
+                    <LeftBar/>
+                    <SearchBar style={styles.searchBar} value={'Search'}></SearchBar>
                 </View>
-                <SearchTextfield value={'Search'}/>
-            </ImageBackground>
-            <ScrollView style={{shadowOffset:{height: -10} ,shadowRadius:100 ,shadowOpacity:1 ,shadowColor:'black' ,flex:1, backgroundColor:'white', borderRadius:10}}>
-                <SafeAreaView style={{flex:1}}>
-                    <View style={{flexDirection:'row', justifyContent:'space-evenly', flex:1, paddingVertical:'2%', paddingHorizontal:'7%'}}>
-                        <Text style={{marginRight:'20%', flex:1, fontWeight:'bold', fontSize:16, marginTop:'7%'}}>Search Results</Text>
-                        <LoginButton message={'Filter'}/>
-                    </View>
-                    <View style={{flex:1}}>
-                        <PosterComponent title={'JOKER'} explanation={'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris'}/>
-                        <PosterComponent title={'JOKER'} explanation={'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris'}/>
-                        <PosterComponent title={'JOKER'} explanation={'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris'}/>
-                    </View>
-                </SafeAreaView>
-            </ScrollView>
-            
-        </View>
+
+                <View style={styles.listView}>
+                       <SearchList Text={'Results'}></SearchList>
+                </View>
+
+            </SafeAreaView>
+        </ImageBackground>
     );
 }
 
@@ -64,7 +43,7 @@ const styles = StyleSheet.create({
     searchBar: {
         height: '80%',
         width: '80%',
-        backgroundColor: "rgba(0, 0, 0 ,0.3)",
+        backgroundColor: opacity_color,
     },
     lists: {
         height: '100%',
@@ -75,8 +54,6 @@ const styles = StyleSheet.create({
     },
     safeArea: {
         flex:1,
-        backgroundColor:'rgba(0, 0, 0, 0.5)',
+        backgroundColor:bg_filter_color,
     }
 });
-
-

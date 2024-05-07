@@ -2,9 +2,9 @@ import React, { Component } from "react";
 import {StyleSheet, View, Text, ImageBackground, SafeAreaView} from "react-native";
 import SearchBar from "../components/searchBar";
 import Lists from "../components/lists";
-import LeftBar from "../components/leftBar";
+import LeftBar from "../components/LeftBar";
 export default function HomePage(props) {
-  const background = require('../assets/bg.jpg')
+  const background = require('../assets/bg_alt.jpg')
   return (
     <ImageBackground source={background} blurRadius={200} style={{flex:1}}>
 
