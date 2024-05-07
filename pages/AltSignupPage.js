@@ -7,6 +7,7 @@ import { LoginButton } from '../components/LoginButton';
 import {LoginTextfield} from "../components/LoginTextfield";
 import {StackActions, useNavigation} from "@react-navigation/native";
 import {colors} from "../components/colorProfile";
+import {LoginPasswordField} from "../components/LoginPasswordField";
 
 const background = require('../assets/bg_alt.jpg')
 
@@ -31,13 +32,13 @@ export default function AltStartPage() {
                         <Text style={{color:text_color ,alignSelf:'center', fontWeight:'bold', fontSize:20, paddingVertical:'5%'}}>Sign up now to continue.</Text>
                         <LoginTextfield value={'Username'}/>
                         <LoginTextfield value={'e-mail'}/>
-                        <LoginTextfield value={'Password'}/>
+                        <LoginPasswordField value={'Password'}/>
 
                         <TouchableOpacity onPress={()=> navigation.dispatch(StackActions.pop(1))}>
                             <LoginButton message={'Sign Up'}/>
                         </TouchableOpacity>
 
-                        <TouchableOpacity>
+                        <TouchableOpacity style={{paddingBottom:'2%'}}>
                             <LoginButton message={'Continue W/ Google'}/>
                         </TouchableOpacity>
                     </View>

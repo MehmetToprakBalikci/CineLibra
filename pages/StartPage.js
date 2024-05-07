@@ -14,7 +14,7 @@ import {LoginPasswordField} from '../components/LoginPasswordField'
 import {LoginTextfield} from "../components/LoginTextfield";
 import {useNavigation} from "@react-navigation/native"
 import {colors} from "../components/colorProfile"
-import {modeDependancies} from "../components/colorProfile";
+import {modeDependencies} from "../components/colorProfile";
 
 const background = require('../assets/bg_alt.jpg')
 
@@ -26,7 +26,7 @@ const text_color = colors.text_color
 const main_color = colors.main
 const accent_color = colors.accent
 
-const statusbar_color = modeDependancies.statusbar_color
+const statusbar_color = modeDependencies.statusbar_color
 
 StatusBar.setBarStyle(statusbar_color)
 export default function StartPage() {
@@ -54,7 +54,7 @@ export default function StartPage() {
                             <LoginButton message={'Continue W/ Google'}/>
                         </TouchableOpacity>
 
-                        <View style={{marginBottom:'10%', flexDirection:'row', justifyContent:'center'}}>
+                        <View style={{paddingTop:'10%', flexDirection:'row', justifyContent:'center'}}>
                             <Text style={{alignSelf:'center', color:text_color}}>Don't have an account?</Text>
                             <TouchableOpacity onPress={() => navigation.navigate('AltSignupPage')}>
                                 <Text style={{marginLeft:'10%', fontWeight:'bold', color:accent_weak }}> Sign Up!</Text>

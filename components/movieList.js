@@ -52,10 +52,10 @@ const styles = StyleSheet.create({
   textContainer: {
     paddingHorizontal:'5%',
     paddingVertical:'2%',
-    borderBottomColor:opacity_color_strong,
-    borderTopColor:opacity_color_strong,
-    borderBottomWidth: 2,
-    borderTopWidth: 2,
+    marginHorizontal:'1%',
+    borderColor:opacity_color_strong,
+    borderWidth: 2,
+    borderRadius:15,
     backgroundColor: opacity_color,
   },
 });

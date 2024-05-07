@@ -25,20 +25,20 @@ const lightModeColors = {
      accent_weak: 'rgb(255, 126, 72)',
      accent_strong: 'rgb(255, 103, 0)',
      text_color: 'rgba(0, 0, 0, 1)',
-     text_color_weak: 'rgba(190, 190, 190, 0.7)',
-     bg_filter_color: 'rgba(200, 120, 90, 0.1)',
+     text_color_weak: 'rgba(190, 190, 190, 0.8)',
+     bg_filter_color: 'rgba(200, 120, 90, 0.3)',
      opacity_color: 'rgba(180, 120, 100 , 0.3)',
     opacity_color_strong: 'rgba(100, 60, 60 ,0.3)',
  }
 
- const lightModeDependancies = {
+ const lightModeDependencies = {
     statusbar_color:'light-mode',
  }
 
-const darkModeDependancies = {
+const darkModeDependencies = {
     statusbar_color:'dark-mode',
 }
 
 export const colors = colorScheme === 'dark' ? darkModeColors : lightModeColors;
-export const modeDependancies = colorScheme === 'dark' ? darkModeDependancies : lightModeDependancies;
+export const modeDependencies = colorScheme === 'dark' ? darkModeDependencies : lightModeDependencies;
 

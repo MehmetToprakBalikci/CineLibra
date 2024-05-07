@@ -13,12 +13,12 @@ const accent_color = colors.accent
 
 export  const LoginButton = ({message}) =>{
     return(
-        <View style={{paddingTop:'2%'}}>
+        <View style={{paddingTop:'0%'}}>
             <View style={{
                 maxWidth:'100%',
                 width:'100%',
-                paddingHorizontal:'3%',
-                marginVertical:'6%',
+                paddingHorizontal:'2%',
+                marginVertical:'5%',
                 paddingVertical:'3%',
                 backgroundColor:accent_weak,
                 borderRadius:50,

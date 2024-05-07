@@ -5,6 +5,7 @@ import Movie from "./movie";
 import { colors } from "./colorProfile"
 
 const text_color_weak = colors.text_color_weak
+const text_color = colors.text_color
 const opacity_color = colors.opacity_color
 const opacity_color_strong = colors.opacity_color_strong
 
@@ -95,10 +96,10 @@ const styles = StyleSheet.create({
         paddingHorizontal:'5%',
         paddingVertical:'2%',
         marginBottom:'1%',
-        borderBottomColor:opacity_color_strong,
-        borderTopColor:opacity_color_strong,
-        borderBottomWidth: 2,
-        borderTopWidth: 2,
+        marginHorizontal:'1%',
+        borderRadius:15,
+        borderColor:opacity_color_strong,
+        borderWidth: 2,
         backgroundColor:opacity_color,
     },
     poster: {
