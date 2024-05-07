@@ -12,9 +12,9 @@ const darkModeColors = {
     accent_weak: 'rgb(242, 97, 63)',
     text_color: 'rgb(255, 255, 255)',
     text_color_weak: 'rgba(180, 180, 180, 0.7)',
-    bg_filter_color: 'rgba(0, 0, 0, 0.3)',
-    opacity_color: 'rgba(0, 0, 0 ,0.3)',
-    opacity_color_strong: 'rgba(0, 0, 0 ,0.3)',
+    bg_filter_color: 'rgba(10, 10, 10, 0.3)',
+    opacity_color: 'rgba(50, 45, 45 ,0.4)',
+    opacity_color_strong: 'rgba(30, 25, 25 ,0.4)',
 }
 
 const lightModeColors = {
@@ -31,6 +31,14 @@ const lightModeColors = {
     opacity_color_strong: 'rgba(100, 60, 60 ,0.3)',
  }
 
-export const colors = colorScheme === 'dark' ? darkModeColors : lightModeColors;
+ const lightModeDependancies = {
+    statusbar_color:'light-mode',
+ }
 
+const darkModeDependancies = {
+    statusbar_color:'dark-mode',
+}
+
+export const colors = colorScheme === 'dark' ? darkModeColors : lightModeColors;
+export const modeDependancies = colorScheme === 'dark' ? darkModeDependancies : lightModeDependancies;
 

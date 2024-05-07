@@ -14,6 +14,7 @@ import {LoginPasswordField} from '../components/LoginPasswordField'
 import {LoginTextfield} from "../components/LoginTextfield";
 import {useNavigation} from "@react-navigation/native"
 import {colors} from "../components/colorProfile"
+import {modeDependancies} from "../components/colorProfile";
 
 const background = require('../assets/bg_alt.jpg')
 
@@ -25,7 +26,9 @@ const text_color = colors.text_color
 const main_color = colors.main
 const accent_color = colors.accent
 
-StatusBar.setBarStyle('dark-content')
+const statusbar_color = modeDependancies.statusbar_color
+
+StatusBar.setBarStyle(statusbar_color)
 export default function StartPage() {
 
     const navigation = useNavigation()
