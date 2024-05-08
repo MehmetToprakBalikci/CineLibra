@@ -13,6 +13,7 @@ import SwitchItemDetailPage from './pages/SwitchPanels/SwitchItemDetailPage';
 import SignOutScreen from './screens/SignOutScreen';
 import AltSignUpPage from './pages/AltSignupPage'
 import SwitchSearchPage from './pages/SwitchPanels/SwitchSearchPage';
+import MoviePage from './pages/MoviePage';
 
 const Stack = createStackNavigator();
 
@@ -45,11 +46,11 @@ export const Navigator = () => {
                 title:'HomePage',
                 gestureEnabled:false,
             }}/>
-             <Stack.Screen name="ItemDetailPage" component={SwitchItemDetailPage} options={{
+        
+            <Stack.Screen name="MoviePage" component={MoviePage} options={{
                 headerShown:false,
-                title:'HomePage',
+                title:'MoviePage',
                 gestureEnabled:false,
-                title:'HomePage',
                 gestureEnabled:false,
             }}/>
         </Stack.Navigator>
