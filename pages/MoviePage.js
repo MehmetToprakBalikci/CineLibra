@@ -30,22 +30,26 @@ const MoviePage = () => {
                         />
                         <View style={styles.overlay4}>
                             <Text style={styles.title} adjustsFontSizeToFit numberOfLines={2}>{movieItem.title}</Text>
-                            <View style={styles.iconRow}>
-                                <IconWatched />
-                                <IconFavorite />
-                                <IconWatchLater />
-                            </View>
-                            <View style={styles.iconRow}>
-                                <IconStarFilled />
-                                <IconStarFilled />
-                                <IconStarFilled />
-                                <IconStarFilled />
-                                <IconStarFilled />
+                            <View>
+                                <View style={styles.iconRow}>
+                                    <IconWatched />
+                                    <IconFavorite />
+                                    <IconWatchLater />
+                                </View>
+                                <View style={styles.iconRow}>
+                                    <IconStarFilled />
+                                    <IconStarFilled />
+                                    <IconStarFilled />
+                                    <IconStarFilled />
+                                    <IconStarFilled />
+                                </View>
                             </View>
                         </View>
                     </View>
-                    <Text style={styles.description} adjustsFontSizeToFit numberOfLines={4}>{movieItem.overview}
-                    </Text>
+                    <View style={styles.descriptionView}>
+                        <Text style={styles.description} >{movieItem.overview}
+                        </Text>
+                    </View>
                     <Text style={styles.title}>{"AAAAAAA \n" +
 
                         "a\n" +
@@ -112,12 +116,19 @@ const styles = StyleSheet.create({
     },
     overlay4: {
         flex: 2,
-        backgroundColor: 'rgba(1000,10,10,0.90)',
+        height:200,
+        alignItems: "center",
+        justifyContent: "space-between",
+        //backgroundColor: 'rgba(1000,10,10,0.90)',
     },
     iconRow: {
+        //backgroundColor: '#500',
         flexDirection: 'row',
-        justifyContent: 'center',
+        justifyContent: 'space-around',
         marginBottom: 5,
+    },
+    iconsCol: {
+
     },
     overlayImage: {
         marginLeft: 10,
@@ -126,18 +137,22 @@ const styles = StyleSheet.create({
         height: 200,
     },
     title: {
+        //backgroundColor: '#050',
         fontSize: 30,
         fontWeight: 'bold',
-        marginTop: 10,
-        marginBottom: 30,
+        margin: 3,
+        alignSelf: 'center',
         color: '#fff', // Text color
-        alignSelf: "center",
     },
     description: {
-        height: 120,
-        marginTop: 5,
-        fontSize: 22,
+        //backgroundColor: '#006',
+        margin: 4,
+        fontSize:17,
         color: '#fff', // Text color
+    },
+    descriptionView:{
+        //backgroundColor: '#166',
+        height: 150,
     },
 });
 
