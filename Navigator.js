@@ -1,7 +1,3 @@
-
-
-
-
 import {CardStyleInterpolators, createStackNavigator, TransitionPresets, TransitionSpecs} from '@react-navigation/stack'
 import StartPage from './pages/StartPage';
 import SignupPage from './pages/AltSignupPage';
@@ -16,6 +12,7 @@ import SwitchItemDetailPage from './pages/SwitchPanels/SwitchItemDetailPage';
 import SignOutScreen from './screens/SignOutScreen';
 import AltSignUpPage from './pages/AltSignupPage'
 import SwitchSearchPage from './pages/SwitchPanels/SwitchSearchPage';
+import MoviePage from "./pages/MoviePage";
 
 const Stack = createStackNavigator();
 
@@ -61,7 +58,12 @@ export const Navigator = () => {
             }}/>
              <Stack.Screen name="ItemDetailPage" component={SwitchItemDetailPage} options={{
                 headerShown:false,
-                title:'HomePage',
+                title:'ItemDetailPage',
+                gestureEnabled:false,
+            }}/>
+            <Stack.Screen name="MoviePage" component={MoviePage} options={{
+                headerShown:false,
+                title:'MoviePage',
                 gestureEnabled:false,
             }}/>
         </Stack.Navigator>

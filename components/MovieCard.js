@@ -1,9 +1,12 @@
 import {Dimensions, Image, StyleSheet, Text, TouchableOpacity, View} from "react-native";
+import MoviePage from "../pages/MoviePage";
+import {useNavigation} from "@react-navigation/native";
 
 export default function MovieCard({ item, onPress }) {
+    const navigation = useNavigation()
     const handlePress = () => {
         console.log("Clicked");
-        // TODO: Add navigation to MoviePage
+        navigation.navigate('MoviePage', { movieItem: item });
         //onPress();
     };
 
