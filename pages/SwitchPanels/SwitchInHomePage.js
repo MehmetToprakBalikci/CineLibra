@@ -1,46 +1,73 @@
-// SwitchPanel.js
-import React from 'react';
-import { createDrawerNavigator, DrawerContentScrollView, DrawerItemList, DrawerItem } from '@react-navigation/drawer';
-import StartPage from '../StartPage';
-import Profile from '../../screens/Profile';
-import SignOutScreen from '../../screens/SignOutScreen';
-import CustomDrawer from '../../components/CustomDrawer';
-import Ionicons from 'react-native-vector-icons/Ionicons'
-import HomePage from '../HomePage';
-import SearchPage from '../SearchPage';
-
-const Drawer = createDrawerNavigator();
+import {CardStyleInterpolators, createStackNavigator, TransitionPresets, TransitionSpecs} from '@react-navigation/stack'
+import StartPage from './pages/StartPage';
+import SignupPage from './pages/AltSignupPage';
+import SearchPage from './pages/SearchPage';
+import AltSignupPage from './pages/AltSignupPage';
 
 
-const SwitchHomePanel = () => {
-  return (
-    <Drawer.Navigator   drawerContent={props=> <CustomDrawer {...props}  />} screenOptions={{headerShown:false}} >
-<<<<<<< HEAD
-    
-=======
->>>>>>> c3f1f52 (Navigation bar  plus some small fixes were  done)
+import { useNavigation } from '@react-navigation/native';
+import HomePage from "./pages/HomePage";
+import SwitchHomePanel from './pages/SwitchPanels/SwitchInHomePage';
+import SwitchItemDetailPage from './pages/SwitchPanels/SwitchItemDetailPage';
+import SignOutScreen from './screens/SignOutScreen';
+import AltSignUpPage from './pages/AltSignupPage'
+import SwitchSearchPage from './pages/SwitchPanels/SwitchSearchPage';
+import MoviePage from "./pages/MoviePage";
 
-    <Drawer.Screen name="Search" component={HomePage}  options={{
-       drawerIcon: ({color})=> (
-        <Ionicons name= "search-outline" size={20} color={color}/>
-       )
-      }} />
-      
+const Stack = createStackNavigator();
 
-    <Drawer.Screen name="Profile" component={Profile}  options={{
-       drawerIcon: ({color})=> (
-        <Ionicons name= "person-outline" size={20} color={color}/>
-       )
-      }} />
-      
-  
-     <Drawer.Screen name="SignOut" component={SignOutScreen}  options={{
-       drawerIcon: ({color})=> (
-        <Ionicons name="log-out" size={20} color={color} />
-       )
-      }}/>
-    </Drawer.Navigator>
-  );
-}; 
+export const Navigator = () => {
 
-export default SwitchHomePanel;
+    return (
+
+        <Stack.Navigator>
+
+            <Stack.Screen name="StartPage" component={StartPage} options={{
+                headerShown:false,
+
+            }}/>
+
+            <Stack.Screen name="AltSignupPage" component={AltSignupPage} options={{
+                headerShown:false,
+                title:'SignUpPage',
+                gestureDirection:'vertical',
+                cardStyleInterpolator: CardStyleInterpolators.forModalPresentationIOS,
+                presentation: 'transparentModal',
+
+            }}/>
+
+            <Stack.Screen name="SignupPage" component={SignupPage} options={{
+                headerShown:false,
+                title:'SignUpPage',
+                cardShadowEnabled:true,
+                gestureDirection:'vertical',
+                cardStyleInterpolator: CardStyleInterpolators.forModalPresentationIOS
+
+            }}/>
+
+            <Stack.Screen name="SearchPage" component={SwitchSearchPage} options={{
+                headerShown:false,
+                title:'SearchPage',
+                gestureDirection:'horizontal',
+                gestureEnabled:true,
+            }}/>
+            <Stack.Screen name="HomePage" component={SwitchHomePanel} options={{
+                headerShown:false,
+                title:'HomePage',
+                gestureEnabled:false,
+            }}/>
+             <Stack.Screen name="ItemDetailPage" component={SwitchItemDetailPage} options={{
+                headerShown:false,
+                title:'ItemDetailPage',
+                gestureEnabled:false,
+            }}/>
+            <Stack.Screen name="MoviePage" component={MoviePage} options={{
+                headerShown:false,
+                title:'MoviePage',
+                gestureEnabled:false,
+            }}/>
+        </Stack.Navigator>
+    )
+
+
+}
