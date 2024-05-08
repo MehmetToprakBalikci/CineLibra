@@ -27,7 +27,7 @@ const styles = StyleSheet.create({
         // Subtracting 20 for margin (10 left and 10 right)
     },
     posterImage: {
-        width: '100%', // Use 100% width for poster image
+        width: '100%',
         height: 180,
         borderRadius: 10,
     },

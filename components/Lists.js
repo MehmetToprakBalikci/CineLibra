@@ -1,20 +1,23 @@
 import React, { Component } from "react";
-import { StyleSheet, View } from "react-native";
-import MovieList from "./MovieList";
+import {ScrollView, StyleSheet, View} from "react-native";
+import MovieList, {listTypes} from "./MovieList";
+import listItem from "react-native-paper/src/components/List/ListItem";
 
 function Lists(props) {
   return (
-    <View style={styles.container}>
-      <MovieList style={styles.movieList} Text={'Popular Movies'}></MovieList>
-      <MovieList style={styles.movieList} Text={'Latest Movies'}></MovieList>
-      <MovieList style={styles.movieList} Text={'Recommended For You'}></MovieList>
-    </View>
+    <ScrollView style={styles.container}>
+      <MovieList listType={listTypes.TRENDING}></MovieList>
+      <MovieList listType={listTypes.POPULAR}></MovieList>
+      <MovieList listType={listTypes.NOW_PLAYING}></MovieList>
+      <MovieList listType={listTypes.TOP_RATED}></MovieList>
+    </ScrollView>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
       flex:1,
+      padding: 10,
   },
   movieList: {
       height: '100%',
