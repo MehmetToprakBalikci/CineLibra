@@ -46,8 +46,4 @@ const sytles = StyleSheet.create({
         marginRight:20
     }
 
-    
-
-
-
 })
