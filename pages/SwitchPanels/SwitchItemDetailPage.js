@@ -18,7 +18,7 @@ const Drawer = createDrawerNavigator();
 
 const SwitchItemDetailPage = () => {
   return (
-    <Drawer.Navigator   drawerContent={props=> <CustomDrawer {...props}  />} screenOptions={{headerShown:false}} >
+    <Drawer.Navigator   drawerContent={props=> <CustomDrawer {...props}  />} screenOptions={{headerShown:false,swipeEnabled: false}} >
 
 <Drawer.Screen name="Current" component={ItemDetailPage}  options={{
        drawerIcon: ({color})=> (

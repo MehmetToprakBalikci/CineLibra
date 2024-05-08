@@ -18,7 +18,7 @@ const Drawer = createDrawerNavigator();
 
 const SwitchSearchPage = () => {
   return (
-    <Drawer.Navigator   drawerContent={props=> <CustomDrawer {...props}  />} screenOptions={{headerShown:false}} >
+    <Drawer.Navigator   drawerContent={props=> <CustomDrawer {...props}  />} sscreenOptions={{headerShown:false,swipeEnabled: false}} >
 
 <Drawer.Screen name="Current" component={SearchPage}  options={{
        drawerIcon: ({color})=> (
