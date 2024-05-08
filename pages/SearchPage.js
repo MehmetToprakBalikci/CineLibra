@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import {StyleSheet, View, Text, ImageBackground, SafeAreaView, ScrollView} from "react-native";
 import SearchBar from "../components/searchBar";
 import LeftBar from "../components/LeftBar";
-import Lists from "../components/lists";
+import Lists from "../components/Lists";
 import {useNavigation} from "@react-navigation/native";
 import SearchList from "../components/searchList";
 import {colors} from "../components/colorProfile"

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { StyleSheet, View } from "react-native";
-import MovieList from "./movieList";
+import MovieList from "./MovieList";
 
 function Lists(props) {
   return (

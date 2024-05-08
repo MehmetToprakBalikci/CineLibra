@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { StyleSheet, View, Text, ScrollView } from "react-native";
-import Movie from "./movie";
+import Movie from "./Movie";
 
 import { colors } from "./colorProfile"
 
