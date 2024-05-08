@@ -6,17 +6,29 @@ import {
     TouchableOpacity,
     SafeAreaView,
     Appearance,
-    KeyboardAvoidingView
+    KeyboardAvoidingView, StatusBar
 } from 'react-native';
 
 import { LoginButton } from '../components/LoginButton';
 import {LoginPasswordField} from '../components/LoginPasswordField'
 import {LoginTextfield} from "../components/LoginTextfield";
 import {useNavigation} from "@react-navigation/native"
-import {colorProfile} from "../components/colorProfile"
+import {colors} from "../components/colorProfile"
+import {modeDependencies} from "../components/colorProfile";
 
 const background = require('../assets/bg_alt.jpg')
 
+const main_strong = colors.main_strong
+const main_weak = colors.main_weak
+const accent_weak = colors.accent_weak
+const accent_strong = colors.accent_strong
+const text_color = colors.text_color
+const main_color = colors.main
+const accent_color = colors.accent
+
+const statusbar_color = modeDependencies.statusbar_color
+
+StatusBar.setBarStyle(statusbar_color)
 export default function StartPage() {
 
     const navigation = useNavigation()
@@ -30,7 +42,7 @@ export default function StartPage() {
                 <SafeAreaView style={styles.container}>
                     <View style={styles.loginLayout}>
 
-                        <Text style={{color:'black' ,alignSelf:'center', fontWeight:'bold', fontSize:20, paddingVertical:'5%'}}>Welcome! Lets get you started.</Text>
+                        <Text style={{color:text_color ,alignSelf:'center', fontWeight:'bold', fontSize:20, paddingVertical:'5%'}}>Welcome! Lets get you started.</Text>
                         <LoginTextfield value={'e-mail'} style={{keyboardType:'email-address'}}/>
                         <LoginPasswordField value={'password'}/>
 
@@ -42,10 +54,10 @@ export default function StartPage() {
                             <LoginButton message={'Continue W/ Google'}/>
                         </TouchableOpacity>
 
-                        <View style={{margin:'10%' , flexDirection:'row'}}>
-                            <Text style={{alignSelf:'center', color:'black'}}>Don't have an account?</Text>
+                        <View style={{paddingTop:'10%', flexDirection:'row', justifyContent:'center'}}>
+                            <Text style={{alignSelf:'center', color:text_color}}>Don't have an account?</Text>
                             <TouchableOpacity onPress={() => navigation.navigate('AltSignupPage')}>
-                                <Text style={{marginLeft:'10%', fontWeight:'bold', color:'rgb(255, 103, 0)' }}> Sign Up!</Text>
+                                <Text style={{marginLeft:'10%', fontWeight:'bold', color:accent_weak }}> Sign Up!</Text>
                             </TouchableOpacity>
 
                         </View>
@@ -91,8 +103,9 @@ const styles = StyleSheet.create({
     },
     cardStyle: {
         flex:8,
-        backgroundColor:'white',
-        borderRadius:15, shadowColor:'black',
+        backgroundColor:main_weak,
+        borderRadius:15,
+        shadowColor:'black',
         shadowRadius:30,
         shadowOffset:{height:5},
         shadowOpacity:1

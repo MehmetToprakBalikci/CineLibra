@@ -1,73 +1,63 @@
-import {CardStyleInterpolators, createStackNavigator, TransitionPresets, TransitionSpecs} from '@react-navigation/stack'
-import StartPage from './pages/StartPage';
-import SignupPage from './pages/AltSignupPage';
-import SearchPage from './pages/SearchPage';
-import AltSignupPage from './pages/AltSignupPage';
+// SwitchPanel.js
+import React from 'react';
+import { createDrawerNavigator, DrawerContentScrollView, DrawerItemList, DrawerItem } from '@react-navigation/drawer';
+import Profile from '../../screens/Profile';
+import SignOutScreen from '../../screens/SignOutScreen';
+import CustomDrawer from '../../components/CustomDrawer';
+import Ionicons from 'react-native-vector-icons/Ionicons'
+import HomePage from '../HomePage';
+import SearchPage from '../SearchPage';
+import StartPage from '../StartPage';
+const Drawer = createDrawerNavigator();
 
 
-import { useNavigation } from '@react-navigation/native';
-import HomePage from "./pages/HomePage";
-import SwitchHomePanel from './pages/SwitchPanels/SwitchInHomePage';
-import SwitchItemDetailPage from './pages/SwitchPanels/SwitchItemDetailPage';
-import SignOutScreen from './screens/SignOutScreen';
-import AltSignUpPage from './pages/AltSignupPage'
-import SwitchSearchPage from './pages/SwitchPanels/SwitchSearchPage';
-import MoviePage from "./pages/MoviePage";
+const SwitchHomePanel = () => {
+  return (
+    <Drawer.Navigator   drawerContent={props=> <CustomDrawer {...props}  />} 
+     screenOptions={{
+        headerShown: false,
+        swipeEnabled: false,
+       
+      }}
+    >
 
-const Stack = createStackNavigator();
-
-export const Navigator = () => {
-
-    return (
-
-        <Stack.Navigator>
-
-            <Stack.Screen name="StartPage" component={StartPage} options={{
-                headerShown:false,
-
-            }}/>
-
-            <Stack.Screen name="AltSignupPage" component={AltSignupPage} options={{
-                headerShown:false,
-                title:'SignUpPage',
-                gestureDirection:'vertical',
-                cardStyleInterpolator: CardStyleInterpolators.forModalPresentationIOS,
-                presentation: 'transparentModal',
-
-            }}/>
-
-            <Stack.Screen name="SignupPage" component={SignupPage} options={{
-                headerShown:false,
-                title:'SignUpPage',
-                cardShadowEnabled:true,
-                gestureDirection:'vertical',
-                cardStyleInterpolator: CardStyleInterpolators.forModalPresentationIOS
-
-            }}/>
-
-            <Stack.Screen name="SearchPage" component={SwitchSearchPage} options={{
-                headerShown:false,
-                title:'SearchPage',
-                gestureDirection:'horizontal',
-                gestureEnabled:true,
-            }}/>
-            <Stack.Screen name="HomePage" component={SwitchHomePanel} options={{
-                headerShown:false,
-                title:'HomePage',
-                gestureEnabled:false,
-            }}/>
-             <Stack.Screen name="ItemDetailPage" component={SwitchItemDetailPage} options={{
-                headerShown:false,
-                title:'ItemDetailPage',
-                gestureEnabled:false,
-            }}/>
-            <Stack.Screen name="MoviePage" component={MoviePage} options={{
-                headerShown:false,
-                title:'MoviePage',
-                gestureEnabled:false,
-            }}/>
-        </Stack.Navigator>
-    )
+<Drawer.Screen name="Search" component={HomePage}  options={{
+       drawerIcon: ({color})=> (
+        <Ionicons name= "search-outline" size={20} color={'#6A5ACD'}/>
+       ),
+          drawerLabelStyle: {
+            color: 'white', // Set the color of the label
+           
+            
+          },
+    }} />
 
 
-}
+    <Drawer.Screen name="Profile" component={Profile}  options={{
+       drawerIcon: ({color})=> (
+        <Ionicons name= "person-outline" size={20} color={'#6A5ACD'}/>
+       ),
+          drawerLabelStyle: {
+            color: 'white', // Set the color of the label
+           
+            
+          },
+      }} />
+
+
+     <Drawer.Screen name="SignOut" component={SignOutScreen}  options={{
+       drawerIcon: ({color})=> (
+        <Ionicons name="log-out" size={20} color={'#6A5ACD'} />
+       ),
+        drawerLabelStyle: {
+            color: 'white', // Set the color of the label
+           
+            
+          },
+    
+      }}/>
+    </Drawer.Navigator>
+  );
+};
+
+export default SwitchHomePanel;

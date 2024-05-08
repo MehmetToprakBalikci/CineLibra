@@ -18,7 +18,7 @@ export default function SignupPage() {
             </ImageBackground>
             <View style={{flex:8, backgroundColor:'white', borderRadius:15, shadowColor:'black', shadowRadius:20, shadowOffset:{height:5}, shadowOpacity:1}}>
                 <SafeAreaView style={styles.container}>
-                    <View style={{minWidth:'100%',flexDirection:'column', justifyContent:'space-evenly', flex:1, rowGap:'10%', paddingTop:'5%', paddingHorizontal:'10%'}}>
+                    <View style={{minWidth:'100%',flexDirection:'column', justifyContent:'space-evenly', flex:1,   paddingBottom: '10%', paddingTop:'5%', paddingHorizontal:'10%'}}>
                         <Text style={{alignSelf:'center', fontWeight:'bold', fontSize:20, paddingVertical:'5%'}}>Welcome! Lets get you started.</Text>
                         <LoginTextfield value={'Username'}/>
                         <LoginTextfield value={'e-mail'}/>

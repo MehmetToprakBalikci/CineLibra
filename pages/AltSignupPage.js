@@ -6,6 +6,19 @@ import { AntDesign } from '@expo/vector-icons';
 import { LoginButton } from '../components/LoginButton';
 import {LoginTextfield} from "../components/LoginTextfield";
 import {StackActions, useNavigation} from "@react-navigation/native";
+import {colors} from "../components/colorProfile";
+import {LoginPasswordField} from "../components/LoginPasswordField";
+
+const background = require('../assets/bg_alt.jpg')
+
+const main_strong = colors.main_strong
+const main_weak = colors.main_weak
+const accent_weak = colors.accent_weak
+const accent_strong = colors.accent_strong
+const text_color = colors.text_color
+const main_color = colors.main
+const accent_color = colors.accent
+
 export default function AltStartPage() {
     const navigation = useNavigation()
     return (
@@ -16,16 +29,16 @@ export default function AltStartPage() {
             <View style={styles.cardStyle}>
                 <SafeAreaView style={styles.container}>
                     <View style={styles.signupLayout}>
-                        <Text style={{alignSelf:'center', fontWeight:'bold', fontSize:20, paddingVertical:'5%'}}>Sign up now to continue.</Text>
+                        <Text style={{color:text_color ,alignSelf:'center', fontWeight:'bold', fontSize:20, paddingVertical:'5%'}}>Sign up now to continue.</Text>
                         <LoginTextfield value={'Username'}/>
                         <LoginTextfield value={'e-mail'}/>
-                        <LoginTextfield value={'Password'}/>
+                        <LoginPasswordField value={'Password'}/>
 
                         <TouchableOpacity onPress={()=> navigation.dispatch(StackActions.pop(1))}>
                             <LoginButton message={'Sign Up'}/>
                         </TouchableOpacity>
 
-                        <TouchableOpacity>
+                        <TouchableOpacity style={{paddingBottom:'2%'}}>
                             <LoginButton message={'Continue W/ Google'}/>
                         </TouchableOpacity>
                     </View>
@@ -38,14 +51,14 @@ export default function AltStartPage() {
 const styles = StyleSheet.create({
 
     container: {
-        flex: 1,//flex 1 tum ekrani kaplayacak
+        flex: 1,
         justifyContent:'center',
         alignItems:'center',
 
     },
     cardStyle: {
         flex:8,
-        backgroundColor:'rgb(249, 246, 247)',
+        backgroundColor:main_weak,
         borderRadius:15,
         shadowColor:'black',
         shadowRadius:20,

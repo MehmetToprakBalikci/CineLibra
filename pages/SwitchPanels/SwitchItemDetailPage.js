@@ -11,6 +11,7 @@ import SearchPage from '../SearchPage';
 import StartPage from '../StartPage';
 import ItemDetailPage from '../ItemDetailPage';
 import SwitchHomePanel from './SwitchInHomePage';
+import MoviePage from '../MoviePage';
 
 const Drawer = createDrawerNavigator();
 
@@ -18,30 +19,58 @@ const Drawer = createDrawerNavigator();
 
 const SwitchItemDetailPage = () => {
   return (
-    <Drawer.Navigator   drawerContent={props=> <CustomDrawer {...props}  />} screenOptions={{headerShown:false,swipeEnabled: false}} >
+    <Drawer.Navigator   drawerContent={props=> <CustomDrawer {...props}  />} 
+     screenOptions={{
+        headerShown: false,
+        swipeEnabled: false,
+       
+      }}
+    >
+     <Drawer.Screen name="Current" component={MoviePage}  options={{
+       drawerIcon: ({color})=> (
+        <Ionicons name= "search-outline" size={20} color={'#6A5ACD'}/>
+       ),
+          drawerLabelStyle: {
+            color: 'white', // Set the color of the label
+           
+            
+          },
+    }} />
 
-<Drawer.Screen name="Current" component={ItemDetailPage}  options={{
+    <Drawer.Screen name="Search" component={HomePage}  options={{
        drawerIcon: ({color})=> (
-        <Ionicons name="arrow-back" size={20} color={color}/>
-       )
-      }} />
-      <Drawer.Screen name="Search" component={SwitchHomePanel}  options={{
-       drawerIcon: ({color})=> (
-        <Ionicons name= "search-outline" size={20} color={color}/>
-       )
-      }} />
-    
+        <Ionicons name= "search-outline" size={20} color={'#6A5ACD'}/>
+       ),
+          drawerLabelStyle: {
+            color: 'white', // Set the color of the label
+           
+            
+          },
+    }} />
+
+
     <Drawer.Screen name="Profile" component={Profile}  options={{
        drawerIcon: ({color})=> (
-        <Ionicons name= "person-outline" size={20} color={color}/>
-       )
+        <Ionicons name= "person-outline" size={20} color={'#6A5ACD'}/>
+       ),
+          drawerLabelStyle: {
+            color: 'white', // Set the color of the label
+           
+            
+          },
       }} />
-   
-      
-      <Drawer.Screen name="SignOut" component={SignOutScreen}  options={{
+
+
+     <Drawer.Screen name="SignOut" component={SignOutScreen}  options={{
        drawerIcon: ({color})=> (
-        <Ionicons name="log-out" size={20} color={color} />
-       )
+        <Ionicons name="log-out" size={20} color={'#6A5ACD'} />
+       ),
+        drawerLabelStyle: {
+            color: 'white', // Set the color of the label
+           
+            
+          },
+    
       }}/>
     </Drawer.Navigator>
   );

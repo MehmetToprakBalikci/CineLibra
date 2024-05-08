@@ -1,6 +1,13 @@
 import React, { Component } from "react";
 import { StyleSheet, View, Text, ScrollView } from "react-native";
-import Movie from "./movie";
+import Movie from "./Movie";
+
+import { colors } from "./colorProfile"
+
+const text_color_weak = colors.text_color_weak
+const text_color = colors.text_color
+const opacity_color = colors.opacity_color
+const opacity_color_strong = colors.opacity_color_strong
 
 function searchList(props) {
     return (
@@ -81,7 +88,7 @@ const styles = StyleSheet.create({
         flex:1,
     },
     listName: {
-        color: 'rgba(255, 255, 255, 0.5)',
+        color: text_color_weak,
         fontSize: 16,
         fontWeight:'bold'
     },
@@ -89,11 +96,11 @@ const styles = StyleSheet.create({
         paddingHorizontal:'5%',
         paddingVertical:'2%',
         marginBottom:'1%',
-        borderBottomColor:'rgba(20, 20, 20, 0.5)',
-        borderTopColor:'rgba(20, 20, 20, 0.5)',
-        borderBottomWidth: 2,
-        borderTopWidth: 2,
-        backgroundColor:'rgba(0, 0, 0, 0.3)',
+        marginHorizontal:'1%',
+        borderRadius:15,
+        borderColor:opacity_color_strong,
+        borderWidth: 2,
+        backgroundColor:opacity_color,
     },
     poster: {
         maxWidth:'98%',
@@ -103,7 +110,7 @@ const styles = StyleSheet.create({
         marginHorizontal:'2%',
         marginVertical:4,
         height: 200,
-        backgroundColor:'rgba(0, 0, 0, 0.3)',
+        backgroundColor:opacity_color,
         borderRadius:15,
         paddingHorizontal:'2%',
         paddingVertical:'2%',
@@ -114,7 +121,7 @@ const styles = StyleSheet.create({
         marginLeft:'2%',
     },
     description: {
-        color: 'rgba(255, 255, 255, 0.6)',
+        color: text_color_weak,
     },
     movie: {
 
