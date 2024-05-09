@@ -14,6 +14,8 @@ import {useNavigation, useRoute} from "@react-navigation/native";
 import {AntDesign, MaterialCommunityIcons, MaterialIcons} from "@expo/vector-icons";
 import { LinearGradient } from 'expo-linear-gradient';
 import {fetchCastDetails} from "../api/APICalls";
+import CastProfile from "../components/CastProfile";
+import {colors} from "../components/colorProfile";
 
 const MoviePage = () => {
     const route = useRoute();
@@ -41,7 +43,7 @@ const MoviePage = () => {
             blurRadius={0}
         >
             <TouchableOpacity style={styles.navigationIcon} onPress={() => navigation.goBack()}>
-                <AntDesign name="back" size={24} color="white" />
+                <AntDesign name="back" size={34} color={colors.accent_weak} />
             </TouchableOpacity>
             <ScrollView contentContainerStyle={styles.scrollView}>
 
@@ -87,17 +89,12 @@ const MoviePage = () => {
                                 (item.known_for_department === "Directing") ||
                                 (item.job === "Director")
                         )}
-                        renderItem={({ item }) => {
-                            console.log(item.name); // Place the console.log() statement here
-                            return (
-                                <Image style={styles.castImage} source={{ uri: `https://image.tmdb.org/t/p/w185${item.profile_path}`}}/>
-                            );
-                        }}
+                        renderItem={({ item }) => (
+                            <CastProfile item={item}/>
+                        )}
                         keyExtractor={(item) => item.id.toString()}
                         showsHorizontalScrollIndicator={false}
                     />
-                    <Text style={styles.title}>{"AAAAAAA \n" +
-                        "d\n"}</Text>
                 </View>
             </ScrollView>
         </ImageBackground>
@@ -157,9 +154,11 @@ const styles = StyleSheet.create({
 
     },
     overlayImage: {
-        marginLeft: 10,
+        marginLeft: 5,
         flex: 1,
         borderRadius: 5,
+        borderWidth:2,
+        borderColor: colors.accent_weak,
         height: 200,
     },
     title: {
@@ -187,11 +186,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         //backgroundColor: 'orange',
         top: windowHeight*0.03,
-    },
-    castImage: {
-        height: 100,
-        width: 100,
-        borderRadius: 50,
+        zIndex: 1,
     },
 });
 
