@@ -14,7 +14,7 @@ import {useNavigation, useRoute} from "@react-navigation/native";
 import {AntDesign, MaterialCommunityIcons, MaterialIcons} from "@expo/vector-icons";
 import { LinearGradient } from 'expo-linear-gradient';
 import {fetchCastDetails} from "../api/APICalls";
-import CastProfile from "../components/CastProfile";
+import CastProfile from "../components/MoviePageComponents/CastProfile";
 import {colors} from "../components/colorProfile";
 
 const MoviePage = () => {
@@ -178,6 +178,7 @@ const styles = StyleSheet.create({
     descriptionView:{
         //backgroundColor: '#166',
         height: 150,
+        marginBottom:10,
     },
     navigationIcon: {
         height:45,
