@@ -79,7 +79,7 @@ const MoviePage = () => {
                         </View>
                     </View>
                     <View style={styles.descriptionView}>
-                        <Text style={styles.description} >{movieItem.overview}
+                        <Text style={styles.description} adjustsFontSizeToFit>{movieItem.overview}
                         </Text>
                     </View>
                     <FlatList
@@ -120,7 +120,7 @@ const styles = StyleSheet.create({
         backgroundColor: 'rgba(30,30,30,0.90)',
     },
     overlay2: {
-        height: windowHeight - (200+125),
+        height: windowHeight - (200+185),
         //backgroundColor: 'rgba(2000, 0, 250, 0.3)',
     },
     container: {
