@@ -50,11 +50,7 @@ export const Navigator = () => {
             <Stack.Screen name="MoviePage" component={MoviePage} options={{
                 headerShown:false,
                 title:'MoviePage',
-                gestureEnabled:false,
-                gestureEnabled:false,
             }}/>
         </Stack.Navigator>
     )
-
-
 }
