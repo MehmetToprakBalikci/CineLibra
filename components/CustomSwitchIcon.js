@@ -11,7 +11,7 @@ const CustomSwitchIcon = () => {
   if(isSwitch){
     return (
       <View style={styles.container}>
-      <TouchableOpacity style={[styles.out,[{justifyContent:'flex-start',backgroundColor:'#FF8C00'}] 
+      <TouchableOpacity style={[styles.out,[{justifyContent:'flex-start',backgroundColor:'#FF8C00'}]
       ]} activeOpacity={1} onPress={toggleSwitch}>
         <View style={styles.inner}>
            <View style ={styles.icon}>
@@ -19,14 +19,14 @@ const CustomSwitchIcon = () => {
            </View>
         </View>
        </TouchableOpacity>
-  
+
       </View>
     );
     }
     else{
       return (
         <View style={styles.container}>
-        <TouchableOpacity style={[styles.out,[{justifyContent:'flex-end',backgroundColor:'#ED9121'}] 
+        <TouchableOpacity style={[styles.out,[{justifyContent:'flex-end',backgroundColor:'#ED9121'}]
         ]} activeOpacity={1} onPress={toggleSwitch}>
           <View style={styles.inner}>
              <View style ={styles.icon}>
@@ -34,24 +34,25 @@ const CustomSwitchIcon = () => {
              </View>
           </View>
          </TouchableOpacity>
-    
+
         </View>
       );
       }
     }
 
-  
 
-   
-      
-    
+
+
+
+
 
 
 
       const styles = StyleSheet.create({
         container: {
           flex: 1,
-          justifyContent: 'center',
+          justifyContent: 'flex-end',
+          paddingVertical:30,
           alignItems: 'center',
         },
         out: {
@@ -75,7 +76,7 @@ const CustomSwitchIcon = () => {
         icon: {
           width: 29,
           height: 29,
-          justifyContent: 'center',
+          justifyContent: 'flex-end',
           alignSelf: 'center',
           shadowOpacity: 0.15,
           borderRadius: 15,

@@ -3,6 +3,12 @@ import {Text, View, FlatList, StyleSheet, Dimensions} from 'react-native';
 import {fetchNowPlayingMovies, fetchPopularMovies, fetchTopRatedMovies, fetchTrendingMovies} from "../api/ListsAPI";
 import MovieCard from "./MovieCard";
 
+import { colors } from "./colorProfile"
+
+const text_color_weak = colors.text_color_weak
+const opacity_color = colors.opacity_color
+const opacity_color_strong = colors.opacity_color_strong
+
 const listTypes = {
   TRENDING: 'trending',
   POPULAR: 'popular',
@@ -13,7 +19,9 @@ const listTypes = {
 const List = ({ title, data }) => {
   return (
       <View style={styles.listContainer}>
+        <View style={styles.textContainer}>
         <Text style={styles.listTitle}>{title}</Text>
+        </View>
         <FlatList
             horizontal
             data={data}
@@ -70,12 +78,22 @@ const numMoviesPerLine = 5; // Number of movies you want to show in one line
 
 const styles = StyleSheet.create({
   listContainer: {
-    marginBottom: 20,
+    marginHorizontal:5,
   },
   listTitle: {
-    fontSize: 18,
-    fontWeight: 'bold',
-    marginBottom: 10,
+    color: text_color_weak,
+    fontSize: 16,
+    fontWeight:'bold'
+  },
+  textContainer: {
+    paddingHorizontal:'5%',
+    paddingVertical:'2%',
+    marginBottom:'3%',
+
+    borderRadius:15,
+    borderColor:opacity_color_strong,
+    borderWidth: 2,
+    backgroundColor:opacity_color,
   },
 });
 export default MovieList;
