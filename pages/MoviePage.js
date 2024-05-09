@@ -1,20 +1,25 @@
 import React from 'react';
-import {ScrollView, ImageBackground, Image, Text, View, StyleSheet, Dimensions} from 'react-native';
-import {useRoute} from "@react-navigation/native";
-import {MaterialCommunityIcons, MaterialIcons} from "@expo/vector-icons";
+import {ScrollView, ImageBackground, Image, Text, View, StyleSheet, Dimensions, TouchableOpacity} from 'react-native';
+import {useNavigation, useRoute} from "@react-navigation/native";
+import {AntDesign, MaterialCommunityIcons, MaterialIcons} from "@expo/vector-icons";
 import { LinearGradient } from 'expo-linear-gradient';
 
 const MoviePage = () => {
     const route = useRoute();
     const { movieItem } = route.params;
+    const navigation = useNavigation();
 
     return (
         <ImageBackground
             source={{ uri: `https://image.tmdb.org/t/p/original${movieItem.backdrop_path}` }}
             style={styles.background}
-            blurRadius={0} // Add a blur effect to the poster
+            blurRadius={0}
         >
+            <TouchableOpacity style={styles.navigationIcon} onPress={() => navigation.goBack()}>
+                <AntDesign name="back" size={24} color="white" />
+            </TouchableOpacity>
             <ScrollView contentContainerStyle={styles.scrollView}>
+
                 <View style={styles.overlay2}>
                     <LinearGradient
                         colors={['rgba(0, 0, 0, 0)', 'rgba(30,30,30,0.5)', 'rgba(30,30,30,0.90)']}
@@ -51,30 +56,6 @@ const MoviePage = () => {
                         </Text>
                     </View>
                     <Text style={styles.title}>{"AAAAAAA \n" +
-
-                        "a\n" +
-                        "b\n" +
-                        "c\n" +
-                        "a\n" +
-                        "b\n" +
-                        "c\n" +
-                        "a\n" +
-                        "b\n" +
-                        "c\n" +
-                        "a\n" +
-                        "b\n" +
-                        "c\n" +
-                        "a\n" +
-                        "b\n" +
-                        "c\n" +
-                        "a\n" +
-                        "b\n" +
-                        "c\n" +
-                        "a\n" +
-                        "c\n" +
-                        "a\n" +
-                        "b\n" +
-                        "c\n" +
                         "d\n"}</Text>
                 </View>
             </ScrollView>
@@ -153,6 +134,14 @@ const styles = StyleSheet.create({
     descriptionView:{
         //backgroundColor: '#166',
         height: 150,
+    },
+    navigationIcon: {
+        height:45,
+        width:45,
+        alignItems: 'center',
+        justifyContent: 'center',
+        //backgroundColor: 'orange',
+        top: windowHeight*0.03,
     },
 });
 
