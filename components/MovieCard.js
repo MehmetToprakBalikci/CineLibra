@@ -54,9 +54,7 @@ const styles = StyleSheet.create({
         marginHorizontal: 6,
         fontSize: 14,
         textAlign: 'center',
-        maxWidth: '100%', // Allow title to take full width of movie item
-        overflow: 'hidden',
-        textOverflow: 'ellipsis', // Display ellipsis if text overflows
-        whiteSpace: 'nowrap', // Prevent line breaks
+        maxWidth: '100%',  
+        whiteSpace: 'nowrap',
     },
 });
