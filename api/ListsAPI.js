@@ -36,3 +36,11 @@ export const fetchNowPlayingMovies = ()=>{
 export const fetchTopRatedMovies = ()=>{
     return apiCall(topRatedMoviesURL);
 }
+
+export const fetchMovieDetails = (movieId) =>{
+    return apiCall(`https://api.themoviedb.org/3/movie/${movieId}?language=en-US`);
+}
+
+export const fetchCastDetails = (movieId) =>{
+    return apiCall(`https://api.themoviedb.org/3/movie/${movieId}/credits?language=en-US`);
+}
