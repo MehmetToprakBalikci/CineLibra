@@ -73,9 +73,6 @@ const MovieList = ({ listType }) => {
   );
 };
 
-const windowWidth = Dimensions.get('window').width;
-const numMoviesPerLine = 5; // Number of movies you want to show in one line
-
 const styles = StyleSheet.create({
   listContainer: {
     marginHorizontal:5,
