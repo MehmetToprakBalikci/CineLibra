@@ -1,13 +1,38 @@
-import React from 'react';
-import {ScrollView, ImageBackground, Image, Text, View, StyleSheet, Dimensions, TouchableOpacity} from 'react-native';
+import React, {useEffect, useState} from 'react';
+import {
+    ScrollView,
+    ImageBackground,
+    Image,
+    Text,
+    View,
+    StyleSheet,
+    Dimensions,
+    TouchableOpacity,
+    FlatList
+} from 'react-native';
 import {useNavigation, useRoute} from "@react-navigation/native";
 import {AntDesign, MaterialCommunityIcons, MaterialIcons} from "@expo/vector-icons";
 import { LinearGradient } from 'expo-linear-gradient';
+import {fetchCastDetails} from "../api/ListsAPI";
 
 const MoviePage = () => {
     const route = useRoute();
     const { movieItem } = route.params;
     const navigation = useNavigation();
+    const [cast, setCast] = useState([]);
+
+    useEffect(() => {
+        fetchCast(movieItem.id);
+    }, []);
+
+    const fetchCast = async (movieId) => {
+        try {
+            const castDetails = await fetchCastDetails(movieId);
+            setCast(castDetails.cast);
+        } catch (error) {
+            console.error('Error fetching cast:', error);
+        }
+    };
 
     return (
         <ImageBackground
@@ -55,6 +80,22 @@ const MoviePage = () => {
                         <Text style={styles.description} >{movieItem.overview}
                         </Text>
                     </View>
+                    <FlatList
+                        horizontal
+                        data={cast.filter(item =>
+                                (item.known_for_department === "Acting" && item.order < 15) ||
+                                (item.known_for_department === "Directing") ||
+                                (item.job === "Director")
+                        )}
+                        renderItem={({ item }) => {
+                            console.log(item.name); // Place the console.log() statement here
+                            return (
+                                <Image style={styles.castImage} source={{ uri: `https://image.tmdb.org/t/p/w185${item.profile_path}`}}/>
+                            );
+                        }}
+                        keyExtractor={(item) => item.id.toString()}
+                        showsHorizontalScrollIndicator={false}
+                    />
                     <Text style={styles.title}>{"AAAAAAA \n" +
                         "d\n"}</Text>
                 </View>
@@ -62,6 +103,10 @@ const MoviePage = () => {
         </ImageBackground>
     );
 };
+
+const fetchCast = (movieId) => {
+    return fetchCastDetails(movieId);
+}
 
 const windowHeight = Dimensions.get('window').height;
 const windowWidth = Dimensions.get('window').width;
@@ -142,6 +187,11 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         //backgroundColor: 'orange',
         top: windowHeight*0.03,
+    },
+    castImage: {
+        height: 100,
+        width: 100,
+        borderRadius: 50,
     },
 });
 
