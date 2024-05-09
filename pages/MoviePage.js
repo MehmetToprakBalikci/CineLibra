@@ -13,7 +13,7 @@ import {
 import {useNavigation, useRoute} from "@react-navigation/native";
 import {AntDesign, MaterialCommunityIcons, MaterialIcons} from "@expo/vector-icons";
 import { LinearGradient } from 'expo-linear-gradient';
-import {fetchCastDetails} from "../api/ListsAPI";
+import {fetchCastDetails} from "../api/APICalls";
 
 const MoviePage = () => {
     const route = useRoute();
