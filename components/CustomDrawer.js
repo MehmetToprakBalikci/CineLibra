@@ -20,8 +20,8 @@ const CustomDrawer = (props) => {
 
         <View style={styles.headerContainer}>
           <Image source={require('../assets/image.png')} style={styles.imageStyle} />
-          <Text style={[styles.nameText, { color: text_color }]}>Tolga Fehmioğlu</Text>
-          <Text style={[styles.emailText, { color: text_color }]}>tolga_2001.fb@hotmail.com</Text>
+          <Text style={[styles.nameText, { color: 'white' }]}>Tolga Fehmioğlu</Text>
+          <Text style={[styles.emailText, { color: 'white' }]}>tolga_2001.fb@hotmail.com</Text>
         </View>
 
       </SafeAreaView>
@@ -50,15 +50,18 @@ const styles = StyleSheet.create({
    },
    imageStyle:
    {
-       width:100,
-       height:100,
+       width:120,
+       height:120,
        borderRadius:40,
        marginTop:10,
-       marginLeft:'2%'
+       marginLeft:'2%',
+       shadowRadius:2,
+       shadowColor:'black',
+       shadowOpacity:1,
+       shadowOffset:{height:2},
    },
    menuItem:{
     fontStyle:'italic'
-
    },
    signOut:{
    margin:5,
@@ -83,8 +86,8 @@ const styles = StyleSheet.create({
       marginLeft:'1%',
       fontSize:10
     },
-    safeArea: {
-
+    headerContainer: {
+        alignItems:'center',
     },
     backgroundImage:{
         flex: 1,

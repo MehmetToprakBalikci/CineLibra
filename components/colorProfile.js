@@ -16,6 +16,7 @@ const darkModeColors = {
     bg_filter_color_strong: 'rgba(0, 0, 0, 0.5)',
     opacity_color: 'rgba(50, 45, 45 ,0.4)',
     opacity_color_strong: 'rgba(30, 25, 25 ,0.4)',
+    highlight_color: 'rgba(242, 97, 63, 0.6)',
 }
 
 const lightModeColors = {
@@ -31,6 +32,7 @@ const lightModeColors = {
     bg_filter_color_strong: 'rgba(180, 100, 70, 0.4)',
     opacity_color: 'rgba(180, 120, 100 , 0.3)',
     opacity_color_strong: 'rgba(100, 60, 60 ,0.3)',
+    highlight_color: 'rgba(255, 126, 72, 0.6)',
 }
 
 const lightModeDependencies = {

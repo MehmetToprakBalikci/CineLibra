@@ -12,6 +12,7 @@ import StartPage from '../StartPage';
 const Drawer = createDrawerNavigator();
 
 const accent_color_strong = colors.accent_strong
+const highlight_color = colors.highlight_color
 
 const SwitchHomePanel = () => {
   return (
@@ -32,6 +33,7 @@ const SwitchHomePanel = () => {
 
 
           },
+            drawerActiveTintColor:highlight_color
     }} />
 
 
@@ -44,6 +46,7 @@ const SwitchHomePanel = () => {
 
 
           },
+        drawerActiveTintColor:highlight_color
       }} />
 
 
@@ -56,7 +59,7 @@ const SwitchHomePanel = () => {
 
 
           },
-
+         drawerActiveTintColor:highlight_color
       }}/>
     </Drawer.Navigator>
   );

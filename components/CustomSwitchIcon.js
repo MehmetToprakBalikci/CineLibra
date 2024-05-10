@@ -1,11 +1,20 @@
 import { StyleSheet,View, Text,TouchableOpacity,Image } from 'react-native'
 import React, { useState } from 'react'
+import {useNavigation} from "@react-navigation/native";
 
 const CustomSwitchIcon = () => {
+  const navigation = useNavigation()
   const [isSwitch,setIsSwitch] = useState(true); // initially
 
   function toggleSwitch(){
     setIsSwitch(!isSwitch);
+
+    if(isSwitch) {
+      navigation.navigate('HomePage')
+    }
+    else {
+      navigation.navigate('BookHomePage')
+    }
   }
 
   if(isSwitch){

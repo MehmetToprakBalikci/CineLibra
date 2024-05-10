@@ -1,15 +1,57 @@
-import { useNavigation } from '@react-navigation/native';
-import React from 'react';
-import { View, Text } from 'react-native';
+import {View, Text, SafeAreaView, TouchableOpacity, Image, ImageBackground} from 'react-native'
+import React from 'react'
+import { useNavigation } from '@react-navigation/native'
+import { AntDesign } from '@expo/vector-icons';
+import { StyleSheet } from 'react-native';
+import MovieList from '../components/MovieList';
+import Lists from "../components/Lists";
+import ProfileLists from "../components/ProfileLists";
+import {colors} from '../components/colorProfile';
+
+const text_color = colors.text_color
+const text_color_weak = colors.text_color_weak
+
+export default function ProfilePage() {
 
 
-const Profile = () => {
-  const navigator = useNavigation();
-  return (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-      <Text>Profile Screen</Text>
-    </View>
-  );
-};
 
-export default Profile;
+    const navigation = useNavigation()
+
+    return (
+        <ImageBackground style={{flex:1}} blurRadius={200} source={require('../assets/bg_alt.jpg')}>
+            <SafeAreaView style={styles.safeAreaStyle}>
+                <TouchableOpacity  onPress={()=> navigation.goBack()}>
+                    <AntDesign name="arrowleft" size={35} style={styles.arrowLeft} />
+                </TouchableOpacity>
+
+                <View style={{flex:1 , alignItems:'center',justifyContent:'center',flexDirection:'row' , marginBottom:"7%"}}>
+                    <Image source={require('../assets/bg.jpg')} style={styles.image}/>
+                    <Text style={{fontSize:22, color:text_color_weak}}>Muhammed Enes</Text>
+                </View>
+
+                <View style={{flex:4}}>
+                    <ProfileLists></ProfileLists>
+                </View>
+
+
+            </SafeAreaView>
+        </ImageBackground>
+    )
+}
+
+const styles = StyleSheet.create({
+
+    arrowLeft : {
+        marginLeft:15,
+        color:text_color_weak
+    },
+    image :{
+        width:'30%',
+        height:"80%" ,
+        borderRadius:200,
+        marginRight:20
+    },
+    safeAreaStyle: {
+        flex:1,
+    }
+})
