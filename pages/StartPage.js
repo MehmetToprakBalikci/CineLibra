@@ -15,6 +15,9 @@ import {LoginTextfield} from "../components/LoginTextfield";
 import {useNavigation} from "@react-navigation/native"
 import {colors} from "../components/colorProfile"
 import {modeDependencies} from "../components/colorProfile";
+import React, { useEffect } from 'react';
+import { auth } from '../firebase';
+import {signInWithEmailAndPassword } from 'firebase/auth';
 
 const background = require('../assets/bg_alt.jpg')
 
@@ -29,9 +32,48 @@ const accent_color = colors.accent
 const statusbar_color = modeDependencies.statusbar_color
 
 StatusBar.setBarStyle(statusbar_color)
-export default function StartPage() {
 
+
+export default function StartPage() {
+    console.log("start page içindeyim");
+    const [email,setEmail] = React.useState('');
+    const [password,setPassword] = React.useState('');
     const navigation = useNavigation()
+    // //  useEffect(() => {
+    // //      const unsubscribe = auth.onAuthStateChanged(user => {
+    // //        if (user) {
+    // //         console.log(user.name+" is entered the system");
+    // //          navigation.navigate("HomePage")
+
+    // //        }
+    // //        console.log("null user");
+    // //      })
+    
+    //      return unsubscribe
+    //    }, [])
+      const handleLogIn = async () => {
+        console.log("starting login handler");
+        console.log("email is "+ email );
+        console.log("Password is "+ password);
+
+          try {
+            console.log("Attempting to navigate to HomePage...");
+            //   const authUserInfos = await signInWithEmailAndPassword(auth, email, password);
+            //    const user = authUserInfos.user;
+            //    console.log(user.email + " Successfully logged in");
+              navigation.navigate("HomePage")
+              console.log("Navigation to HomePage successful.");
+
+          } catch (error) {
+              alert(error.message);
+          }
+    
+      }
+      
+      
+
+   
+     
 
     return (
         <KeyboardAvoidingView style={{flex:5}}>
@@ -43,10 +85,20 @@ export default function StartPage() {
                     <View style={styles.loginLayout}>
 
                         <Text style={{color:text_color ,alignSelf:'center', fontWeight:'bold', fontSize:20, paddingVertical:'5%'}}>Welcome! Lets get you started.</Text>
-                        <LoginTextfield value={'e-mail'} style={{keyboardType:'email-address'}}/>
-                        <LoginPasswordField value={'password'}/>
+                        <LoginTextfield 
+                        placeholder={"e-mail"}
+                        inputValue={email} 
+                        setEmail={setEmail}
+                        />
 
-                        <TouchableOpacity onPress={()=> {console.log("login pressed"); navigation.navigate('HomePage')}}>
+                        <LoginPasswordField 
+                        placeholder={'password'}
+                        password={password}
+                        setPassword={setPassword}
+
+                        />
+
+                        <TouchableOpacity onPress={()=> {console.log("login pressed");handleLogIn()}}>
                             <LoginButton message={'Log In'}/>
                         </TouchableOpacity>
 

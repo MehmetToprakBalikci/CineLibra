@@ -1,5 +1,5 @@
 // SwitchPanel.js
-import React from 'react';
+import React, { useState } from 'react';
 import { createDrawerNavigator, DrawerContentScrollView, DrawerItemList, DrawerItem } from '@react-navigation/drawer';
 import {colors} from '../../components/colorProfile';
 import Profile from '../../screens/Profile';
@@ -9,30 +9,44 @@ import Ionicons from 'react-native-vector-icons/Ionicons'
 import HomePage from '../HomePage';
 import SearchPage from '../SearchPage';
 import StartPage from '../StartPage';
+import bookHome from '../bookHome';
+import { HomePageScreen } from '../../screens/HomePageScreen';
+import { useNavigation } from '@react-navigation/native';
+import { TouchableOpacity } from 'react-native-gesture-handler';
 const Drawer = createDrawerNavigator();
 
 const accent_color_strong = colors.accent_strong
 const highlight_color = colors.highlight_color
+const highlight_color = colors.highlight_color
 
 const SwitchHomePanel = () => {
+  const navigator = useNavigation();
+  const x = 0;
+  const y = 2;
+  const [isSwitch,setOnSwitchDone] = useState(true);
+  console.log("switchhome içindeyim")
   return (
-    <Drawer.Navigator   drawerContent={props=> <CustomDrawer {...props}  />}
+    <Drawer.Navigator   drawerContent={props=> <CustomDrawer {...props} isSwitch={isSwitch} setOnSwitchDone={setOnSwitchDone}  />}
      screenOptions={{
         headerShown: false,
-        swipeEnabled: false,
+      //  swipeEnabled: false,
 
       }}
     >
 
-<Drawer.Screen name="Search" component={HomePage}  options={{
+<Drawer.Screen name="Search" component={isSwitch?HomePage:bookHome}  options={{
+
        drawerIcon: ({color})=> (
-        <Ionicons name= "search-outline" size={20} color={accent_color_strong}/>
+             <Ionicons name= "search-outline" size={20} color={accent_color_strong}/>
+      
+   
        ),
           drawerLabelStyle: {
             color: 'white', // Set the color of the label
 
 
           },
+            drawerActiveTintColor:highlight_color
             drawerActiveTintColor:highlight_color
     }} />
 
@@ -46,7 +60,7 @@ const SwitchHomePanel = () => {
 
 
           },
-        drawerActiveTintColor:highlight_color
+        drawerActiveTintColor:highlight_color,
       }} />
 
 
@@ -59,6 +73,7 @@ const SwitchHomePanel = () => {
 
 
           },
+         drawerActiveTintColor:highlight_color
          drawerActiveTintColor:highlight_color
       }}/>
     </Drawer.Navigator>

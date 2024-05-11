@@ -1,17 +1,32 @@
 import { View, Text,StyleSheet, ImageBackground, Image } from 'react-native'
-import React from 'react'
-import {DrawerItemList } from '@react-navigation/drawer'
-import CustomSwitchIcon from './CustomSwitchIcon'
+import React, { useState } from 'react'
+import {DrawerItemList,DrawerItem } from '@react-navigation/drawer'
+import {CustomSwitchIcon} from './CustomSwitchIcon'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import {colors} from './colorProfile'
-
+import { useEffect } from 'react'
+import Ionicons from 'react-native-vector-icons/Ionicons';
+import { useNavigation } from '@react-navigation/native'
 const text_color = colors.text_color
 const text_color_weak= colors.text_color_weak
 const bg_filter_color_strong = colors.bg_filter_color_strong
 const opacity_color = colors.opacity_color
 const opacity_color_strong = colors.opacity_color_strong
 
-const CustomDrawer = (props) => {
+
+const CustomDrawer = ({ isSwitch, setOnSwitchDone, ...props }) => {
+  const navigation = useNavigation();
+  // if (typeof setOnSwitchDone !== 'function') {
+  //   console.error('setOnSwitchDone is not a function!');
+  //   alert('setOnSwitchDone is not a function!')
+  //   return null; // or handle the error appropriately
+  // }
+  // else{
+  //   alert('setOnSwitchDone is  a function!')
+  // }
+  
+  
+
   return (
     <ImageBackground source={require('../assets/bg_alt.jpg')} blurRadius={200} style={styles.backgroundImage}>
         <View style={styles.container}>
@@ -27,13 +42,34 @@ const CustomDrawer = (props) => {
       </SafeAreaView>
 
       <View style={styles.menuItem}>
-        <DrawerItemList
+      <DrawerItem
+        label="Custom Item"
+        onPress={() => {
+          // Handle custom item press here
+         // console.log("Custom drawer item pressed");
+          navigation.navigate("HomePage")
+        }}/>
+         <DrawerItemList
           {...props}
-        />
+        /> 
+          {/* <DrawerItem
+        label="Custom Item"
+        onPress={() => {
+          // Handle custom item press here
+         // console.log("Custom drawer item pressed");
+          navigation.navigate("HomePage")
+        }}
+        icon={({ color, size }) => (
+          <Ionicons name="ios-information-circle" size={size} color={color} />
+        )}
+      />  */}
       </View>
 
       <View style={styles.switchIcon}>
-        <CustomSwitchIcon/>
+        { <CustomSwitchIcon
+        isSwitch={isSwitch}
+        setOnSwitchDone={setOnSwitchDone}
+        /> }
       </View>
         </View>
     </ImageBackground>

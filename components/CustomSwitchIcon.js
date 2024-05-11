@@ -2,19 +2,21 @@ import { StyleSheet,View, Text,TouchableOpacity,Image } from 'react-native'
 import React, { useState } from 'react'
 import {useNavigation} from "@react-navigation/native";
 
-const CustomSwitchIcon = () => {
-  const navigation = useNavigation()
-  const [isSwitch,setIsSwitch] = useState(true); // initially
+export const CustomSwitchIcon = ({isSwitch,setOnSwitchDone}) => {
+ //  const [isSwitch,setIsSwitch] = useState(true); // initially
+//  if (typeof setOnSwitchDone !== 'function') {
+//   console.error('setOnSwitchDone is not a function!');
+//   alert('setOnSwitchDone is not a function!')
+//   return null; // or handle the error appropriately
+// }
+// else{
+//   alert('setOnSwitchDone is  a function!')
+// }
+
 
   function toggleSwitch(){
-    setIsSwitch(!isSwitch);
-
-    if(isSwitch) {
-      navigation.navigate('HomePage')
-    }
-    else {
-      navigation.navigate('BookHomePage')
-    }
+    setOnSwitchDone(!isSwitch);
+    console.log("after toogle switch is "+isSwitch);
   }
 
   if(isSwitch){
@@ -24,7 +26,8 @@ const CustomSwitchIcon = () => {
       ]} activeOpacity={1} onPress={toggleSwitch}>
         <View style={styles.inner}>
            <View style ={styles.icon}>
-           <Image source = {require('../assets/book.png')} style={styles.icon} />
+           <TouchableOpacity></TouchableOpacity>
+           <Image source = {require('../assets/movie.png')} style={styles.icon} />
            </View>
         </View>
        </TouchableOpacity>
@@ -39,15 +42,17 @@ const CustomSwitchIcon = () => {
         ]} activeOpacity={1} onPress={toggleSwitch}>
           <View style={styles.inner}>
              <View style ={styles.icon}>
-             <Image source = {require('../assets/movie.png')} style={styles.icon} />
+             <Image source = {require('../assets/book.png')} style={styles.icon} />
              </View>
           </View>
          </TouchableOpacity>
 
         </View>
       );
-      }
+        }
+      
     }
+   
 
 
 
@@ -91,4 +96,4 @@ const CustomSwitchIcon = () => {
           borderRadius: 15,
         },
       });
-      export default CustomSwitchIcon;
+

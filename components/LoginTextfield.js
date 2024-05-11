@@ -7,8 +7,21 @@ const text_color = colors.text_color
 const main_color = colors.main
 const text_color_weak = colors.text_color_weak
 
-export  const LoginTextfield = ({value,isSecure}) =>{
-    const [number, onChangeNumber] = React.useState('');
+// placeholder={"e-mail"}
+//                         value={email}
+//                         onChangeText={onChangeEmail({value})} 
+//                         style={{keyboardType:'email-address'}}
+//  ({placeholder,inputValue,setInput})
+export  const LoginTextfield = props =>{
+    const handleUserNameChange = text => 
+        props.placeholder === 'user-name' 
+          ? props.setUserName(text) 
+          : props.placeholder === 'e-mail' 
+            ? props.setEmail(text) 
+            : null;
+      
+
+
     return(
         <View style={{flex:0.75, justifyContent:'center'}}>
             <TextInput
@@ -28,14 +41,15 @@ export  const LoginTextfield = ({value,isSecure}) =>{
                     backgroundColor:main_color,
                     color:text_color,
                 }}
-                placeholder={value}
+                placeholder={props.placeholder}
+                value={props.inputValue}
                 placeholderTextColor={text_color_weak}
-                secureTextEntry={isSecure}
                 keyboardType={'email-address'}
                 textAlign={'center'}
                 autoComplete={"off"}
                 autoCapitalize={"none"}
-                onChangeNumber={onChangeNumber}/>
+                onChangeText={handleUserNameChange}
+                />
         </View>
     )
 }
