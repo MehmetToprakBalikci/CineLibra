@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import {StyleSheet, View, Text, ImageBackground, SafeAreaView} from "react-native";
 import SearchBar from "../components/searchBar";
 import Lists from "../components/lists";
-import LeftBar from "../components/leftBar";
+import LeftBar from "../components/LeftBar"
 export default function HomePage(props) {
   const background = require('../assets/bg.jpg')
   return (
