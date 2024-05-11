@@ -5,11 +5,13 @@ import LeftBar from "../components/LeftBar";
 import {useNavigation} from "@react-navigation/native";
 import SearchList from "../components/searchList";
 import {colors} from "../components/colorProfile"
+import { auth } from "../firebase";
 
 const bg_filter_color = colors.bg_filter_color
 const opacity_color = colors.opacity_color
 export default function SearchPage(props) {
     const background = require('../assets/bg_alt.jpg')
+    console.log(auth.currentUser.email+" is in searchpage now");
     return (
         <ImageBackground source={background} blurRadius={200} style={{flex:1}}>
 

@@ -8,6 +8,9 @@ import {LoginTextfield} from "../components/LoginTextfield";
 import {StackActions, useNavigation} from "@react-navigation/native";
 import {colors} from "../components/colorProfile";
 import {LoginPasswordField} from "../components/LoginPasswordField";
+import React from 'react';
+import { auth } from '../firebase';
+import { createUserWithEmailAndPassword } from 'firebase/auth';
 
 const background = require('../assets/bg_alt.jpg')
 
@@ -20,7 +23,30 @@ const main_color = colors.main
 const accent_color = colors.accent
 
 export default function AltStartPage() {
-    const navigation = useNavigation()
+    const [userName,setUserName] = React.useState('');
+    const [email,setEmail] = React.useState('');
+    const [password,setPassword] = React.useState('');
+    const navigation = useNavigation();
+    const handleSignUp = async () => {
+	navigation.dispatch(StackActions.pop(1));
+        console.log("starting SignUp handler");
+        console.log("user-name "+userName);
+        console.log("e-mail "+email);
+        console.log("password "+password);
+         try {
+             const authUserInfos = await createUserWithEmailAndPassword(auth, email, password, userName);
+             const user = authUserInfos.user;
+             console.log(user.email + " Successfully signed up");
+             navigation.navigate('HomePage')
+         } catch (error) {
+             alert(error.message);
+         }
+       
+         }
+        
+    
+
+    
     return (
         <View style={{flex:5}}>
             <View style={{flex:5, backgroundColor:'transparent'}}>
@@ -30,11 +56,24 @@ export default function AltStartPage() {
                 <SafeAreaView style={styles.container}>
                     <View style={styles.signupLayout}>
                         <Text style={{color:text_color ,alignSelf:'center', fontWeight:'bold', fontSize:20, paddingVertical:'5%'}}>Sign up now to continue.</Text>
-                        <LoginTextfield value={'Username'}/>
-                        <LoginTextfield value={'e-mail'}/>
-                        <LoginPasswordField value={'Password'}/>
+                         <LoginTextfield 
+                        placeholder={"user-name"}
+                        inputValue={userName}
+                        setUserName={setUserName}
 
-                        <TouchableOpacity onPress={()=> navigation.dispatch(StackActions.pop(1))}>
+                         />
+                          <LoginTextfield 
+                        placeholder={"e-mail"}
+                        inputValue={email} 
+                        setEmail={setEmail}
+                        />
+                     
+                        <LoginPasswordField value={'Password'}
+                        placeholder={'password'}
+                        password={password}
+                        setPassword={setPassword}
+                        />
+                        <TouchableOpacity onPress={()=> handleSignUp()}>
                             <LoginButton message={'Sign Up'}/>
                         </TouchableOpacity>
 

@@ -1,23 +1,32 @@
-import React, { Component } from "react";
+import React, { Component, useState } from "react";
 import {StyleSheet, View, Text, ImageBackground, SafeAreaView} from "react-native";
 import SearchBar from "../components/searchBar";
 import Lists from "../components/Lists";
 import LeftBar from "../components/LeftBar";
 import { useNavigation } from "@react-navigation/native";
 import {colors} from "../components/colorProfile"
+import { Button } from "react-native-web";
 
 const bg_filter_color = colors.bg_filter_color
 const opacity_color = colors.opacity_color
 
+
 export default function HomePage(props) {
+  const navigation = useNavigation();
   const background = require('../assets/bg_alt.jpg')
+  console.log("HomePage içindeyiiiim");
   return (
     <ImageBackground source={background} blurRadius={200} style={{flex:1}}>
       <SafeAreaView style={styles.safeArea}>
 
         <View style={styles.leftBarRow}>
         <LeftBar/>
-          <SearchBar style={styles.searchBar} value={'Search'}></SearchBar>
+          <SearchBar style={styles.searchBar} value={'SearchHome'}></SearchBar>
+          <View>
+
+
+          </View>
+          
         </View>
 
         <View style={styles.listView}>

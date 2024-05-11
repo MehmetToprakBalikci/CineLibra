@@ -1,23 +1,24 @@
 import React from 'react';
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
+import { auth } from '../firebase';
 
 const SignOutScreen = () => {
   const navigation = useNavigation();
 
-  const handleSignOut = () => {
-    // Implement your sign out logic here
-    // For example, clearing user data, resetting authentication state, etc.
-    // Then navigate to the start page or any other appropriate screen
-    navigation.navigate('StartPage'); // Change 'StartPage' to the actual name of your start page
-  };
+
 
   const handleCancel = () => {
     navigation.goBack(); // Go back to the previous screen
   };
 
   const handleLogOut = () => {
-    handleSignOut(); // Call the sign-out logic
+  // Implement your sign out logic here
+    // For example, clearing user data, resetting authentication state, etc.
+    // Then navigate to the start page or any other appropriate screen
+     // Change 'StartPage' to the actual name of your start page
+     console.log(auth.currentUser.email + " is logging out...")
+     navigation.navigate("StartPage")
   };
 
   return (

@@ -17,7 +17,7 @@ const apiCall = async (url) =>{
     try {
         const response = await fetch(url, options);
         const data = await response.json();
-        console.log(data);
+        //console.log(data);
         return data;
     } catch (err) {
         console.error(err);

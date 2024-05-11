@@ -9,8 +9,8 @@ const text_color_weak = colors.text_color_weak
 const text_color = colors.text_color
 
 
-export  const LoginPasswordField = ({value}) =>{
-    const [number, onChangeNumber] = React.useState('');
+export  const LoginPasswordField = ({placeholder,password,setPassword}) =>{
+    //const [number, onChangeNumber] = React.useState('');
     return(
         <View style={{flex:0.75, justifyContent:'center'}}>
             <TextInput
@@ -31,14 +31,15 @@ export  const LoginPasswordField = ({value}) =>{
                     color:text_color,
                 }}
 
-                placeholder={value}
+                placeholder={placeholder}
                 placeholderTextColor={text_color_weak}
                 secureTextEntry={true}
                 keyboardType={'email-address'}
                 textAlign={'center'}
                 autoComplete={"off"}
                 autoCapitalize={"none"}
-                onChangeNumber={onChangeNumber}/>
+                value={password}
+                onChangeText={text =>setPassword(text)}/>
         </View>
     )
 }

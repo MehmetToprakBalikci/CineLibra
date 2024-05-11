@@ -10,7 +10,23 @@ import {LoginPasswordField} from "../components/LoginPasswordField";
 
 const background = require('../assets/bg.jpg')
 export default function SignupPage() {
+    const [email,setEmail] = React.useState('');
+    const [password,setPassword] = React.useState('');
     const navigation = useNavigation()
+    const handleSignUp = async () => {
+        console.log("starting SignUp handler");
+        console.log("e-mail "+email);
+        console.log("password "+password);
+        try {
+            const authUserInfos = await createUserWithEmailAndPassword(auth, email, password);
+            const user = authUserInfos.user;
+            console.log(user.email + " Successfully signed up");
+        } catch (error) {
+            alert(error.message);
+        }
+        navigation.navigate('HomePage')
+        
+    }
     return (
         <View style={{flex:5}}>
             <ImageBackground source={background} style={{height:'110%', width:'100%', flex: 5, justifyContent:'center'}}>
@@ -20,11 +36,21 @@ export default function SignupPage() {
                 <SafeAreaView style={styles.container}>
                     <View style={{minWidth:'100%',flexDirection:'column', justifyContent:'space-evenly', flex:1,   paddingBottom: '10%', paddingTop:'5%', paddingHorizontal:'10%'}}>
                         <Text style={{alignSelf:'center', fontWeight:'bold', fontSize:20, paddingVertical:'5%'}}>Welcome! Lets get you started.</Text>
-                        <LoginTextfield value={'Username'}/>
-                        <LoginTextfield value={'e-mail'}/>
-                        <LoginPasswordField value={'Password'}/>
+                        <LoginTextfield 
+                        placeholder={"e-mail"}
+                        />
+                        <LoginTextfield value={'e-mail'}
+                        placeholder={"e-mail"}
+                        email={email} 
+                        setEmail={setEmail}
+                        />
+                        <LoginPasswordField value={'Password'}
+                        placeholder={'password'}
+                        password={password}
+                        setPassword={setPassword}
+                        />
 
-                        <TouchableOpacity onPress={()=> navigation.navigate('HomePage')}>
+                        <TouchableOpacity onPress={()=>handleSignUp()}>
                             <LoginButton message={'Sign Up'}/>
                         </TouchableOpacity>
 

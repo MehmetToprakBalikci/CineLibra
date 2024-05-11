@@ -29,7 +29,7 @@ export const Navigator = () => {
 
             }}/>
 
-            <Stack.Screen name="AltSignupPage" component={AltSignupPage} options={{
+             <Stack.Screen name="AltSignupPage" component={AltSignupPage} options={{
                 headerShown:false,
                 title:'SignUpPage',
                 gestureDirection:'vertical',
@@ -42,7 +42,8 @@ export const Navigator = () => {
             <Stack.Screen name="SearchPage" component={SwitchSearchPage} options={{
                 headerShown:false,
                 title:'SearchPage'
-            }}/>
+            }}/> 
+            
             <Stack.Screen name="HomePage" component={SwitchHomePanel} options={{
                 headerShown:false,
                 title:'HomePage',

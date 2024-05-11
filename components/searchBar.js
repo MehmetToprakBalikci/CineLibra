@@ -15,7 +15,7 @@ function SearchBar(props) {
       <TextInput style={styles.search} placeholder = {'Search...'} placeholderTextColor={text_color_weak} />
       </KeyboardAvoidingView>
 
-        <TouchableOpacity onPress={() => navigation.navigate('SearchPage')}>
+        <TouchableOpacity onPress={() => {console.log("search bara tıklandıı");navigation.navigate('SearchPage')}}>
       <Icon name="magnify" style={styles.inputLeftIcon1}></Icon>
       </TouchableOpacity>
 
