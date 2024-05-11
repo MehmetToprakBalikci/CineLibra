@@ -14,6 +14,7 @@ import SignOutScreen from './screens/SignOutScreen';
 import AltSignUpPage from './pages/AltSignupPage'
 import SwitchSearchPage from './pages/SwitchPanels/SwitchSearchPage';
 import MoviePage from './pages/MoviePage';
+import Profile from './screens/Profile';
 
 const Stack = createStackNavigator();
 
@@ -53,7 +54,7 @@ export const Navigator = () => {
                 title:'MoviePage',
                 gestureDirection:'horizontal',
             }}/>
-            <Stack.Screen name="ProfilePage" component={ProfilePage} options={{
+            <Stack.Screen name="Profile" component={Profile} options={{
                 headerShown:false,
                 
                 

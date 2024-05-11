@@ -3,7 +3,7 @@ import React from 'react'
 import { useNavigation } from '@react-navigation/native'
 import { AntDesign } from '@expo/vector-icons';
 import { StyleSheet } from 'react-native';
-import MovieList from '../components/MovieList';
+
 import Lists from "../components/Lists";
 import ProfileLists from "../components/ProfileLists";
 import {colors} from '../components/colorProfile';
@@ -11,9 +11,7 @@ import {colors} from '../components/colorProfile';
 const text_color = colors.text_color
 const text_color_weak = colors.text_color_weak
 
-export default function ProfilePage() {
-
-
+export default function Profile() {
 
     const navigation = useNavigation()
 
