@@ -17,7 +17,6 @@ const Drawer = createDrawerNavigator();
 
 const accent_color_strong = colors.accent_strong
 const highlight_color = colors.highlight_color
-const highlight_color = colors.highlight_color
 
 const SwitchHomePanel = () => {
   const navigator = useNavigation();
@@ -38,15 +37,14 @@ const SwitchHomePanel = () => {
 
        drawerIcon: ({color})=> (
              <Ionicons name= "search-outline" size={20} color={accent_color_strong}/>
-      
-   
+
+
        ),
           drawerLabelStyle: {
             color: 'white', // Set the color of the label
 
 
           },
-            drawerActiveTintColor:highlight_color
             drawerActiveTintColor:highlight_color
     }} />
 
@@ -73,7 +71,6 @@ const SwitchHomePanel = () => {
 
 
           },
-         drawerActiveTintColor:highlight_color
          drawerActiveTintColor:highlight_color
       }}/>
     </Drawer.Navigator>
