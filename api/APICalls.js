@@ -1,6 +1,6 @@
 import {getBearer} from "./Bearer";
 
-const trendingMoviesURL = 'https://api.themoviedb.org/3/trending/movie/day?language=en-US'
+const trendingMoviesURL = 'https://api.themoviedb.org/3/trending/movie/week?language=en-US'
 const popularMoviesURL = 'https://api.themoviedb.org/3/movie/popular?language=en-US&page=1'
 const nowPlayingMoviesURL = 'https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=1'
 const topRatedMoviesURL = 'https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=1'

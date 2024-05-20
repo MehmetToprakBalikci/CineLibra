@@ -11,11 +11,12 @@ import {
     FlatList
 } from 'react-native';
 import {useNavigation, useRoute} from "@react-navigation/native";
-import {AntDesign, MaterialCommunityIcons, MaterialIcons} from "@expo/vector-icons";
+import {AntDesign, MaterialIcons} from "@expo/vector-icons";
 import { LinearGradient } from 'expo-linear-gradient';
 import {fetchCastDetails} from "../api/APICalls";
 import CastProfile from "../components/MoviePageComponents/CastProfile";
 import {colors} from "../components/colorProfile";
+import ActionIcons from "../components/MoviePageComponents/ActionIcons";
 
 const MoviePage = () => {
     const route = useRoute();
@@ -64,9 +65,9 @@ const MoviePage = () => {
                             <Text style={styles.title} adjustsFontSizeToFit numberOfLines={2}>{movieItem.title}</Text>
                             <View>
                                 <View style={styles.iconRow}>
-                                    <IconWatched />
-                                    <IconFavorite />
-                                    <IconWatchLater />
+                                    <ActionIcons type="watched" />
+                                    <ActionIcons type="favorite" />
+                                    <ActionIcons type="watchLater" />
                                 </View>
                                 <View style={styles.iconRow}>
                                     <IconStarFilled />
@@ -101,12 +102,7 @@ const MoviePage = () => {
     );
 };
 
-const fetchCast = (movieId) => {
-    return fetchCastDetails(movieId);
-}
-
 const windowHeight = Dimensions.get('window').height;
-const windowWidth = Dimensions.get('window').width;
 
 const styles = StyleSheet.create({
     background: {
@@ -190,18 +186,6 @@ const styles = StyleSheet.create({
         zIndex: 1,
     },
 });
-
-const IconWatched = () => (
-    <MaterialCommunityIcons name="eye" size={45} color="white" />
-);
-
-const IconFavorite = () => (
-    <MaterialIcons name="favorite" size={45} color="white" />
-);
-
-const IconWatchLater = () => (
-    <MaterialIcons name="watch-later" size={45} color="white" />
-);
 
 const IconStarFilled = () => (
     <MaterialIcons name="star" size={35} color="white" />
