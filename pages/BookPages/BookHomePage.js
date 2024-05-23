@@ -11,7 +11,7 @@ const bg_filter_color = BookColors.bg_filter_color
 const opacity_color = BookColors.opacity_color
 
 
-export default function bookHome(props) {
+export default function bookHomePage(props) {
     const navigation = useNavigation();
     const background = require('../../assets/bg.jpg')
     console.log("HomePage içindeyiiiim");

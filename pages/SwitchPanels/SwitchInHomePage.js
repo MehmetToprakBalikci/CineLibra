@@ -7,7 +7,7 @@ import SignOutScreen from '../../screens/SignOutScreen';
 import CustomDrawer from '../../components/CustomDrawer';
 import Ionicons from 'react-native-vector-icons/Ionicons'
 import HomePage from '../MoviePages/HomePage';
-import bookHome from '../BookPages/bookHome';
+import BookHomePage from '../BookPages/BookHomePage';
 import { useNavigation } from '@react-navigation/native';
 const Drawer = createDrawerNavigator();
 
@@ -29,7 +29,7 @@ const SwitchHomePanel = () => {
       }}
     >
 
-<Drawer.Screen name="Search" component={isSwitch?HomePage:bookHome}  options={{
+<Drawer.Screen name="Search" component={isSwitch?HomePage:BookHomePage} options={{
 
        drawerIcon: ({color})=> (
              <Ionicons name= "search-outline" size={20} color={accent_color_strong}/>

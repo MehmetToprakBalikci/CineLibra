@@ -11,7 +11,7 @@ import SearchPage from '../MoviePages/SearchPage';
 import AltStartPage from '../MoviePages/AltSignupPage';
 import ItemDetailPage from '../MoviePages/ItemDetailPage';
 import StartPage from '../MoviePages/StartPage';
-import bookHome from '../BookPages/bookHome';
+import bookHomePage from '../BookPages/BookHomePage';
 import { HomePageScreen } from '../../screens/HomePageScreen';
 
 const Drawer = createDrawerNavigator();
@@ -39,7 +39,7 @@ const SwitchSearchPage = () => {
           },
     }} />
 
-    <Drawer.Screen name="Search" component={isSwitch?HomePage:bookHome}  options={{
+    <Drawer.Screen name="Search" component={isSwitch?HomePage:bookHomePage} options={{
        drawerIcon: ({color})=> (
         <Ionicons name= "search-outline" size={20} color={'#6A5ACD'}/>
        ),

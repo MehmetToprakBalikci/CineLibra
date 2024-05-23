@@ -12,7 +12,7 @@ import SearchPage from '../MoviePages/SearchPage';
 import StartPage from '../MoviePages/StartPage';
 import ItemDetailPage from '../MoviePages/ItemDetailPage';
 import MoviePage from '../MoviePages/MoviePage';
-import bookHome from '../BookPages/bookHome';
+import bookHomePage from '../BookPages/BookHomePage';
 import {HomePageScreen} from '../../screens/HomePageScreen';
 
 const Drawer = createDrawerNavigator();
@@ -42,7 +42,7 @@ const SwitchItemDetailPage = () => {
           },
     }} />
 
-    <Drawer.Screen name="Search" component={isSwitch?HomePageScreen:bookHome}  options={{
+    <Drawer.Screen name="Search" component={isSwitch?HomePageScreen:bookHomePage} options={{
        drawerIcon: ({color})=> (
         <Ionicons name= "search-outline" size={20} color={'#6A5ACD'}/>
        ),
