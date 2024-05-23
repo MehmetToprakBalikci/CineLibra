@@ -16,9 +16,7 @@ const apiCall = async (url) =>{
 
     try {
         const response = await fetch(url, options);
-        const data = await response.json();
-        //console.log(data);
-        return data;
+        return await response.json();
     } catch (err) {
         console.error(err);
     }
@@ -43,4 +41,8 @@ export const fetchMovieDetails = (movieId) =>{
 
 export const fetchCastDetails = (movieId) =>{
     return apiCall(`https://api.themoviedb.org/3/movie/${movieId}/credits?language=en-US`);
+}
+
+export const fetchMovieSearch = (searchQuery) =>{
+    return apiCall(`https://api.themoviedb.org/3/search/movie?query=${searchQuery}`)
 }
