@@ -9,17 +9,17 @@ import {
     KeyboardAvoidingView, StatusBar
 } from 'react-native';
 
-import { LoginButton } from '../components/LoginButton';
-import {LoginPasswordField} from '../components/LoginPasswordField'
-import {LoginTextfield} from "../components/LoginTextfield";
+import { LoginButton } from '../../components/LoginButton';
+import {LoginPasswordField} from '../../components/LoginPasswordField'
+import {LoginTextfield} from "../../components/LoginTextfield";
 import {useNavigation} from "@react-navigation/native"
-import {colors} from "../components/colorProfile"
-import {modeDependencies} from "../components/colorProfile";
+import {colors} from "../../components/colorProfile"
+import {modeDependencies} from "../../components/colorProfile";
 import React, { useEffect } from 'react';
-import { auth } from '../firebase';
+import { auth } from '../../firebase';
 import {signInWithEmailAndPassword } from 'firebase/auth';
 
-const background = require('../assets/bg_alt.jpg')
+const background = require('../../assets/bg_alt.jpg')
 
 const main_strong = colors.main_strong
 const main_weak = colors.main_weak
@@ -48,7 +48,7 @@ export default function StartPage() {
     // //        }
     // //        console.log("null user");
     // //      })
-    
+
     //      return unsubscribe
     //    }, [])
       const handleLogIn = async () => {
@@ -67,13 +67,13 @@ export default function StartPage() {
           } catch (error) {
               alert(error.message);
           }
-    
-      }
-      
-      
 
-   
-     
+      }
+
+
+
+
+
 
     return (
         <KeyboardAvoidingView style={{flex:5}}>
@@ -85,13 +85,13 @@ export default function StartPage() {
                     <View style={styles.loginLayout}>
 
                         <Text style={{color:text_color ,alignSelf:'center', fontWeight:'bold', fontSize:20, paddingVertical:'5%'}}>Welcome! Lets get you started.</Text>
-                        <LoginTextfield 
+                        <LoginTextfield
                         placeholder={"e-mail"}
-                        inputValue={email} 
+                        inputValue={email}
                         setEmail={setEmail}
                         />
 
-                        <LoginPasswordField 
+                        <LoginPasswordField
                         placeholder={'password'}
                         password={password}
                         setPassword={setPassword}
@@ -105,7 +105,7 @@ export default function StartPage() {
                         <TouchableOpacity>
                             <LoginButton message={'Continue W/ Google'}/>
                         </TouchableOpacity>
-    
+
 
                         <View style={{paddingTop:'10%', flexDirection:'row', justifyContent:'center'}}>
                             <Text style={{alignSelf:'center', color:text_color}}>Don't have an account?</Text>

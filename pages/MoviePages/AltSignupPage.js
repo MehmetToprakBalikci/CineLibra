@@ -3,16 +3,16 @@ import { Button, Image, ImageBackground, StyleSheet, Text, View ,StatusBar, Text
 
 import { AntDesign } from '@expo/vector-icons';
 
-import { LoginButton } from '../components/LoginButton';
-import {LoginTextfield} from "../components/LoginTextfield";
+import { LoginButton } from '../../components/LoginButton';
+import {LoginTextfield} from "../../components/LoginTextfield";
 import {StackActions, useNavigation} from "@react-navigation/native";
-import {colors} from "../components/colorProfile";
-import {LoginPasswordField} from "../components/LoginPasswordField";
+import {colors} from "../../components/colorProfile";
+import {LoginPasswordField} from "../../components/LoginPasswordField";
 import React from 'react';
-import { auth } from '../firebase';
+import { auth } from '../../firebase';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 
-const background = require('../assets/bg_alt.jpg')
+const background = require('../../assets/bg_alt.jpg')
 
 const main_strong = colors.main_strong
 const main_weak = colors.main_weak
@@ -41,12 +41,12 @@ export default function AltStartPage() {
          } catch (error) {
              alert(error.message);
          }
-       
-         }
-        
-    
 
-    
+         }
+
+
+
+
     return (
         <View style={{flex:5}}>
             <View style={{flex:5, backgroundColor:'transparent'}}>
@@ -56,18 +56,18 @@ export default function AltStartPage() {
                 <SafeAreaView style={styles.container}>
                     <View style={styles.signupLayout}>
                         <Text style={{color:text_color ,alignSelf:'center', fontWeight:'bold', fontSize:20, paddingVertical:'5%'}}>Sign up now to continue.</Text>
-                         <LoginTextfield 
+                         <LoginTextfield
                         placeholder={"user-name"}
                         inputValue={userName}
                         setUserName={setUserName}
 
                          />
-                          <LoginTextfield 
+                          <LoginTextfield
                         placeholder={"e-mail"}
-                        inputValue={email} 
+                        inputValue={email}
                         setEmail={setEmail}
                         />
-                     
+
                         <LoginPasswordField value={'Password'}
                         placeholder={'password'}
                         password={password}

@@ -7,12 +7,12 @@ import CustomDrawer from '../../components/CustomDrawer';
 import Ionicons from 'react-native-vector-icons/Ionicons'
 import CustomSwitchIcon from '../../components/CustomSwitchIcon';
 import {colors} from '../../components/colorProfile';
-import HomePage from '../HomePage';
-import SearchPage from '../SearchPage';
-import StartPage from '../StartPage';
-import ItemDetailPage from '../ItemDetailPage';
-import MoviePage from '../MoviePage';
-import bookHome from '../bookHome';
+import HomePage from '../MoviePages/HomePage';
+import SearchPage from '../MoviePages/SearchPage';
+import StartPage from '../MoviePages/StartPage';
+import ItemDetailPage from '../MoviePages/ItemDetailPage';
+import MoviePage from '../MoviePages/MoviePage';
+import bookHome from '../BookPages/bookHome';
 import {HomePageScreen} from '../../screens/HomePageScreen';
 
 const Drawer = createDrawerNavigator();
@@ -28,7 +28,7 @@ const SwitchItemDetailPage = () => {
      screenOptions={{
         headerShown: false,
       //  swipeEnabled: false,
-       
+
       }}
     >
      <Drawer.Screen name="Current" component={MoviePage}  options={{
@@ -37,8 +37,8 @@ const SwitchItemDetailPage = () => {
        ),
           drawerLabelStyle: {
             color: 'white', // Set the color of the label
-           
-            
+
+
           },
     }} />
 
@@ -48,8 +48,8 @@ const SwitchItemDetailPage = () => {
        ),
           drawerLabelStyle: {
             color: 'white', // Set the color of the label
-           
-            
+
+
           },
     }} />
 
@@ -60,8 +60,8 @@ const SwitchItemDetailPage = () => {
        ),
           drawerLabelStyle: {
             color: 'white', // Set the color of the label
-           
-            
+
+
           },
       }} />
 
@@ -72,10 +72,10 @@ const SwitchItemDetailPage = () => {
        ),
         drawerLabelStyle: {
             color: 'white', // Set the color of the label
-           
-            
+
+
           },
-    
+
       }}/>
     </Drawer.Navigator>
   );

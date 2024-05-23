@@ -1,17 +1,17 @@
 import React, { Component } from "react";
 import {StyleSheet, View, Text, ImageBackground, SafeAreaView, ScrollView} from "react-native";
-import SearchBar from "../components/searchBar";
-import LeftBar from "../components/LeftBar";
+import SearchBar from "../../components/searchBar";
+import LeftBar from "../../components/LeftBar";
 import {useNavigation} from "@react-navigation/native";
-import SearchList from "../components/searchList";
-import {colors} from "../components/colorProfile"
-import { auth } from "../firebase";
+import SearchList from "../../components/searchList";
+import {colors} from "../../components/colorProfile"
+import { auth } from "../../firebase";
 
 const bg_filter_color = colors.bg_filter_color
 const opacity_color = colors.opacity_color
 export default function SearchPage(props) {
-    const background = require('../assets/bg.jpg')
-    console.log(auth.currentUser.email+" is in searchpage now");
+    const background = require('../../assets/bg_alt.jpg')
+  //  console.log(auth.currentUser.email+" is in searchpage now");
     return (
         <ImageBackground source={background} blurRadius={200} style={{flex:1}}>
 
@@ -23,7 +23,7 @@ export default function SearchPage(props) {
                 </View>
 
                 <View style={styles.listView}>
-                    <SearchList Text={'Results'}></SearchList>
+                       <SearchList Text={'Results'}></SearchList>
                 </View>
 
             </SafeAreaView>

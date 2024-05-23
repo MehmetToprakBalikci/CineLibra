@@ -1,10 +1,10 @@
 import React, { Component, useState } from "react";
 import {StyleSheet, View, Text, ImageBackground, SafeAreaView} from "react-native";
-import SearchBar from "../components/searchBar";
-import Lists from "../components/Lists";
-import LeftBar from "../components/LeftBar";
+import SearchBar from "../../components/searchBar";
+import Lists from "../../components/Lists";
+import LeftBar from "../../components/LeftBar";
 import { useNavigation } from "@react-navigation/native";
-import {colors} from "../components/colorProfile"
+import {colors} from "../../components/colorProfile"
 import { Button } from "react-native-web";
 
 const bg_filter_color = colors.bg_filter_color
@@ -13,7 +13,7 @@ const opacity_color = colors.opacity_color
 
 export default function HomePage(props) {
   const navigation = useNavigation();
-  const background = require('../assets/bg_alt.jpg')
+  const background = require('../../assets/bg_alt.jpg')
   console.log("HomePage içindeyiiiim");
   return (
     <ImageBackground source={background} blurRadius={200} style={{flex:1}}>
@@ -26,7 +26,7 @@ export default function HomePage(props) {
 
 
           </View>
-          
+
         </View>
 
         <View style={styles.listView}>

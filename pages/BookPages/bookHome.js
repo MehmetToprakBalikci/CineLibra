@@ -1,19 +1,19 @@
 import React, { Component, useState } from "react";
 import {StyleSheet, View, Text, ImageBackground, SafeAreaView} from "react-native";
-import SearchBar from "../components/searchBar";
-import Lists from "../components/Lists";
-import LeftBar from "../components/LeftBar";
+import BookSearchBar from "../../components/BookPageComponents/BookSearchBar";
+import Lists from "../../components/Lists";
+import LeftBar from "../../components/LeftBar";
 import { useNavigation } from "@react-navigation/native";
-import {BookColors} from "../components/colorProfile"
+import {BookColors} from "../../components/colorProfile"
 import { Button } from "react-native-web";
 
 const bg_filter_color = BookColors.bg_filter_color
 const opacity_color = BookColors.opacity_color
 
 
-export default function HomePage(props) {
+export default function bookHome(props) {
     const navigation = useNavigation();
-    const background = require('../assets/bg.jpg')
+    const background = require('../../assets/bg.jpg')
     console.log("HomePage içindeyiiiim");
     return (
         <ImageBackground source={background} blurRadius={200} style={{flex:1}}>
@@ -21,7 +21,7 @@ export default function HomePage(props) {
 
                 <View style={styles.leftBarRow}>
                     <LeftBar/>
-                    <SearchBar style={styles.searchBar} value={'SearchHome'}></SearchBar>
+                    <BookSearchBar style={styles.searchBar} value={'SearchHome'}></BookSearchBar>
                     <View>
 
 

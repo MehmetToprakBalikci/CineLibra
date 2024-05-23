@@ -6,13 +6,9 @@ import Profile from '../../screens/Profile';
 import SignOutScreen from '../../screens/SignOutScreen';
 import CustomDrawer from '../../components/CustomDrawer';
 import Ionicons from 'react-native-vector-icons/Ionicons'
-import HomePage from '../HomePage';
-import SearchPage from '../SearchPage';
-import StartPage from '../StartPage';
-import bookHome from '../bookHome';
-import { HomePageScreen } from '../../screens/HomePageScreen';
+import HomePage from '../MoviePages/HomePage';
+import bookHome from '../BookPages/bookHome';
 import { useNavigation } from '@react-navigation/native';
-import { TouchableOpacity } from 'react-native-gesture-handler';
 const Drawer = createDrawerNavigator();
 
 const accent_color_strong = colors.accent_strong

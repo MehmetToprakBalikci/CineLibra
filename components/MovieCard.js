@@ -1,5 +1,5 @@
 import {Dimensions, Image, StyleSheet, Text, TouchableOpacity, View} from "react-native";
-import MoviePage from "../pages/MoviePage";
+import MoviePage from "../pages/MoviePages/MoviePage";
 import {useNavigation} from "@react-navigation/native";
 import {colors} from './colorProfile';
 
@@ -8,7 +8,7 @@ const text_color = colors.text_color
 const opacity_color_strong = colors.opacity_color_strong
 const opacity_color = colors.opacity_color
 
-export default function MovieCard({ item}) {
+export default function MovieCard({ item }) {
     const navigation = useNavigation()
     const handlePress = () => {
         console.log("Clicked");

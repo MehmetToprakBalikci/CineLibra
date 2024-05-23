@@ -3,12 +3,12 @@ import { Button, Image, ImageBackground, StyleSheet, Text, View ,StatusBar, Text
 
 import { AntDesign } from '@expo/vector-icons';
 
-import { LoginButton } from '../components/LoginButton';
-import {LoginTextfield} from "../components/LoginTextfield";
+import { LoginButton } from '../../components/LoginButton';
+import {LoginTextfield} from "../../components/LoginTextfield";
 import {useNavigation} from "@react-navigation/native";
-import {LoginPasswordField} from "../components/LoginPasswordField";
+import {LoginPasswordField} from "../../components/LoginPasswordField";
 
-const background = require('../assets/bg.jpg')
+const background = require('../../assets/bg.jpg')
 export default function SignupPage() {
     const [email,setEmail] = React.useState('');
     const [password,setPassword] = React.useState('');
@@ -25,7 +25,7 @@ export default function SignupPage() {
             alert(error.message);
         }
         navigation.navigate('HomePage')
-        
+
     }
     return (
         <View style={{flex:5}}>
@@ -36,12 +36,12 @@ export default function SignupPage() {
                 <SafeAreaView style={styles.container}>
                     <View style={{minWidth:'100%',flexDirection:'column', justifyContent:'space-evenly', flex:1,   paddingBottom: '10%', paddingTop:'5%', paddingHorizontal:'10%'}}>
                         <Text style={{alignSelf:'center', fontWeight:'bold', fontSize:20, paddingVertical:'5%'}}>Welcome! Lets get you started.</Text>
-                        <LoginTextfield 
+                        <LoginTextfield
                         placeholder={"e-mail"}
                         />
                         <LoginTextfield value={'e-mail'}
                         placeholder={"e-mail"}
-                        email={email} 
+                        email={email}
                         setEmail={setEmail}
                         />
                         <LoginPasswordField value={'Password'}

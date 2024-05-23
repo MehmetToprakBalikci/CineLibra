@@ -6,12 +6,12 @@ import SignOutScreen from '../../screens/SignOutScreen';
 import CustomDrawer from '../../components/CustomDrawer';
 import Ionicons from 'react-native-vector-icons/Ionicons'
 import CustomSwitchIcon from '../../components/CustomSwitchIcon';
-import HomePage from '../HomePage';
-import SearchPage from '../SearchPage';
-import AltStartPage from '../AltSignupPage';
-import ItemDetailPage from '../ItemDetailPage';
-import StartPage from '../StartPage';
-import bookHome from '../bookHome';
+import HomePage from '../MoviePages/HomePage';
+import SearchPage from '../MoviePages/SearchPage';
+import AltStartPage from '../MoviePages/AltSignupPage';
+import ItemDetailPage from '../MoviePages/ItemDetailPage';
+import StartPage from '../MoviePages/StartPage';
+import bookHome from '../BookPages/bookHome';
 import { HomePageScreen } from '../../screens/HomePageScreen';
 
 const Drawer = createDrawerNavigator();
@@ -25,7 +25,7 @@ const SwitchSearchPage = () => {
      screenOptions={{
         headerShown: false,
       //  swipeEnabled: false,
-       
+
       }}
     >
      <Drawer.Screen name="Current" component={SearchPage}  options={{
@@ -34,8 +34,8 @@ const SwitchSearchPage = () => {
        ),
           drawerLabelStyle: {
             color: 'white', // Set the color of the label
-           
-            
+
+
           },
     }} />
 
@@ -45,8 +45,8 @@ const SwitchSearchPage = () => {
        ),
           drawerLabelStyle: {
             color: 'white', // Set the color of the label
-           
-            
+
+
           },
           //onPress:console.log("dfdsf");
     }} />
@@ -58,8 +58,8 @@ const SwitchSearchPage = () => {
        ),
           drawerLabelStyle: {
             color: 'white', // Set the color of the label
-           
-            
+
+
           },
       }} />
 
@@ -70,10 +70,10 @@ const SwitchSearchPage = () => {
        ),
         drawerLabelStyle: {
             color: 'white', // Set the color of the label
-           
-            
+
+
           },
-    
+
       }}/>
     </Drawer.Navigator>
   );
