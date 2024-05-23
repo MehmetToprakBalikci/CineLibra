@@ -27,7 +27,7 @@ export const CustomSwitchIcon = ({isSwitch,setOnSwitchDone}) => {
         <View style={styles.inner}>
            <View style ={styles.icon}>
            <TouchableOpacity></TouchableOpacity>
-           <Image source = {require('../assets/movie.png')} style={styles.icon} />
+           <Image source = {require('../../assets/movie.png')} style={styles.icon} />
            </View>
         </View>
        </TouchableOpacity>
@@ -42,7 +42,7 @@ export const CustomSwitchIcon = ({isSwitch,setOnSwitchDone}) => {
         ]} activeOpacity={1} onPress={toggleSwitch}>
           <View style={styles.inner}>
              <View style ={styles.icon}>
-             <Image source = {require('../assets/book.png')} style={styles.icon} />
+             <Image source = {require('../../assets/book.png')} style={styles.icon} />
              </View>
           </View>
          </TouchableOpacity>
@@ -50,9 +50,9 @@ export const CustomSwitchIcon = ({isSwitch,setOnSwitchDone}) => {
         </View>
       );
         }
-      
+
     }
-   
+
 
 
 

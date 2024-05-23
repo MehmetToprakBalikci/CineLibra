@@ -3,11 +3,11 @@ import { Button, Image, ImageBackground, StyleSheet, Text, View ,StatusBar, Text
 
 import { AntDesign } from '@expo/vector-icons';
 
-import { LoginButton } from '../../components/LoginButton';
-import {LoginTextfield} from "../../components/LoginTextfield";
+import { LoginButton } from '../../components/MoviePageComponents/LoginButton';
+import {LoginTextfield} from "../../components/MoviePageComponents/LoginTextfield";
 import {StackActions, useNavigation} from "@react-navigation/native";
-import {colors} from "../../components/colorProfile";
-import {LoginPasswordField} from "../../components/LoginPasswordField";
+import {colors} from "../../components/MoviePageComponents/colorProfile";
+import {LoginPasswordField} from "../../components/MoviePageComponents/LoginPasswordField";
 import React from 'react';
 import { auth } from '../../firebase';
 import { createUserWithEmailAndPassword } from 'firebase/auth';

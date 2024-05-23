@@ -1,5 +1,5 @@
 import {Image, StyleSheet, Text, View} from "react-native";
-import { colors } from "../colorProfile"
+import { colors } from "./colorProfile"
 
 export default function CastProfile({item}) {
     return (

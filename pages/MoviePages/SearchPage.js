@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 import {StyleSheet, View, Text, ImageBackground, SafeAreaView, ScrollView} from "react-native";
-import SearchBar from "../../components/searchBar";
-import LeftBar from "../../components/LeftBar";
+import SearchBar from "../../components/MoviePageComponents/searchBar";
+import LeftBar from "../../components/MoviePageComponents/LeftBar";
 import {useNavigation} from "@react-navigation/native";
-import SearchList from "../../components/searchList";
-import {colors} from "../../components/colorProfile"
+import SearchList from "../../components/MoviePageComponents/searchList";
+import {colors} from "../../components/MoviePageComponents/colorProfile"
 import { auth } from "../../firebase";
 
 const bg_filter_color = colors.bg_filter_color

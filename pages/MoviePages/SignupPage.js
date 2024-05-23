@@ -3,10 +3,10 @@ import { Button, Image, ImageBackground, StyleSheet, Text, View ,StatusBar, Text
 
 import { AntDesign } from '@expo/vector-icons';
 
-import { LoginButton } from '../../components/LoginButton';
-import {LoginTextfield} from "../../components/LoginTextfield";
+import { LoginButton } from '../../components/MoviePageComponents/LoginButton';
+import {LoginTextfield} from "../../components/MoviePageComponents/LoginTextfield";
 import {useNavigation} from "@react-navigation/native";
-import {LoginPasswordField} from "../../components/LoginPasswordField";
+import {LoginPasswordField} from "../../components/MoviePageComponents/LoginPasswordField";
 
 const background = require('../../assets/bg.jpg')
 export default function SignupPage() {

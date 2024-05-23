@@ -10,7 +10,7 @@ function Movie(props) {
         style={styles.imageButton}
       >
         <Image
-            source={require("../assets/dune.png")}
+            source={require("../../assets/dune.png")}
             style={styles.image}
         />
 

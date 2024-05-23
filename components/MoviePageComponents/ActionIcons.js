@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { TouchableOpacity } from 'react-native';
 import { MaterialCommunityIcons, MaterialIcons } from '@expo/vector-icons';
-import { colors } from "../colorProfile";
+import { colors } from "./colorProfile";
 
 const ActionIcons = ({ type }) => {
     const [isAdded, setIsAdded] = useState(false);

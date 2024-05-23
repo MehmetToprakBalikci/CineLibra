@@ -3,9 +3,9 @@ import React, { useState } from 'react';
 import { createDrawerNavigator, DrawerContentScrollView, DrawerItemList, DrawerItem } from '@react-navigation/drawer';
 import Profile from '../../screens/Profile';
 import SignOutScreen from '../../screens/SignOutScreen';
-import CustomDrawer from '../../components/CustomDrawer';
+import CustomDrawer from '../../components/MoviePageComponents/CustomDrawer';
 import Ionicons from 'react-native-vector-icons/Ionicons'
-import CustomSwitchIcon from '../../components/CustomSwitchIcon';
+import CustomSwitchIcon from '../../components/MoviePageComponents/CustomSwitchIcon';
 import HomePage from '../MoviePages/HomePage';
 import SearchPage from '../MoviePages/SearchPage';
 import AltStartPage from '../MoviePages/AltSignupPage';

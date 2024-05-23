@@ -9,12 +9,12 @@ import {
     KeyboardAvoidingView, StatusBar
 } from 'react-native';
 
-import { LoginButton } from '../../components/LoginButton';
-import {LoginPasswordField} from '../../components/LoginPasswordField'
-import {LoginTextfield} from "../../components/LoginTextfield";
+import { LoginButton } from '../../components/MoviePageComponents/LoginButton';
+import {LoginPasswordField} from '../../components/MoviePageComponents/LoginPasswordField'
+import {LoginTextfield} from "../../components/MoviePageComponents/LoginTextfield";
 import {useNavigation} from "@react-navigation/native"
-import {colors} from "../../components/colorProfile"
-import {modeDependencies} from "../../components/colorProfile";
+import {colors} from "../../components/MoviePageComponents/colorProfile"
+import {modeDependencies} from "../../components/MoviePageComponents/colorProfile";
 import React, { useEffect } from 'react';
 import { auth } from '../../firebase';
 import {signInWithEmailAndPassword } from 'firebase/auth';

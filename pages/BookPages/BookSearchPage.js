@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import {StyleSheet, View, Text, ImageBackground, SafeAreaView, ScrollView} from "react-native";
-import LeftBar from "../../components/LeftBar";
+import LeftBar from "../../components/MoviePageComponents/LeftBar";
 import {useNavigation} from "@react-navigation/native";
-import SearchList from "../../components/searchList";
-import {colors} from "../../components/colorProfile"
+import SearchList from "../../components/MoviePageComponents/searchList";
+import {colors} from "../../components/MoviePageComponents/colorProfile"
 import { auth } from "../../firebase";
 import BookSearchBar from "../../components/BookPageComponents/BookSearchBar";
 

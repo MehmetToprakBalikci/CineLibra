@@ -1,5 +1,5 @@
 import {Dimensions, Image, StyleSheet, Text, TouchableOpacity, View} from "react-native";
-import MoviePage from "../pages/MoviePages/MoviePage";
+import MoviePage from "../../pages/MoviePages/MoviePage";
 import {useNavigation} from "@react-navigation/native";
 import {colors} from './colorProfile';
 

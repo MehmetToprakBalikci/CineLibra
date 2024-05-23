@@ -1,10 +1,10 @@
 import React, { Component, useState } from "react";
 import {StyleSheet, View, Text, ImageBackground, SafeAreaView} from "react-native";
-import SearchBar from "../../components/searchBar";
-import Lists from "../../components/Lists";
-import LeftBar from "../../components/LeftBar";
+import SearchBar from "../../components/MoviePageComponents/searchBar";
+import Lists from "../../components/MoviePageComponents/Lists";
+import LeftBar from "../../components/MoviePageComponents/LeftBar";
 import { useNavigation } from "@react-navigation/native";
-import {colors} from "../../components/colorProfile"
+import {colors} from "../../components/MoviePageComponents/colorProfile"
 import { Button } from "react-native-web";
 
 const bg_filter_color = colors.bg_filter_color

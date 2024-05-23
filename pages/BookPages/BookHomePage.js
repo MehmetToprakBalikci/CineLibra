@@ -1,10 +1,10 @@
 import React, { Component, useState } from "react";
 import {StyleSheet, View, Text, ImageBackground, SafeAreaView} from "react-native";
 import BookSearchBar from "../../components/BookPageComponents/BookSearchBar";
-import Lists from "../../components/Lists";
-import LeftBar from "../../components/LeftBar";
+import Lists from "../../components/MoviePageComponents/Lists";
+import LeftBar from "../../components/MoviePageComponents/LeftBar";
 import { useNavigation } from "@react-navigation/native";
-import {BookColors} from "../../components/colorProfile"
+import {BookColors} from "../../components/MoviePageComponents/colorProfile"
 import { Button } from "react-native-web";
 
 const bg_filter_color = BookColors.bg_filter_color

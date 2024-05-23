@@ -16,7 +16,7 @@ export  const PosterComponent = ({explanation, title}) => {
             shadowOpacity:1,
             shadowRadius:5,
         }}>
-            <Image source={require('../assets/MVIMG.jpg')} style={{height: 210, width: 140, borderRadius: 10}}/>
+            <Image source={require('../../assets/MVIMG.jpg')} style={{height: 210, width: 140, borderRadius: 10}}/>
             <View style={{flex: 1, marginVertical: '5%', marginHorizontal: '5%'}}>
                 <Text style={{fontWeight: 'bold', fontSize: 16}}>{title}</Text>
                 <Text style={{marginTop: '5%'}}>{explanation}</Text>

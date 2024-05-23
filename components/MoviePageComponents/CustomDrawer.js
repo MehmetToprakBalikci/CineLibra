@@ -24,17 +24,17 @@ const CustomDrawer = ({ isSwitch, setOnSwitchDone, ...props }) => {
   // else{
   //   alert('setOnSwitchDone is  a function!')
   // }
-  
-  
+
+
 
   return (
-    <ImageBackground source={require('../assets/bg_alt.jpg')} blurRadius={200} style={styles.backgroundImage}>
+    <ImageBackground source={require('../../assets/bg_alt.jpg')} blurRadius={200} style={styles.backgroundImage}>
         <View style={styles.container}>
 
         <SafeAreaView style={styles.safeArea} {...props}>
 
         <View style={styles.headerContainer}>
-          <Image source={require('../assets/image.png')} style={styles.imageStyle} />
+          <Image source={require('../../assets/image.png')} style={styles.imageStyle} />
           <Text style={[styles.nameText, { color: 'white' }]}>Tolga Fehmioğlu</Text>
           <Text style={[styles.emailText, { color: 'white' }]}>tolga_2001.fb@hotmail.com</Text>
         </View>
@@ -51,7 +51,7 @@ const CustomDrawer = ({ isSwitch, setOnSwitchDone, ...props }) => {
         }}/>
          <DrawerItemList
           {...props}
-        /> 
+        />
           {/* <DrawerItem
         label="Custom Item"
         onPress={() => {

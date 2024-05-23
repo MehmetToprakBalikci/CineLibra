@@ -15,7 +15,7 @@ import {AntDesign, MaterialIcons} from "@expo/vector-icons";
 import { LinearGradient } from 'expo-linear-gradient';
 import {fetchCastDetails} from "../../api/APICalls";
 import CastProfile from "../../components/MoviePageComponents/CastProfile";
-import {colors} from "../../components/colorProfile";
+import {colors} from "../../components/MoviePageComponents/colorProfile";
 import ActionIcons from "../../components/MoviePageComponents/ActionIcons";
 
 const BookPage = () => {
