@@ -20,19 +20,19 @@ const darkModeColors = {
 }
 
 const BookDarkModeColors = {
-    main_weak: 'rgb(25, 26, 28)',
-    main: 'rgb(45, 45, 45)',
-    main_strong: 'rgb(0, 0, 0)',
-    accent_strong: 'rgb(235, 126, 72)',
-    accent: 'rgb(155, 57, 34)',
-    accent_weak: 'rgb(242, 97, 63)',
-    text_color: 'rgb(255, 255, 255)',
-    text_color_weak: 'rgba(180, 180, 180, 0.7)',
-    bg_filter_color: 'rgba(10, 10, 10, 0.3)',
-    bg_filter_color_strong: 'rgba(0, 0, 0, 0.5)',
-    opacity_color: 'rgba(50, 45, 45 ,0.4)',
-    opacity_color_strong: 'rgba(30, 25, 25 ,0.4)',
-    highlight_color: 'rgba(242, 97, 63, 0.6)',
+    main_weak: 'rgb(249, 246, 247)',
+    main_strong: 'rgb(209, 206, 207)',
+    main: 'rgb(228, 226, 227)',
+    accent: 'rgb(235, 106, 52)',
+    accent_weak: 'rgb(255, 126, 72)',
+    accent_strong: 'rgb(255, 103, 0)',
+    text_color: 'rgba(0, 0, 0, 1)',
+    text_color_weak: 'rgba(190, 190, 190, 0.8)',
+    bg_filter_color: 'rgba(20, 30, 60, 0.5)',
+    bg_filter_color_strong: 'rgba(20, 30, 60, 0.4)',
+    opacity_color: 'rgba(40, 40, 50 , 0.3)',
+    opacity_color_strong: 'rgba(25, 25, 50 ,0.3)',
+    highlight_color: 'rgba(255, 126, 72, 0.6)',
 }
 
 const lightModeColors = {
