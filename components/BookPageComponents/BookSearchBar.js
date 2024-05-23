@@ -3,9 +3,9 @@ import { StyleSheet, View, Text, Touchable, TouchableOpacity, TextInput, Keyboar
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 import {useNavigation} from "@react-navigation/native";
 
-import {colors} from "../MoviePageComponents/colorProfile"
-const text_color = colors.text_color
-const text_color_weak = colors.text_color_weak
+import {BookColors} from "../MoviePageComponents/colorProfile"
+const text_color = BookColors.text_color
+const text_color_weak = BookColors.text_color_weak
 
 function BookSearchBar(props) {
     const navigation = useNavigation()

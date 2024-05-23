@@ -6,6 +6,7 @@ import LeftBar from "../../components/MoviePageComponents/LeftBar";
 import { useNavigation } from "@react-navigation/native";
 import {BookColors} from "../../components/MoviePageComponents/colorProfile"
 import { Button } from "react-native-web";
+import BookLists from "../../components/BookPageComponents/BookLists";
 
 const bg_filter_color = BookColors.bg_filter_color
 const opacity_color = BookColors.opacity_color
@@ -30,7 +31,7 @@ export default function bookHomePage(props) {
                 </View>
 
                 <View style={styles.listView}>
-                    <Lists style={styles.lists}></Lists>
+                    <BookLists style={styles.lists}></BookLists>
                 </View>
 
             </SafeAreaView>

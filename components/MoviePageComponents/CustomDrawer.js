@@ -8,6 +8,7 @@ import { useEffect } from 'react'
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { useNavigation } from '@react-navigation/native'
 const text_color = colors.text_color
+const main_weak = colors.main_weak
 const text_color_weak= colors.text_color_weak
 const bg_filter_color_strong = colors.bg_filter_color_strong
 const opacity_color = colors.opacity_color
@@ -28,26 +29,26 @@ const CustomDrawer = ({ isSwitch, setOnSwitchDone, ...props }) => {
 
 
   return (
-    <ImageBackground source={require('../../assets/bg_alt.jpg')} blurRadius={200} style={styles.backgroundImage}>
         <View style={styles.container}>
 
         <SafeAreaView style={styles.safeArea} {...props}>
 
         <View style={styles.headerContainer}>
           <Image source={require('../../assets/image.png')} style={styles.imageStyle} />
-          <Text style={[styles.nameText, { color: 'white' }]}>Tolga Fehmioğlu</Text>
-          <Text style={[styles.emailText, { color: 'white' }]}>tolga_2001.fb@hotmail.com</Text>
+          <Text style={[styles.nameText, { color: text_color }]}>Tolga Fehmioğlu</Text>
+          <Text style={[styles.emailText, { color: text_color }]}>tolga_2001.fb@hotmail.com</Text>
         </View>
 
       </SafeAreaView>
 
       <View style={styles.menuItem}>
-      <DrawerItem
-        label="Custom Item"
+      <DrawerItem inactiveTintColor={text_color}
+        label="Navigation"
         onPress={() => {
           // Handle custom item press here
          // console.log("Custom drawer item pressed");
           navigation.navigate("HomePage")
+
         }}/>
          <DrawerItemList
           {...props}
@@ -72,7 +73,6 @@ const CustomDrawer = ({ isSwitch, setOnSwitchDone, ...props }) => {
         /> }
       </View>
         </View>
-    </ImageBackground>
   );
 }
 
@@ -82,7 +82,7 @@ const styles = StyleSheet.create({
    container:
    {
        flex:1,
-    backgroundColor: bg_filter_color_strong // Background color for the entire drawer
+    backgroundColor: main_weak// Background color for the entire drawer
    },
    imageStyle:
    {
@@ -109,7 +109,7 @@ const styles = StyleSheet.create({
         flex:1,
     },
     menuItemLabel:{
-      color: text_color_weak
+      color: text_color
     },
 
     nameText:{

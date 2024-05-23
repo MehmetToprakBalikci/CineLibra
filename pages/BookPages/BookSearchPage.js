@@ -3,12 +3,13 @@ import {StyleSheet, View, Text, ImageBackground, SafeAreaView, ScrollView} from 
 import LeftBar from "../../components/MoviePageComponents/LeftBar";
 import {useNavigation} from "@react-navigation/native";
 import SearchList from "../../components/MoviePageComponents/searchList";
-import {colors} from "../../components/MoviePageComponents/colorProfile"
+import {BookColors} from "../../components/MoviePageComponents/colorProfile"
 import { auth } from "../../firebase";
 import BookSearchBar from "../../components/BookPageComponents/BookSearchBar";
+import BookSearchList from "../../components/BookPageComponents/BookSearchList";
 
-const bg_filter_color = colors.bg_filter_color
-const opacity_color = colors.opacity_color
+const bg_filter_color = BookColors.bg_filter_color
+const opacity_color = BookColors.opacity_color
 export default function bookSearchPage(props) {
     const background = require('../../assets/bg.jpg')
     //console.log(auth.currentUser.email+" is in booksearchpage now");
@@ -23,7 +24,7 @@ export default function bookSearchPage(props) {
                 </View>
 
                 <View style={styles.listView}>
-                    <SearchList Text={'Results'}></SearchList>
+                    <BookSearchList Text={'Results'}></BookSearchList>
                 </View>
 
             </SafeAreaView>
