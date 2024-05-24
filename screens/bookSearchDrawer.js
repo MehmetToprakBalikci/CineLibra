@@ -1,30 +1,36 @@
-import React, { Component } from "react";
-import {StyleSheet, View, Text, ImageBackground, SafeAreaView, ScrollView} from "react-native";
-import LeftBar from "../../components/MoviePageComponents/LeftBar";
-import {useNavigation} from "@react-navigation/native";
-import SearchList from "../../components/MoviePageComponents/searchList";
-import {BookColors} from "../../components/MoviePageComponents/colorProfile"
-import { auth } from "../../firebase";
-import BookSearchBar from "../../components/BookPageComponents/BookSearchBar";
-import BookSearchList from "../../components/BookPageComponents/BookSearchList";
+import React, { Component, useState } from "react";
+import {StyleSheet, View, Text, ImageBackground, SafeAreaView} from "react-native";
+import LeftBar from "../components/MoviePageComponents/LeftBar";
+import { useNavigation } from "@react-navigation/native";
+import { BookColors } from "../components/MoviePageComponents/colorProfile";
+import BookLists from "../components/BookPageComponents/BookLists";
+
+import BookSearchBar2 from "./screenComponent/bookSearchBar2";
 
 const bg_filter_color = BookColors.bg_filter_color
 const opacity_color = BookColors.opacity_color
-export default function BookSearchPage(props) {
-    const background = require('../../assets/bg.jpg')
-    console.log("book search page now");
+
+
+export default function BookSearchDrawer(props) {
+    const navigation = useNavigation();
+    const background = require('../assets/bg.jpg')
+    console.log("book search drawer içindeyiiiim");
     return (
         <ImageBackground source={background} blurRadius={200} style={{flex:1}}>
-
             <SafeAreaView style={styles.safeArea}>
 
                 <View style={styles.leftBarRow}>
                     <LeftBar/>
-                    <BookSearchBar style={styles.searchBar} value={'Search'}></BookSearchBar>
+                    <BookSearchBar2 style={styles.searchBar} value={'SearchHome'}></BookSearchBar2>
+                    <View>
+
+
+                    </View>
+
                 </View>
 
                 <View style={styles.listView}>
-                    <BookSearchList Text={'Results'}></BookSearchList>
+                    <BookLists style={styles.lists}></BookLists>
                 </View>
 
             </SafeAreaView>
@@ -39,7 +45,7 @@ const styles = StyleSheet.create({
     leftBarRow: {
         height: '7%',
         flexDirection: "row",
-        marginHorizontal: '5%',
+        marginHorizontal: '3%',
         justifyContent:'space-between'
     },
     searchBar: {

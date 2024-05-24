@@ -42,14 +42,7 @@ const CustomDrawer = ({ isSwitch, setOnSwitchDone, ...props }) => {
       </SafeAreaView>
 
       <View style={styles.menuItem}>
-      <DrawerItem inactiveTintColor={text_color}
-        label="Navigation"
-        onPress={() => {
-          // Handle custom item press here
-         // console.log("Custom drawer item pressed");
-          navigation.navigate("HomePage")
-
-        }}/>
+      
          <DrawerItemList
           {...props}
         />

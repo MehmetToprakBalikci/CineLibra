@@ -3,6 +3,7 @@ import React, { useState } from 'react'
 import {useNavigation} from "@react-navigation/native";
 
 export const CustomSwitchIcon = ({isSwitch,setOnSwitchDone}) => {
+  const navigator = useNavigation();
  //  const [isSwitch,setIsSwitch] = useState(true); // initially
 //  if (typeof setOnSwitchDone !== 'function') {
 //   console.error('setOnSwitchDone is not a function!');
@@ -14,6 +15,10 @@ export const CustomSwitchIcon = ({isSwitch,setOnSwitchDone}) => {
 // }
 
 
+  function toggleSwitch1(){
+    setOnSwitchDone(!isSwitch);
+   
+  }
   function toggleSwitch(){
     setOnSwitchDone(!isSwitch);
     console.log("after toogle switch is "+isSwitch);
@@ -23,7 +28,7 @@ export const CustomSwitchIcon = ({isSwitch,setOnSwitchDone}) => {
     return (
       <View style={styles.container}>
       <TouchableOpacity style={[styles.out,[{justifyContent:'flex-start',backgroundColor:'#FF8C00'}]
-      ]} activeOpacity={1} onPress={toggleSwitch}>
+      ]} activeOpacity={1} onPress={()=>{toggleSwitch(); navigator.replace("bookHome");}}>
         <View style={styles.inner}>
            <View style ={styles.icon}>
            <TouchableOpacity></TouchableOpacity>
@@ -39,7 +44,7 @@ export const CustomSwitchIcon = ({isSwitch,setOnSwitchDone}) => {
       return (
         <View style={styles.container}>
         <TouchableOpacity style={[styles.out,[{justifyContent:'flex-end',backgroundColor:'#ED9121'}]
-        ]} activeOpacity={1} onPress={toggleSwitch}>
+        ]} activeOpacity={1} onPress={()=>{toggleSwitch(); navigator.replace("HomePage");}}>
           <View style={styles.inner}>
              <View style ={styles.icon}>
              <Image source = {require('../../assets/book.png')} style={styles.icon} />
@@ -96,4 +101,3 @@ export const CustomSwitchIcon = ({isSwitch,setOnSwitchDone}) => {
           borderRadius: 15,
         },
       });
-

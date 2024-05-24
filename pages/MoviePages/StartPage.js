@@ -43,7 +43,7 @@ export default function StartPage() {
     // //      const unsubscribe = auth.onAuthStateChanged(user => {
     // //        if (user) {
     // //         console.log(user.name+" is entered the system");
-    // //          navigation.navigate("HomePage")
+          //  navigation.navigate("AfterLogIn")
 
     // //        }
     // //        console.log("null user");
@@ -62,7 +62,7 @@ export default function StartPage() {
             //    const user = authUserInfos.user;
             //    console.log(user.email + " Successfully logged in");
               navigation.navigate("HomePage")
-              console.log("Navigation to HomePage successful.");
+             // console.log("Navigation to HomePage successful.");
 
           } catch (error) {
               alert(error.message);

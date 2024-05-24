@@ -3,20 +3,20 @@ import { StyleSheet, View, Text, Touchable, TouchableOpacity, TextInput, Keyboar
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 import {useNavigation} from "@react-navigation/native";
 
-import {BookColors} from "../MoviePageComponents/colorProfile"
+import { BookColors } from "../../components/MoviePageComponents/colorProfile";
 const text_color = BookColors.text_color
 const text_color_weak = BookColors.text_color_weak
 
-function BookSearchBar(props) {
+function BookSearchBar2(props) {
     const navigation = useNavigation()
-    console.log("booksearch bar")
+    console.log("booksearch2 bar")
     return (
         <View style={[styles.container, props.style]}>
             <KeyboardAvoidingView>
                 <TextInput style={styles.search} placeholder = {'Search...'} placeholderTextColor={text_color_weak} />
             </KeyboardAvoidingView>
 
-            <TouchableOpacity onPress={() => {console.log("book searchdeki search bara tıklandıı");navigation.navigate('bookSearchPage')}}>
+            <TouchableOpacity onPress={() => {console.log("book searchdeki search bar 2 ye tıklandıı");navigation.navigate('Current2_2')}}>
                 <Icon name="magnify" style={styles.inputLeftIcon1}></Icon>
             </TouchableOpacity>
 
@@ -45,4 +45,4 @@ const styles = StyleSheet.create({
     }
 });
 
-export default BookSearchBar;
+export default BookSearchBar2;

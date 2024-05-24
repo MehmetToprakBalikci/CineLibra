@@ -2,12 +2,15 @@
 import {CardStyleInterpolators, createStackNavigator} from '@react-navigation/stack'
 import StartPage from './pages/MoviePages/StartPage';
 import AltSignupPage from './pages/MoviePages/AltSignupPage';
-import SwitchHomePanel from './pages/SwitchPanels/SwitchInHomePage';
-import SwitchSearchPage from './pages/SwitchPanels/SwitchSearchPage';
 import MoviePage from './pages/MoviePages/MoviePage';
 import Profile from './screens/Profile';
 import BookHomePage from "./pages/BookPages/BookHomePage";
 import BookSearchPage from "./pages/BookPages/BookSearchPage";
+import SwitchSearchPage from './pages/SwitchPanels/moviePanels/SwitchSearchPage';
+import SwitchHomePanel from './pages/SwitchPanels/moviePanels/SwitchInHomePage';
+
+import SwitchBookHomePanel from './pages/SwitchPanels/bookPanels /SwitchBookHomePanel';
+import SwitchBookSearchPanel from './pages/SwitchPanels/bookPanels /SwitchBookSearchPanel';
 
 const Stack = createStackNavigator();
 
@@ -30,26 +33,33 @@ export const Navigator = () => {
                 presentation: 'transparentModal',
 
             }}/>
+          
 
 
-            <Stack.Screen name="SearchPage" component={SwitchSearchPage} options={{
+             <Stack.Screen name="SearchPage" component={SwitchSearchPage} options={{
                 headerShown:false,
                 title:'SearchPage'
             }}/>
+              <Stack.Screen name="bookHome" component={SwitchBookHomePanel} options={{
+                headerShown:false,
+                title:'BookHomePage',
+                gestureEnabled:false,
+            }}/>
+
 
             <Stack.Screen name="HomePage" component={SwitchHomePanel} options={{
                 headerShown:false,
                 title:'HomePage',
                 gestureEnabled:false,
             }}/>
-
-            <Stack.Screen name="bookHome" component={BookHomePage} options={{
+            <Stack.Screen name="HomePage2" component={SwitchHomePanel} options={{
                 headerShown:false,
-                title:'BookHomePage',
+                title:'HomePage',
                 gestureEnabled:false,
             }}/>
 
-            <Stack.Screen name="bookSearchPage" component={BookSearchPage} options={{
+          
+            <Stack.Screen name="bookSearchPage" component={SwitchBookSearchPanel} options={{
                 headerShown:false,
                 title:'bookSearchPage'
             }}/>
@@ -67,4 +77,3 @@ export const Navigator = () => {
         </Stack.Navigator>
     )
 }
-

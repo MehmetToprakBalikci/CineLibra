@@ -3,11 +3,11 @@ import { StyleSheet, View, Text, Touchable, TouchableOpacity, TextInput, Keyboar
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 import {useNavigation} from "@react-navigation/native";
 
-import {colors} from "./colorProfile"
+import {colors} from "../../components/MoviePageComponents/colorProfile"
 const text_color = colors.text_color
 const text_color_weak = colors.text_color_weak
 
-function SearchBar(props) {
+function SearchBar2(props) {
     const navigation = useNavigation()
   return (
     <View style={[styles.container, props.style]}>
@@ -15,7 +15,7 @@ function SearchBar(props) {
       <TextInput style={styles.search} placeholder = {'Search...'} placeholderTextColor={text_color_weak} />
       </KeyboardAvoidingView>
 
-        <TouchableOpacity onPress={() => {console.log("search bar movidekine tıklandıı");navigation.navigate('SearchPage')}}>
+        <TouchableOpacity onPress={() => {console.log("search bar 2ye tıklandıı");navigation.navigate('Current')}}>
       <Icon name="magnify" style={styles.inputLeftIcon1}></Icon>
       </TouchableOpacity>
 
@@ -43,4 +43,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default SearchBar;
+export default SearchBar2;
