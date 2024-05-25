@@ -9,8 +9,8 @@ import BookSearchPage from "./pages/BookPages/BookSearchPage";
 import SwitchSearchPage from './pages/SwitchPanels/moviePanels/SwitchSearchPage';
 import SwitchHomePanel from './pages/SwitchPanels/moviePanels/SwitchInHomePage';
 
-import SwitchBookHomePanel from './pages/SwitchPanels/bookPanels /SwitchBookHomePanel';
-import SwitchBookSearchPanel from './pages/SwitchPanels/bookPanels /SwitchBookSearchPanel';
+import SwitchBookHomePanel from './pages/SwitchPanels/bookPanels/SwitchBookHomePanel';
+import SwitchBookSearchPanel from './pages/SwitchPanels/bookPanels/SwitchBookSearchPanel';
 
 const Stack = createStackNavigator();
 

@@ -17,7 +17,7 @@ import {colors} from '../../../components/MoviePageComponents/colorProfile';
 // import SwitchBookHomePanel from '../bookPanels/SwitchBookHomePanel';
 import {CustomMovieSearchScreen} from '../../../screens/CustomMovieSearchScreen';
 import SwitchHomePanel from './SwitchInHomePage';
-import SwitchBookHomePanel from '../bookPanels /SwitchBookHomePanel';
+import SwitchBookHomePanel from '../bookPanels/SwitchBookHomePanel';
 
 const Drawer = createDrawerNavigator();
 const accent_color_strong = colors.accent_strong
