@@ -11,6 +11,7 @@ import SwitchHomePanel from './pages/SwitchPanels/moviePanels/SwitchInHomePage';
 
 import SwitchBookHomePanel from './pages/SwitchPanels/bookPanels/SwitchBookHomePanel';
 import SwitchBookSearchPanel from './pages/SwitchPanels/bookPanels/SwitchBookSearchPanel';
+import BookPage from "./pages/BookPages/BookPage";
 
 const Stack = createStackNavigator();
 
@@ -67,6 +68,11 @@ export const Navigator = () => {
             <Stack.Screen name="MoviePage" component={MoviePage} options={{
                 headerShown:false,
                 title:'MoviePage',
+                gestureDirection:'horizontal',
+            }}/>
+            <Stack.Screen name="BookPage" component={BookPage} options={{
+                headerShown:false,
+                title:'BookPage',
                 gestureDirection:'horizontal',
             }}/>
             <Stack.Screen name="Profile" component={Profile} options={{
