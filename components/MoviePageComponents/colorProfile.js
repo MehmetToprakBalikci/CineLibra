@@ -3,7 +3,7 @@ import {Appearance} from "react-native";
 const colorScheme = Appearance.getColorScheme();
 
 
-const BookDarkModeColors = {
+const darkModeColors = {
     main_weak: 'rgb(25, 26, 28)',
     main: 'rgb(45, 45, 45)',
     main_strong: 'rgb(0, 0, 0)',
@@ -20,7 +20,7 @@ const BookDarkModeColors = {
     highlight_color: 'rgba(242, 97, 63, 0.6)',
 }
 
-const darkModeColors = {
+const BookDarkModeColors = {
     main_weak: 'rgb(249, 246, 247)',
     main_strong: 'rgb(209, 206, 207)',
     main: 'rgb(228, 226, 227)',
@@ -37,7 +37,7 @@ const darkModeColors = {
     highlight_color: 'rgba(255, 126, 72, 0.6)',
 }
 
-const BookLightModeColors = {
+const lightModeColors = {
     main_weak: 'rgb(249, 246, 247)',
     main_strong: 'rgb(209, 206, 207)',
     main: 'rgb(228, 226, 227)',
@@ -54,7 +54,7 @@ const BookLightModeColors = {
     highlight_color: 'rgba(255, 126, 72, 0.6)',
 }
 
-const lightModeColors = {
+const BookLightModeColors = {
     main_weak: 'rgb(249, 246, 247)',
     main_strong: 'rgb(209, 206, 207)',
     main: 'rgb(228, 226, 227)',
