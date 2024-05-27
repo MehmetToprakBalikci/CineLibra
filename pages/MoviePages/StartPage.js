@@ -6,7 +6,7 @@ import {
     TouchableOpacity,
     SafeAreaView,
     Appearance,
-    KeyboardAvoidingView, StatusBar
+    KeyboardAvoidingView, StatusBar, Dimensions
 } from 'react-native';
 
 import { LoginButton } from '../../components/MoviePageComponents/LoginButton';
@@ -35,7 +35,7 @@ StatusBar.setBarStyle(statusbar_color)
 
 
 export default function StartPage() {
-    console.log("start page içindeyim");
+    //console.log("start page içindeyim");
     const [email,setEmail] = React.useState('');
     const [password,setPassword] = React.useState('');
     const navigation = useNavigation()
@@ -70,52 +70,56 @@ export default function StartPage() {
 
       }
 
-
-
-
-
+    const windowheight = Dimensions.get('window').height;
+    const keyboardheightadjust = windowheight;
 
     return (
-        <KeyboardAvoidingView style={{flex:5}}>
-            <ImageBackground source={background} blurRadius={35} style={styles.backgroundImage}>
-                <Text style={styles.titleText}>CineLibra</Text>
-            </ImageBackground>
-            <View style={styles.cardStyle}>
-                <SafeAreaView style={styles.container}>
-                    <View style={styles.loginLayout}>
+        <KeyboardAvoidingView style={styles.keyboardavoidingstyle} behavior={Platform.OS === 'ios' ? 'padding' : 'height'} keyboardVerticalOffset={Platform.OS === 'ios' ? 0 : 100}>
+            <View style={{flex:1, minHeight: windowheight}}>
+                <ImageBackground source={background} blurRadius={35} style={styles.backgroundImage}>
+                    <Text style={styles.titleText}>CineLibra</Text>
+                </ImageBackground>
+                <View style={styles.cardStyle}>
+                    <SafeAreaView style={styles.container}>
+                        <View style={styles.loginLayout}>
 
-                        <Text style={{color:text_color ,alignSelf:'center', fontWeight:'bold', fontSize:20, paddingVertical:'5%'}}>Welcome! Lets get you started.</Text>
-                        <LoginTextfield
-                        placeholder={"e-mail"}
-                        inputValue={email}
-                        setEmail={setEmail}
-                        />
+                            <Text style={{color:text_color ,alignSelf:'center', fontWeight:'bold', fontSize:20, paddingVertical:'5%'}}>Welcome! Lets get you started.</Text>
 
-                        <LoginPasswordField
-                        placeholder={'password'}
-                        password={password}
-                        setPassword={setPassword}
+                            <View style={styles.textfieldstyle}>
+                            <LoginTextfield
+                            placeholder={"e-mail"}
+                            inputValue={email}
+                            setEmail={setEmail}
+                            />
 
-                        />
+                            <LoginPasswordField
+                            placeholder={'password'}
+                            password={password}
+                            setPassword={setPassword}
+                            />
+                            </View>
 
-                        <TouchableOpacity onPress={()=> {console.log("login pressed");handleLogIn()}}>
-                            <LoginButton message={'Log In'}/>
-                        </TouchableOpacity>
-
-                        <TouchableOpacity>
-                            <LoginButton message={'Continue W/ Google'}/>
-                        </TouchableOpacity>
-
-
-                        <View style={{paddingTop:'10%', flexDirection:'row', justifyContent:'center'}}>
-                            <Text style={{alignSelf:'center', color:text_color}}>Don't have an account?</Text>
-                            <TouchableOpacity onPress={() => navigation.navigate('AltSignupPage')}>
-                                <Text style={{marginLeft:'10%', fontWeight:'bold', color:accent_weak }}> Sign Up!</Text>
+                            <View style={styles.buttonstyle}>
+                            <TouchableOpacity onPress={()=> {console.log("login pressed");handleLogIn()}}>
+                                <LoginButton message={'Log In'}/>
                             </TouchableOpacity>
 
+                            <TouchableOpacity>
+                                <LoginButton message={'Continue W/ Google'}/>
+                            </TouchableOpacity>
+                            </View>
+
+
+                            <View style={{paddingTop:'10%', flexDirection:'row', justifyContent:'center'}}>
+                                <Text style={{alignSelf:'center', color:text_color}}>Don't have an account?</Text>
+                                <TouchableOpacity onPress={() => navigation.navigate('AltSignupPage')}>
+                                    <Text style={{marginLeft:'10%', fontWeight:'bold', color:accent_weak }}> Sign Up!</Text>
+                                </TouchableOpacity>
+
+                            </View>
                         </View>
-                    </View>
-                </SafeAreaView>
+                    </SafeAreaView>
+                </View>
             </View>
         </KeyboardAvoidingView>
     );
@@ -128,6 +132,9 @@ const styles = StyleSheet.create({
         justifyContent:'center',
         alignItems:'center',
 
+    },
+    keyboardavoidingstyle: {
+        flex:1,
     },
     loginLayout: {
         minWidth:'100%',
@@ -157,10 +164,19 @@ const styles = StyleSheet.create({
     cardStyle: {
         flex:8,
         backgroundColor:main_weak,
-        borderRadius:15,
+        borderTopLeftRadius:15,
+        borderTopRightRadius:15,
         shadowColor:'black',
         shadowRadius:30,
         shadowOffset:{height:5},
         shadowOpacity:1
+    },
+    textfieldstyle: {
+        flex:1,
+        flexDirection:'column',
+    },
+    buttonstyle: {
+        flexDirection:'column',
+        flex:1
     }
 });
