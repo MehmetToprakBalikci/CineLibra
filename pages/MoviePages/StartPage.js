@@ -41,16 +41,18 @@ export default function StartPage() {
     const navigation = useNavigation()
      useEffect(() => {
          const unsubscribe = auth.onAuthStateChanged(user => {
+           console.log("auth id is "+auth.currentUser.uid);
           if (user) {
           console.log(user.name+" is entered the system");
             navigation.navigate("HomePage")
 
             }
+            else
             console.log("null user");
           })
 
-          return unsubscribe
-       }, [])
+          return () => unsubscribe();
+        }, [navigation]);
       const handleLogIn = async () => {
         console.log("starting login handler");
         console.log("email is "+ email );

@@ -12,13 +12,14 @@ const SignOutScreen = () => {
     navigation.goBack(); // Go back to the previous screen
   };
 
-  const handleLogOut = () => {
-  // Implement your sign out logic here
-    // For example, clearing user data, resetting authentication state, etc.
-    // Then navigate to the start page or any other appropriate screen
-     // Change 'StartPage' to the actual name of your start page
-     console.log(auth.currentUser.email + " is logging out...")
-     navigation.navigate("StartPage")
+  const handleLogOut = async () => {
+    try {
+      await auth.signOut();
+      console.log(auth.currentUser ? auth.currentUser.email + " is logging out..." : "User is logged out");
+      navigation.navigate("StartPage"); // Change 'StartPage' to the actual name of your start page
+    } catch (error) {
+      console.error("Error signing out: ", error);
+    }
   };
 
   return (

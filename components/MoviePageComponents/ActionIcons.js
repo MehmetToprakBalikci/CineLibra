@@ -48,15 +48,29 @@ const ActionIcons = ({ type }) => {
     );
 };
 
-const addToWatched = () => {
-    console.log("Added to Watched");
+const addToWatched = async () => {
+   
 };
 
 const removeFromWatched = () => {
     console.log("Removed from Watched");
 };
 
-const addToFavorites = () => {
+const addToFavorites = async() => {
+    try {
+        // Assuming you have the current user's ID available
+        const userId = 'user123'; // Replace with actual user ID
+
+       const movieId = 123;
+
+        // Add the movie to the "watched" collection for the user
+        await db.collection('users').doc(userId).collection('fav').add(movieId);
+
+        console.log("Added to Favorites");
+    } catch (error) {
+        console.error("Error adding to Favorites: ", error);
+    }
+    
     console.log("Added to Favorites");
 };
 
