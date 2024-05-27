@@ -74,7 +74,7 @@ export default function StartPage() {
     const keyboardheightadjust = windowheight;
 
     return (
-        <KeyboardAvoidingView style={styles.keyboardavoidingstyle} behavior={Platform.OS === 'ios' ? 'padding' : 'height'} keyboardVerticalOffset={Platform.OS === 'ios' ? 0 : 100}>
+        <KeyboardAvoidingView style={styles.keyboardavoidingstyle} behavior={Platform.OS === 'ios' ? 'padding' : 'height'} keyboardVerticalOffset={Platform.OS === 'ios' ? 0 : 0}>
             <View style={{flex:1, minHeight: windowheight}}>
                 <ImageBackground source={background} blurRadius={35} style={styles.backgroundImage}>
                     <Text style={styles.titleText}>CineLibra</Text>
