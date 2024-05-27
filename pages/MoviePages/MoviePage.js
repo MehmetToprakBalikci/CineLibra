@@ -66,9 +66,9 @@ const MoviePage = () => {
                             <Text style={styles.title} adjustsFontSizeToFit numberOfLines={2}>{movieItem.title}</Text>
                             <View>
                                 <View style={styles.iconRow}>
-                                    <ActionIcons type="watched" id=movieItem.id/>
-                                    <ActionIcons type="favorite" id=movieItem.id/>
-                                    <ActionIcons type="watchLater" id=movieItem.id/>
+                                    <ActionIcons type="watched" id={movieItem.id}/>
+                                    <ActionIcons type="favorite" id={movieItem.id}/>
+                                    <ActionIcons type="watchLater" id={movieItem.id}/>
                                 </View>
                                 <View style={styles.iconRow}>
                                     <IconStarFilled />
