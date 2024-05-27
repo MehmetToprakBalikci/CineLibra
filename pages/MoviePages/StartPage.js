@@ -75,7 +75,7 @@ export default function StartPage() {
 
     return (
         <KeyboardAvoidingView style={styles.keyboardavoidingstyle} behavior={Platform.OS === 'ios' ? 'padding' : 'height'} keyboardVerticalOffset={Platform.OS === 'ios' ? 0 : 0}>
-            <View style={{flex:1, minHeight: windowheight}}>
+            <SafeAreaView style={{minHeight: windowheight, flex:1}}>
                 <ImageBackground source={background} blurRadius={35} style={styles.backgroundImage}>
                     <Text style={styles.titleText}>CineLibra</Text>
                 </ImageBackground>
@@ -120,7 +120,7 @@ export default function StartPage() {
                         </View>
                     </SafeAreaView>
                 </View>
-            </View>
+            </SafeAreaView>
         </KeyboardAvoidingView>
     );
 }
