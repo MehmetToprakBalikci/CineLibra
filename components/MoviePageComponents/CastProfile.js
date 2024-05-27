@@ -28,6 +28,6 @@ const styles = StyleSheet.create({
     text: {
         marginTop:5,
         textAlign: 'center',
-        color: colors.text_color,
+        color: colors.text_color_white,
     },
 })
