@@ -39,18 +39,18 @@ export default function StartPage() {
     const [email,setEmail] = React.useState('');
     const [password,setPassword] = React.useState('');
     const navigation = useNavigation()
-    // //  useEffect(() => {
-    // //      const unsubscribe = auth.onAuthStateChanged(user => {
-    // //        if (user) {
-    // //         console.log(user.name+" is entered the system");
-          //  navigation.navigate("AfterLogIn")
+     useEffect(() => {
+         const unsubscribe = auth.onAuthStateChanged(user => {
+          if (user) {
+          console.log(user.name+" is entered the system");
+            navigation.navigate("HomePage")
 
-    // //        }
-    // //        console.log("null user");
-    // //      })
+            }
+            console.log("null user");
+          })
 
-    //      return unsubscribe
-    //    }, [])
+          return unsubscribe
+       }, [])
       const handleLogIn = async () => {
         console.log("starting login handler");
         console.log("email is "+ email );
@@ -58,11 +58,11 @@ export default function StartPage() {
 
           try {
             console.log("Attempting to navigate to HomePage...");
-            //   const authUserInfos = await signInWithEmailAndPassword(auth, email, password);
-            //    const user = authUserInfos.user;
-            //    console.log(user.email + " Successfully logged in");
+              const authUserInfos = await signInWithEmailAndPassword(auth, email, password);
+                const user = authUserInfos.user;
+                console.log(user.email + " Successfully logged in");
               navigation.navigate("HomePage")
-             // console.log("Navigation to HomePage successful.");
+              console.log("Navigation to HomePage successful.");
 
           } catch (error) {
               alert(error.message);
