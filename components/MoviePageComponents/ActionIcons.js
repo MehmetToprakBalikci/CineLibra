@@ -2,27 +2,28 @@ import React, { useState } from 'react';
 import { TouchableOpacity } from 'react-native';
 import { MaterialCommunityIcons, MaterialIcons } from '@expo/vector-icons';
 import { colors } from "./colorProfile";
+import {auth} from "../../firebase";
 
-const ActionIcons = ({ type }) => {
+const ActionIcons = ({ type, id }) => {
     const [isAdded, setIsAdded] = useState(false);
     const iconColor = isAdded ? colors.accent_weak : 'white';
 
     const handlePress = () => {
         if (isAdded) {
             if (type === 'watched') {
-                removeFromWatched();
+                removeFromWatched(id);
             } else if (type === 'favorite') {
-                removeFromFavorites();
+                removeFromFavorites(id);
             } else if (type === 'watchLater') {
-                removeFromWatchLater();
+                removeFromWatchLater(id);
             }
         } else {
             if (type === 'watched') {
-                addToWatched();
+                addToWatched(id);
             } else if (type === 'favorite') {
-                addToFavorites();
+                addToFavorites(id);
             } else if (type === 'watchLater') {
-                addToWatchLater();
+                addToWatchLater(id);
             }
         }
         setIsAdded(!isAdded);
@@ -48,27 +49,29 @@ const ActionIcons = ({ type }) => {
     );
 };
 
-const addToWatched = () => {
+const addToWatched = (id) => {
     console.log("Added to Watched");
 };
 
-const removeFromWatched = () => {
+const removeFromWatched = (id) => {
     console.log("Removed from Watched");
 };
 
-const addToFavorites = () => {
+const addToFavorites = (id) => {
     console.log("Added to Favorites");
+
+
 };
 
-const removeFromFavorites = () => {
+const removeFromFavorites = (id) => {
     console.log("Removed from Favorites");
 };
 
-const addToWatchLater = () => {
+const addToWatchLater = (id) => {
     console.log("Added to Watch Later");
 };
 
-const removeFromWatchLater = () => {
+const removeFromWatchLater = (id) => {
     console.log("Removed from Watch Later");
 };
 
