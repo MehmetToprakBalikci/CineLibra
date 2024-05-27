@@ -18,6 +18,7 @@ import CastProfile from "../../components/MoviePageComponents/CastProfile";
 import {colors} from "../../components/MoviePageComponents/colorProfile";
 import ActionIcons from "../../components/MoviePageComponents/ActionIcons";
 
+
 const MoviePage = () => {
     const route = useRoute();
     const { movieItem } = route.params;
@@ -65,9 +66,9 @@ const MoviePage = () => {
                             <Text style={styles.title} adjustsFontSizeToFit numberOfLines={2}>{movieItem.title}</Text>
                             <View>
                                 <View style={styles.iconRow}>
-                                    <ActionIcons type="watched" />
-                                    <ActionIcons type="favorite" />
-                                    <ActionIcons type="watchLater" />
+                                    <ActionIcons type="watched" id=movieItem.id/>
+                                    <ActionIcons type="favorite" id=movieItem.id/>
+                                    <ActionIcons type="watchLater" id=movieItem.id/>
                                 </View>
                                 <View style={styles.iconRow}>
                                     <IconStarFilled />
