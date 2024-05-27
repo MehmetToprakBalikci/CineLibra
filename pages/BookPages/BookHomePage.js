@@ -1,5 +1,5 @@
 import React, { Component, useState } from "react";
-import {StyleSheet, View, Text, ImageBackground, SafeAreaView} from "react-native";
+import {StyleSheet, View, Text, ImageBackground, SafeAreaView, Platform, StatusBar} from "react-native";
 import BookSearchBar from "../../components/BookPageComponents/BookSearchBar";
 import Lists from "../../components/MoviePageComponents/Lists";
 import LeftBar from "../../components/MoviePageComponents/LeftBar";
@@ -64,5 +64,6 @@ const styles = StyleSheet.create({
     safeArea: {
         flex:1,
         backgroundColor:bg_filter_color,
+        paddingTop: Platform.OS === "android" ? StatusBar.currentHeight+20 : 0,
     }
 });
