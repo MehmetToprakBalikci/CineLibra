@@ -43,9 +43,6 @@ const BookPage = () => {
             style={styles.background}
             blurRadius={0}
         >
-            <TouchableOpacity style={styles.navigationIcon} onPress={() => navigation.goBack()}>
-                <AntDesign name="back" size={34} color={BookColors.accent_weak} />
-            </TouchableOpacity>
             <ScrollView contentContainerStyle={styles.scrollView}>
 
                 <View style={styles.overlay2}>

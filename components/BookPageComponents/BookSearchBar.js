@@ -37,11 +37,11 @@ const styles = StyleSheet.create({
         margin: 10
     },
     inputLeftIcon1: {
-        color: "red",
+        color: text_color_weak,
         fontSize:20,
         alignSelf: "center",
         margin: 8,
-        
+
     }
 });
 

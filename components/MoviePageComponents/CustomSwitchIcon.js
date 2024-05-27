@@ -1,6 +1,7 @@
 import { StyleSheet,View, Text,TouchableOpacity,Image } from 'react-native'
 import React, { useState } from 'react'
 import {useNavigation} from "@react-navigation/native";
+import {colors} from './colorProfile'
 
 export const CustomSwitchIcon = ({isSwitch,setOnSwitchDone}) => {
   const navigator = useNavigation();
@@ -15,9 +16,13 @@ export const CustomSwitchIcon = ({isSwitch,setOnSwitchDone}) => {
 // }
 
 
+  const accent_color = colors.accent
+  const accent_strong = colors.accent_strong
+  const accent_weak = colors.accent_weak
+
   function toggleSwitch1(){
     setOnSwitchDone(!isSwitch);
-   
+
   }
   function toggleSwitch(){
     setOnSwitchDone(!isSwitch);
@@ -27,7 +32,7 @@ export const CustomSwitchIcon = ({isSwitch,setOnSwitchDone}) => {
   if(isSwitch){
     return (
       <View style={styles.container}>
-      <TouchableOpacity style={[styles.out,[{justifyContent:'flex-start',backgroundColor:'#FF8C00'}]
+      <TouchableOpacity style={[styles.out,[{justifyContent:'flex-start',backgroundColor:accent_weak}]
       ]} activeOpacity={1} onPress={()=>{toggleSwitch(); navigator.replace("bookHome");}}>
         <View style={styles.inner}>
            <View style ={styles.icon}>
