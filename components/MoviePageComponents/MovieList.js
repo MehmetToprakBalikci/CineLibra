@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import {Text, View, FlatList, StyleSheet, Dimensions} from 'react-native';
-import {fetchNowPlayingMovies, fetchPopularMovies, fetchTopRatedMovies, fetchTrendingMovies} from "../../api/APICalls";
+import {fetchNowPlayingMovies, fetchPopularMovies, fetchTopRatedMovies, fetchTrendingMovies} from "../../api/tmdbAPI/APICalls";
 import MovieCard from "./MovieCard";
 
 import { colors } from "./colorProfile"

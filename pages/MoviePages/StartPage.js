@@ -39,18 +39,18 @@ export default function StartPage() {
     const [email,setEmail] = React.useState('');
     const [password,setPassword] = React.useState('');
     const navigation = useNavigation()
-    // //  useEffect(() => {
-    // //      const unsubscribe = auth.onAuthStateChanged(user => {
-    // //        if (user) {
-    // //         console.log(user.name+" is entered the system");
-          //  navigation.navigate("AfterLogIn")
+      useEffect(() => {
+          const unsubscribe = auth.onAuthStateChanged(user => {
+            if (user) {
+             console.log(user.name+" is entered the system");
+           navigation.navigate("AfterLogIn")
 
-    // //        }
-    // //        console.log("null user");
-    // //      })
+            }
+            console.log("null user");
+          })
 
-    //      return unsubscribe
-    //    }, [])
+         return unsubscribe
+       }, [])
       const handleLogIn = async () => {
         console.log("starting login handler");
         console.log("email is "+ email );

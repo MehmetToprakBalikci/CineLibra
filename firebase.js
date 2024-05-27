@@ -5,7 +5,7 @@ import { initializeApp } from "firebase/app";
 import { initializeAuth } from "firebase/auth";
 import { getReactNativePersistence } from 'firebase/auth';
 
-// TODO: Replace the following with your app's Firebase project configuration
+
 // See: https://firebase.google.com/docs/web/learn-more#config-object
 const firebaseConfig = {
     apiKey: "AIzaSyA-nXOz31uiXy38uTQKYagJh8sCmJfbXxE",
