@@ -6,7 +6,7 @@ import {
     TouchableOpacity,
     SafeAreaView,
     Appearance,
-    KeyboardAvoidingView, StatusBar, Dimensions
+    KeyboardAvoidingView, StatusBar, Dimensions, Platform
 } from 'react-native';
 
 import { LoginButton } from '../../components/MoviePageComponents/LoginButton';
@@ -73,10 +73,11 @@ export default function StartPage() {
 
       }
 
-    const windowheight = Dimensions.get('window').height;
+    const windowHeight = Dimensions.get('window').height;
 
     return (
-        <KeyboardAvoidingView style={{flex:5}}>
+        //<KeyboardAvoidingView style={{flex:5, minHeight:windowHeight}} behavior={Platform.OS === 'ios' ?'padding' :  'padding'}>
+        <KeyboardAvoidingView style={{flex:5, minHeight:windowHeight}}>
             <ImageBackground source={background} blurRadius={35} style={styles.backgroundImage}>
                 <Text style={styles.titleText}>CineLibra</Text>
             </ImageBackground>
