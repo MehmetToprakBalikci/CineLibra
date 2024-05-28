@@ -83,8 +83,12 @@ export const Navigator = () => {
             }}/>
             <Stack.Screen name="SignOut" component={SignOutScreen} options={{
                 headerShown:false,
-
-
+                title:'SignOut',
+                gestureDirection:'vertical',
+                gestureEnabled:true,
+                gestureResponseDistance: Platform.OS === 'ios' ? windowHeight : windowHeight,
+                cardStyleInterpolator: Platform.OS === 'ios' ? CardStyleInterpolators.forModalPresentationIOS : CardStyleInterpolators.forRevealFromBottomAndroid,
+                presentation: 'transparentModal',
             }}/>
         </Stack.Navigator>
     )

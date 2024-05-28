@@ -1,5 +1,5 @@
 import React, { Component, useState } from "react";
-import {StyleSheet, View, Text, ImageBackground, SafeAreaView, StatusBar, Platform} from "react-native";
+import {StyleSheet, View, Text, ImageBackground, SafeAreaView, StatusBar, Platform, Dimensions} from "react-native";
 import SearchBar from "../../components/MoviePageComponents/searchBar";
 import Lists from "../../components/MoviePageComponents/Lists";
 import LeftBar from "../../components/MoviePageComponents/LeftBar";
@@ -9,6 +9,7 @@ import { Button } from "react-native-web";
 
 const bg_filter_color = colors.bg_filter_color
 const opacity_color = colors.opacity_color
+const windowHeight = Dimensions.get('window').height;
 
 
 export default function HomePage(props) {
@@ -61,6 +62,7 @@ const styles = StyleSheet.create({
     flex:1
   },
   safeArea: {
+    minHeight:windowHeight,
     flex:1,
     backgroundColor:bg_filter_color,
     paddingTop: Platform.OS === "android" ? StatusBar.currentHeight+20 : 0,

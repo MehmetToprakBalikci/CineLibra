@@ -1,4 +1,16 @@
-import { Button, Image, ImageBackground, StyleSheet, Text, View ,StatusBar, TextInput, TouchableOpacity, SafeAreaView} from 'react-native';
+import {
+    Button,
+    Image,
+    ImageBackground,
+    StyleSheet,
+    Text,
+    View,
+    StatusBar,
+    TextInput,
+    TouchableOpacity,
+    SafeAreaView,
+    Dimensions
+} from 'react-native';
 
 
 import { AntDesign } from '@expo/vector-icons';
@@ -13,6 +25,7 @@ import { auth } from '../../firebase';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 
 const background = require('../../assets/bg_alt.jpg')
+const windowHeight = Dimensions.get('window').height;
 
 const main_strong = colors.main_strong
 const main_weak = colors.main_weak
@@ -48,7 +61,7 @@ export default function AltStartPage() {
 
 
     return (
-        <View style={{flex:5}}>
+        <View style={{flex:5, minHeight:windowHeight}}>
             <View style={{flex:5, backgroundColor:'transparent'}}>
 
             </View>
