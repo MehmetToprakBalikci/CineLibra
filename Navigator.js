@@ -34,8 +34,9 @@ export const Navigator = () => {
                 headerShown:false,
                 title:'SignUpPage',
                 gestureDirection:'vertical',
-                 gestureResponseDistance: Platform.OS === 'ios' ? windowHeight : 0,
-                cardStyleInterpolator: Platform.OS === 'ios' ? CardStyleInterpolators.forModalPresentationIOS : CardStyleInterpolators.forBottomSheetAndroid,
+                 gestureEnabled:true,
+                 gestureResponseDistance: Platform.OS === 'ios' ? windowHeight : windowHeight,
+                cardStyleInterpolator: Platform.OS === 'ios' ? CardStyleInterpolators.forModalPresentationIOS : CardStyleInterpolators.forRevealFromBottomAndroid,
                 presentation: 'transparentModal',
 
             }}/>
@@ -58,7 +59,7 @@ export const Navigator = () => {
                 title:'HomePage',
                 gestureEnabled:false,
             }}/>
-            
+
 
             <Stack.Screen name="bookSearchPage" component={SwitchBookSearchPanel} options={{
                 headerShown:false,

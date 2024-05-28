@@ -111,7 +111,6 @@ const styles = StyleSheet.create({
         flexDirection:'column',
         justifyContent:'space-evenly',
         flex:1,
-        rowGap:'10%',
         paddingTop:'2%',
         marginBottom:'2%',
         paddingHorizontal:'8%'
