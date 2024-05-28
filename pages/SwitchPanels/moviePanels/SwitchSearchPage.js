@@ -36,7 +36,7 @@ const SwitchSearchPage = () => {
 <Drawer.Navigator   drawerContent={props=> <CustomDrawer {...props} isSwitch={isSwitch} setOnSwitchDone={setOnSwitchDone}  />}
      screenOptions={{
         headerShown: false,
-      //  swipeEnabled: false,
+        swipeEnabled: false,
 
       }}
     >

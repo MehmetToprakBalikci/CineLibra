@@ -33,6 +33,7 @@ const SwitchHomePanel = () => {
       )}
       screenOptions={{
         headerShown: false,
+        swipeEnabled:false
       }}
     >
       <Drawer.Screen

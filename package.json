@@ -14,6 +14,7 @@
     "@react-native-async-storage/async-storage": "^1.23.1",
     "@react-native-firebase/app": "^20.0.0",
     "@react-native-firebase/firestore": "^20.0.0",
+    "@react-native-masked-view/masked-view": "github:react-native-masked-view/masked-view",
     "@react-navigation/drawer": "^6.6.15",
     "@react-navigation/native": "^6.1.17",
     "@react-navigation/native-stack": "^6.9.26",

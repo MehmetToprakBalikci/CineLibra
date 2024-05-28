@@ -12,7 +12,7 @@ export default function BookCard({ item }) {
     const navigation = useNavigation()
     const handlePress = () => {
         console.log("Clicked");
-        navigation.navigate('MoviePage', { movieItem: item });
+        navigation.navigate('BookPage', { movieItem: item });
     };
 
     return (

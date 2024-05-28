@@ -15,7 +15,7 @@ import {AntDesign, MaterialIcons} from "@expo/vector-icons";
 import { LinearGradient } from 'expo-linear-gradient';
 import {fetchCastDetails} from "../../api/tmdbAPI/APICalls";
 import CastProfile from "../../components/MoviePageComponents/CastProfile";
-import {colors} from "../../components/MoviePageComponents/colorProfile";
+import {BookColors} from "../../components/MoviePageComponents/colorProfile";
 import ActionIcons from "../../components/MoviePageComponents/ActionIcons";
 
 const BookPage = () => {
@@ -43,9 +43,6 @@ const BookPage = () => {
             style={styles.background}
             blurRadius={0}
         >
-            <TouchableOpacity style={styles.navigationIcon} onPress={() => navigation.goBack()}>
-                <AntDesign name="back" size={34} color={colors.accent_weak} />
-            </TouchableOpacity>
             <ScrollView contentContainerStyle={styles.scrollView}>
 
                 <View style={styles.overlay2}>
@@ -154,7 +151,7 @@ const styles = StyleSheet.create({
         flex: 1,
         borderRadius: 5,
         borderWidth:2,
-        borderColor: colors.accent_weak,
+        borderColor: BookColors.accent_weak,
         height: 200,
     },
     title: {

@@ -18,7 +18,6 @@ export  const LoginButton = ({message}) =>{
                 maxWidth:'100%',
                 width:'100%',
                 paddingHorizontal:'2%',
-                marginVertical:'5%',
                 paddingVertical:'3%',
                 backgroundColor:accent_weak,
                 borderRadius:50,

@@ -8,7 +8,7 @@ import {
     StyleSheet,
     Dimensions,
     TouchableOpacity,
-    FlatList
+    FlatList, StatusBar
 } from 'react-native';
 import {useNavigation, useRoute} from "@react-navigation/native";
 import {AntDesign, MaterialIcons} from "@expo/vector-icons";
@@ -86,11 +86,9 @@ const MoviePage = () => {
         <ImageBackground
             source={{ uri: `https://image.tmdb.org/t/p/original${movieItem.backdrop_path}` }}
             style={styles.background}
-            blurRadius={0}
+            blurRadius={10}
         >
-            <TouchableOpacity style={styles.navigationIcon} onPress={() => navigation.goBack()}>
-                <AntDesign name="back" size={34} color={colors.accent_weak} />
-            </TouchableOpacity>
+
             <ScrollView contentContainerStyle={styles.scrollView}>
 
                 <View style={styles.overlay2}>
@@ -238,7 +236,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
         //backgroundColor: 'orange',
-        top: windowHeight*0.03,
+        top: windowHeight*0.3,
         zIndex: 1,
     },
 });

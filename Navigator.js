@@ -11,9 +11,13 @@ import SwitchHomePanel from './pages/SwitchPanels/moviePanels/SwitchInHomePage';
 
 import SwitchBookHomePanel from './pages/SwitchPanels/bookPanels/SwitchBookHomePanel';
 import SwitchBookSearchPanel from './pages/SwitchPanels/bookPanels/SwitchBookSearchPanel';
+import BookPage from "./pages/BookPages/BookPage";
+import {forModalPresentationIOS} from "@react-navigation/stack/src/TransitionConfigs/CardStyleInterpolators";
+import {Dimensions} from "react-native";
 import SignOutScreen from './screens/SignOutScreen';
 
 const Stack = createStackNavigator();
+const windowHeight = Dimensions.get('window').height;
 
 export const Navigator = () => {
 
@@ -30,11 +34,12 @@ export const Navigator = () => {
                 headerShown:false,
                 title:'SignUpPage',
                 gestureDirection:'vertical',
-                cardStyleInterpolator: CardStyleInterpolators.forModalPresentationIOS,
+                 gestureResponseDistance: Platform.OS === 'ios' ? windowHeight : 0,
+                cardStyleInterpolator: Platform.OS === 'ios' ? CardStyleInterpolators.forModalPresentationIOS : CardStyleInterpolators.forBottomSheetAndroid,
                 presentation: 'transparentModal',
 
             }}/>
-          
+
 
 
              <Stack.Screen name="SearchPage" component={SwitchSearchPage} options={{
@@ -53,13 +58,8 @@ export const Navigator = () => {
                 title:'HomePage',
                 gestureEnabled:false,
             }}/>
-            <Stack.Screen name="HomePage2" component={SwitchHomePanel} options={{
-                headerShown:false,
-                title:'HomePage',
-                gestureEnabled:false,
-            }}/>
+            
 
-          
             <Stack.Screen name="bookSearchPage" component={SwitchBookSearchPanel} options={{
                 headerShown:false,
                 title:'bookSearchPage'
@@ -68,6 +68,11 @@ export const Navigator = () => {
             <Stack.Screen name="MoviePage" component={MoviePage} options={{
                 headerShown:false,
                 title:'MoviePage',
+                gestureDirection:'horizontal',
+            }}/>
+            <Stack.Screen name="BookPage" component={BookPage} options={{
+                headerShown:false,
+                title:'BookPage',
                 gestureDirection:'horizontal',
             }}/>
             <Stack.Screen name="Profile" component={Profile} options={{

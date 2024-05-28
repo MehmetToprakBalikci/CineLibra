@@ -31,6 +31,7 @@ const SwitchBookHomePanel = () => {
       drawerContent={props => <CustomDrawer {...props} isSwitch={isSwitch} setOnSwitchDone={setOnSwitchDone} />}
       screenOptions={{
         headerShown: false,
+        swipeEnabled:false
       }}
     >
       <Drawer.Screen
@@ -48,34 +49,7 @@ const SwitchBookHomePanel = () => {
         }}
       />
 
-      <Drawer.Screen
-        name="Profile"
-        component={Profile}
-        options={{
-          drawerLabel: 'Profile',
-          drawerIcon: ({ color }) => (
-            <Ionicons name="person-outline" size={20} color={'#6A5ACD'} />
-          ),
-          drawerLabelStyle: {
-            color: text_color, // Set the color of the label
-          },
-        }}
-      />
-
-      <Drawer.Screen
-        name="SignOut"
-        component={SignOutScreen}
-        options={{
-          drawerLabel: 'SignOut',
-          drawerIcon: ({ color }) => (
-            <Ionicons name="log-out" size={20} color={'#6A5ACD'} />
-          ),
-          drawerLabelStyle: {
-            color: text_color, // Set the color of the label
-          },
-        }}
-      />
-    </Drawer.Navigator>
+   </Drawer.Navigator>
   );
 };
 

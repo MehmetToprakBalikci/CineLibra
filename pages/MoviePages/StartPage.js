@@ -74,55 +74,48 @@ export default function StartPage() {
       }
 
     const windowheight = Dimensions.get('window').height;
-    const keyboardheightadjust = windowheight;
 
     return (
-        <KeyboardAvoidingView style={styles.keyboardavoidingstyle} behavior={Platform.OS === 'ios' ? 'padding' : 'height'} keyboardVerticalOffset={Platform.OS === 'ios' ? 0 : 100}>
-            <View style={{flex:1, minHeight: windowheight}}>
-                <ImageBackground source={background} blurRadius={35} style={styles.backgroundImage}>
-                    <Text style={styles.titleText}>CineLibra</Text>
-                </ImageBackground>
-                <View style={styles.cardStyle}>
-                    <SafeAreaView style={styles.container}>
-                        <View style={styles.loginLayout}>
+        <KeyboardAvoidingView style={{flex:5}}>
+            <ImageBackground source={background} blurRadius={35} style={styles.backgroundImage}>
+                <Text style={styles.titleText}>CineLibra</Text>
+            </ImageBackground>
+            <View style={styles.cardStyle}>
+                <SafeAreaView style={styles.container}>
+                    <View style={styles.loginLayout}>
 
-                            <Text style={{color:text_color ,alignSelf:'center', fontWeight:'bold', fontSize:20, paddingVertical:'5%'}}>Welcome! Lets get you started.</Text>
-
-                            <View style={styles.textfieldstyle}>
-                            <LoginTextfield
+                        <Text style={{color:text_color ,alignSelf:'center', fontWeight:'bold', fontSize:20, paddingVertical:'5%'}}>Welcome! Lets get you started.</Text>
+                        <LoginTextfield
                             placeholder={"e-mail"}
                             inputValue={email}
                             setEmail={setEmail}
-                            />
+                        />
 
-                            <LoginPasswordField
+                        <LoginPasswordField
                             placeholder={'password'}
                             password={password}
                             setPassword={setPassword}
-                            />
-                            </View>
 
-                            <View style={styles.buttonstyle}>
-                            <TouchableOpacity onPress={()=> {console.log("login pressed");handleLogIn()}}>
-                                <LoginButton message={'Log In'}/>
+                        />
+
+                        <TouchableOpacity onPress={()=> {console.log("login pressed");handleLogIn()}}>
+                            <LoginButton message={'Log In'}/>
+                        </TouchableOpacity>
+
+                        <TouchableOpacity>
+                            <LoginButton message={'Continue W/ Google'}/>
+                        </TouchableOpacity>
+
+
+                        <View style={{paddingVertical:'5%', flexDirection:'row', justifyContent:'center'}}>
+                            <Text style={{alignSelf:'center', color:text_color}}>Don't have an account?</Text>
+                            <TouchableOpacity onPress={() => navigation.navigate('AltSignupPage')}>
+                                <Text style={{marginLeft:'10%', fontWeight:'bold', color:accent_weak }}> Sign Up!</Text>
                             </TouchableOpacity>
 
-                            <TouchableOpacity>
-                                <LoginButton message={'Continue W/ Google'}/>
-                            </TouchableOpacity>
-                            </View>
-
-
-                            <View style={{paddingTop:'10%', flexDirection:'row', justifyContent:'center'}}>
-                                <Text style={{alignSelf:'center', color:text_color}}>Don't have an account?</Text>
-                                <TouchableOpacity onPress={() => navigation.navigate('AltSignupPage')}>
-                                    <Text style={{marginLeft:'10%', fontWeight:'bold', color:accent_weak }}> Sign Up!</Text>
-                                </TouchableOpacity>
-
-                            </View>
                         </View>
-                    </SafeAreaView>
-                </View>
+                    </View>
+                </SafeAreaView>
             </View>
         </KeyboardAvoidingView>
     );
@@ -136,18 +129,13 @@ const styles = StyleSheet.create({
         alignItems:'center',
 
     },
-    keyboardavoidingstyle: {
-        flex:1,
-    },
     loginLayout: {
         minWidth:'100%',
         flexDirection:'column',
         justifyContent:'space-evenly',
         flex:1,
-        //rowGap:'10%',
-        paddingTop:'5%',
-        paddingHorizontal:'10%',
-        paddingBottom: '10%'
+        paddingTop:'2%',
+        paddingHorizontal:'8%',
     },
     backgroundImage: {
         height:'110%',

@@ -1,7 +1,15 @@
 import React from 'react';
-import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
+import {View, Text, TouchableOpacity, StyleSheet, SafeAreaView, Platform, StatusBar} from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { auth } from '../firebase';
+import {colors} from '../components/MoviePageComponents/colorProfile'
+
+const main_weak = colors.main_weak;
+const text_color = colors.text_color;
+const text_color_weak = colors.text_color_weak;
+const accent_color = colors.accent;
+const accent_color_weak = colors.accent_weak;
+const accent_color_strong = colors.accent_strong;
 
 const SignOutScreen = () => {
   const navigation = useNavigation();
@@ -24,21 +32,22 @@ const SignOutScreen = () => {
   };
 
   return (
-    <View style={styles.container}>
-    <View style={{alignItems:'horizontal',width:250}}>
-    <Text style={styles.text}>Are you sure you want to sign out?</Text>
-      <View style={styles.buttonContainer}>
-        <TouchableOpacity style={styles.cancelButton} onPress={handleCancel}>
-          <Text style={styles.buttonText}>Cancel</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.logoutButton} onPress={handleLogOut}>
-          <Text style={styles.buttonText}>Log Out</Text>
-        </TouchableOpacity>
-      
-    </View>
-     
+    <SafeAreaView style={styles.container}>
+
+      <View style={styles.second_container}>
+        <Text style={styles.text}>Are you sure you want to sign out?</Text>
+
+        <View style={styles.buttonContainer}>
+          <TouchableOpacity style={styles.cancelButton} onPress={handleCancel}>
+            <Text style={styles.buttonText}>Cancel</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.logoutButton} onPress={handleLogOut}>
+            <Text style={styles.buttonText}>Log Out</Text>
+          </TouchableOpacity>
+        </View>
+
       </View>
-    </View>
+    </SafeAreaView>
   );
 };
 
@@ -48,45 +57,49 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: '#fff', // Background color of the container
-    borderRadius: 20, // Border radius to give it a curved shape
-    padding: 20, // Padding inside the container
-    marginHorizontal: 20, // Margin around the container
-    elevation: 20, // Elevation for shadow effect (Android)
-    shadowColor: '#000', // Shadow color
-    shadowOffset: { width: 5, height: 3 }, // Shadow offset
-    shadowOpacity: 0.25, // Shadow opacity
-    shadowRadius: 100, // Shadow radius
+    paddingTop: Platform.OS === "android" ? StatusBar.currentHeight+20 : 0,
+    backgroundColor: main_weak, // Background color of the container
   },
   text: {
     marginBottom: 20,
     fontSize: 18, // Font size of the text
     fontWeight: 'bold', // Font weight of the text
     textAlign: 'center', // Text alignment
+    color: text_color,
   },
   buttonContainer: {
-    flexDirection: 'row',
+    flexDirection: 'column',
     width: '100%',
-    justifyContent: 'space-around',
+    alignItems:'center',
   },
   cancelButton: {
-    backgroundColor: '#dc3545',
+    backgroundColor: '#FFFFFF',
     paddingVertical: 15,
     paddingHorizontal: 30,
-    borderRadius: 10,
+    borderRadius: 15,
+    marginVertical:10,
+    minWidth:'75%',
     alignItems: 'center',
   },
   logoutButton: {
-    backgroundColor: '#007bff',
+    backgroundColor: accent_color_strong,
     paddingVertical: 15,
     paddingHorizontal: 30,
-    borderRadius: 10,
+    marginVertical:10,
+    borderRadius: 15,
+    minWidth:'75%',
     alignItems: 'center',
   },
   buttonText: {
     fontSize: 15,
     fontWeight: 'bold',
-    color: '#fff',
+    color: 'black',
   },
+  second_container: {
+    alignItems:'center',
+    marginBottom:50,
+    justifyContent:'space-between',
+    paddingTop:'80%',
+    flex:1,
+  }
 });

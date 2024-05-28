@@ -1,4 +1,4 @@
-import {View, Text, SafeAreaView, TouchableOpacity, Image, ImageBackground} from 'react-native'
+import {View, Text, SafeAreaView, TouchableOpacity, Image, ImageBackground, Platform, StatusBar} from 'react-native'
 import React from 'react'
 import { useNavigation } from '@react-navigation/native'
 import { AntDesign } from '@expo/vector-icons';
@@ -51,5 +51,6 @@ const styles = StyleSheet.create({
     },
     safeAreaStyle: {
         flex:1,
+        paddingTop: Platform.OS === "android" ? StatusBar.currentHeight+20 : 0,
     }
 })

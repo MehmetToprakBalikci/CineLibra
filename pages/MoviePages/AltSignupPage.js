@@ -73,13 +73,15 @@ export default function AltStartPage() {
                         password={password}
                         setPassword={setPassword}
                         />
+
                         <TouchableOpacity onPress={()=> handleSignUp()}>
                             <LoginButton message={'Sign Up'}/>
                         </TouchableOpacity>
 
-                        <TouchableOpacity style={{paddingBottom:'2%'}}>
+                        <TouchableOpacity>
                             <LoginButton message={'Continue W/ Google'}/>
                         </TouchableOpacity>
+
                     </View>
                 </SafeAreaView>
             </View>
@@ -110,7 +112,9 @@ const styles = StyleSheet.create({
         justifyContent:'space-evenly',
         flex:1,
         rowGap:'10%',
-        paddingTop:'5%',
-        paddingHorizontal:'10%'
+        paddingTop:'2%',
+        marginBottom:'2%',
+        paddingHorizontal:'8%'
     },
+
 });

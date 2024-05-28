@@ -9,7 +9,7 @@ const bg_filter_color = colors.bg_filter_color
 const opacity_color = colors.opacity_color
 
 export const CustomMovieSearchScreen = () => {
-  
+
   const navigation = useNavigation();
     const background = require('../assets/bg_alt.jpg')
 
@@ -18,10 +18,28 @@ export const CustomMovieSearchScreen = () => {
       routes: [{ name: 'HomePage' }],
     });
     return (
-    <></>
+      <ImageBackground source={background} blurRadius={200} style={{flex:1}}>
+        <SafeAreaView style={styles.safeArea}>
+
+          <View style={styles.leftBarRow}>
+          <LeftBar/>
+            <SearchBar2 style={styles.searchBar} value={'SearchHome2'}></SearchBar2>
+            <View>
+
+
+            </View>
+
+          </View>
+
+          <View style={styles.listView}>
+            <Lists style={styles.lists}></Lists>
+          </View>
+
+        </SafeAreaView>
+    </ImageBackground>
     );
   }
-  
+
   const styles = StyleSheet.create({
     container: {
       flex: 1,
@@ -49,4 +67,3 @@ export const CustomMovieSearchScreen = () => {
       backgroundColor:bg_filter_color,
     }
   });
-  
