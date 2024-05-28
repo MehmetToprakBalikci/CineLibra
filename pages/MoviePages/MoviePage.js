@@ -8,7 +8,7 @@ import {
     StyleSheet,
     Dimensions,
     TouchableOpacity,
-    FlatList, StatusBar
+    FlatList, StatusBar, SafeAreaView
 } from 'react-native';
 import {useNavigation, useRoute} from "@react-navigation/native";
 import {AntDesign, MaterialIcons} from "@expo/vector-icons";
@@ -18,8 +18,9 @@ import CastProfile from "../../components/MoviePageComponents/CastProfile";
 import {colors} from "../../components/MoviePageComponents/colorProfile";
 import ActionIcons from "../../components/MoviePageComponents/ActionIcons";
 import { auth } from '../../firebase';
-import { getDocs,doc,collection,query,where } from 'firebase/firestore';
+import {getDocs, doc, collection, query, where, getDoc} from 'firebase/firestore';
 import { db } from '../../firebase';
+import RatingStars from "../../components/MoviePageComponents/RatingStars";
 
 
 const MoviePage = () => {
@@ -30,6 +31,7 @@ const MoviePage = () => {
     const [isAddedWatched, setIsAddedWatched] = useState(false);
     const [isAddedFavorite, setAddedFavorite] = useState(false);
     const [isAddedWatchLater, setIsWatchLater] = useState(false);
+    const [rating, setRating] = useState(0);
 
 
     // console.log("isfavorite in movie page is "+isAddedFavorite);
@@ -48,7 +50,7 @@ const MoviePage = () => {
             console.error('Error fetching cast:', error);
         }
     };
-   
+
     const fetchMovieStates = async () => {
         const userId = auth.currentUser.uid;
         const userDocRef = doc(db, "users", userId);
@@ -84,6 +86,14 @@ const MoviePage = () => {
              setIsWatchLater(true); // statei güncelle
 
             }
+
+            // Fetch rating state
+            const ratingsCollectionRef = collection(userDocRef, "Ratings");
+            const ratingQuery = query(ratingsCollectionRef, where("movieId", "==", movieItem.id));
+            const ratingSnapshot = await getDocs(ratingQuery);
+            if (!ratingSnapshot.empty) {
+                setRating(ratingSnapshot.docs[0].data().rating);
+            }
         } catch (error) {
             console.error('Error fetching movie states:', error);
         }
@@ -93,19 +103,22 @@ const MoviePage = () => {
         <ImageBackground
             source={{ uri: `https://image.tmdb.org/t/p/original${movieItem.backdrop_path}` }}
             style={styles.background}
-            blurRadius={10}
+            blurRadius={0}
         >
+            <ScrollView contentContainerStyle={styles.containerMain}>
+                <TouchableOpacity style={styles.navigationIcon} onPress={() => navigation.goBack()}>
+                    <AntDesign name="back" size={34} color={colors.accent_weak} />
+                </TouchableOpacity>
 
-            <ScrollView contentContainerStyle={styles.scrollView}>
-
-                <View style={styles.overlay2}>
+                <View style={styles.gradientStyle}>
                     <LinearGradient
                         colors={['rgba(0, 0, 0, 0)', 'rgba(30,30,30,0.5)', 'rgba(30,30,30,0.90)']}
                         locations={[0, 0.7, 0.95]}
                         style={styles.gradient}
                     />
                 </View>
-                <View style={styles.overlay}>
+
+                <View style={styles.contentStyle}>
                     <View style={styles.overlay3}>
                         <Image
                             source={{ uri: `https://image.tmdb.org/t/p/w500${movieItem.poster_path}` }}
@@ -115,35 +128,33 @@ const MoviePage = () => {
                             <Text style={styles.title} adjustsFontSizeToFit numberOfLines={2}>{movieItem.title}</Text>
                             <View>
                                 <View style={styles.iconRow}>
-                                    <ActionIcons type="watched" 
-                                    id={movieItem.id} 
+                                    <ActionIcons type="watched"
+                                    id={movieItem.id}
                                     isAdded={isAddedWatched}
                                     setIsAdded={setIsAddedWatched} />
 
-                                    <ActionIcons type="favorite" 
+                                    <ActionIcons type="favorite"
                                     id={movieItem.id}
                                     isAdded={isAddedFavorite}
                                      setIsAdded={setAddedFavorite} />
 
-                                    <ActionIcons type="watchLater" 
+                                    <ActionIcons type="watchLater"
                                     id={movieItem.id}
                                     isAdded={isAddedWatchLater}
                                     setIsAdded={setIsWatchLater} />
                                 </View>
                                 <View style={styles.iconRow}>
-                                    <IconStarFilled />
-                                    <IconStarFilled />
-                                    <IconStarFilled />
-                                    <IconStarFilled />
-                                    <IconStarFilled />
+                                    <RatingStars movieId={movieItem.id} rating={rating} onRatingChange={setRating}/>
                                 </View>
                             </View>
                         </View>
                     </View>
+
                     <View style={styles.descriptionView}>
                         <Text style={styles.description} adjustsFontSizeToFit>{movieItem.overview}
                         </Text>
                     </View>
+
                     <FlatList
                         horizontal
                         data={cast.filter(item =>
@@ -173,11 +184,13 @@ const styles = StyleSheet.create({
     scrollView: {
         flexGrow: 1,
     },
-    overlay: {
+    contentStyle: {
         backgroundColor: 'rgba(30,30,30,0.90)',
+        paddingHorizontal:5,
+        paddingBottom:20,
     },
-    overlay2: {
-        height: windowHeight - (200+185),
+    gradientStyle: {
+        height: '20%',
         //backgroundColor: 'rgba(2000, 0, 250, 0.3)',
     },
     container: {
@@ -206,6 +219,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'space-around',
         marginBottom: 5,
+        paddingTop:10,
     },
     iconsCol: {
 
@@ -229,6 +243,7 @@ const styles = StyleSheet.create({
     description: {
         //backgroundColor: '#006',
         margin: 4,
+        paddingTop:30,
         fontSize:17,
         color: '#fff', // Text color
     },
@@ -240,12 +255,13 @@ const styles = StyleSheet.create({
     navigationIcon: {
         height:45,
         width:45,
-        alignItems: 'center',
-        justifyContent: 'center',
-        //backgroundColor: 'orange',
-        top: windowHeight*0.3,
-        zIndex: 1,
+        marginLeft:'2%',
+        marginBottom:'10%',
     },
+    containerMain : {
+        flexGrow:1,
+        justifyContent:'flex-end',
+    }
 });
 
 const IconStarFilled = () => (

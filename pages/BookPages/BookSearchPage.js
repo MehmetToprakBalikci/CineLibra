@@ -1,5 +1,15 @@
 import React, { Component } from "react";
-import {StyleSheet, View, Text, ImageBackground, SafeAreaView, ScrollView, Platform, StatusBar} from "react-native";
+import {
+    StyleSheet,
+    View,
+    Text,
+    ImageBackground,
+    SafeAreaView,
+    ScrollView,
+    Platform,
+    StatusBar,
+    Dimensions
+} from "react-native";
 import LeftBar from "../../components/MoviePageComponents/LeftBar";
 import {useNavigation} from "@react-navigation/native";
 import SearchList from "../../components/MoviePageComponents/searchList";
@@ -10,6 +20,7 @@ import BookSearchList from "../../components/BookPageComponents/BookSearchList";
 
 const bg_filter_color = BookColors.bg_filter_color
 const opacity_color = BookColors.opacity_color
+const windowHeight = Dimensions.get('window').height;
 export default function BookSearchPage(props) {
     const background = require('../../assets/bg.jpg')
     // console.log("book search page now");
@@ -55,6 +66,7 @@ const styles = StyleSheet.create({
         flex:1
     },
     safeArea: {
+        minHeight:windowHeight,
         flex:1,
         backgroundColor:bg_filter_color,
         paddingTop: Platform.OS === "android" ? StatusBar.currentHeight+20 : 0,

@@ -1,9 +1,20 @@
+import {View, Text, TouchableOpacity, StyleSheet, SafeAreaView, Platform, StatusBar, Dimensions} from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import React, { useState } from 'react';
-import { SafeAreaView, View, Text, TouchableOpacity, StyleSheet,Dimensions } from 'react-native';
 import Modal from 'react-native-modal';
 import { auth } from '../firebase';
-const SignOutScreen = () => {
+import {colors} from '../components/MoviePageComponents/colorProfile'
+
+const main_weak = colors.main_weak;
+const text_color = colors.text_color;
+const text_color_weak = colors.text_color_weak;
+const accent_color = colors.accent;
+const accent_color_weak = colors.accent_weak;
+const accent_color_strong = colors.accent_strong;
+const main_color = colors.main;
+const windowHeight = Dimensions.get('window').height;
+const windowWidth = Dimensions.get('window').width;
+export const SignOutScreen = () => {
   const navigator = useNavigation();
 
   const handleCancel = ()=>{
@@ -28,48 +39,28 @@ const SignOutScreen = () => {
  
 
   return (
-    <SafeAreaView style={styles.container}>
-      <Modal
-        isVisible={true}
-        onBackdropPress={handleCancel}
-        style={styles.modal}
-        swipeDirection="down"
-        onSwipeComplete={handleCancel}
-      >
-        <View style={styles.secondContainer}>
-          <Text style={styles.text}>Are you sure you want to sign out?</Text>
-          <View style={styles.buttonContainer}>
-            <TouchableOpacity style={styles.cancelButton} onPress={handleCancel}>
-              <Text style={styles.buttonText}>Cancel</Text>
-            </TouchableOpacity>
-            <TouchableOpacity style={styles.logoutButton} onPress={handleLogOut}>
-              <Text style={styles.buttonText}>Log Out</Text>
-            </TouchableOpacity>
+      <View style={{backgroundColor:Platform.OS === 'ios' ? 'transparent' : 'rgba(0,0,0,0.5)' , flex:1}}>
+        <View style={{backgroundColor: 'transparent' , flex:4}}>
+
+        </View>
+        <View style={styles.buttonContainer}>
+
+          <Text style={{color:text_color ,alignSelf:'center', fontWeight:'bold', fontSize:18, paddingTop:'10%'}}>Are you sure you want to sign out?</Text>
+
+          <View style={styles.innerStyle}>
+          <TouchableOpacity style={styles.cancelButton} onPress={handleCancel}>
+            <Text style={styles.buttonText1}>Cancel</Text>
+          </TouchableOpacity>
+          <TouchableOpacity style={styles.logoutButton} onPress={handleLogOut}>
+            <Text style={styles.buttonText2}>Sign Out</Text>
+          </TouchableOpacity>
           </View>
         </View>
-      </Modal>
-    </SafeAreaView>
+      </View>
   );
 };
 const { height } = Dimensions.get('window');
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  modal: {
-    justifyContent: 'flex-end',
-    margin: 0,
-  },
-  secondContainer: {
-    backgroundColor: 'white',
-    borderTopLeftRadius: 20,
-    borderTopRightRadius: 20,
-    alignItems: 'center',
-    height: height / 2, // Half of the screen height
-    
-  },
   text: {
     fontSize: 18, 
                             
@@ -78,32 +69,46 @@ const styles = StyleSheet.create({
     marginTop: '10%',
   },
   buttonContainer: {
-    flexDirection: 'column',
-    justifyContent: 'space-around',
-    width: '50%',
-    height: '30%',
-    marginTop: '20%',
+    flex:2,
+    backgroundColor:main_weak,
+    paddingHorizontal:'5%',
+    borderRadius:15,
+    shadowColor:'black',
+    shadowRadius:20,
+    shadowOffset:{height:5},
+    shadowOpacity:1,
   },
   cancelButton: {
-    backgroundColor: 'grey',
-    padding: 10,
-    borderRadius: 50,
-    marginRight: 10,
-    flex: 1,
-   alignItems: 'center',
+    backgroundColor: main_color,
+    paddingVertical: 15,
+    borderRadius: 15,
+    marginVertical:10,
+    minWidth:'75%',
+    alignItems: 'center',
   },
   logoutButton: {
-    backgroundColor: 'red',
-    padding: 10,
-    borderRadius: 50,
-    flex: 1,
+    backgroundColor: accent_color_strong,
+    paddingVertical: 15,
+    marginVertical:10,
+    borderRadius: 15,
+    minWidth:'75%',
     alignItems: 'center',
     marginTop:20 
     
   },
-  buttonText: {
-    color: 'white',
+  buttonText1: {
+    fontSize: 15,
+    fontWeight: 'bold',
+    color:text_color,
   },
+  buttonText2: {
+    fontSize: 15,
+    fontWeight: 'bold',
+    color:'white',
+  },
+  innerStyle: {
+    flex:1,
+    justifyContent:'flex-end',
+    paddingBottom:'15%',
+  }
 });
-
-export default SignOutScreen;

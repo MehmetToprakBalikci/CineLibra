@@ -1,5 +1,15 @@
 import React, { Component } from "react";
-import {StyleSheet, View, Text, ImageBackground, SafeAreaView, ScrollView, Platform, StatusBar} from "react-native";
+import {
+    StyleSheet,
+    View,
+    Text,
+    ImageBackground,
+    SafeAreaView,
+    ScrollView,
+    Platform,
+    StatusBar,
+    Dimensions
+} from "react-native";
 import SearchBar from "../../components/MoviePageComponents/searchBar";
 import LeftBar from "../../components/MoviePageComponents/LeftBar";
 import {useNavigation} from "@react-navigation/native";
@@ -9,6 +19,7 @@ import { auth } from "../../firebase";
 
 const bg_filter_color = colors.bg_filter_color
 const opacity_color = colors.opacity_color
+const windowHeight = Dimensions.get('window').height;
 export default function SearchPage(props) {
     const background = require('../../assets/bg_alt.jpg')
   //  console.log(auth.currentUser.email+" is in searchpage now");
@@ -54,6 +65,7 @@ const styles = StyleSheet.create({
         flex:1
     },
     safeArea: {
+        minHeight:windowHeight,
         flex:1,
         backgroundColor:bg_filter_color,
         paddingTop: Platform.OS === "android" ? StatusBar.currentHeight+20 : 0,

@@ -6,6 +6,7 @@ const main_strong = colors.main_strong
 const text_color = colors.text_color
 const main_color = colors.main
 const text_color_weak = colors.text_color_weak
+const text_color_ghost = colors.text_color_ghost
 
 // placeholder={"e-mail"}
 //                         value={email}
@@ -43,7 +44,7 @@ export  const LoginTextfield = props =>{
                 }}
                 placeholder={props.placeholder}
                 value={props.inputValue}
-                placeholderTextColor={text_color_weak}
+                placeholderTextColor={text_color_ghost}
                 keyboardType={'email-address'}
                 textAlign={'center'}
                 autoComplete={"off"}

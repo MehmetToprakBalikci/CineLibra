@@ -11,6 +11,8 @@ import { auth } from '../firebase';
 
 const text_color = colors.text_color
 const text_color_weak = colors.text_color_weak
+const bg_filter_color = colors.bg_filter_color
+const bg_filter_color_strong = colors.bg_filter_color_strong
 
 export default function Profile() {
 
@@ -30,6 +32,7 @@ export default function Profile() {
 
     return (
         <ImageBackground style={{flex:1}} blurRadius={200} source={require('../assets/bg_alt.jpg')}>
+            <View style={{backgroundColor:bg_filter_color, flex:1}}>
             <SafeAreaView style={styles.safeAreaStyle}>
                 <TouchableOpacity  onPress={()=> navigation.goBack()}>
                     <AntDesign name="arrowleft" size={35} style={styles.arrowLeft} />
@@ -46,6 +49,7 @@ export default function Profile() {
 
 
             </SafeAreaView>
+            </View>
         </ImageBackground>
     )
 }

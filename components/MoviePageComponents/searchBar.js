@@ -31,15 +31,17 @@ const styles = StyleSheet.create({
     borderRadius: 20
   },
   search: {
-    color: text_color_weak,
-    opacity: 0.6,
-    margin: 10
+      color: text_color_weak,
+      opacity: 0.9,
+      marginLeft:10,
+      paddingRight:'65%',
+      flex:1,
   },
   inputLeftIcon1: {
-    color: text_color_weak,
-    fontSize:20,
-    alignSelf: "center",
-    margin: 8,
+      color: text_color_weak,
+      fontSize:20,
+      alignSelf: "center",
+      padding: 8,
   }
 });
 

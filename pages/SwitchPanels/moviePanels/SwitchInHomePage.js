@@ -5,10 +5,10 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 
 import { colors } from '../../../components/MoviePageComponents/colorProfile';
 import Profile from '../../../screens/Profile';
-import SignOutScreen from '../../../screens/SignOutScreen';
 import CustomDrawer from '../../../components/MoviePageComponents/CustomDrawer';
 import HomePage from '../../MoviePages/HomePage';
 // import SwitchBookHomePanel from '../bookPanels/SwitchBookHomePanel';  // Ensure the correct import path
+import { SignOutScreen } from '../../../screens/SignOutScreen';
 
 const Drawer = createDrawerNavigator();
 

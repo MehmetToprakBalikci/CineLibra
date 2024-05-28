@@ -1,4 +1,16 @@
-import { Button, Image, ImageBackground, StyleSheet, Text, View ,StatusBar, TextInput, TouchableOpacity, SafeAreaView} from 'react-native';
+import {
+    Button,
+    Image,
+    ImageBackground,
+    StyleSheet,
+    Text,
+    View,
+    StatusBar,
+    TextInput,
+    TouchableOpacity,
+    SafeAreaView,
+    Dimensions
+} from 'react-native';
 
 
 import { AntDesign } from '@expo/vector-icons';
@@ -14,6 +26,7 @@ import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { updateProfile } from 'firebase/auth';
 
 const background = require('../../assets/bg_alt.jpg')
+const windowHeight = Dimensions.get('window').height;
 
 const main_strong = colors.main_strong
 const main_weak = colors.main_weak
@@ -54,7 +67,7 @@ export default function AltStartPage() {
 
 
     return (
-        <View style={{flex:5}}>
+        <View style={{flex:5, minHeight:windowHeight}}>
             <View style={{flex:5, backgroundColor:'transparent'}}>
 
             </View>
@@ -105,6 +118,7 @@ const styles = StyleSheet.create({
     },
     cardStyle: {
         flex:8,
+        elevation:1,
         backgroundColor:main_weak,
         borderRadius:15,
         shadowColor:'black',
@@ -117,7 +131,6 @@ const styles = StyleSheet.create({
         flexDirection:'column',
         justifyContent:'space-evenly',
         flex:1,
-       // rowGap:'10%',
         paddingTop:'2%',
         marginBottom:'2%',
         paddingHorizontal:'8%'

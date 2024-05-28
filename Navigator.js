@@ -14,7 +14,7 @@ import SwitchBookSearchPanel from './pages/SwitchPanels/bookPanels/SwitchBookSea
 import BookPage from "./pages/BookPages/BookPage";
 import {forModalPresentationIOS} from "@react-navigation/stack/src/TransitionConfigs/CardStyleInterpolators";
 import {Dimensions} from "react-native";
-import SignOutScreen from './screens/SignOutScreen';
+import { SignOutScreen } from './screens/SignOutScreen';
 
 const Stack = createStackNavigator();
 const windowHeight = Dimensions.get('window').height;
@@ -34,8 +34,9 @@ export const Navigator = () => {
                 headerShown:false,
                 title:'SignUpPage',
                 gestureDirection:'vertical',
-                 gestureResponseDistance: Platform.OS === 'ios' ? windowHeight : 0,
-                cardStyleInterpolator: Platform.OS === 'ios' ? CardStyleInterpolators.forModalPresentationIOS : CardStyleInterpolators.forBottomSheetAndroid,
+                 gestureEnabled:true,
+                 gestureResponseDistance: Platform.OS === 'ios' ? windowHeight : windowHeight,
+                cardStyleInterpolator: Platform.OS === 'ios' ? CardStyleInterpolators.forModalPresentationIOS : CardStyleInterpolators.forRevealFromBottomAndroid,
                 presentation: 'transparentModal',
 
             }}/>
@@ -58,7 +59,7 @@ export const Navigator = () => {
                 title:'HomePage',
                 gestureEnabled:false,
             }}/>
-            
+
 
             <Stack.Screen name="bookSearchPage" component={SwitchBookSearchPanel} options={{
                 headerShown:false,
@@ -77,13 +78,17 @@ export const Navigator = () => {
             }}/>
             <Stack.Screen name="Profile" component={Profile} options={{
                 headerShown:false,
-
+                animationEnabled:false,
 
             }}/>
             <Stack.Screen name="SignOut" component={SignOutScreen} options={{
                 headerShown:false,
-
-
+                title:'SignOut',
+                gestureDirection:'vertical',
+                gestureEnabled:true,
+                gestureResponseDistance: Platform.OS === 'ios' ? windowHeight : windowHeight,
+                cardStyleInterpolator: Platform.OS === 'ios' ? CardStyleInterpolators.forModalPresentationIOS : CardStyleInterpolators.forRevealFromBottomAndroid,
+                presentation: 'transparentModal',
             }}/>
         </Stack.Navigator>
     )
