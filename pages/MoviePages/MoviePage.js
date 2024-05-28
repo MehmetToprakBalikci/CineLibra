@@ -96,7 +96,7 @@ const MoviePage = () => {
         <ImageBackground
             source={{ uri: `https://image.tmdb.org/t/p/original${movieItem.backdrop_path}` }}
             style={styles.background}
-            blurRadius={3}
+            blurRadius={0}
         >
             <ScrollView contentContainerStyle={styles.scrollView}>
                 <TouchableOpacity style={styles.navigationIcon} onPress={() => navigation.goBack()}>
@@ -245,7 +245,7 @@ const styles = StyleSheet.create({
     navigationIcon: {
         height:45,
         width:45,
-        marginTop:'30%',
+        marginTop:'15%',
         marginHorizontal:'5%',
     },
 });
