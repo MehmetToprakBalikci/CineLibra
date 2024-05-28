@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { TouchableOpacity } from 'react-native';
 import { MaterialCommunityIcons, MaterialIcons } from '@expo/vector-icons';
 import { colors } from "./colorProfile";
-//import firestore from '@react-native-firebase/firestore';
 import { deleteDoc, getDoc,getDocs, getFirestore, setDoc } from 'firebase/firestore';
 import { collection,addDoc,doc,query,where } from 'firebase/firestore';
 import { auth, db } from '../../firebase';
@@ -15,7 +14,7 @@ const ActionIcons = ({ type, id,isAdded,setIsAdded }) => {
     const iconColor = isAdded ? colors.accent_weak : 'white';
 
     const handlePress = () => {
-        console.log("state is "+isAdded);
+        //console.log("state is "+isAdded);
         if (isAdded) {
             if (type === 'watched') {
                 removeFromWatched(id);
@@ -34,7 +33,7 @@ const ActionIcons = ({ type, id,isAdded,setIsAdded }) => {
             }
         }
         setIsAdded(!isAdded);
-        console.log("After state is "+isAdded);
+        //console.log("After state is "+isAdded);
 
     };
 
@@ -112,10 +111,10 @@ const addToFavorites = async(movieid) => {
             // Reference to the "favoriteMovies" subcollection within the user's documen
             const favoritesCollectionRef = collection(userDocRef, "favoriteMovies");
             const moviedoc = doc(favoritesCollectionRef,movieid.toString());
-            console.log("94 is "+moviedoc.path);
+            //console.log("94 is "+moviedoc.path);
     
              await setDoc(moviedoc,{movieid:movieid});
-          
+
         
             console.log(` Added  ${movieid} to favorites!`);
           } catch (error) {
@@ -133,11 +132,11 @@ const addToFavorites = async(movieid) => {
      
           // Reference to the user's document
           const userDocRef = doc(db, "users", userid);
-          console.log("movie path is "+userDocRef.path);
+          //console.log("movie path is "+userDocRef.path);
       
           // Reference to the specific document in the "favoriteMovies" subcollection
           const movieDocRef = doc(userDocRef, "favoriteMovies",movieid.toString());
-          console.log("path is "+movieDocRef.path);
+          //console.log("path is "+movieDocRef.path);
       
           // Delete the document
           await deleteDoc(movieDocRef);
@@ -168,6 +167,27 @@ const addToWatchLater = async (movieid) => {
 
    
 }
+
+const removeFromWatchLater= async (movieid) => {
+    const userid =auth.currentUser.uid;
+    try {
+
+        // Reference to the user's document
+        const userDocRef = doc(db, "users", userid);
+        //console.log("movie path is "+userDocRef.path);
+
+        // Reference to the specific document in the "favoriteMovies" subcollection
+        const movieDocRef = doc(userDocRef, "WatchLaterMovies",movieid.toString());
+        //console.log("path is "+movieDocRef.path);
+
+        // Delete the document
+        await deleteDoc(movieDocRef);
+
+        console.log(`Document with ID ${movieid} deleted from WatchLaterMovies`);
+    } catch (error) {
+        console.error("Error deleting movie from WatchLaterMovies:", error);
+    }
+};
 
 const fetchMovie = async({listtype,movieid})=>{
     
@@ -202,32 +222,5 @@ const fetchMovie = async({listtype,movieid})=>{
         }
 
 }
-
-
-
-
-   
-
-
-const removeFromWatchLater= async (movieid) => {
-    const userid =auth.currentUser.uid;
-    try {
-       
-        // Reference to the user's document
-        const userDocRef = doc(db, "users", userid);
-        //console.log("movie path is "+userDocRef.path);
-    
-        // Reference to the specific document in the "favoriteMovies" subcollection
-        const movieDocRef = doc(userDocRef, "WatchLaterMovies",movieid.toString());
-        //console.log("path is "+movieDocRef.path);
-    
-        // Delete the document
-        await deleteDoc(movieDocRef);
-    
-        console.log(`Document with ID ${movieid} deleted from WatchLaterMovies`);
-      } catch (error) {
-        console.error("Error deleting movie from WatchLaterMovies:", error);
-      }
-};
 
 export default ActionIcons;
