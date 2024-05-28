@@ -12,8 +12,11 @@ import SwitchHomePanel from './pages/SwitchPanels/moviePanels/SwitchInHomePage';
 import SwitchBookHomePanel from './pages/SwitchPanels/bookPanels/SwitchBookHomePanel';
 import SwitchBookSearchPanel from './pages/SwitchPanels/bookPanels/SwitchBookSearchPanel';
 import BookPage from "./pages/BookPages/BookPage";
+import {forModalPresentationIOS} from "@react-navigation/stack/src/TransitionConfigs/CardStyleInterpolators";
+import {Dimensions} from "react-native";
 
 const Stack = createStackNavigator();
+const windowHeight = Dimensions.get('window').height;
 
 export const Navigator = () => {
 
@@ -30,11 +33,12 @@ export const Navigator = () => {
                 headerShown:false,
                 title:'SignUpPage',
                 gestureDirection:'vertical',
-                cardStyleInterpolator: CardStyleInterpolators.forModalPresentationIOS,
+                 gestureResponseDistance: Platform.OS === 'ios' ? windowHeight : 0,
+                cardStyleInterpolator: Platform.OS === 'ios' ? CardStyleInterpolators.forModalPresentationIOS : CardStyleInterpolators.forBottomSheetAndroid,
                 presentation: 'transparentModal',
 
             }}/>
-          
+
 
 
              <Stack.Screen name="SearchPage" component={SwitchSearchPage} options={{
@@ -59,7 +63,7 @@ export const Navigator = () => {
                 gestureEnabled:false,
             }}/>
 
-          
+
             <Stack.Screen name="bookSearchPage" component={SwitchBookSearchPanel} options={{
                 headerShown:false,
                 title:'bookSearchPage'
