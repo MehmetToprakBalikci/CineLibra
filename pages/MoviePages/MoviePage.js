@@ -86,10 +86,13 @@ const MoviePage = () => {
         <ImageBackground
             source={{ uri: `https://image.tmdb.org/t/p/original${movieItem.backdrop_path}` }}
             style={styles.background}
-            blurRadius={10}
+            blurRadius={0}
         >
 
             <ScrollView contentContainerStyle={styles.scrollView}>
+                <TouchableOpacity style={styles.navigationIcon} onPress={() => navigation.goBack()}>
+                    <AntDesign name="back" size={34} color={colors.accent_weak} />
+                </TouchableOpacity>
 
                 <View style={styles.overlay2}>
                     <LinearGradient
@@ -236,7 +239,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
         //backgroundColor: 'orange',
-        top: windowHeight*0.3,
+        top: windowHeight*0.05,
         zIndex: 1,
     },
 });
