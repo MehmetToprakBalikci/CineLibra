@@ -28,20 +28,20 @@ const styles = StyleSheet.create({
     container: {
         flexDirection: "row",
         alignItems: "center",
-        justifyContent: "space-between",
-        borderRadius: 20
+        borderRadius: 20,
     },
     search: {
         color: text_color_weak,
-        opacity: 0.6,
-        margin: 10
+        opacity: 0.9,
+        marginLeft:10,
+        paddingRight:'65%',
+        flex:1,
     },
     inputLeftIcon1: {
         color: text_color_weak,
         fontSize:20,
         alignSelf: "center",
-        margin: 8,
-
+        padding: 8,
     }
 });
 
