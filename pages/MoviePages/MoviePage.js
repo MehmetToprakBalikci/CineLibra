@@ -96,21 +96,22 @@ const MoviePage = () => {
         <ImageBackground
             source={{ uri: `https://image.tmdb.org/t/p/original${movieItem.backdrop_path}` }}
             style={styles.background}
-            blurRadius={3}
+            blurRadius={0}
         >
-            <ScrollView contentContainerStyle={styles.scrollView}>
+            <ScrollView contentContainerStyle={styles.containerMain}>
                 <TouchableOpacity style={styles.navigationIcon} onPress={() => navigation.goBack()}>
                     <AntDesign name="back" size={34} color={colors.accent_weak} />
                 </TouchableOpacity>
 
-                <View style={styles.overlay2}>
+                <View style={styles.gradientStyle}>
                     <LinearGradient
                         colors={['rgba(0, 0, 0, 0)', 'rgba(30,30,30,0.5)', 'rgba(30,30,30,0.90)']}
                         locations={[0, 0.7, 0.95]}
                         style={styles.gradient}
                     />
                 </View>
-                <View style={styles.overlay}>
+
+                <View style={styles.contentStyle}>
                     <View style={styles.overlay3}>
                         <Image
                             source={{ uri: `https://image.tmdb.org/t/p/w500${movieItem.poster_path}` }}
@@ -141,6 +142,7 @@ const MoviePage = () => {
                             </View>
                         </View>
                     </View>
+
                     <View style={styles.descriptionView}>
                         <Text style={styles.description} adjustsFontSizeToFit>{movieItem.overview}
                         </Text>
@@ -175,11 +177,13 @@ const styles = StyleSheet.create({
     scrollView: {
         flexGrow: 1,
     },
-    overlay: {
+    contentStyle: {
         backgroundColor: 'rgba(30,30,30,0.90)',
+        paddingHorizontal:5,
+        paddingBottom:20,
     },
-    overlay2: {
-        height: windowHeight - (200+185),
+    gradientStyle: {
+        height: '20%',
         //backgroundColor: 'rgba(2000, 0, 250, 0.3)',
     },
     container: {
@@ -208,6 +212,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'space-around',
         marginBottom: 5,
+        paddingTop:10,
     },
     iconsCol: {
 
@@ -243,12 +248,13 @@ const styles = StyleSheet.create({
     navigationIcon: {
         height:45,
         width:45,
-        alignItems: 'center',
-        justifyContent: 'center',
-        //backgroundColor: 'orange',
-        top: windowHeight*0.05,
-        zIndex: 1,
+        marginLeft:'2%',
+        marginBottom:'10%',
     },
+    containerMain : {
+        flexGrow:1,
+        justifyContent:'flex-end',
+    }
 });
 
 const IconStarFilled = () => (
