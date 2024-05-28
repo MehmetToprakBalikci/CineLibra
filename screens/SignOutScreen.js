@@ -34,8 +34,8 @@ const SignOutScreen = () => {
   };
 
   return (
-      <View style={{backgroundColor:'transparent', flex:1}}>
-        <View style={{backgroundColor:'transparent', flex:4}}>
+      <View style={{backgroundColor:Platform.OS === 'ios' ? 'transparent' : 'rgba(0,0,0,0.5)' , flex:1}}>
+        <View style={{backgroundColor: 'transparent' , flex:4}}>
 
         </View>
         <View style={styles.buttonContainer}>

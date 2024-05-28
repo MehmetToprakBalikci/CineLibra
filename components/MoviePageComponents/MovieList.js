@@ -8,6 +8,7 @@ import { colors } from "./colorProfile"
 const text_color_weak = colors.text_color_weak
 const opacity_color = colors.opacity_color
 const opacity_color_strong = colors.opacity_color_strong
+let isFetchingData = false
 
 const listTypes = {
   TRENDING: 'trending',
@@ -15,6 +16,7 @@ const listTypes = {
   NOW_PLAYING: 'nowPlaying',
   TOP_RATED: 'topRated',
 };
+
 
 const List = ({ title, data }) => {
   return (
@@ -39,6 +41,7 @@ const MovieList = ({ listType }) => {
   const [movieList, setMovieList] = useState([]);
 
   useEffect(() => {
+    isFetchingData = true;
     fetchData();
   }, []);
 
@@ -61,6 +64,7 @@ const MovieList = ({ listType }) => {
         data = [];
     }
     setMovieList(data.results || []);
+    isFetchingData = false;
   };
 
   return (

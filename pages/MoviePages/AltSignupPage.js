@@ -112,6 +112,7 @@ const styles = StyleSheet.create({
     },
     cardStyle: {
         flex:8,
+        elevation:1,
         backgroundColor:main_weak,
         borderRadius:15,
         shadowColor:'black',

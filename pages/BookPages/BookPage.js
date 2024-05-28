@@ -14,7 +14,7 @@ import {useNavigation, useRoute} from "@react-navigation/native";
 import {AntDesign, MaterialIcons} from "@expo/vector-icons";
 import { LinearGradient } from 'expo-linear-gradient';
 import {fetchCastDetails} from "../../api/tmdbAPI/APICalls";
-import CastProfile from "../../components/MoviePageComponents/CastProfile";
+import BookCharacterProfile from "../../components/BookPageComponents/BookCharacterProfile";
 import {BookColors} from "../../components/MoviePageComponents/colorProfile";
 import ActionIcons from "../../components/MoviePageComponents/ActionIcons";
 
@@ -41,7 +41,7 @@ const BookPage = () => {
         <ImageBackground
             source={{ uri: `https://image.tmdb.org/t/p/original${movieItem.backdrop_path}` }}
             style={styles.background}
-            blurRadius={0}
+            blurRadius={3}
         >
             <ScrollView contentContainerStyle={styles.scrollView}>
 
@@ -88,7 +88,7 @@ const BookPage = () => {
                             (item.job === "Director")
                         )}
                         renderItem={({ item }) => (
-                            <CastProfile item={item}/>
+                            <BookCharacterProfile item={item}/>
                         )}
                         keyExtractor={(item) => item.id.toString()}
                         showsHorizontalScrollIndicator={false}
@@ -125,10 +125,12 @@ const styles = StyleSheet.create({
         right: 0,
         top: 0,
         bottom: 0,
+        paddingHorizontal:10,
     },
     overlay3: {
         //backgroundColor: 'rgba(100,100,1000,0.90)',
         flexDirection: 'row',
+        marginHorizontal:10,
     },
     overlay4: {
         flex: 2,
@@ -165,6 +167,7 @@ const styles = StyleSheet.create({
     description: {
         //backgroundColor: '#006',
         margin: 4,
+        paddingTop:30,
         fontSize:17,
         color: '#fff', // Text color
     },
@@ -172,6 +175,7 @@ const styles = StyleSheet.create({
         //backgroundColor: '#166',
         height: 150,
         marginBottom:10,
+        marginHorizontal:10,
     },
     navigationIcon: {
         height:45,

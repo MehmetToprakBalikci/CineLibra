@@ -77,7 +77,7 @@ export default function StartPage() {
 
     return (
         //<KeyboardAvoidingView style={{flex:5, minHeight:windowHeight}} behavior={Platform.OS === 'ios' ?'padding' :  'padding'}>
-        <KeyboardAvoidingView style={{flex:5, minHeight:windowHeight}}>
+        <KeyboardAvoidingView style={{flex:5, minHeight:windowHeight}} behavior={Platform.OS === 'ios' ? null : null}>
             <ImageBackground source={background} blurRadius={35} style={styles.backgroundImage}>
                 <Text style={styles.titleText}>CineLibra</Text>
             </ImageBackground>
