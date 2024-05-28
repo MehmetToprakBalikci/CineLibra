@@ -78,7 +78,7 @@ export const Navigator = () => {
             }}/>
             <Stack.Screen name="Profile" component={Profile} options={{
                 headerShown:false,
-
+                animationEnabled:false,
 
             }}/>
             <Stack.Screen name="SignOut" component={SignOutScreen} options={{

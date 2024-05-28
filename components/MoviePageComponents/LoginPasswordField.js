@@ -7,6 +7,7 @@ const main_strong = colors.main_strong
 const main_color = colors.main
 const text_color_weak = colors.text_color_weak
 const text_color = colors.text_color
+const text_color_ghost = colors.text_color_ghost
 
 
 export  const LoginPasswordField = ({placeholder,password,setPassword}) =>{
@@ -32,7 +33,7 @@ export  const LoginPasswordField = ({placeholder,password,setPassword}) =>{
                 }}
 
                 placeholder={placeholder}
-                placeholderTextColor={text_color_weak}
+                placeholderTextColor={text_color_ghost}
                 secureTextEntry={true}
                 keyboardType={'email-address'}
                 textAlign={'center'}

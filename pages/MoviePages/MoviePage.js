@@ -8,7 +8,7 @@ import {
     StyleSheet,
     Dimensions,
     TouchableOpacity,
-    FlatList, StatusBar
+    FlatList, StatusBar, SafeAreaView
 } from 'react-native';
 import {useNavigation, useRoute} from "@react-navigation/native";
 import {AntDesign, MaterialIcons} from "@expo/vector-icons";
@@ -98,7 +98,6 @@ const MoviePage = () => {
             style={styles.background}
             blurRadius={0}
         >
-
             <ScrollView contentContainerStyle={styles.scrollView}>
                 <TouchableOpacity style={styles.navigationIcon} onPress={() => navigation.goBack()}>
                     <AntDesign name="back" size={34} color={colors.accent_weak} />
@@ -121,17 +120,17 @@ const MoviePage = () => {
                             <Text style={styles.title} adjustsFontSizeToFit numberOfLines={2}>{movieItem.title}</Text>
                             <View>
                                 <View style={styles.iconRow}>
-                                    <ActionIcons type="watched" 
-                                    id={movieItem.id} 
+                                    <ActionIcons type="watched"
+                                    id={movieItem.id}
                                     isAdded={isAddedWatched}
                                     setIsAdded={setIsAddedWatched} />
 
-                                    <ActionIcons type="favorite" 
+                                    <ActionIcons type="favorite"
                                     id={movieItem.id}
                                     isAdded={isAddedFavorite}
                                      setIsAdded={setAddedFavorite} />
 
-                                    <ActionIcons type="watchLater" 
+                                    <ActionIcons type="watchLater"
                                     id={movieItem.id}
                                     isAdded={isAddedWatchLater}
                                     setIsAdded={setIsWatchLater} />
@@ -146,6 +145,7 @@ const MoviePage = () => {
                         <Text style={styles.description} adjustsFontSizeToFit>{movieItem.overview}
                         </Text>
                     </View>
+
                     <FlatList
                         horizontal
                         data={cast.filter(item =>
