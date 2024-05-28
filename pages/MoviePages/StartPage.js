@@ -104,7 +104,7 @@ export default function StartPage() {
                         </TouchableOpacity>
 
 
-                        <View style={{paddingTop:'10%', flexDirection:'row', justifyContent:'center'}}>
+                        <View style={{paddingVertical:'5%', flexDirection:'row', justifyContent:'center'}}>
                             <Text style={{alignSelf:'center', color:text_color}}>Don't have an account?</Text>
                             <TouchableOpacity onPress={() => navigation.navigate('AltSignupPage')}>
                                 <Text style={{marginLeft:'10%', fontWeight:'bold', color:accent_weak }}> Sign Up!</Text>
@@ -131,10 +131,8 @@ const styles = StyleSheet.create({
         flexDirection:'column',
         justifyContent:'space-evenly',
         flex:1,
-        //rowGap:'10%',
-        paddingTop:'5%',
-        paddingHorizontal:'10%',
-        paddingBottom: '10%'
+        paddingTop:'2%',
+        paddingHorizontal:'8%',
     },
     backgroundImage: {
         height:'110%',

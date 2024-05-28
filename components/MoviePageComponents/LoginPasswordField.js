@@ -12,7 +12,7 @@ const text_color = colors.text_color
 export  const LoginPasswordField = ({placeholder,password,setPassword}) =>{
     //const [number, onChangeNumber] = React.useState('');
     return(
-        <View style={{flex:0.75, justifyContent:'center'}}>
+        <View>
             <TextInput
                 style={{
                     maxWidth:'100%',

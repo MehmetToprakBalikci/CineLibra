@@ -9,21 +9,21 @@ const text_color_weak = colors.text_color_weak
 
 // placeholder={"e-mail"}
 //                         value={email}
-//                         onChangeText={onChangeEmail({value})} 
+//                         onChangeText={onChangeEmail({value})}
 //                         style={{keyboardType:'email-address'}}
 //  ({placeholder,inputValue,setInput})
 export  const LoginTextfield = props =>{
-    const handleUserNameChange = text => 
-        props.placeholder === 'user-name' 
-          ? props.setUserName(text) 
-          : props.placeholder === 'e-mail' 
-            ? props.setEmail(text) 
+    const handleUserNameChange = text =>
+        props.placeholder === 'user-name'
+          ? props.setUserName(text)
+          : props.placeholder === 'e-mail'
+            ? props.setEmail(text)
             : null;
-      
+
 
 
     return(
-        <View style={{flex:0.75, justifyContent:'center'}}>
+        <View>
             <TextInput
                 style={{
                     maxWidth:'100%' ,
