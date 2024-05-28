@@ -96,22 +96,21 @@ const MoviePage = () => {
         <ImageBackground
             source={{ uri: `https://image.tmdb.org/t/p/original${movieItem.backdrop_path}` }}
             style={styles.background}
-            blurRadius={0}
+            blurRadius={3}
         >
-            <ScrollView contentContainerStyle={styles.containerMain}>
+            <ScrollView contentContainerStyle={styles.scrollView}>
                 <TouchableOpacity style={styles.navigationIcon} onPress={() => navigation.goBack()}>
                     <AntDesign name="back" size={34} color={colors.accent_weak} />
                 </TouchableOpacity>
 
-                <View style={styles.gradientStyle}>
+                <View style={styles.overlay2}>
                     <LinearGradient
                         colors={['rgba(0, 0, 0, 0)', 'rgba(30,30,30,0.5)', 'rgba(30,30,30,0.90)']}
                         locations={[0, 0.7, 0.95]}
                         style={styles.gradient}
                     />
                 </View>
-
-                <View style={styles.contentStyle}>
+                <View style={styles.overlay}>
                     <View style={styles.overlay3}>
                         <Image
                             source={{ uri: `https://image.tmdb.org/t/p/w500${movieItem.poster_path}` }}
@@ -122,19 +121,19 @@ const MoviePage = () => {
                             <View>
                                 <View style={styles.iconRow}>
                                     <ActionIcons type="watched"
-                                    id={movieItem.id}
-                                    isAdded={isAddedWatched}
-                                    setIsAdded={setIsAddedWatched} />
+                                                 id={movieItem.id}
+                                                 isAdded={isAddedWatched}
+                                                 setIsAdded={setIsAddedWatched} />
 
                                     <ActionIcons type="favorite"
-                                    id={movieItem.id}
-                                    isAdded={isAddedFavorite}
-                                     setIsAdded={setAddedFavorite} />
+                                                 id={movieItem.id}
+                                                 isAdded={isAddedFavorite}
+                                                 setIsAdded={setAddedFavorite} />
 
                                     <ActionIcons type="watchLater"
-                                    id={movieItem.id}
-                                    isAdded={isAddedWatchLater}
-                                    setIsAdded={setIsWatchLater} />
+                                                 id={movieItem.id}
+                                                 isAdded={isAddedWatchLater}
+                                                 setIsAdded={setIsWatchLater} />
                                 </View>
                                 <View style={styles.iconRow}>
                                     <RatingStars movieId={movieItem.id} rating={rating} onRatingChange={setRating}/>
@@ -142,7 +141,6 @@ const MoviePage = () => {
                             </View>
                         </View>
                     </View>
-
                     <View style={styles.descriptionView}>
                         <Text style={styles.description} adjustsFontSizeToFit>{movieItem.overview}
                         </Text>
@@ -151,9 +149,9 @@ const MoviePage = () => {
                     <FlatList
                         horizontal
                         data={cast.filter(item =>
-                                (item.known_for_department === "Acting" && item.order < 15) ||
-                                (item.known_for_department === "Directing") ||
-                                (item.job === "Director")
+                            (item.known_for_department === "Acting" && item.order < 15) ||
+                            (item.known_for_department === "Directing") ||
+                            (item.job === "Director")
                         )}
                         renderItem={({ item }) => (
                             <CastProfile item={item}/>
@@ -176,14 +174,14 @@ const styles = StyleSheet.create({
     },
     scrollView: {
         flexGrow: 1,
+        alignSelf:'flex-end',
+        paddingBottom:'10%',
     },
-    contentStyle: {
+    overlay: {
         backgroundColor: 'rgba(30,30,30,0.90)',
-        paddingHorizontal:5,
-        paddingBottom:20,
     },
-    gradientStyle: {
-        height: '20%',
+    overlay2: {
+        height: windowHeight*0.4,
         //backgroundColor: 'rgba(2000, 0, 250, 0.3)',
     },
     container: {
@@ -212,7 +210,6 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'space-around',
         marginBottom: 5,
-        paddingTop:10,
     },
     iconsCol: {
 
@@ -248,13 +245,9 @@ const styles = StyleSheet.create({
     navigationIcon: {
         height:45,
         width:45,
-        marginLeft:'2%',
-        marginBottom:'10%',
+        marginTop:'30%',
+        marginHorizontal:'5%',
     },
-    containerMain : {
-        flexGrow:1,
-        justifyContent:'flex-end',
-    }
 });
 
 const IconStarFilled = () => (
