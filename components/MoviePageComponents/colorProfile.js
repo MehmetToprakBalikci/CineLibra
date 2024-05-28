@@ -32,8 +32,8 @@ const BookDarkModeColors = {
     text_color_weak: 'rgba(190, 190, 190, 0.8)',
     bg_filter_color: 'rgba(20, 30, 60, 0.5)',
     bg_filter_color_strong: 'rgba(20, 30, 60, 0.4)',
-    opacity_color: 'rgba(40, 40, 50 , 0.3)',
-    opacity_color_strong: 'rgba(25, 25, 50 ,0.3)',
+    opacity_color: 'rgba(40, 60, 80 , 0.5)',
+    opacity_color_strong: 'rgba(40, 60, 80 ,0.7)',
     highlight_color: 'rgba(255, 126, 72, 0.6)',
 }
 
@@ -49,8 +49,8 @@ const lightModeColors = {
     text_color_weak: 'rgba(150, 150, 150, 0.9)',
     bg_filter_color: 'rgba(200, 120, 90, 0.3)',
     bg_filter_color_strong: 'rgba(180, 100, 70, 0.4)',
-    opacity_color: 'rgba(180, 120, 100 , 0.3)',
-    opacity_color_strong: 'rgba(100, 60, 60 ,0.3)',
+    opacity_color: 'rgba(110,70,60,0.5)',
+    opacity_color_strong: 'rgba(110, 70, 60 ,0.7)',
     highlight_color: 'rgba(255, 126, 72, 0.6)',
 }
 
@@ -63,11 +63,11 @@ const BookLightModeColors = {
     accent_strong: 'rgb(0, 103, 255)',
     text_color: 'rgba(0, 0, 0, 1)',
     text_color_white: 'rgba(255,255,255,0.9)',
-    text_color_weak: 'rgba(150, 150, 150, 0.8)',
+    text_color_weak: 'rgba(200, 200, 200, 0.9)',
     bg_filter_color: 'rgba(90, 120, 200, 0.3)',
     bg_filter_color_strong: 'rgba(70, 100, 180, 0.4)',
-    opacity_color: 'rgba(140, 160, 220 , 0.3)',
-    opacity_color_strong: 'rgba(60, 60, 100 ,0.3)',
+    opacity_color: 'rgba(140, 160, 220 , 0.5)',
+    opacity_color_strong: 'rgba(140, 160, 220 ,0.8)',
     highlight_color: 'rgba(72, 126, 255, 0.6)',
 }
 

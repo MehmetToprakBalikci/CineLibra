@@ -10,6 +10,7 @@ const text_color_weak = colors.text_color_weak;
 const accent_color = colors.accent;
 const accent_color_weak = colors.accent_weak;
 const accent_color_strong = colors.accent_strong;
+const main_color = colors.main;
 
 const SignOutScreen = () => {
   const navigation = useNavigation();
@@ -73,7 +74,7 @@ const styles = StyleSheet.create({
     alignItems:'center',
   },
   cancelButton: {
-    backgroundColor: '#FFFFFF',
+    backgroundColor: main_color,
     paddingVertical: 15,
     paddingHorizontal: 30,
     borderRadius: 15,
@@ -93,7 +94,7 @@ const styles = StyleSheet.create({
   buttonText: {
     fontSize: 15,
     fontWeight: 'bold',
-    color: 'black',
+    color: text_color,
   },
   second_container: {
     alignItems:'center',
