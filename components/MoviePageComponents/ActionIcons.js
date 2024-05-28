@@ -12,31 +12,60 @@ import { auth, db } from '../../firebase';
 
 const ActionIcons = ({ type, id,isAdded,setIsAdded }) => {
     //const [isAdded, setIsAdded] = useState(false);
-    const iconColor = isAdded ? colors.accent_weak : 'white';
+    const isWatched = type === "watched" && isAdded;
+    const isFavSelected= type==='favorite'&& isAdded;
+    const isSelectedWatchLater = type==='watchLater' && isAdded;   colors.accent_weak
 
-    const handlePress = () => {
+    const [isprevStateWatched,setStateWatched ] = useState(false); // initially false;
+    const [isprevStateWatchLater,setStateWatchLater] = useState(false); // initially false;
+    
+    
+    let iconColor = isAdded  ? colors.accent_weak : 'white';
+
+//     if(isWatched && isprevStateWatchLater){// if current is watched and prev is watch later switch the states
+//       setIsAdded(isprevStateWatchLater);
+//       setStateWatchLater(isWatched);
+// }
+//      if(isSelectedWatchLater && isprevStateWatched){ // if current is watch later and prevstate is watched switch the states
+//       setIsAdded(isprevStateWatchLater);
+//       setStateWatched(isSelectedWatchLater);  
+//      }
+  
+
+    const handlePress = async () => {
         console.log("state is "+isAdded);
-        if (isAdded) {
-            if (type === 'watched') {
-                removeFromWatched(id);
-            } else if (type === 'favorite') {
-                removeFromFavorites(id);
-            } else if (type === 'watchLater') {
-                removeFromWatchLater(id);
-            }
-        } else {
-            if (type === 'watched') {
-                addToWatched(id);
-            } else if (type === 'favorite') {
-                addToFavorites(id);
-            } else if (type === 'watchLater') {
-                addToWatchLater(id);
-            }
-        }
-        setIsAdded(!isAdded);
-        console.log("After state is "+isAdded);
+       if(isAdded)
+        await removeFromCollection(type,id);
+       else
+       await addToCollection(type,id); 
+      setIsAdded(!isAdded);
 
     };
+    const addToCollection = async (type, movieid) => {
+      if (type === 'watched') { // if movie is watched 
+          await addToWatched(movieid);
+          await removeFromCollection('watchLater', movieid);
+          setStateWatched(isprevStateWatched); // watched is kept track
+      } else if (type === 'favorite') { // if movie is favorite
+          await addToFavorites(movieid);
+      } else if (type === 'watchLater') { 
+          await addToWatchLater(movieid);
+          await removeFromCollection('watched', movieid);
+          setStateWatchLater(isprevStateWatchLater); // watchlater is kept track
+      }
+      setIsAdded(!isAdded);
+  };
+
+  const removeFromCollection = async (type, movieid) => {
+      if (type === 'watched') {
+          await removeFromWatched(movieid);
+          await removeFromFavorites(movieid);
+      } else if (type === 'favorite') {
+          await removeFromFavorites(movieid);
+      } else if (type === 'watchLater') {
+          await removeFromWatchLater(movieid);
+      }
+  };
 
     const renderIcon = () => {
         switch (type) {
@@ -58,7 +87,7 @@ const ActionIcons = ({ type, id,isAdded,setIsAdded }) => {
     );
 };
 
-const addToWatched =  async(movieid) => {
+const addToWatched =  async(movieid) => { // filmi izledi 
     const userid =auth.currentUser.uid;
 
     try {
@@ -71,6 +100,9 @@ const addToWatched =  async(movieid) => {
         const moviedoc = doc(addToWatchedCollectionRef,movieid.toString());
         
         await setDoc(moviedoc, {movieid:movieid});
+
+        // sonradan izleme listesinden kaldır eğer işaretlendiyse (izlendi)
+        // removeFromWatchLater(movieid);
         
         console.log(` Added  ${movieid} to WatchedMovies!`);
       } catch (error) {
@@ -80,7 +112,7 @@ const addToWatched =  async(movieid) => {
 
    };
 
-const removeFromWatched = async (movieid) => {
+const removeFromWatched = async (movieid) => { // elini cektiği zaman işareti geli aldıgında
     const userid = auth.currentUser.uid;
   
     try {
@@ -95,6 +127,10 @@ const removeFromWatched = async (movieid) => {
       
           // Delete the document
           await deleteDoc(movieDocRef);
+
+          // remove from favorite list if exist
+          // removeFromFavorites(movieid);
+          
       
           console.log(`Document with ID ${movieid} deleted from WatchedMovies`);
         } catch (error) {
@@ -149,7 +185,7 @@ const addToFavorites = async(movieid) => {
   }
   
 
-const addToWatchLater = async (movieid) => {
+const addToWatchLater = async (movieid) => { //önce izlemeden hemen ztn sonradan izleye tıklayamıor
     const userid =auth.currentUser.uid;
     try {
         // Reference to the user's document

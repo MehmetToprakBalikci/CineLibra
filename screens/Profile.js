@@ -7,13 +7,26 @@ import { StyleSheet } from 'react-native';
 import Lists from "../components/MoviePageComponents/Lists";
 import ProfileLists from "../components/MoviePageComponents/ProfileLists";
 import {colors} from '../components/MoviePageComponents/colorProfile';
+import { auth } from '../firebase';
 
 const text_color = colors.text_color
 const text_color_weak = colors.text_color_weak
 
 export default function Profile() {
 
-    const navigation = useNavigation()
+    const navigation = useNavigation();
+    const user = auth.currentUser;
+    
+    if (user !== null) {
+        user.providerData.forEach((profile) => {
+          console.log("Sign-in provider: " + profile.providerId);
+          console.log("  Provider-specific UID: " + profile.uid);
+          console.log("  Name: " + profile.displayName);
+          console.log("  Email: " + profile.email);
+          console.log("  Photo URL: " + profile.photoURL);
+        })};
+
+       
 
     return (
         <ImageBackground style={{flex:1}} blurRadius={200} source={require('../assets/bg_alt.jpg')}>
@@ -24,7 +37,7 @@ export default function Profile() {
 
                 <View style={{flex:1 , alignItems:'center',justifyContent:'center',flexDirection:'row' , marginBottom:"7%"}}>
                     <Image source={require('../assets/bg.jpg')} style={styles.image}/>
-                    <Text style={{fontSize:22, color:text_color_weak}}>Muhammed Enes</Text>
+                    <Text style={{fontSize:22, color:text_color_weak}}> {user.displayName}</Text>
                 </View>
 
                 <View style={{flex:4}}>

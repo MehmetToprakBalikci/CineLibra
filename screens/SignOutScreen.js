@@ -1,105 +1,109 @@
-import React from 'react';
-import {View, Text, TouchableOpacity, StyleSheet, SafeAreaView, Platform, StatusBar} from 'react-native';
 import { useNavigation } from '@react-navigation/native';
+import React, { useState } from 'react';
+import { SafeAreaView, View, Text, TouchableOpacity, StyleSheet,Dimensions } from 'react-native';
+import Modal from 'react-native-modal';
 import { auth } from '../firebase';
-import {colors} from '../components/MoviePageComponents/colorProfile'
-
-const main_weak = colors.main_weak;
-const text_color = colors.text_color;
-const text_color_weak = colors.text_color_weak;
-const accent_color = colors.accent;
-const accent_color_weak = colors.accent_weak;
-const accent_color_strong = colors.accent_strong;
-
 const SignOutScreen = () => {
-  const navigation = useNavigation();
+  const navigator = useNavigation();
 
+  const handleCancel = ()=>{
+    // navigate to prev
+    navigator.goBack();
 
-
-  const handleCancel = () => {
-    navigation.goBack(); // Go back to the previous screen
-  };
-
-  const handleLogOut = async () => {
+  }
+  const handleLogOut = async ()=>{
     try {
       await auth.signOut();
       console.log(auth.currentUser ? auth.currentUser.email + " is logging out..." : "User is logged out");
-      navigation.navigate("StartPage"); // Change 'StartPage' to the actual name of your start page
+      navigator.navigate("StartPage"); // Change 'StartPage' to the actual name of your start page
       console.log
     } catch (error) {
       console.error("Error signing out: ", error);
     }
-  };
+
+  }
+
+  
+
+ 
 
   return (
     <SafeAreaView style={styles.container}>
-
-      <View style={styles.second_container}>
-        <Text style={styles.text}>Are you sure you want to sign out?</Text>
-
-        <View style={styles.buttonContainer}>
-          <TouchableOpacity style={styles.cancelButton} onPress={handleCancel}>
-            <Text style={styles.buttonText}>Cancel</Text>
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.logoutButton} onPress={handleLogOut}>
-            <Text style={styles.buttonText}>Log Out</Text>
-          </TouchableOpacity>
+      <Modal
+        isVisible={true}
+        onBackdropPress={handleCancel}
+        style={styles.modal}
+        swipeDirection="down"
+        onSwipeComplete={handleCancel}
+      >
+        <View style={styles.secondContainer}>
+          <Text style={styles.text}>Are you sure you want to sign out?</Text>
+          <View style={styles.buttonContainer}>
+            <TouchableOpacity style={styles.cancelButton} onPress={handleCancel}>
+              <Text style={styles.buttonText}>Cancel</Text>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.logoutButton} onPress={handleLogOut}>
+              <Text style={styles.buttonText}>Log Out</Text>
+            </TouchableOpacity>
+          </View>
         </View>
-
-      </View>
+      </Modal>
     </SafeAreaView>
   );
 };
-
-export default SignOutScreen;
-
+const { height } = Dimensions.get('window');
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    justifyContent: 'center',
     alignItems: 'center',
-    paddingTop: Platform.OS === "android" ? StatusBar.currentHeight+20 : 0,
-    backgroundColor: main_weak, // Background color of the container
+  },
+  modal: {
+    justifyContent: 'flex-end',
+    margin: 0,
+  },
+  secondContainer: {
+    backgroundColor: 'white',
+    borderTopLeftRadius: 20,
+    borderTopRightRadius: 20,
+    alignItems: 'center',
+    height: height / 2, // Half of the screen height
+    
   },
   text: {
-    marginBottom: 20,
-    fontSize: 18, // Font size of the text
-    fontWeight: 'bold', // Font weight of the text
-    textAlign: 'center', // Text alignment
-    color: text_color,
+    fontSize: 18, 
+                            
+                                
+                              
+    marginTop: '10%',
   },
   buttonContainer: {
     flexDirection: 'column',
-    width: '100%',
-    alignItems:'center',
+    justifyContent: 'space-around',
+    width: '50%',
+    height: '30%',
+    marginTop: '20%',
   },
   cancelButton: {
-    backgroundColor: '#FFFFFF',
-    paddingVertical: 15,
-    paddingHorizontal: 30,
-    borderRadius: 15,
-    marginVertical:10,
-    minWidth:'75%',
-    alignItems: 'center',
+    backgroundColor: 'grey',
+    padding: 10,
+    borderRadius: 50,
+    marginRight: 10,
+    flex: 1,
+   alignItems: 'center',
   },
   logoutButton: {
-    backgroundColor: accent_color_strong,
-    paddingVertical: 15,
-    paddingHorizontal: 30,
-    marginVertical:10,
-    borderRadius: 15,
-    minWidth:'75%',
+    backgroundColor: 'red',
+    padding: 10,
+    borderRadius: 50,
+    flex: 1,
     alignItems: 'center',
+    marginTop:20 
+    
   },
   buttonText: {
-    fontSize: 15,
-    fontWeight: 'bold',
-    color: 'black',
+    color: 'white',
   },
-  second_container: {
-    alignItems:'center',
-    marginBottom:50,
-    justifyContent:'space-between',
-    paddingTop:'80%',
-    flex:1,
-  }
 });
+
+export default SignOutScreen;

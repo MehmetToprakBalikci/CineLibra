@@ -58,15 +58,19 @@ const MoviePage = () => {
             const watchedCollectionRef = collection(userDocRef, "WatchedMovies");
             const watchedQuery = query(watchedCollectionRef, where("movieid", "==", movieItem.id));
             const watchedSnapshot = await getDocs(watchedQuery);
-            if (!watchedSnapshot.empty) {
+            if (!watchedSnapshot.empty ) { // eğer izlendiyse izlendi olarak işaretle
+                console.log("watched doc "+watchedSnapshot.docs);
                 setIsAddedWatched(true);
-            }
+                
+            }// batmanı sonradan izlicem dedim ve izledim simdi noolcak
+            // sonradan izleme listesine attım belli bir süre sonra izlemeye karar veredim 
 
             // Fetch favorite state
             const favoriteCollectionRef = collection(userDocRef, "favoriteMovies");
             const favoriteQuery = query(favoriteCollectionRef, where("movieid", "==", movieItem.id));
             const favoriteSnapshot = await getDocs(favoriteQuery);
-            if (!favoriteSnapshot.empty) {
+            if (!favoriteSnapshot.empty ) { // eğer favoriye alındıysa // filmin izlenmiş olması lazım
+                console.log("favorite doc "+favoriteSnapshot.docs);
                 setAddedFavorite(true);
             }
 
@@ -74,8 +78,11 @@ const MoviePage = () => {
             const watchLaterCollectionRef = collection(userDocRef, "WatchLaterMovies");
             const watchLaterQuery = query(watchLaterCollectionRef, where("movieid", "==", movieItem.id));
             const watchLaterSnapshot = await getDocs(watchLaterQuery);
-            if (!watchLaterSnapshot.empty) {
-                setIsWatchLater(true);
+            if (!watchLaterSnapshot.empty) { // eğer sonradan izlenenlere eklendiyse
+                                                  // filmin önceden izlenmiş olmaması lazım
+            console.log("watchedlater doc "+watchLaterSnapshot.docs);                                   
+             setIsWatchLater(true); // statei güncelle
+
             }
         } catch (error) {
             console.error('Error fetching movie states:', error);
