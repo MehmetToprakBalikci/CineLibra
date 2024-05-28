@@ -1,9 +1,9 @@
 import { View, Text,StyleSheet, ImageBackground, Image } from 'react-native'
 import React, { useState } from 'react'
 import {DrawerItemList,DrawerItem } from '@react-navigation/drawer'
-import {CustomSwitchIcon} from './CustomSwitchIcon'
+import { CustomSwitchIcon } from '../MoviePageComponents/CustomSwitchIcon'
 import { SafeAreaView } from 'react-native-safe-area-context'
-import {colors} from './colorProfile'
+import { colors } from '../MoviePageComponents/colorProfile'
 import { useEffect } from 'react'
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { useNavigation } from '@react-navigation/native'
@@ -52,10 +52,10 @@ const CustomDrawer = ({ isSwitch, setOnSwitchDone, ...props }) => {
         label="Home"
         onPress={() => {
           // Navigate to CustomMovieSearchScreen when this item is pressed
-          navigation.navigate('HomePage');
+          navigation.navigate('bookHome');
         }}
         icon={({ color }) => (
-          <Ionicons name="search-outline" size={20} color={accent_color_strong} />
+          <Ionicons name="search-outline" size={20} color={'#6A5ACD'} />
         )}
         labelStyle={{ color: text_color }}
         activeBackgroundColor={main_color}
@@ -69,7 +69,7 @@ const CustomDrawer = ({ isSwitch, setOnSwitchDone, ...props }) => {
           navigation.navigate('Profile');
         }}
         icon={({ color }) => (
-          <Ionicons name="person-outline" size={20} color={accent_color_strong} />
+          <Ionicons name="person-outline" size={20} color={'#6A5ACD'} />
         )}
         labelStyle={{ color: text_color }}
         activeBackgroundColor={main_color}
@@ -82,7 +82,7 @@ const CustomDrawer = ({ isSwitch, setOnSwitchDone, ...props }) => {
           navigation.navigate('SignOut');
         }}
         icon={({ color }) => (
-          <Ionicons name="log-out" size={20} color={accent_color_strong} />
+          <Ionicons name="log-out" size={20} color={'#6A5ACD'} />
         )}
         labelStyle={{ color: text_color }}
         activeBackgroundColor={main_color}

@@ -12,27 +12,13 @@ export const CustomMovieSearchScreen = () => {
   
   const navigation = useNavigation();
     const background = require('../assets/bg_alt.jpg')
-    console.log("CustomMovieSearch içindeyiiiim");
+
+    navigation.reset({
+      index: 0,
+      routes: [{ name: 'HomePage' }],
+    });
     return (
-      <ImageBackground source={background} blurRadius={200} style={{flex:1}}>
-        <SafeAreaView style={styles.safeArea}>
-  
-          <View style={styles.leftBarRow}>
-          <LeftBar/>
-            <SearchBar2 style={styles.searchBar} value={'SearchHome2'}></SearchBar2>
-            <View>
-  
-  
-            </View>
-  
-          </View>
-  
-          <View style={styles.listView}>
-            <Lists style={styles.lists}></Lists>
-          </View>
-  
-        </SafeAreaView>
-    </ImageBackground>
+    <></>
     );
   }
   

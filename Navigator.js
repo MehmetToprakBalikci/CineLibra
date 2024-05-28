@@ -11,6 +11,7 @@ import SwitchHomePanel from './pages/SwitchPanels/moviePanels/SwitchInHomePage';
 
 import SwitchBookHomePanel from './pages/SwitchPanels/bookPanels/SwitchBookHomePanel';
 import SwitchBookSearchPanel from './pages/SwitchPanels/bookPanels/SwitchBookSearchPanel';
+import SignOutScreen from './screens/SignOutScreen';
 
 const Stack = createStackNavigator();
 
@@ -70,6 +71,11 @@ export const Navigator = () => {
                 gestureDirection:'horizontal',
             }}/>
             <Stack.Screen name="Profile" component={Profile} options={{
+                headerShown:false,
+
+
+            }}/>
+            <Stack.Screen name="SignOut" component={SignOutScreen} options={{
                 headerShown:false,
 
 

@@ -17,15 +17,27 @@ import {fetchCastDetails} from "../../api/tmdbAPI/APICalls";
 import CastProfile from "../../components/MoviePageComponents/CastProfile";
 import {colors} from "../../components/MoviePageComponents/colorProfile";
 import ActionIcons from "../../components/MoviePageComponents/ActionIcons";
+import { auth } from '../../firebase';
+import { getDocs,doc,collection,query,where } from 'firebase/firestore';
+import { db } from '../../firebase';
+
 
 const MoviePage = () => {
     const route = useRoute();
     const { movieItem } = route.params;
     const navigation = useNavigation();
     const [cast, setCast] = useState([]);
+    const [isAddedWatched, setIsAddedWatched] = useState(false);
+    const [isAddedFavorite, setAddedFavorite] = useState(false);
+    const [isAddedWatchLater, setIsWatchLater] = useState(false);
+
+
+    // console.log("isfavorite in movie page is "+isAddedFavorite);
+
 
     useEffect(() => {
         fetchCast(movieItem.id);
+        fetchMovieStates();
     }, []);
 
     const fetchCast = async (movieId) => {
@@ -34,6 +46,39 @@ const MoviePage = () => {
             setCast(castDetails.cast);
         } catch (error) {
             console.error('Error fetching cast:', error);
+        }
+    };
+   
+    const fetchMovieStates = async () => {
+        const userId = auth.currentUser.uid;
+        const userDocRef = doc(db, "users", userId);
+
+        try {
+            // Fetch watched state
+            const watchedCollectionRef = collection(userDocRef, "WatchedMovies");
+            const watchedQuery = query(watchedCollectionRef, where("movieid", "==", movieItem.id));
+            const watchedSnapshot = await getDocs(watchedQuery);
+            if (!watchedSnapshot.empty) {
+                setIsAddedWatched(true);
+            }
+
+            // Fetch favorite state
+            const favoriteCollectionRef = collection(userDocRef, "favoriteMovies");
+            const favoriteQuery = query(favoriteCollectionRef, where("movieid", "==", movieItem.id));
+            const favoriteSnapshot = await getDocs(favoriteQuery);
+            if (!favoriteSnapshot.empty) {
+                setAddedFavorite(true);
+            }
+
+            // Fetch watch later state
+            const watchLaterCollectionRef = collection(userDocRef, "WatchLaterMovies");
+            const watchLaterQuery = query(watchLaterCollectionRef, where("movieid", "==", movieItem.id));
+            const watchLaterSnapshot = await getDocs(watchLaterQuery);
+            if (!watchLaterSnapshot.empty) {
+                setIsWatchLater(true);
+            }
+        } catch (error) {
+            console.error('Error fetching movie states:', error);
         }
     };
 
@@ -65,9 +110,20 @@ const MoviePage = () => {
                             <Text style={styles.title} adjustsFontSizeToFit numberOfLines={2}>{movieItem.title}</Text>
                             <View>
                                 <View style={styles.iconRow}>
-                                    <ActionIcons type="watched" />
-                                    <ActionIcons type="favorite" />
-                                    <ActionIcons type="watchLater" />
+                                    <ActionIcons type="watched" 
+                                    id={movieItem.id} 
+                                    isAdded={isAddedWatched}
+                                    setIsAdded={setIsAddedWatched} />
+
+                                    <ActionIcons type="favorite" 
+                                    id={movieItem.id}
+                                    isAdded={isAddedFavorite}
+                                     setIsAdded={setAddedFavorite} />
+
+                                    <ActionIcons type="watchLater" 
+                                    id={movieItem.id}
+                                    isAdded={isAddedWatchLater}
+                                    setIsAdded={setIsWatchLater} />
                                 </View>
                                 <View style={styles.iconRow}>
                                     <IconStarFilled />

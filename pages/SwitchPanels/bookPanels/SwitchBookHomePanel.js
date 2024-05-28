@@ -5,7 +5,7 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import { colors } from '../../../components/MoviePageComponents/colorProfile';
 import Profile from '../../../screens/Profile';
 import SignOutScreen from '../../../screens/SignOutScreen';
-import CustomDrawer from '../../../components/MoviePageComponents/CustomDrawer';
+import CustomDrawer from '../../../components/BookPageComponents/CustomDrawer';
 import BookHomePage from '../../BookPages/BookHomePage';
 
 const Drawer = createDrawerNavigator();
@@ -34,10 +34,9 @@ const SwitchBookHomePanel = () => {
       }}
     >
       <Drawer.Screen
-        name="Search2_1"
+        name="Search"
         component={BookHomePage}
         options={{
-          drawerLabel: 'Search',
           drawerIcon: ({ color }) => (
             <Ionicons name="search-outline" size={20} color={'#6A5ACD'} />
           ),
@@ -50,7 +49,7 @@ const SwitchBookHomePanel = () => {
       />
 
       <Drawer.Screen
-        name="Profile2_1"
+        name="Profile"
         component={Profile}
         options={{
           drawerLabel: 'Profile',
@@ -64,7 +63,7 @@ const SwitchBookHomePanel = () => {
       />
 
       <Drawer.Screen
-        name="SignOut2_2"
+        name="SignOut"
         component={SignOutScreen}
         options={{
           drawerLabel: 'SignOut',

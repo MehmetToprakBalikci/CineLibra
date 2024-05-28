@@ -14,7 +14,7 @@ const opacity_color = colors.opacity_color
 export default function HomePage(props) {
   const navigation = useNavigation();
   const background = require('../../assets/bg_alt.jpg')
-  console.log("HomePage movie içindeyiiiim");
+  // console.log("HomePage movie içindeyiiiim");
   return (
     <ImageBackground source={background} blurRadius={200} style={{flex:1}}>
       <SafeAreaView style={styles.safeArea}>

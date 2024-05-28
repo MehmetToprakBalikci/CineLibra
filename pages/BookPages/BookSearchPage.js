@@ -12,7 +12,7 @@ const bg_filter_color = BookColors.bg_filter_color
 const opacity_color = BookColors.opacity_color
 export default function BookSearchPage(props) {
     const background = require('../../assets/bg.jpg')
-    console.log("book search page now");
+    // console.log("book search page now");
     return (
         <ImageBackground source={background} blurRadius={200} style={{flex:1}}>
 

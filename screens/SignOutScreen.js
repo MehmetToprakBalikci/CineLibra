@@ -17,6 +17,7 @@ const SignOutScreen = () => {
       await auth.signOut();
       console.log(auth.currentUser ? auth.currentUser.email + " is logging out..." : "User is logged out");
       navigation.navigate("StartPage"); // Change 'StartPage' to the actual name of your start page
+      console.log
     } catch (error) {
       console.error("Error signing out: ", error);
     }
