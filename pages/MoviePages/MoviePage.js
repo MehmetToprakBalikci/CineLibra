@@ -18,8 +18,9 @@ import CastProfile from "../../components/MoviePageComponents/CastProfile";
 import {colors} from "../../components/MoviePageComponents/colorProfile";
 import ActionIcons from "../../components/MoviePageComponents/ActionIcons";
 import { auth } from '../../firebase';
-import { getDocs,doc,collection,query,where } from 'firebase/firestore';
+import {getDocs, doc, collection, query, where, getDoc} from 'firebase/firestore';
 import { db } from '../../firebase';
+import RatingStars from "../../components/MoviePageComponents/RatingStars";
 
 
 const MoviePage = () => {
@@ -30,6 +31,7 @@ const MoviePage = () => {
     const [isAddedWatched, setIsAddedWatched] = useState(false);
     const [isAddedFavorite, setAddedFavorite] = useState(false);
     const [isAddedWatchLater, setIsWatchLater] = useState(false);
+    const [rating, setRating] = useState(0);
 
 
     // console.log("isfavorite in movie page is "+isAddedFavorite);
@@ -48,7 +50,7 @@ const MoviePage = () => {
             console.error('Error fetching cast:', error);
         }
     };
-   
+
     const fetchMovieStates = async () => {
         const userId = auth.currentUser.uid;
         const userDocRef = doc(db, "users", userId);
@@ -76,6 +78,14 @@ const MoviePage = () => {
             const watchLaterSnapshot = await getDocs(watchLaterQuery);
             if (!watchLaterSnapshot.empty) {
                 setIsWatchLater(true);
+            }
+
+            // Fetch rating state
+            const ratingsCollectionRef = collection(userDocRef, "Ratings");
+            const ratingQuery = query(ratingsCollectionRef, where("movieId", "==", movieItem.id));
+            const ratingSnapshot = await getDocs(ratingQuery);
+            if (!ratingSnapshot.empty) {
+                setRating(ratingSnapshot.docs[0].data().rating);
             }
         } catch (error) {
             console.error('Error fetching movie states:', error);
@@ -127,11 +137,7 @@ const MoviePage = () => {
                                     setIsAdded={setIsWatchLater} />
                                 </View>
                                 <View style={styles.iconRow}>
-                                    <IconStarFilled />
-                                    <IconStarFilled />
-                                    <IconStarFilled />
-                                    <IconStarFilled />
-                                    <IconStarFilled />
+                                    <RatingStars movieId={movieItem.id} rating={rating} onRatingChange={setRating}/>
                                 </View>
                             </View>
                         </View>
