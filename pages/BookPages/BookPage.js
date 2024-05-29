@@ -15,41 +15,26 @@ import {AntDesign, MaterialIcons} from "@expo/vector-icons";
 import { LinearGradient } from 'expo-linear-gradient';
 import {fetchCastDetails} from "../../api/tmdbAPI/APICalls";
 import BookCharacterProfile from "../../components/BookPageComponents/BookCharacterProfile";
-import {BookColors} from "../../components/MoviePageComponents/colorProfile";
+import {BookColors, colors} from "../../components/MoviePageComponents/colorProfile";
 import ActionIcons from "../../components/MoviePageComponents/ActionIcons";
 import RatingStars from "../../components/MoviePageComponents/RatingStars";
 import { auth } from '../../firebase';
 import {getDocs, doc, collection, query, where} from 'firebase/firestore';
 import { db } from '../../firebase';
+import fallbackImage from "../../assets/book.png";
 
 
 const BookPage = () => {
     const route = useRoute();
-    const { movieItem } = route.params;
+    const { bookItem } = route.params;
     const navigation = useNavigation();
-    const [cast, setCast] = useState([]);
     const [isAddedWatched, setIsAddedWatched] = useState(false);
     const [isAddedFavorite, setAddedFavorite] = useState(false);
     const [isAddedWatchLater, setIsWatchLater] = useState(false);
     const [rating, setRating] = useState(0);
 
-
-    // console.log("isfavorite in movie page is "+isAddedFavorite);
-
-
     useEffect(() => {
-        fetchCast(movieItem.id);
-        fetchMovieStates();
     }, []);
-
-    const fetchCast = async (movieId) => {
-        try {
-            const castDetails = await fetchCastDetails(movieId);
-            setCast(castDetails.cast);
-        } catch (error) {
-            console.error('Error fetching cast:', error);
-        }
-    };
 
     const fetchMovieStates = async () => {
         const userId = auth.currentUser.uid;
@@ -58,7 +43,7 @@ const BookPage = () => {
         try {
             // Fetch watched state
             const watchedCollectionRef = collection(userDocRef, "WatchedMovies");
-            const watchedQuery = query(watchedCollectionRef, where("movieid", "==", movieItem.id));
+            const watchedQuery = query(watchedCollectionRef, where("bookId", "==", bookItem.id));
             const watchedSnapshot = await getDocs(watchedQuery);
             if (!watchedSnapshot.empty) {
                 setIsAddedWatched(true);
@@ -66,7 +51,7 @@ const BookPage = () => {
 
             // Fetch favorite state
             const favoriteCollectionRef = collection(userDocRef, "favoriteMovies");
-            const favoriteQuery = query(favoriteCollectionRef, where("movieid", "==", movieItem.id));
+            const favoriteQuery = query(favoriteCollectionRef, where("bookId", "==", bookItem.id));
             const favoriteSnapshot = await getDocs(favoriteQuery);
             if (!favoriteSnapshot.empty) {
                 setAddedFavorite(true);
@@ -74,7 +59,7 @@ const BookPage = () => {
 
             // Fetch watch later state
             const watchLaterCollectionRef = collection(userDocRef, "WatchLaterMovies");
-            const watchLaterQuery = query(watchLaterCollectionRef, where("movieid", "==", movieItem.id));
+            const watchLaterQuery = query(watchLaterCollectionRef, where("bookId", "==", bookItem.id));
             const watchLaterSnapshot = await getDocs(watchLaterQuery);
             if (!watchLaterSnapshot.empty) {
                 setIsWatchLater(true);
@@ -82,7 +67,7 @@ const BookPage = () => {
 
             // Fetch rating state
             const ratingsCollectionRef = collection(userDocRef, "Ratings");
-            const ratingQuery = query(ratingsCollectionRef, where("movieId", "==", movieItem.id));
+            const ratingQuery = query(ratingsCollectionRef, where("bookId", "==", bookItem.id));
             const ratingSnapshot = await getDocs(ratingQuery);
             if (!ratingSnapshot.empty) {
                 setRating(ratingSnapshot.docs[0].data().rating);
@@ -92,76 +77,58 @@ const BookPage = () => {
         }
     };
 
+    const { title, authors, description, pageCount, imageLinks } = bookItem.volumeInfo;
+    const imageSource = imageLinks?.thumbnail ? { uri: imageLinks.thumbnail } : fallbackImage;
+
     return (
-        <ImageBackground
-            source={{ uri: `https://image.tmdb.org/t/p/original${movieItem.backdrop_path}` }}
-            style={styles.background}
-            blurRadius={0}
-        >
+        <View style={styles.background} >
             <ScrollView contentContainerStyle={styles.scrollView}>
                 <TouchableOpacity style={styles.navigationIcon} onPress={() => navigation.goBack()}>
                     <AntDesign name="back" size={34} color={BookColors.accent_strong} />
                 </TouchableOpacity>
-
-                <View style={styles.overlay2}>
-                    <LinearGradient
-                        colors={['rgba(0, 0, 0, 0)', 'rgba(30,30,30,0.5)', 'rgba(30,30,30,0.90)']}
-                        locations={[0, 0.7, 0.95]}
-                        style={styles.gradient}
-                    />
-                </View>
                 <View style={styles.overlay}>
                     <View style={styles.overlay3}>
                         <Image
-                            source={{ uri: `https://image.tmdb.org/t/p/w500${movieItem.poster_path}` }}
+                            source={ imageSource }
                             style={styles.overlayImage}
                         />
                         <View style={styles.overlay4}>
-                            <Text style={styles.title} adjustsFontSizeToFit numberOfLines={2}>{movieItem.title}</Text>
+                            <Text style={styles.title} adjustsFontSizeToFit numberOfLines={2}>{bookItem.title}</Text>
                             <View>
                                 <View style={styles.iconRow}>
                                     <ActionIcons type="watched"
-                                                 id={movieItem.id}
+                                                 id={bookItem.id}
                                                  isAdded={isAddedWatched}
-                                                 setIsAdded={setIsAddedWatched} />
+                                                 setIsAdded={setIsAddedWatched}
+                                                 itemType={1}/>
 
                                     <ActionIcons type="favorite"
-                                                 id={movieItem.id}
+                                                 id={bookItem.id}
                                                  isAdded={isAddedFavorite}
-                                                 setIsAdded={setAddedFavorite} />
+                                                 setIsAdded={setAddedFavorite}
+                                                 itemType={1}/>
 
                                     <ActionIcons type="watchLater"
-                                                 id={movieItem.id}
+                                                 id={bookItem.id}
                                                  isAdded={isAddedWatchLater}
-                                                 setIsAdded={setIsWatchLater} />
+                                                 setIsAdded={setIsWatchLater}
+                                                 itemType={1}/>
                                 </View>
                                 <View style={styles.iconRow}>
-                                    <RatingStars movieId={movieItem.id} rating={rating} onRatingChange={setRating}/>
+                                    <RatingStars movieId={bookItem.id} rating={rating} onRatingChange={setRating} type={1}/>
                                 </View>
                             </View>
                         </View>
                     </View>
+                    {authors && <Text style={styles.description}>{authors.join(', ')}</Text>}
+                    {pageCount && <Text style={styles.description}>{pageCount} pages</Text>}
                     <View style={styles.descriptionView}>
-                        <Text style={styles.description} adjustsFontSizeToFit>{movieItem.overview}
+                        <Text style={styles.description} >{description}
                         </Text>
                     </View>
-
-                    <FlatList
-                        horizontal
-                        data={cast.filter(item =>
-                            (item.known_for_department === "Acting" && item.order < 15) ||
-                            (item.known_for_department === "Directing") ||
-                            (item.job === "Director")
-                        )}
-                        renderItem={({ item }) => (
-                            <BookCharacterProfile item={item}/>
-                        )}
-                        keyExtractor={(item) => item.id.toString()}
-                        showsHorizontalScrollIndicator={false}
-                    />
                 </View>
             </ScrollView>
-        </ImageBackground>
+        </View>
     );
 };
 
@@ -178,11 +145,7 @@ const styles = StyleSheet.create({
         paddingBottom:'10%',
     },
     overlay: {
-        backgroundColor: 'rgba(30,30,30,0.90)',
-    },
-    overlay2: {
-        height: windowHeight*0.4,
-        //backgroundColor: 'rgba(2000, 0, 250, 0.3)',
+        backgroundColor: colors.bg_filter_color_strong,
     },
     container: {
         flex: 1,
@@ -245,7 +208,7 @@ const styles = StyleSheet.create({
     navigationIcon: {
         height:45,
         width:45,
-        marginTop:'30%',
+        marginTop:'10%',
         justifyContent:'center',
         alignContent:'center',
         paddingLeft:3,
