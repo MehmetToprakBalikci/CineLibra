@@ -8,7 +8,7 @@ import {
     StyleSheet,
     Dimensions,
     TouchableOpacity,
-    FlatList
+    FlatList, StatusBar, SafeAreaView
 } from 'react-native';
 import {useNavigation, useRoute} from "@react-navigation/native";
 import {AntDesign, MaterialIcons} from "@expo/vector-icons";
@@ -17,15 +17,29 @@ import {fetchCastDetails} from "../../api/tmdbAPI/APICalls";
 import BookCharacterProfile from "../../components/BookPageComponents/BookCharacterProfile";
 import {BookColors} from "../../components/MoviePageComponents/colorProfile";
 import ActionIcons from "../../components/MoviePageComponents/ActionIcons";
+import { auth } from '../../firebase';
+import {getDocs, doc, collection, query, where, getDoc} from 'firebase/firestore';
+import { db } from '../../firebase';
+import RatingStars from "../../components/MoviePageComponents/RatingStars";
+
 
 const BookPage = () => {
     const route = useRoute();
     const { movieItem } = route.params;
     const navigation = useNavigation();
     const [cast, setCast] = useState([]);
+    const [isAddedWatched, setIsAddedWatched] = useState(false);
+    const [isAddedFavorite, setAddedFavorite] = useState(false);
+    const [isAddedWatchLater, setIsWatchLater] = useState(false);
+    const [rating, setRating] = useState(0);
+
+
+    // console.log("isfavorite in movie page is "+isAddedFavorite);
+
 
     useEffect(() => {
         fetchCast(movieItem.id);
+        fetchMovieStates();
     }, []);
 
     const fetchCast = async (movieId) => {
@@ -37,6 +51,47 @@ const BookPage = () => {
         }
     };
 
+    const fetchMovieStates = async () => {
+        const userId = auth.currentUser.uid;
+        const userDocRef = doc(db, "users", userId);
+
+        try {
+            // Fetch watched state
+            const watchedCollectionRef = collection(userDocRef, "WatchedMovies");
+            const watchedQuery = query(watchedCollectionRef, where("movieid", "==", movieItem.id));
+            const watchedSnapshot = await getDocs(watchedQuery);
+            if (!watchedSnapshot.empty) {
+                setIsAddedWatched(true);
+            }
+
+            // Fetch favorite state
+            const favoriteCollectionRef = collection(userDocRef, "favoriteMovies");
+            const favoriteQuery = query(favoriteCollectionRef, where("movieid", "==", movieItem.id));
+            const favoriteSnapshot = await getDocs(favoriteQuery);
+            if (!favoriteSnapshot.empty) {
+                setAddedFavorite(true);
+            }
+
+            // Fetch watch later state
+            const watchLaterCollectionRef = collection(userDocRef, "WatchLaterMovies");
+            const watchLaterQuery = query(watchLaterCollectionRef, where("movieid", "==", movieItem.id));
+            const watchLaterSnapshot = await getDocs(watchLaterQuery);
+            if (!watchLaterSnapshot.empty) {
+                setIsWatchLater(true);
+            }
+
+            // Fetch rating state
+            const ratingsCollectionRef = collection(userDocRef, "Ratings");
+            const ratingQuery = query(ratingsCollectionRef, where("movieId", "==", movieItem.id));
+            const ratingSnapshot = await getDocs(ratingQuery);
+            if (!ratingSnapshot.empty) {
+                setRating(ratingSnapshot.docs[0].data().rating);
+            }
+        } catch (error) {
+            console.error('Error fetching book states:', error);
+        }
+    };
+
     return (
         <ImageBackground
             source={{ uri: `https://image.tmdb.org/t/p/original${movieItem.backdrop_path}` }}
@@ -44,6 +99,9 @@ const BookPage = () => {
             blurRadius={0}
         >
             <ScrollView contentContainerStyle={styles.scrollView}>
+                <TouchableOpacity style={styles.navigationIcon} onPress={() => navigation.goBack()}>
+                    <AntDesign name="back" size={34} color={BookColors.accent_weak} />
+                </TouchableOpacity>
 
                 <View style={styles.overlay2}>
                     <LinearGradient
@@ -62,16 +120,23 @@ const BookPage = () => {
                             <Text style={styles.title} adjustsFontSizeToFit numberOfLines={2}>{movieItem.title}</Text>
                             <View>
                                 <View style={styles.iconRow}>
-                                    <ActionIcons type="watched" />
-                                    <ActionIcons type="favorite" />
-                                    <ActionIcons type="watchLater" />
+                                    <ActionIcons type="watched"
+                                                 id={movieItem.id}
+                                                 isAdded={isAddedWatched}
+                                                 setIsAdded={setIsAddedWatched} />
+
+                                    <ActionIcons type="favorite"
+                                                 id={movieItem.id}
+                                                 isAdded={isAddedFavorite}
+                                                 setIsAdded={setAddedFavorite} />
+
+                                    <ActionIcons type="watchLater"
+                                                 id={movieItem.id}
+                                                 isAdded={isAddedWatchLater}
+                                                 setIsAdded={setIsWatchLater} />
                                 </View>
                                 <View style={styles.iconRow}>
-                                    <IconStarFilled />
-                                    <IconStarFilled />
-                                    <IconStarFilled />
-                                    <IconStarFilled />
-                                    <IconStarFilled />
+                                    <RatingStars movieId={movieItem.id} rating={rating} onRatingChange={setRating}/>
                                 </View>
                             </View>
                         </View>
@@ -80,6 +145,7 @@ const BookPage = () => {
                         <Text style={styles.description} adjustsFontSizeToFit>{movieItem.overview}
                         </Text>
                     </View>
+
                     <FlatList
                         horizontal
                         data={cast.filter(item =>
@@ -108,12 +174,14 @@ const styles = StyleSheet.create({
     },
     scrollView: {
         flexGrow: 1,
+        alignSelf:'flex-end',
+        paddingBottom:'10%',
     },
     overlay: {
         backgroundColor: 'rgba(30,30,30,0.90)',
     },
     overlay2: {
-        height: windowHeight - (200+185),
+        height: windowHeight*0.4,
         //backgroundColor: 'rgba(2000, 0, 250, 0.3)',
     },
     container: {
@@ -125,12 +193,10 @@ const styles = StyleSheet.create({
         right: 0,
         top: 0,
         bottom: 0,
-        paddingHorizontal:10,
     },
     overlay3: {
         //backgroundColor: 'rgba(100,100,1000,0.90)',
         flexDirection: 'row',
-        marginHorizontal:10,
     },
     overlay4: {
         flex: 2,
@@ -175,16 +241,12 @@ const styles = StyleSheet.create({
         //backgroundColor: '#166',
         height: 150,
         marginBottom:10,
-        marginHorizontal:10,
     },
     navigationIcon: {
         height:45,
         width:45,
-        alignItems: 'center',
-        justifyContent: 'center',
-        //backgroundColor: 'orange',
-        top: windowHeight*0.03,
-        zIndex: 1,
+        marginTop:'30%',
+        marginHorizontal:'5%',
     },
 });
 
