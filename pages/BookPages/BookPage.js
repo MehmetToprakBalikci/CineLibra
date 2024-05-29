@@ -89,25 +89,17 @@ const BookPage = () => {
             blurRadius={30}
         >
             <ScrollView contentContainerStyle={styles.scrollView}>
-                <TouchableOpacity style={styles.navigationIcon} onPress={() => navigation.goBack()}>
-                    <AntDesign name="back" size={34} color={BookColors.accent_strong} />
-                </TouchableOpacity>
-
-                <View style={styles.overlay2}>
-                    <LinearGradient
-                        colors={['rgba(0, 0, 0, 0)', 'rgba(30,30,30,0.5)', 'rgba(30,30,30,0.90)']}
-                        locations={[0, 0.7, 0.95]}
-                        style={styles.gradient}
-                    />
-                </View>
                 <View style={styles.overlay}>
+                    <TouchableOpacity style={styles.navigationIcon} onPress={() => navigation.goBack()}>
+                        <AntDesign name="back" size={34} color={BookColors.accent_strong} />
+                    </TouchableOpacity>
                     <View style={styles.overlay3}>
                         <Image
                             source={ imageSource }
                             style={styles.overlayImage}
                         />
                         <View style={styles.overlay4}>
-                            <Text style={styles.title} adjustsFontSizeToFit numberOfLines={2}>{bookItem.title}</Text>
+                            <Text style={styles.title} adjustsFontSizeToFit numberOfLines={2}>{title}</Text>
                             <View>
                                 <View style={styles.iconRow}>
                                     <ActionIcons type="watched"
@@ -181,6 +173,7 @@ const styles = StyleSheet.create({
     overlay3: {
         //backgroundColor: 'rgba(100,100,1000,0.90)',
         flexDirection: 'row',
+        paddingTop: 20,
     },
     overlay4: {
         flex: 2,
@@ -224,13 +217,12 @@ const styles = StyleSheet.create({
     },
     descriptionView:{
         //backgroundColor: '#166',
-        height: 150,
         marginBottom:10,
     },
     navigationIcon: {
         height:45,
         width:45,
-        marginTop:'30%',
+        marginTop:'10%',
         justifyContent:'center',
         alignContent:'center',
         paddingLeft:3,
