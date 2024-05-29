@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { StyleSheet, View, Text, Touchable, TouchableOpacity, TextInput, KeyboardAvoidingView } from "react-native";
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 import {useNavigation} from "@react-navigation/native";
+import {useState} from "react";
 
 import {BookColors} from "../MoviePageComponents/colorProfile"
 const text_color = BookColors.text_color
@@ -9,14 +10,23 @@ const text_color_weak = BookColors.text_color_weak
 
 function BookSearchBar(props) {
     const navigation = useNavigation()
-    console.log("booksearch bar")
+    const [query, setQuery] = useState('');
+
+    const handleSearch = () => {
+        console.log("search bar clicked with query:", query);
+        // Pass the query to the parent component
+        if (props.onSearch) {
+            props.onSearch(query);
+        }
+        navigation.navigate('bookSearchPage');
+    };
     return (
         <View style={[styles.container, props.style]}>
             <KeyboardAvoidingView>
-                <TextInput style={styles.search} placeholder = {'Search...'} placeholderTextColor={text_color_weak} />
+                <TextInput style={styles.search} placeholder = {'Search...'} placeholderTextColor={text_color_weak} onChangeText={setQuery} value={query}/>
             </KeyboardAvoidingView>
 
-            <TouchableOpacity onPress={() => {console.log("book searchdeki search bara tıklandıı");navigation.navigate('bookSearchPage')}}>
+            <TouchableOpacity onPress={handleSearch}>
                 <Icon name="magnify" style={styles.inputLeftIcon1}></Icon>
             </TouchableOpacity>
 
@@ -28,14 +38,15 @@ const styles = StyleSheet.create({
     container: {
         flexDirection: "row",
         alignItems: "center",
-        borderRadius: 20,
+        justifyContent: "space-between",
+        borderRadius: 20
     },
     search: {
         color: text_color_weak,
         opacity: 0.9,
         marginLeft:10,
-        paddingRight:'65%',
         flex:1,
+        width:220
     },
     inputLeftIcon1: {
         color: text_color_weak,

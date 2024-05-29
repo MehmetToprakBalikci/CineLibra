@@ -1,3 +1,3 @@
 export function getGoogleBooksApiKey() {
-    return '';
+    return 'AIzaSyA-nXOz31uiXy38uTQKYagJh8sCmJfbXxE';
 }

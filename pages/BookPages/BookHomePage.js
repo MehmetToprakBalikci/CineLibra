@@ -17,6 +17,7 @@ export default function BookHomePage(props) {
     const navigation = useNavigation();
     const background = require('../../assets/bg.jpg')
     // console.log("book HomePage içindeyiiiim");
+
     return (
         <ImageBackground source={background} blurRadius={200} style={{flex:1}}>
             <SafeAreaView style={styles.safeArea}>
