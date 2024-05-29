@@ -1,6 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import {Text, View, FlatList, StyleSheet, Dimensions} from 'react-native';
-import {fetchFavoriteMovies,fetchWatchedMovies,fetchWatchLaterMovies, fetchNowPlayingMovies, fetchPopularMovies, fetchTopRatedMovies, fetchTrendingMovies} from "../../api/tmdbAPI/APICalls";
+import {
+    fetchFavoriteMovies,
+    fetchWatchedMovies,
+    fetchWatchLaterMovies,
+    fetchNowPlayingMovies,
+    fetchPopularMovies,
+    fetchTopRatedMovies,
+    fetchTrendingMovies,
+    fetchMovieSearch
+} from "../../api/tmdbAPI/APICalls";
 import MovieCard from "./MovieCard";
 
 import { colors } from "./colorProfile"
@@ -35,7 +44,7 @@ const List = ({ title, data }) => {
             renderItem={({ item }) => (
                 <MovieCard item={item} />
             )}
-            // keyExtractor={(item) => item.id.toString()}
+            keyExtractor={(item) => item.id.toString()}
             showsHorizontalScrollIndicator={false}
         />
       </View>
@@ -49,12 +58,9 @@ const MovieList = ({ listType }) => {
  const [watchLaterData, setWatchLaterData] = useState(null);
  const [favoriteData, setFavoriteData] = useState(null);
 
-
-
-
   useEffect(() => {
     isFetchingData = true;
-    fetchData();
+    fetchData()
   }, []);
 
   const fetchData = async () => {
@@ -84,7 +90,7 @@ const MovieList = ({ listType }) => {
             console.log("cache testi2: "+watchedData);
         }
         break;
-    case listTypes.FAVORITES:
+        case listTypes.FAVORITES:
         if (!favoriteData) {
             data = await fetchFavoriteMovies();
             setFavoriteData(data);
