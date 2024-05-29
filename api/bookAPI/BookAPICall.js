@@ -3,7 +3,6 @@
 import { getGoogleBooksApiKey } from "./GoogleBooksApiKey"; // You should define this function to retrieve your API key
 
 const searchBooksURL = 'https://www.googleapis.com/books/v1/volumes?q=';
-const bookDetailsURL = 'https://www.googleapis.com/books/v1/volumes/';
 const maxResults = 20;
 
 const bookAPICall = async (url) => {
@@ -40,4 +39,5 @@ export const fetchNewBooks = () => {
 
 export const fetchPopularBooks = () => {
     return bookAPICall(`${searchBooksURL}best+books&maxResults=${maxResults}&key=${getGoogleBooksApiKey()}`);
+
 }
