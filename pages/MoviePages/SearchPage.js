@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, {Component, useEffect, useState} from "react";
 import {
     StyleSheet,
     View,
@@ -8,20 +8,67 @@ import {
     ScrollView,
     Platform,
     StatusBar,
-    Dimensions
+    Dimensions, FlatList
 } from "react-native";
 import SearchBar from "../../components/MoviePageComponents/searchBar";
 import LeftBar from "../../components/MoviePageComponents/LeftBar";
 import {useNavigation} from "@react-navigation/native";
-import SearchList from "../../components/MoviePageComponents/searchList";
 import {colors} from "../../components/MoviePageComponents/colorProfile"
 import { auth } from "../../firebase";
+import {fetchCastDetails, fetchMovieSearch} from "../../api/tmdbAPI/APICalls";
+import MovieList, {listTypes} from "../../components/MoviePageComponents/MovieList";
+import Movie from "../../components/MoviePageComponents/Movie";
+import {defaultProps as movieItem} from "react-native-web/src/modules/forwardedProps";
+import MovieCard from "../../components/MoviePageComponents/MovieCard";
+import movie from "../../components/MoviePageComponents/Movie";
 
 const bg_filter_color = colors.bg_filter_color
 const opacity_color = colors.opacity_color
 const windowHeight = Dimensions.get('window').height;
 export default function SearchPage(props) {
     const background = require('../../assets/bg_alt.jpg')
+    const [movieList, setMovieList] = useState([]);
+    let searchQuery;
+
+    useEffect(() => {
+        fetchSearch(searchQuery);
+    }, []);
+
+    const fetchSearch = async (searchQuery) => {
+        let data;
+        //searchQuery = 'dune';
+        try {
+            data = await fetchMovieSearch(searchQuery);
+            console.log(data.results);
+
+
+        } catch (error) {
+            console.error('Error fetching cast:', error);
+        }
+
+        setMovieList(data.results || []);
+    };
+
+    const List = ({ title, data }) => {
+        return (
+            <View style={styles.listContainer}>
+                <View style={styles.textContainer}>
+                    <Text style={styles.listTitle}>{title}</Text>
+                </View>
+                <FlatList
+                    //horizontal
+                    data={data}
+                    renderItem={({ item }) => (
+                        <MovieCard item={item} />
+                    )}
+                    // keyExtractor={(item) => item.id.toString()}
+                    showsVerticalScrollIndicator={false}
+                />
+            </View>
+        );
+    };
+
+
   //  console.log(auth.currentUser.email+" is in searchpage now");
     return (
         <ImageBackground source={background} blurRadius={200} style={{flex:1}}>
@@ -34,7 +81,9 @@ export default function SearchPage(props) {
                 </View>
 
                 <View style={styles.listView}>
-                       <SearchList Text={'Results'}></SearchList>
+                    <View>
+                        <List title="Search Results" data={movieList} />
+                    </View>
                 </View>
 
             </SafeAreaView>

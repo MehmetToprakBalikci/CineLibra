@@ -12,7 +12,6 @@ import {
 } from "react-native";
 import LeftBar from "../../components/MoviePageComponents/LeftBar";
 import {useNavigation} from "@react-navigation/native";
-import SearchList from "../../components/MoviePageComponents/searchList";
 import {BookColors} from "../../components/MoviePageComponents/colorProfile"
 import { auth } from "../../firebase";
 import BookSearchBar from "../../components/BookPageComponents/BookSearchBar";

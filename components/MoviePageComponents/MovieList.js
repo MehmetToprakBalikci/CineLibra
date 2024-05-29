@@ -1,6 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import {Text, View, FlatList, StyleSheet, Dimensions} from 'react-native';
-import {fetchFavoriteMovies,fetchWatchedMovies,fetchWatchLaterMovies, fetchNowPlayingMovies, fetchPopularMovies, fetchTopRatedMovies, fetchTrendingMovies} from "../../api/tmdbAPI/APICalls";
+import {
+    fetchFavoriteMovies,
+    fetchWatchedMovies,
+    fetchWatchLaterMovies,
+    fetchNowPlayingMovies,
+    fetchPopularMovies,
+    fetchTopRatedMovies,
+    fetchTrendingMovies,
+    fetchMovieSearch
+} from "../../api/tmdbAPI/APICalls";
 import MovieCard from "./MovieCard";
 
 import { colors } from "./colorProfile"
@@ -17,9 +26,10 @@ const listTypes = {
   TOP_RATED: 'topRated',
   FAVORITES: 'favorites',
   WATCHED: 'watched',
-  WATCHLATER: 'watchLater'
+  WATCHLATER: 'watchLater',
+    SEARCH: 'Search Results',
 };
- 
+
 
 
 
@@ -51,7 +61,6 @@ const MovieList = ({ listType }) => {
 
 
 
-
   useEffect(() => {
     isFetchingData = true;
     fetchData();
@@ -75,7 +84,7 @@ const MovieList = ({ listType }) => {
        break;
        case listTypes.WATCHED:
         if (!watchedData) {
-         // console.log("cache uok");          
+         // console.log("cache uok");
             data = await fetchWatchedMovies();
             setWatchedData(data);
             console.log("cache testi1: "+watchedData);
@@ -109,13 +118,14 @@ const MovieList = ({ listType }) => {
 
   return (
       <>
+          {listType === listTypes.SEARCH && <List title="Search Results" data={movieList} />}
         {listType === listTypes.TRENDING && <List title="Trending" data={movieList} />}
         {listType === listTypes.POPULAR && <List title="Popular Movies" data={movieList} />}
         {listType === listTypes.NOW_PLAYING && <List title="Now Playing" data={movieList} />}
         {listType === listTypes.TOP_RATED && <List title="Top Rated Movies" data={movieList} />}
-         {listType === listTypes.FAVORITES && <List title="Favorites" data={movieList} />} 
+         {listType === listTypes.FAVORITES && <List title="Favorites" data={movieList} />}
         {listType === listTypes.WATCHED && <List title="Watched List" data={movieList} />}
-         {listType === listTypes.WATCHLATER && <List title="WatchLater" data={movieList} />} 
+         {listType === listTypes.WATCHLATER && <List title="WatchLater" data={movieList} />}
       </>
   );
 };
