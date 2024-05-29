@@ -89,6 +89,13 @@ const BookPage = () => {
             blurRadius={30}
         >
             <ScrollView contentContainerStyle={styles.scrollView}>
+                <View style={styles.overlay2}>
+                    <LinearGradient
+                        colors={['rgba(0, 0, 0, 0)', 'rgba(30,30,30,0.5)', 'rgba(30,30,30,0.90)']}
+                        locations={[0, 0.7, 0.95]}
+                        style={styles.gradient}
+                    />
+                </View>
                 <View style={styles.overlay}>
                     <TouchableOpacity style={styles.navigationIcon} onPress={() => navigation.goBack()}>
                         <AntDesign name="back" size={34} color={BookColors.accent_strong} />
@@ -152,12 +159,13 @@ const styles = StyleSheet.create({
         paddingBottom:'10%',
     },
     overlay: {
-        height:'110%',
+        height:'200%',
         width:windowWidth,
         backgroundColor: 'rgba(30,30,30,0.90)',
+        paddingTop:20,
     },
     overlay2: {
-        height: windowHeight*0.4,
+        height: windowHeight*0.0,
         //backgroundColor: 'rgba(2000, 0, 250, 0.3)',
     },
     container: {

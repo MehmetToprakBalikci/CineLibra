@@ -42,14 +42,14 @@ export default function SearchPage(props) {
         let data;
         try {
             data = await fetchBooksByQuery(searchQuery);
-            console.log(data);
+            console.log(data.sesarchInfo);
 
 
         } catch (error) {
             console.error('Error fetching cast:', error);
         }
 
-        setBookList(data.results || []);
+        setBookList(data.searchInfo || []);
     };
 
     const List = ({ title, data }) => {
