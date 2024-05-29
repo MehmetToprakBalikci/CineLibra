@@ -18,9 +18,9 @@ export default function Profile() {
     const navigation = useNavigation();
     const [favoriteMovies, setFavoriteMovies] = useState([]);
     const user = auth.currentUser;
-   
 
-    
+
+
 
 
 
@@ -53,13 +53,13 @@ export default function Profile() {
     //         console.log("Favorite movie details:", movieDetails);
     //         setFavoriteMovies(movieDetails);
     //     };
-        
+
     //     if (user) {
     //         fetchFavoriteMovies();
     //     }
     // }, [user]);
 
-   
+
 
     return (
         <ImageBackground style={{flex:1}} blurRadius={200} source={require('../assets/bg_alt.jpg')}>
@@ -92,10 +92,10 @@ const styles = StyleSheet.create({
         color: text_color_weak
     },
     image: {
-        width: '30%',
-        height: "80%",
+        width: '35%',
+        height: "100%",
         borderRadius: 200,
-        marginRight: 20
+        marginLeft:'2%',
     },
     safeAreaStyle: {
         flex: 1,
