@@ -31,7 +31,8 @@ export default function SearchPage(props) {
     let searchQuery;
 
     useEffect(() => {
-        fetchSearch(searchQuery);
+        // Initial fetch, empty search query
+        fetchSearch("");
     }, []);
 
     const fetchSearch = async (searchQuery) => {
@@ -59,7 +60,12 @@ export default function SearchPage(props) {
                     //horizontal
                     data={data}
                     renderItem={({ item }) => (
-                        <MovieCard item={item} />
+                        <View style={{flex:1, flexDirection:'row', justifyContent:'space-between'}}>
+                                <MovieCard item={item} />
+                            <View style={{backgroundColor:colors.opacity_color, borderRadius:15, marginBottom:'3%', flex:1, borderWidth:2, borderColor:colors.opacity_color_strong}}>
+                                <Text style={{color: colors.text_color_weak, margin:20,}}>Hello</Text>
+                            </View>
+                        </View>
                     )}
                     // keyExtractor={(item) => item.id.toString()}
                 />
@@ -79,7 +85,7 @@ export default function SearchPage(props) {
         <ImageBackground source={background} blurRadius={200} style={{flex:1}}>
 
             <SafeAreaView style={styles.safeArea}>
-
+                <View style={styles.innerContainer}>
                 <View style={styles.leftBarRow}>
                     <LeftBar/>
                     <SearchBar onSearch={handleSearchQuery} style={styles.searchBar} value={'Search'}></SearchBar>
@@ -90,7 +96,7 @@ export default function SearchPage(props) {
                         <List title="Search Results" data={movieList} />
                     </View>
                 </View>
-
+                </View>
             </SafeAreaView>
         </ImageBackground>
     );
@@ -123,5 +129,10 @@ const styles = StyleSheet.create({
         flex:1,
         backgroundColor:bg_filter_color,
         paddingTop: Platform.OS === "android" ? StatusBar.currentHeight+20 : 0,
+    },
+    innerContainer: {
+        flex:1,
+        marginHorizontal:10,
+        marginBottom:10,
     }
 });

@@ -1,34 +1,34 @@
-import React, { Component, useState } from "react";
+import React, { Component } from "react";
 import { StyleSheet, View, Text, Touchable, TouchableOpacity, TextInput, KeyboardAvoidingView } from "react-native";
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 import {useNavigation} from "@react-navigation/native";
+import {useState} from "react";
 
 import {colors} from "./colorProfile"
 const text_color = colors.text_color
 const text_color_weak = colors.text_color_weak
 
 function SearchBar(props) {
-    const [searchQuery, setSearchQuery] = useState('');
     const navigation = useNavigation()
+    const [query, setQuery] = useState('');
 
     const handleSearch = () => {
-        // Pass the searchQuery to the parent component
+        console.log("search bar clicked with query:", query);
+        // Pass the query to the parent component
         if (props.onSearch) {
-            props.onSearch(searchQuery);
+            props.onSearch(query);
         }
-        // Optionally, you can navigate to the search page here
         navigation.navigate('SearchPage');
     };
-
   return (
     <View style={[styles.container, props.style]}>
       <KeyboardAvoidingView>
-      <TextInput style={styles.search} placeholder = {'Search...'} placeholderTextColor={text_color_weak} value={searchQuery} onChangeText={setSearchQuery}/>
+      <TextInput style={styles.search} placeholder = {'Search...'} placeholderTextColor={text_color_weak} onChangeText={setQuery} value={query}/>
       </KeyboardAvoidingView>
 
-        <TouchableOpacity onPress={() => {onPress={handleSearch}; navigation.navigate('SearchPage')}}>
-      <Icon name="magnify" style={styles.inputLeftIcon1}></Icon>
-      </TouchableOpacity>
+        <TouchableOpacity onPress={handleSearch}>
+        <Icon name="magnify" style={styles.inputLeftIcon1}></Icon>
+        </TouchableOpacity>
 
     </View>
   );
@@ -57,4 +57,3 @@ const styles = StyleSheet.create({
 });
 
 export default SearchBar;
-
