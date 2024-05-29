@@ -45,8 +45,8 @@ const styles = StyleSheet.create({
       color: text_color_weak,
       opacity: 0.9,
       marginLeft:10,
-      paddingRight:'65%',
       flex:1,
+      width:220
   },
   inputLeftIcon1: {
       color: text_color_weak,

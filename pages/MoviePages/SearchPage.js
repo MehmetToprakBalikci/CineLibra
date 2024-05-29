@@ -54,7 +54,7 @@ export default function SearchPage(props) {
         return (
             <View style={styles.listContainer}>
                 <View style={styles.textContainer}>
-                    <Text style={styles.listTitle}>{title}</Text>
+                    <Text style={styles.listName}>{title}</Text>
                 </View>
                 <FlatList
                     //horizontal
@@ -134,5 +134,19 @@ const styles = StyleSheet.create({
         flex:1,
         marginHorizontal:10,
         marginBottom:10,
-    }
+    },
+    textContainer: {
+        paddingHorizontal:'5%',
+        paddingVertical:'2%',
+        marginBottom:'2%',
+        borderRadius:15,
+        borderColor:colors.opacity_color_strong,
+        borderWidth: 2,
+        backgroundColor:opacity_color,
+    },
+    listName: {
+        color: colors.text_color_weak,
+        fontSize: 16,
+        fontWeight:'bold'
+    },
 });
