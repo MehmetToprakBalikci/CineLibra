@@ -63,9 +63,9 @@ const MoviePage = () => {
             if (!watchedSnapshot.empty ) { // eğer izlendiyse izlendi olarak işaretle
                 console.log("watched doc "+watchedSnapshot.docs);
                 setIsAddedWatched(true);
-                
+
             }// batmanı sonradan izlicem dedim ve izledim simdi noolcak
-            // sonradan izleme listesine attım belli bir süre sonra izlemeye karar veredim 
+            // sonradan izleme listesine attım belli bir süre sonra izlemeye karar veredim
 
             // Fetch favorite state
             const favoriteCollectionRef = collection(userDocRef, "favoriteMovies");
@@ -82,7 +82,7 @@ const MoviePage = () => {
             const watchLaterSnapshot = await getDocs(watchLaterQuery);
             if (!watchLaterSnapshot.empty) { // eğer sonradan izlenenlere eklendiyse
                                                   // filmin önceden izlenmiş olmaması lazım
-            console.log("watchedlater doc "+watchLaterSnapshot.docs);                                   
+            console.log("watchedlater doc "+watchLaterSnapshot.docs);
              setIsWatchLater(true); // statei güncelle
 
             }
@@ -107,7 +107,7 @@ const MoviePage = () => {
         >
             <ScrollView contentContainerStyle={styles.scrollView}>
                 <TouchableOpacity style={styles.navigationIcon} onPress={() => navigation.goBack()}>
-                    <AntDesign name="back" size={34} color={colors.accent_weak} />
+                    <AntDesign name="back" size={34} color={colors.accent_strong} />
                 </TouchableOpacity>
 
                 <View style={styles.overlay2}>
@@ -252,8 +252,15 @@ const styles = StyleSheet.create({
     navigationIcon: {
         height:45,
         width:45,
-        marginTop:'15%',
+        marginTop:'30%',
+        justifyContent:'center',
+        alignContent:'center',
+        paddingLeft:3,
         marginHorizontal:'5%',
+        backgroundColor:colors.opacity_color_strong,
+        borderRadius:15,
+        borderWidth:2,
+        borderColor:colors.accent_strong
     },
 });
 

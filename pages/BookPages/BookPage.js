@@ -8,7 +8,7 @@ import {
     StyleSheet,
     Dimensions,
     TouchableOpacity,
-    FlatList, StatusBar, SafeAreaView
+    FlatList
 } from 'react-native';
 import {useNavigation, useRoute} from "@react-navigation/native";
 import {AntDesign, MaterialIcons} from "@expo/vector-icons";
@@ -17,11 +17,7 @@ import {fetchCastDetails} from "../../api/tmdbAPI/APICalls";
 import BookCharacterProfile from "../../components/BookPageComponents/BookCharacterProfile";
 import {BookColors} from "../../components/MoviePageComponents/colorProfile";
 import ActionIcons from "../../components/MoviePageComponents/ActionIcons";
-import { auth } from '../../firebase';
-import {getDocs, doc, collection, query, where, getDoc} from 'firebase/firestore';
-import { db } from '../../firebase';
 import RatingStars from "../../components/MoviePageComponents/RatingStars";
-
 
 const BookPage = () => {
     const route = useRoute();
@@ -100,7 +96,7 @@ const BookPage = () => {
         >
             <ScrollView contentContainerStyle={styles.scrollView}>
                 <TouchableOpacity style={styles.navigationIcon} onPress={() => navigation.goBack()}>
-                    <AntDesign name="back" size={34} color={BookColors.accent_weak} />
+                    <AntDesign name="back" size={34} color={BookColors.accent_strong} />
                 </TouchableOpacity>
 
                 <View style={styles.overlay2}>
@@ -246,7 +242,14 @@ const styles = StyleSheet.create({
         height:45,
         width:45,
         marginTop:'30%',
+        justifyContent:'center',
+        alignContent:'center',
+        paddingLeft:3,
         marginHorizontal:'5%',
+        backgroundColor:BookColors.opacity_color_strong,
+        borderRadius:15,
+        borderWidth:2,
+        borderColor:BookColors.accent_strong
     },
 });
 
