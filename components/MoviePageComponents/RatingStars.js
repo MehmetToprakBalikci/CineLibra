@@ -5,16 +5,16 @@ import {colors} from "./colorProfile";
 import {collection, deleteDoc, doc, setDoc} from "firebase/firestore";
 import {auth, db} from "../../firebase";
 
-const RatingStars = ({ movieId, rating = 0, onRatingChange }) => {
+const RatingStars = ({ movieId, rating = 0, onRatingChange, type = 0 }) => {
 
     const handlePress = async (newRating) => {
         const updatedRating = rating === newRating ? 0 : newRating;
 
         if (updatedRating === 0) {
           
-            await removeRating(movieId);
+            await removeRating(movieId, type);
         } else {
-            await addRating(movieId, updatedRating);
+            await addRating(movieId, updatedRating, type);
         }
 
         if (onRatingChange) {
@@ -38,32 +38,39 @@ const RatingStars = ({ movieId, rating = 0, onRatingChange }) => {
 };
 
 
-const addRating = async (movieId, rating) => {
+const addRating = async (ID, rating, type) => {
     const userid = auth.currentUser.uid;
 
     try {
         const userDocRef = doc(db, "users", userid);
-        const ratingsCollectionRef = collection(userDocRef, "Ratings");
-        const movieRatingDoc = doc(ratingsCollectionRef, movieId.toString());
+        let ratingsCollectionRef = collection(userDocRef, "BookRatings");
+        if(type === 0){
+            ratingsCollectionRef = collection(userDocRef, "Ratings");
+        }
 
-        await setDoc(movieRatingDoc, { movieId: movieId, rating: rating });
+        const ratingDoc = doc(ratingsCollectionRef, ID.toString());
 
-        console.log(`Added rating ${rating} for movie ${movieId}`);
+        await setDoc(ratingDoc, { ItemId: ID, rating: rating });
+
+        console.log(`Added rating ${rating} for item ${ID}`);
     } catch (error) {
         console.error("Error adding rating: ", error);
     }
 };
 
-const removeRating = async (movieId) => {
+const removeRating = async (ID, type) => {
     const userid = auth.currentUser.uid;
 
     try {
         const userDocRef = doc(db, "users", userid);
-        const movieDocRef = doc(userDocRef, "Ratings",movieId.toString());
+        let docRef= doc(userDocRef, "BookRatings",ID.toString());
+        if(type === 0){
+            docRef = doc(userDocRef, "Ratings",ID.toString());
+        }
 
-        await deleteDoc(movieDocRef);
+        await deleteDoc(docRef);
 
-        console.log(`Removed rating for movie ${movieId}`);
+        console.log(`Removed rating for movie ${ID}`);
     } catch (error) {
         console.error("Error removing rating: ", error);
     }
