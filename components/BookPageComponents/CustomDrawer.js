@@ -7,6 +7,7 @@ import { colors } from '../MoviePageComponents/colorProfile'
 import { useEffect } from 'react'
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { useNavigation } from '@react-navigation/native'
+import { auth } from '../../firebase'
 const text_color = colors.text_color
 const accent_color_strong = colors.accent_strong
 const main_weak = colors.main_weak
@@ -17,8 +18,10 @@ const opacity_color = colors.opacity_color
 const opacity_color_strong = colors.opacity_color_strong
 
 
+const user = auth.currentUser;
 const CustomDrawer = ({ isSwitch, setOnSwitchDone, ...props }) => {
   const navigation = useNavigation();
+
   // if (typeof setOnSwitchDone !== 'function') {
   //   console.error('setOnSwitchDone is not a function!');
   //   alert('setOnSwitchDone is not a function!')
@@ -37,8 +40,8 @@ const CustomDrawer = ({ isSwitch, setOnSwitchDone, ...props }) => {
 
         <View style={styles.headerContainer}>
           <Image source={require('../../assets/image.png')} style={styles.imageStyle} />
-          <Text style={[styles.nameText, { color: text_color }]}>Tolga Fehmioğlu</Text>
-          <Text style={[styles.emailText, { color: text_color }]}>tolga_2001.fb@hotmail.com</Text>
+          <Text style={[styles.nameText, { color: text_color }]}>{user.displayName}</Text>
+          <Text style={[styles.emailText, { color: text_color }]}>{user.email}</Text>
         </View>
 
       </SafeAreaView>

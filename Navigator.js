@@ -14,7 +14,7 @@ import SwitchBookSearchPanel from './pages/SwitchPanels/bookPanels/SwitchBookSea
 import BookPage from "./pages/BookPages/BookPage";
 import {forModalPresentationIOS} from "@react-navigation/stack/src/TransitionConfigs/CardStyleInterpolators";
 import {Dimensions} from "react-native";
-import SignOutScreen from './screens/SignOutScreen';
+import { SignOutScreen } from './screens/SignOutScreen';
 
 const Stack = createStackNavigator();
 const windowHeight = Dimensions.get('window').height;

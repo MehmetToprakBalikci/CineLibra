@@ -11,6 +11,7 @@ const RatingStars = ({ movieId, rating = 0, onRatingChange }) => {
         const updatedRating = rating === newRating ? 0 : newRating;
 
         if (updatedRating === 0) {
+          
             await removeRating(movieId);
         } else {
             await addRating(movieId, updatedRating);

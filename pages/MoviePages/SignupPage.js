@@ -12,6 +12,7 @@ const background = require('../../assets/bg.jpg')
 export default function SignupPage() {
     const [email,setEmail] = React.useState('');
     const [password,setPassword] = React.useState('');
+    const [username,setUserName] = React.useState('');
     const navigation = useNavigation()
     const handleSignUp = async () => {
         console.log("starting SignUp handler");
@@ -21,10 +22,16 @@ export default function SignupPage() {
             const authUserInfos = await createUserWithEmailAndPassword(auth, email, password);
             const user = authUserInfos.user;
             console.log(user.email + " Successfully signed up");
+            // await updateProfile(user, {
+            //     displayName: username,
+            //   });
+            //   console.log("Username set to: " + username);
+            //   navigation.navigate('HomePage')
+
         } catch (error) {
             alert(error.message);
         }
-        navigation.navigate('HomePage')
+        
 
     }
     return (
@@ -37,7 +44,9 @@ export default function SignupPage() {
                     <View style={{minWidth:'100%',flexDirection:'column', justifyContent:'space-evenly', flex:1,   paddingBottom: '10%', paddingTop:'5%', paddingHorizontal:'10%'}}>
                         <Text style={{alignSelf:'center', fontWeight:'bold', fontSize:20, paddingVertical:'5%'}}>Welcome! Lets get you started.</Text>
                         <LoginTextfield
-                        placeholder={"e-mail"}
+                        placeholder={"username"}
+                        username={username}
+                        setUserName={setUserName}
                         />
                         <LoginTextfield value={'e-mail'}
                         placeholder={"e-mail"}

@@ -67,7 +67,10 @@ export default function StartPage() {
               navigation.navigate("HomePage")
               console.log("Navigation to HomePage successful.");
 
-          } catch (error) {
+            
+              }
+
+           catch (error) {
               alert(error.message);
           }
 

@@ -1,6 +1,7 @@
-import React from 'react';
 import {View, Text, TouchableOpacity, StyleSheet, SafeAreaView, Platform, StatusBar, Dimensions} from 'react-native';
 import { useNavigation } from '@react-navigation/native';
+import React, { useState } from 'react';
+import Modal from 'react-native-modal';
 import { auth } from '../firebase';
 import {colors} from '../components/MoviePageComponents/colorProfile'
 
@@ -13,25 +14,29 @@ const accent_color_strong = colors.accent_strong;
 const main_color = colors.main;
 const windowHeight = Dimensions.get('window').height;
 const windowWidth = Dimensions.get('window').width;
-const SignOutScreen = () => {
-  const navigation = useNavigation();
+export const SignOutScreen = () => {
+  const navigator = useNavigation();
 
+  const handleCancel = ()=>{
+    // navigate to prev
+    navigator.goBack();
 
-
-  const handleCancel = () => {
-    navigation.goBack(); // Go back to the previous screen
-  };
-
-  const handleLogOut = async () => {
+  }
+  const handleLogOut = async ()=>{
     try {
       await auth.signOut();
       console.log(auth.currentUser ? auth.currentUser.email + " is logging out..." : "User is logged out");
-      navigation.navigate("StartPage"); // Change 'StartPage' to the actual name of your start page
+      navigator.navigate("StartPage"); // Change 'StartPage' to the actual name of your start page
       console.log
     } catch (error) {
       console.error("Error signing out: ", error);
     }
-  };
+
+  }
+
+  
+
+ 
 
   return (
       <View style={{backgroundColor:Platform.OS === 'ios' ? 'transparent' : 'rgba(0,0,0,0.5)' , flex:1}}>
@@ -54,16 +59,14 @@ const SignOutScreen = () => {
       </View>
   );
 };
-
-export default SignOutScreen;
-
+const { height } = Dimensions.get('window');
 const styles = StyleSheet.create({
   text: {
-    marginBottom: 20,
-    fontSize: 18, // Font size of the text
-    fontWeight: 'bold', // Font weight of the text
-    textAlign: 'center', // Text alignment
-    color: text_color,
+    fontSize: 18, 
+                            
+                                
+                              
+    marginTop: '10%',
   },
   buttonContainer: {
     flex:2,
@@ -90,6 +93,8 @@ const styles = StyleSheet.create({
     borderRadius: 15,
     minWidth:'75%',
     alignItems: 'center',
+    marginTop:20 
+    
   },
   buttonText1: {
     fontSize: 15,

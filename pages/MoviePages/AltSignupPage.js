@@ -23,6 +23,7 @@ import {LoginPasswordField} from "../../components/MoviePageComponents/LoginPass
 import React from 'react';
 import { auth } from '../../firebase';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
+import { updateProfile } from 'firebase/auth';
 
 const background = require('../../assets/bg_alt.jpg')
 const windowHeight = Dimensions.get('window').height;
@@ -49,6 +50,11 @@ export default function AltStartPage() {
          try {
              const authUserInfos = await createUserWithEmailAndPassword(auth, email, password, userName);
              const user = authUserInfos.user;
+              await updateProfile(user, {
+                 displayName: userName,
+               });
+               console.log("Username set to: " + userName);
+               navigation.navigate('HomePage')
              console.log(user.email + " Successfully signed up");
              navigation.navigate('HomePage')
          } catch (error) {
