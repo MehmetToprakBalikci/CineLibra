@@ -1,20 +1,16 @@
 import React, { useEffect, useState } from 'react';
-import {Text, View, FlatList, StyleSheet, Dimensions} from 'react-native';
-import {fetchNowPlayingMovies, fetchPopularMovies, fetchTopRatedMovies, fetchTrendingMovies} from "../../api/tmdbAPI/APICalls";
-import MovieCard from "../MoviePageComponents/MovieCard";
-
+import {Text, View, FlatList, StyleSheet, Dimensions, ActivityIndicator} from 'react-native';
 import { BookColors } from "../MoviePageComponents/colorProfile"
 import BookCard from "./BookCard";
+import {fetchNewBooks, fetchPopularBooks} from "../../api/bookAPI/BookAPICall";
 
 const text_color_weak = BookColors.text_color_weak
 const opacity_color = BookColors.opacity_color
 const opacity_color_strong = BookColors.opacity_color_strong
 
 const listTypes = {
-    TRENDING: 'trending',
     POPULAR: 'popular',
-    NOW_PLAYING: 'nowPlaying',
-    TOP_RATED: 'topRated',
+    NEW: 'new',
 };
 
 const List = ({ title, data }) => {
@@ -26,10 +22,10 @@ const List = ({ title, data }) => {
             <FlatList
                 horizontal
                 data={data}
-                renderItem={({ item }) => (
-                    <BookCard item={item} />
-                )}
-                keyExtractor={(item) => item.id.toString()}
+                renderItem={({ item }) => {
+                    return <BookCard item={item} />;
+                }}
+                keyExtractor={(item) => item.id}
                 showsHorizontalScrollIndicator={false}
             />
         </View>
@@ -37,7 +33,7 @@ const List = ({ title, data }) => {
 };
 
 const BookList = ({ listType }) => {
-    const [movieList, setMovieList] = useState([]);
+    const [bookList, setBookList] = useState([]);
 
     useEffect(() => {
         fetchData();
@@ -46,30 +42,41 @@ const BookList = ({ listType }) => {
     const fetchData = async () => {
         let data;
         switch (listType) {
-            case listTypes.TRENDING:
-                data = await fetchTrendingMovies();
-                break;
             case listTypes.POPULAR:
-                data = await fetchPopularMovies();
+                data = await fetchPopularBooks();
+                //console.log(data);
                 break;
-            case listTypes.NOW_PLAYING:
-                data = await fetchNowPlayingMovies();
-                break;
-            case listTypes.TOP_RATED:
-                data = await fetchTopRatedMovies();
+            case listTypes.NEW:
+                data = await fetchNewBooks();
+                //console.log(data);
                 break;
             default:
                 data = [];
         }
-        setMovieList(data.results || []);
+        //setBookList(data.items || []);
+
+        if (data.items) {
+            const uniqueBooks = [];
+            const bookIds = new Set();
+
+            data.items.forEach((item) => {
+                if (!bookIds.has(item.id)) {
+                    bookIds.add(item.id);
+                    uniqueBooks.push(item);
+                }
+            });
+
+            //console.log("Unique Book IDs:", [...bookIds]);
+            setBookList(uniqueBooks);
+        } else {
+            setBookList([]);
+        }
     };
 
     return (
         <>
-            {listType === listTypes.TRENDING && <List title="Trending" data={movieList} />}
-            {listType === listTypes.POPULAR && <List title="Popular Movies" data={movieList} />}
-            {listType === listTypes.NOW_PLAYING && <List title="Now Playing" data={movieList} />}
-            {listType === listTypes.TOP_RATED && <List title="Top Rated Movies" data={movieList} />}
+            {listType === listTypes.POPULAR && <List title="Popular Books" data={bookList} />}
+            {listType === listTypes.NEW && <List title="New Publishes" data={bookList} />}
         </>
     );
 };
