@@ -173,6 +173,7 @@ const MoviePage = () => {
 };
 
 const windowHeight = Dimensions.get('window').height;
+const windowWidth = Dimensions.get('window').width;
 
 const styles = StyleSheet.create({
     background: {
@@ -185,6 +186,8 @@ const styles = StyleSheet.create({
         paddingBottom:'10%',
     },
     overlay: {
+        height:'110%',
+        width:windowWidth,
         backgroundColor: 'rgba(30,30,30,0.90)',
     },
     overlay2: {
@@ -239,6 +242,7 @@ const styles = StyleSheet.create({
     },
     description: {
         //backgroundColor: '#006',
+        paddingHorizontal:10,
         margin: 4,
         paddingTop:30,
         fontSize:17,
@@ -263,6 +267,7 @@ const styles = StyleSheet.create({
         borderColor:colors.accent_strong
     },
 });
+
 
 const IconStarFilled = () => (
     <MaterialIcons name="star" size={35} color="white" />

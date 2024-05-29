@@ -15,13 +15,14 @@ import {AntDesign, MaterialIcons} from "@expo/vector-icons";
 import { LinearGradient } from 'expo-linear-gradient';
 import {fetchCastDetails} from "../../api/tmdbAPI/APICalls";
 import BookCharacterProfile from "../../components/BookPageComponents/BookCharacterProfile";
-import {BookColors, colors} from "../../components/MoviePageComponents/colorProfile";
+import {BookColors} from "../../components/MoviePageComponents/colorProfile";
 import ActionIcons from "../../components/MoviePageComponents/ActionIcons";
 import RatingStars from "../../components/MoviePageComponents/RatingStars";
 import { auth } from '../../firebase';
 import {getDocs, doc, collection, query, where} from 'firebase/firestore';
 import { db } from '../../firebase';
 import fallbackImage from "../../assets/book.png";
+import CastProfile from "../../components/MoviePageComponents/CastProfile";
 
 
 const BookPage = () => {
@@ -79,13 +80,26 @@ const BookPage = () => {
 
     const { title, authors, description, pageCount, imageLinks } = bookItem.volumeInfo;
     const imageSource = imageLinks?.thumbnail ? { uri: imageLinks.thumbnail } : fallbackImage;
+    const background = require('../../assets/bg.jpg')
 
     return (
-        <View style={styles.background} >
+        <ImageBackground
+            source={background}
+            style={styles.background}
+            blurRadius={30}
+        >
             <ScrollView contentContainerStyle={styles.scrollView}>
                 <TouchableOpacity style={styles.navigationIcon} onPress={() => navigation.goBack()}>
                     <AntDesign name="back" size={34} color={BookColors.accent_strong} />
                 </TouchableOpacity>
+
+                <View style={styles.overlay2}>
+                    <LinearGradient
+                        colors={['rgba(0, 0, 0, 0)', 'rgba(30,30,30,0.5)', 'rgba(30,30,30,0.90)']}
+                        locations={[0, 0.7, 0.95]}
+                        style={styles.gradient}
+                    />
+                </View>
                 <View style={styles.overlay}>
                     <View style={styles.overlay3}>
                         <Image
@@ -128,11 +142,12 @@ const BookPage = () => {
                     </View>
                 </View>
             </ScrollView>
-        </View>
+        </ImageBackground>
     );
 };
 
 const windowHeight = Dimensions.get('window').height;
+const windowWidth = Dimensions.get('window').width;
 
 const styles = StyleSheet.create({
     background: {
@@ -145,7 +160,13 @@ const styles = StyleSheet.create({
         paddingBottom:'10%',
     },
     overlay: {
-        backgroundColor: colors.bg_filter_color_strong,
+        height:'110%',
+        width:windowWidth,
+        backgroundColor: 'rgba(30,30,30,0.90)',
+    },
+    overlay2: {
+        height: windowHeight*0.4,
+        //backgroundColor: 'rgba(2000, 0, 250, 0.3)',
     },
     container: {
         flex: 1,
@@ -195,6 +216,7 @@ const styles = StyleSheet.create({
     },
     description: {
         //backgroundColor: '#006',
+        paddingHorizontal:10,
         margin: 4,
         paddingTop:30,
         fontSize:17,
@@ -208,7 +230,7 @@ const styles = StyleSheet.create({
     navigationIcon: {
         height:45,
         width:45,
-        marginTop:'10%',
+        marginTop:'30%',
         justifyContent:'center',
         alignContent:'center',
         paddingLeft:3,
@@ -219,7 +241,6 @@ const styles = StyleSheet.create({
         borderColor:BookColors.accent_strong
     },
 });
-
 const IconStarFilled = () => (
     <MaterialIcons name="star" size={35} color="white" />
 );
