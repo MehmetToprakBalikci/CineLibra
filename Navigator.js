@@ -70,9 +70,11 @@ export const Navigator = () => {
                 headerShown:false,
                 title:'MoviePage',
                 gestureDirection:'horizontal',
+                animationEnabled:false,
             }}/>
             <Stack.Screen name="BookPage" component={BookPage} options={{
                 headerShown:false,
+                animationEnabled:false,
                 title:'BookPage',
                 gestureDirection:'horizontal',
             }}/>

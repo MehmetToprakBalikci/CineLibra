@@ -3,7 +3,7 @@ import React, { useState } from 'react'
 import {DrawerItemList,DrawerItem } from '@react-navigation/drawer'
 import { CustomSwitchIcon } from '../MoviePageComponents/CustomSwitchIcon'
 import { SafeAreaView } from 'react-native-safe-area-context'
-import { colors } from '../MoviePageComponents/colorProfile'
+import {BookColors, colors} from '../MoviePageComponents/colorProfile'
 import { useEffect } from 'react'
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { useNavigation } from '@react-navigation/native'
@@ -48,9 +48,9 @@ const CustomDrawer = ({ isSwitch, setOnSwitchDone, ...props }) => {
       </SafeAreaView>
 
       <View style={styles.menuItem}>
-      
-        
-      
+
+
+
       {/* <DrawerItemList {...props} /> */}
       <DrawerItem
         label="Home"
@@ -59,13 +59,13 @@ const CustomDrawer = ({ isSwitch, setOnSwitchDone, ...props }) => {
           navigation.navigate('bookHome');
         }}
         icon={({ color }) => (
-          <Ionicons name="search-outline" size={20} color={'#6A5ACD'} />
+          <Ionicons name="search-outline" size={20} color={BookColors.highlight_color} />
         )}
         labelStyle={{ color: text_color }}
         activeBackgroundColor={main_color}
         inactiveBackgroundColor={main_color}
       />
- 
+
  <DrawerItem
         label="Profile"
         onPress={() => {
@@ -73,7 +73,7 @@ const CustomDrawer = ({ isSwitch, setOnSwitchDone, ...props }) => {
           navigation.navigate('Profile');
         }}
         icon={({ color }) => (
-          <Ionicons name="person-outline" size={20} color={'#6A5ACD'} />
+          <Ionicons name="person-outline" size={20} color={BookColors.highlight_color} />
         )}
         labelStyle={{ color: text_color }}
         activeBackgroundColor={main_color}
@@ -86,13 +86,13 @@ const CustomDrawer = ({ isSwitch, setOnSwitchDone, ...props }) => {
           navigation.navigate('SignOut');
         }}
         icon={({ color }) => (
-          <Ionicons name="log-out" size={20} color={'#6A5ACD'} />
+          <Ionicons name="log-out" size={20} color={BookColors.highlight_color} />
         )}
         labelStyle={{ color: text_color }}
         activeBackgroundColor={main_color}
         inactiveBackgroundColor={main_color}
       />
-          
+
       </View>
 
       <View style={styles.switchIcon}>

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import { useNavigation } from '@react-navigation/native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import { colors } from '../../../components/MoviePageComponents/colorProfile';
+import { BookColors } from '../../../components/MoviePageComponents/colorProfile';
 import Profile from '../../../screens/Profile';
 import SignOutScreen from '../../../screens/SignOutScreen';
 import CustomDrawer from '../../../components/BookPageComponents/CustomDrawer';
@@ -10,9 +10,9 @@ import BookHomePage from '../../BookPages/BookHomePage';
 
 const Drawer = createDrawerNavigator();
 
-const accent_color_strong = colors.accent_strong;
-const text_color = colors.text_color;
-const main_color = colors.main;
+const accent_color_strong = BookColors.accent_strong;
+const text_color = BookColors.text_color;
+const main_color = BookColors.main;
 
 const SwitchBookHomePanel = () => {
   const navigator = useNavigation();

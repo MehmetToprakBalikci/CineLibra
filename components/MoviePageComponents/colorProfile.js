@@ -35,7 +35,7 @@ const BookDarkModeColors = {
     bg_filter_color_strong: 'rgba(20, 30, 60, 0.4)',
     opacity_color: 'rgba(40, 60, 80 , 0.5)',
     opacity_color_strong: 'rgba(40, 60, 80 ,0.7)',
-    highlight_color: 'rgba(255, 126, 72, 0.6)',
+    highlight_color: 'rgba(72, 126, 255, 0.6)',
     text_color_ghost: 'rgba(200, 200, 200, 0.7)',
 }
 

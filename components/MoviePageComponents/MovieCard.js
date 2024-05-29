@@ -53,5 +53,6 @@ const styles = StyleSheet.create({
         fontSize: 14,
         textAlign: 'center',
         maxWidth: '100%',
+        maxHeight: '25%',
     },
 });

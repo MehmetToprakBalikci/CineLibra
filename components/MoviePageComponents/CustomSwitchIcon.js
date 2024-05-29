@@ -1,7 +1,7 @@
 import { StyleSheet,View, Text,TouchableOpacity,Image } from 'react-native'
 import React, { useState } from 'react'
 import {useNavigation} from "@react-navigation/native";
-import {colors} from './colorProfile'
+import {colors, BookColors} from './colorProfile'
 
 export const CustomSwitchIcon = ({isSwitch,setOnSwitchDone}) => {
   const navigator = useNavigation();
@@ -48,7 +48,7 @@ export const CustomSwitchIcon = ({isSwitch,setOnSwitchDone}) => {
     else{
       return (
         <View style={styles.container}>
-        <TouchableOpacity style={[styles.out,[{justifyContent:'flex-end',backgroundColor:'#ED9121'}]
+        <TouchableOpacity style={[styles.out,[{justifyContent:'flex-end',backgroundColor: colors.accent_weak}]
         ]} activeOpacity={1} onPress={()=>{toggleSwitch(); navigator.replace("HomePage");}}>
           <View style={styles.inner}>
              <View style ={styles.icon}>
