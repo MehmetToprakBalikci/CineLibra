@@ -1,3 +1,4 @@
+import { fetchFavoriteMovieIDs, fetchWatchLaterMovieIDs, fetchWatchedMovieIDs } from "../../firebase";
 import {getBearer} from "./Bearer";
 
 const trendingMoviesURL = 'https://api.themoviedb.org/3/trending/movie/week?language=en-US'
@@ -34,6 +35,25 @@ export const fetchNowPlayingMovies = ()=>{
 export const fetchTopRatedMovies = ()=>{
     return apiCall(topRatedMoviesURL);
 }
+export const fetchFavoriteMovies = async ()=>{
+    const movieIDs = await fetchFavoriteMovieIDs();
+    const movieDetailsPromises = movieIDs.map(id => fetchMovieDetails(id));
+    const movieDetails = await Promise.all(movieDetailsPromises);
+    return { results: movieDetails }; // Wrapping movieDetails in an object with a results key
+};
+export const fetchWatchedMovies = async ()=>{
+    const movieIDs = await fetchWatchedMovieIDs();
+    const movieDetailsPromises = movieIDs.map(id => fetchMovieDetails(id));
+    const movieDetails = await Promise.all(movieDetailsPromises);
+    return { results: movieDetails }; // Wrapping movieDetails in an object with a results key
+};
+export const fetchWatchLaterMovies = async ()=>{
+    const movieIDs = await fetchWatchLaterMovieIDs();
+    const movieDetailsPromises = movieIDs.map(id => fetchMovieDetails(id));
+    const movieDetails = await Promise.all(movieDetailsPromises);
+    return { results: movieDetails }; // Wrapping movieDetails in an object with a results key
+};
+ 
 
 export const fetchMovieDetails = (movieId) =>{
     return apiCall(`https://api.themoviedb.org/3/movie/${movieId}?language=en-US`);

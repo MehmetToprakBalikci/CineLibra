@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import {Text, View, FlatList, StyleSheet, Dimensions} from 'react-native';
-import {fetchNowPlayingMovies, fetchPopularMovies, fetchTopRatedMovies, fetchTrendingMovies} from "../../api/tmdbAPI/APICalls";
+import {fetchFavoriteMovies,fetchWatchedMovies,fetchWatchLaterMovies, fetchNowPlayingMovies, fetchPopularMovies, fetchTopRatedMovies, fetchTrendingMovies} from "../../api/tmdbAPI/APICalls";
 import MovieCard from "./MovieCard";
 
 import { colors } from "./colorProfile"
@@ -15,7 +15,12 @@ const listTypes = {
   POPULAR: 'popular',
   NOW_PLAYING: 'nowPlaying',
   TOP_RATED: 'topRated',
+  FAVORITES: 'favorites',
+  WATCHED: 'watched',
+  WATCHLATER: 'watchLater'
 };
+ 
+
 
 
 const List = ({ title, data }) => {
@@ -30,7 +35,7 @@ const List = ({ title, data }) => {
             renderItem={({ item }) => (
                 <MovieCard item={item} />
             )}
-            keyExtractor={(item) => item.id.toString()}
+            // keyExtractor={(item) => item.id.toString()}
             showsHorizontalScrollIndicator={false}
         />
       </View>
@@ -39,6 +44,13 @@ const List = ({ title, data }) => {
 
 const MovieList = ({ listType }) => {
   const [movieList, setMovieList] = useState([]);
+  // State variables for caching
+ const [watchedData, setWatchedData] = useState(null);
+ const [watchLaterData, setWatchLaterData] = useState(null);
+ const [favoriteData, setFavoriteData] = useState(null);
+
+
+
 
   useEffect(() => {
     isFetchingData = true;
@@ -50,7 +62,8 @@ const MovieList = ({ listType }) => {
     switch (listType) {
       case listTypes.TRENDING:
         data = await fetchTrendingMovies();
-        break;
+        // console.log("trending data IDs:", data.results.map(movie => movie.id));
+       break;
       case listTypes.POPULAR:
         data = await fetchPopularMovies();
         break;
@@ -59,11 +72,38 @@ const MovieList = ({ listType }) => {
         break;
       case listTypes.TOP_RATED:
         data = await fetchTopRatedMovies();
+       break;
+       case listTypes.WATCHED:
+        if (!watchedData) {
+         // console.log("cache uok");          
+            data = await fetchWatchedMovies();
+            setWatchedData(data);
+            console.log("cache testi1: "+watchedData);
+        } else {
+            data = watchedData;
+            console.log("cache testi2: "+watchedData);
+        }
         break;
-      default:
+    case listTypes.FAVORITES:
+        if (!favoriteData) {
+            data = await fetchFavoriteMovies();
+            setFavoriteData(data);
+        } else {
+            data = favoriteData;
+        }
+        break;
+        case listTypes.WATCHLATER:
+        if (!watchLaterData) {
+            data = await fetchWatchLaterMovies();
+            setWatchLaterData(data);
+        } else {
+            data = watchLaterData;
+        }
+        break;
+    default:
         data = [];
     }
-    setMovieList(data.results || []);
+     setMovieList(data.results || []);
     isFetchingData = false;
   };
 
@@ -73,6 +113,9 @@ const MovieList = ({ listType }) => {
         {listType === listTypes.POPULAR && <List title="Popular Movies" data={movieList} />}
         {listType === listTypes.NOW_PLAYING && <List title="Now Playing" data={movieList} />}
         {listType === listTypes.TOP_RATED && <List title="Top Rated Movies" data={movieList} />}
+         {listType === listTypes.FAVORITES && <List title="Favorites" data={movieList} />} 
+        {listType === listTypes.WATCHED && <List title="Watched List" data={movieList} />}
+         {listType === listTypes.WATCHLATER && <List title="WatchLater" data={movieList} />} 
       </>
   );
 };
@@ -99,4 +142,3 @@ const styles = StyleSheet.create({
 });
 export default MovieList;
 export {listTypes};
-

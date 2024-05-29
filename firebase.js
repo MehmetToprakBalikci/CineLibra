@@ -4,7 +4,8 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import { initializeApp } from "firebase/app";
 import { initializeAuth } from "firebase/auth";
 import { getReactNativePersistence } from 'firebase/auth';
- import { collection, getFirestore } from "firebase/firestore";
+ import { collection, getDocs, getFirestore,doc,query } from "firebase/firestore";
+import { useEffect } from "react";
 
 
 
@@ -30,11 +31,95 @@ const auth = initializeAuth(app, {
 //firestore service 
 const db = getFirestore();
 
-//collection ref
-//const usersRef=collection(db,"users");
-
-//const usersCol = await firestore().collection('users').get();
 
 
+async function fetchFavoriteMovieIDs() {
 
-export {auth,db};
+  const userid = auth.currentUser.uid;
+  const userRef = doc(db,"users",userid);
+  const favoriteMoviesCollectionRef = collection(userRef,"favoriteMovies");
+  console.log(favoriteMoviesCollectionRef.path);
+  const q = query(favoriteMoviesCollectionRef);
+  const querySnapshot = await getDocs(q)
+  let movieIDs = [];
+  querySnapshot.forEach((doc) => {
+    movieIDs.push(doc.id);
+  
+  });
+  //console.log("favorite movies: "+movieIDs);
+  return movieIDs;
+}
+async function fetchWatchedMovieIDs() {
+  const userid = auth.currentUser.uid;
+  const userRef = doc(db,"users",userid);
+  const WatchedMoviesCollectionRef = collection(userRef,"WatchedMovies");
+  console.log(WatchedMoviesCollectionRef.path);
+  const q = query(WatchedMoviesCollectionRef);
+  const querySnapshot = await getDocs(q)
+  let movieIDs = [];
+  querySnapshot.forEach((doc) => {
+    movieIDs.push(doc.id);
+  
+  });
+  //console.log("watched movies: "+movieIDs);
+  return movieIDs;
+}
+async function fetchWatchLaterMovieIDs() {
+  const userid = auth.currentUser.uid;
+  const userRef = doc(db,"users",userid);
+  const WatchLaterMoviesCollectionRef = collection(userRef,"WatchLaterMovies");
+  console.log(WatchLaterMoviesCollectionRef.path);
+  const q = query(WatchLaterMoviesCollectionRef);
+  const querySnapshot = await getDocs(q)
+  let movieIDs = [];
+  querySnapshot.forEach((doc) => {
+   // console.log(doc.id); 
+    movieIDs.push(doc.id);
+  
+  });
+  //console.log("watched later movies: "+movieIDs);
+  return movieIDs;
+}
+
+
+
+
+
+
+// const fetchMovie = async({listtype,movieid})=>{
+    
+//   const userid =auth.currentUser.uid;
+//   try {
+//       // Reference to the user's document
+//       const userDocRef = doc(db, "users", userid);
+      
+//       // Reference to the "favoriteMovies" subcollection within the user's document
+//       const favoriteMoviesCollectionRef = collection(userDocRef, listtype);
+      
+//       // Query to get all documents from the "favoriteMovies" subcollection
+//      // const q = query(favoriteMoviesCollectionRef);
+//       const q = query(favoriteMoviesCollectionRef, where("movieid", "==", movieid));
+      
+//       // Get the documents from the query
+//       const querySnapshot = await getDocs(q);
+      
+//       // Extract data from each document
+//       if (!querySnapshot.empty) {
+//           // Get the first (and only) document from the querySnapshot
+//           const docData = querySnapshot.docs[0].data();
+//           console.log("Favorite movie:", docData);
+//           return querySnapshot.docs[0].movieid; 
+//         } else {
+//           console.log("Favorite movie not found.");
+//           return null;
+//         }
+//       } catch (error) {
+//         console.error("Error fetching   movie: ", error);
+//         return null;
+//       }
+
+// }
+
+
+
+export {auth,db,fetchFavoriteMovieIDs,fetchWatchedMovieIDs,fetchWatchLaterMovieIDs};

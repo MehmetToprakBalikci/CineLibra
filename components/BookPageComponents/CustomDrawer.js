@@ -18,9 +18,10 @@ const opacity_color = colors.opacity_color
 const opacity_color_strong = colors.opacity_color_strong
 
 
-const user = auth.currentUser;
+
 const CustomDrawer = ({ isSwitch, setOnSwitchDone, ...props }) => {
   const navigation = useNavigation();
+  const user = auth.currentUser;
 
   // if (typeof setOnSwitchDone !== 'function') {
   //   console.error('setOnSwitchDone is not a function!');
