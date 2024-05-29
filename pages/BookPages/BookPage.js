@@ -19,6 +19,10 @@ import {BookColors} from "../../components/MoviePageComponents/colorProfile";
 import ActionIcons from "../../components/MoviePageComponents/ActionIcons";
 import RatingStars from "../../components/MoviePageComponents/RatingStars";
 import { auth } from '../../firebase';
+import {getDocs, doc, collection, query, where} from 'firebase/firestore';
+import { db } from '../../firebase';
+
+
 const BookPage = () => {
     const route = useRoute();
     const { movieItem } = route.params;
