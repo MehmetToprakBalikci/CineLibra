@@ -35,40 +35,41 @@ const BookPage = () => {
     const [rating, setRating] = useState(0);
 
     useEffect(() => {
+        fetchBookStates();
     }, []);
 
-    const fetchMovieStates = async () => {
+    const fetchBookStates = async () => {
         const userId = auth.currentUser.uid;
         const userDocRef = doc(db, "users", userId);
 
         try {
             // Fetch watched state
-            const watchedCollectionRef = collection(userDocRef, "WatchedMovies");
-            const watchedQuery = query(watchedCollectionRef, where("bookId", "==", bookItem.id));
+            const watchedCollectionRef = collection(userDocRef, "WatchedBooks");
+            const watchedQuery = query(watchedCollectionRef, where("movieid", "==", bookItem.id));
             const watchedSnapshot = await getDocs(watchedQuery);
             if (!watchedSnapshot.empty) {
+
                 setIsAddedWatched(true);
             }
-
             // Fetch favorite state
-            const favoriteCollectionRef = collection(userDocRef, "favoriteMovies");
-            const favoriteQuery = query(favoriteCollectionRef, where("bookId", "==", bookItem.id));
+            const favoriteCollectionRef = collection(userDocRef, "favoriteBooks");
+            const favoriteQuery = query(favoriteCollectionRef, where("movieid", "==", bookItem.id));
             const favoriteSnapshot = await getDocs(favoriteQuery);
             if (!favoriteSnapshot.empty) {
                 setAddedFavorite(true);
             }
 
             // Fetch watch later state
-            const watchLaterCollectionRef = collection(userDocRef, "WatchLaterMovies");
-            const watchLaterQuery = query(watchLaterCollectionRef, where("bookId", "==", bookItem.id));
+            const watchLaterCollectionRef = collection(userDocRef, "WatchLaterBooks");
+            const watchLaterQuery = query(watchLaterCollectionRef, where("movieid", "==", bookItem.id));
             const watchLaterSnapshot = await getDocs(watchLaterQuery);
             if (!watchLaterSnapshot.empty) {
                 setIsWatchLater(true);
             }
 
             // Fetch rating state
-            const ratingsCollectionRef = collection(userDocRef, "Ratings");
-            const ratingQuery = query(ratingsCollectionRef, where("bookId", "==", bookItem.id));
+            const ratingsCollectionRef = collection(userDocRef, "BookRatings");
+            const ratingQuery = query(ratingsCollectionRef, where("ItemId", "==", bookItem.id));
             const ratingSnapshot = await getDocs(ratingQuery);
             if (!ratingSnapshot.empty) {
                 setRating(ratingSnapshot.docs[0].data().rating);
