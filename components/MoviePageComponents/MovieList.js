@@ -45,7 +45,7 @@ const List = ({ title, data }) => {
             renderItem={({ item }) => (
                 <MovieCard item={item} />
             )}
-            // keyExtractor={(item) => item.id.toString()}
+            keyExtractor={(item) => item.id.toString()}
             showsHorizontalScrollIndicator={false}
         />
       </View>
@@ -59,11 +59,9 @@ const MovieList = ({ listType }) => {
  const [watchLaterData, setWatchLaterData] = useState(null);
  const [favoriteData, setFavoriteData] = useState(null);
 
-
-
   useEffect(() => {
     isFetchingData = true;
-    fetchData();
+    fetchData()
   }, []);
 
   const fetchData = async () => {
@@ -93,7 +91,7 @@ const MovieList = ({ listType }) => {
             console.log("cache testi2: "+watchedData);
         }
         break;
-    case listTypes.FAVORITES:
+        case listTypes.FAVORITES:
         if (!favoriteData) {
             data = await fetchFavoriteMovies();
             setFavoriteData(data);

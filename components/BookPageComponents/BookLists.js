@@ -5,10 +5,8 @@ import BookList, {listTypes} from "./BookList";
 function BookLists() {
     return (
         <ScrollView style={styles.container}>
-            <BookList listType={listTypes.TRENDING}></BookList>
             <BookList listType={listTypes.POPULAR}></BookList>
-            <BookList listType={listTypes.TOP_RATED}></BookList>
-            <BookList listType={listTypes.NOW_PLAYING}></BookList>
+            <BookList listType={listTypes.NEW}></BookList>
         </ScrollView>
     );
 }

@@ -10,7 +10,7 @@ import { auth, db } from '../../firebase';
 
 
 
-const ActionIcons = ({ type, id,isAdded,setIsAdded }) => {
+const ActionIcons = ({ type, id,isAdded,setIsAdded,itemType = 0 }) => {
     //const [isAdded, setIsAdded] = useState(false);
     const isWatched = type === "watched" && isAdded;
     const isFavSelected= type==='favorite'&& isAdded;
@@ -35,22 +35,22 @@ const ActionIcons = ({ type, id,isAdded,setIsAdded }) => {
     const handlePress = async () => {
         console.log("state is "+isAdded);
        if(isAdded)
-        await removeFromCollection(type,id);
+        await removeFromCollection(type,id,itemType);
        else
-       await addToCollection(type,id); 
+       await addToCollection(type,id,itemType);
       setIsAdded(!isAdded);
 
     };
-    const addToCollection = async (type, movieid) => {
+    const addToCollection = async (type, movieid,itemType) => {
       if (type === 'watched') { // if movie is watched 
-          await addToWatched(movieid);
-          await removeFromCollection('watchLater', movieid);
+          await addToWatched(movieid,itemType);
+          await removeFromCollection('watchLater', movieid,itemType);
           setStateWatched(isprevStateWatched); // watched is kept track
       } else if (type === 'favorite') { // if movie is favorite
-          await addToFavorites(movieid);
+          await addToFavorites(movieid,itemType);
       } else if (type === 'watchLater') { 
-          await addToWatchLater(movieid);
-          await removeFromCollection('watched', movieid);
+          await addToWatchLater(movieid,itemType);
+          await removeFromCollection('watched', movieid,itemType);
           setStateWatchLater(isprevStateWatchLater); // watchlater is kept track
       }
       setIsAdded(!isAdded);

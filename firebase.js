@@ -38,7 +38,7 @@ async function fetchFavoriteMovieIDs() {
   const userid = auth.currentUser.uid;
   const userRef = doc(db,"users",userid);
   const favoriteMoviesCollectionRef = collection(userRef,"favoriteMovies");
-  console.log(favoriteMoviesCollectionRef.path);
+  // console.log(favoriteMoviesCollectionRef.path);
   const q = query(favoriteMoviesCollectionRef);
   const querySnapshot = await getDocs(q)
   let movieIDs = [];
@@ -53,7 +53,7 @@ async function fetchWatchedMovieIDs() {
   const userid = auth.currentUser.uid;
   const userRef = doc(db,"users",userid);
   const WatchedMoviesCollectionRef = collection(userRef,"WatchedMovies");
-  console.log(WatchedMoviesCollectionRef.path);
+  // console.log(WatchedMoviesCollectionRef.path);
   const q = query(WatchedMoviesCollectionRef);
   const querySnapshot = await getDocs(q)
   let movieIDs = [];
@@ -68,8 +68,8 @@ async function fetchWatchLaterMovieIDs() {
   const userid = auth.currentUser.uid;
   const userRef = doc(db,"users",userid);
   const WatchLaterMoviesCollectionRef = collection(userRef,"WatchLaterMovies");
-  console.log(WatchLaterMoviesCollectionRef.path);
-  const q = query(WatchLaterMoviesCollectionRef);
+  // console.log(WatchLaterMoviesCollectionRef.path);
+   const q = query(WatchLaterMoviesCollectionRef);
   const querySnapshot = await getDocs(q)
   let movieIDs = [];
   querySnapshot.forEach((doc) => {
