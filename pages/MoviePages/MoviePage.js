@@ -89,7 +89,7 @@ const MoviePage = () => {
 
             // Fetch rating state
             const ratingsCollectionRef = collection(userDocRef, "Ratings");
-            const ratingQuery = query(ratingsCollectionRef, where("movieId", "==", movieItem.id));
+            const ratingQuery = query(ratingsCollectionRef, where("ItemId", "==", movieItem.id));
             const ratingSnapshot = await getDocs(ratingQuery);
             if (!ratingSnapshot.empty) {
                 setRating(ratingSnapshot.docs[0].data().rating);
