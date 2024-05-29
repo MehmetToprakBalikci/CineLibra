@@ -6,17 +6,19 @@ import {useNavigation} from "@react-navigation/native";
 import {colors} from "./colorProfile"
 const text_color = colors.text_color
 const text_color_weak = colors.text_color_weak
-const handleSearch = () => {
-    props.onSearch(searchQuery);
-};
-
-const getSearchQuery = () => {
-    return searchQuery;
-};
 
 function SearchBar(props) {
     const [searchQuery, setSearchQuery] = useState('');
     const navigation = useNavigation()
+
+    const handleSearch = () => {
+        // Pass the searchQuery to the parent component
+        if (props.onSearch) {
+            props.onSearch(searchQuery);
+        }
+        // Optionally, you can navigate to the search page here
+        navigation.navigate('SearchPage');
+    };
 
   return (
     <View style={[styles.container, props.style]}>
@@ -24,7 +26,7 @@ function SearchBar(props) {
       <TextInput style={styles.search} placeholder = {'Search...'} placeholderTextColor={text_color_weak} value={searchQuery} onChangeText={setSearchQuery}/>
       </KeyboardAvoidingView>
 
-        <TouchableOpacity onPress={() => {console.log("search bar movidekine tıklandıı");navigation.navigate('SearchPage')}}>
+        <TouchableOpacity onPress={() => {onPress={handleSearch}; navigation.navigate('SearchPage')}}>
       <Icon name="magnify" style={styles.inputLeftIcon1}></Icon>
       </TouchableOpacity>
 
@@ -55,4 +57,4 @@ const styles = StyleSheet.create({
 });
 
 export default SearchBar;
-export {getSearchQuery};
+

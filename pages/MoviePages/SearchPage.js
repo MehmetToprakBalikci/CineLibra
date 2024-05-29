@@ -39,7 +39,7 @@ export default function SearchPage(props) {
         //searchQuery = 'dune';
         try {
             data = await fetchMovieSearch(searchQuery);
-            console.log(data.results);
+            //console.log(data.results);
 
 
         } catch (error) {
@@ -62,10 +62,15 @@ export default function SearchPage(props) {
                         <MovieCard item={item} />
                     )}
                     // keyExtractor={(item) => item.id.toString()}
-                    showsVerticalScrollIndicator={false}
                 />
             </View>
         );
+    };
+
+    const handleSearchQuery = (query) => {
+        console.log("Search query:", query);
+        fetchSearch(query);
+        // You can perform further actions with the search query here
     };
 
 
@@ -77,7 +82,7 @@ export default function SearchPage(props) {
 
                 <View style={styles.leftBarRow}>
                     <LeftBar/>
-                    <SearchBar style={styles.searchBar} value={'Search'}></SearchBar>
+                    <SearchBar onSearch={handleSearchQuery} style={styles.searchBar} value={'Search'}></SearchBar>
                 </View>
 
                 <View style={styles.listView}>
