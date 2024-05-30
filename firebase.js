@@ -33,11 +33,12 @@ const db = getFirestore();
 
 
 
-async function fetchFavoriteMovieIDs() {
+async function fetchFavoriteMovieIDs(type =0 ) {
 
   const userid = auth.currentUser.uid;
   const userRef = doc(db,"users",userid);
-  const favoriteMoviesCollectionRef = collection(userRef,"favoriteMovies");
+  let collectionName = (type === 0) ? "favoriteMovies" : "favoriteBooks";
+  const favoriteMoviesCollectionRef = collection(userRef,collectionName);
   // console.log(favoriteMoviesCollectionRef.path);
   const q = query(favoriteMoviesCollectionRef);
   const querySnapshot = await getDocs(q)
@@ -49,25 +50,25 @@ async function fetchFavoriteMovieIDs() {
   //console.log("favorite movies: "+movieIDs);
   return movieIDs;
 }
-async function fetchWatchedMovieIDs() {
+async function fetchWatchedMovieIDs(type = 0) {
   const userid = auth.currentUser.uid;
-  const userRef = doc(db,"users",userid);
-  const WatchedMoviesCollectionRef = collection(userRef,"WatchedMovies");
-  // console.log(WatchedMoviesCollectionRef.path);
-  const q = query(WatchedMoviesCollectionRef);
-  const querySnapshot = await getDocs(q)
-  let movieIDs = [];
+  const userRef = doc(db, "users", userid);
+  let collectionName = (type === 0) ? "WatchedMovies" : "WatchedBooks";
+  const WatchedCollectionRef = collection(userRef, collectionName);
+  const q = query(WatchedCollectionRef);
+  const querySnapshot = await getDocs(q);
+  let watchedIDs = [];
   querySnapshot.forEach((doc) => {
-    movieIDs.push(doc.id);
-  
+    watchedIDs.push(doc.id);
   });
-  //console.log("watched movies: "+movieIDs);
-  return movieIDs;
+  return watchedIDs;
 }
-async function fetchWatchLaterMovieIDs() {
+
+async function fetchWatchLaterMovieIDs(type =0) {
   const userid = auth.currentUser.uid;
   const userRef = doc(db,"users",userid);
-  const WatchLaterMoviesCollectionRef = collection(userRef,"WatchLaterMovies");
+  let collectionName = (type === 0) ? "WatchLaterMovies" : "WatchedBooks";
+  const WatchLaterMoviesCollectionRef = collection(userRef,collectionName);
   // console.log(WatchLaterMoviesCollectionRef.path);
    const q = query(WatchLaterMoviesCollectionRef);
   const querySnapshot = await getDocs(q)
@@ -77,6 +78,7 @@ async function fetchWatchLaterMovieIDs() {
     movieIDs.push(doc.id);
   
   });
+  
   //console.log("watched later movies: "+movieIDs);
   return movieIDs;
 }

@@ -1,6 +1,8 @@
 // apiCalls.js
 
-import { getGoogleBooksApiKey } from "./GoogleBooksApiKey"; // You should define this function to retrieve your API key
+import { getGoogleBooksApiKey } from "./GoogleBooksApiKey";
+import {fetchFavoriteMovieIDs, fetchWatchedMovieIDs, fetchWatchLaterMovieIDs} from "../../firebase";
+import {fetchMovieDetails} from "../tmdbAPI/APICalls"; // You should define this function to retrieve your API key
 
 const searchBooksURL = 'https://www.googleapis.com/books/v1/volumes?q=';
 const maxResults = 20;
@@ -26,7 +28,7 @@ export const fetchBooksByQuery = (query) => {
 }
 
 export const fetchBookDetails = (bookId) => {
-    return bookAPICall(`${bookDetailsURL}${bookId}?key=${getGoogleBooksApiKey()}`);
+    return bookAPICall(`${searchBooksURL}${bookId}?key=${getGoogleBooksApiKey()}`);
 }
 
 export const fetchBooksByCategory = (category) => {
@@ -39,5 +41,23 @@ export const fetchNewBooks = () => {
 
 export const fetchPopularBooks = () => {
     return bookAPICall(`${searchBooksURL}best+books&maxResults=${maxResults}&key=${getGoogleBooksApiKey()}`);
+}
 
+export const fetchWatchedBooks = async () => {
+    const movieIDs = await fetchWatchedMovieIDs(1);
+    const movieDetailsPromises = movieIDs.map(id => fetchBookDetails(id));
+    const movieDetails = await Promise.all(movieDetailsPromises);
+    return { results: movieDetails }; // Wrapping movieDetails in an object with a results key
+}
+export const fetchFavoritesBooks = async () => {
+    const movieIDs = await fetchFavoriteMovieIDs(1);
+    const movieDetailsPromises = movieIDs.map(id => fetchBookDetails(id));
+    const movieDetails = await Promise.all(movieDetailsPromises);
+    return { results: movieDetails }; // Wrapping movieDetails in an object with a results key
+}
+export const fetchWatchLaterBooks = async () => {
+    const movieIDs = await fetchWatchLaterMovieIDs(1);
+    const movieDetailsPromises = movieIDs.map(id => fetchBookDetails(id));
+    const movieDetails = await Promise.all(movieDetailsPromises);
+    return { results: movieDetails }; // Wrapping movieDetails in an object with a results key
 }
