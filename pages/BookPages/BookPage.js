@@ -23,6 +23,8 @@ import {getDocs, doc, collection, query, where} from 'firebase/firestore';
 import { db } from '../../firebase';
 import fallbackImage from "../../assets/book.png";
 import CastProfile from "../../components/MoviePageComponents/CastProfile";
+import BookRatingStars from "../../components/BookPageComponents/BookRatingStars";
+import BookActionIcons from "../../components/BookPageComponents/BookActionIcons";
 
 
 const BookPage = () => {
@@ -110,26 +112,26 @@ const BookPage = () => {
                             <Text style={styles.title} adjustsFontSizeToFit numberOfLines={2}>{title}</Text>
                             <View>
                                 <View style={styles.iconRow}>
-                                    <ActionIcons type="watched"
+                                    <BookActionIcons type="watched"
                                                  id={bookItem.id}
                                                  isAdded={isAddedWatched}
                                                  setIsAdded={setIsAddedWatched}
                                                  itemType={1}/>
 
-                                    <ActionIcons type="favorite"
+                                    <BookActionIcons type="favorite"
                                                  id={bookItem.id}
                                                  isAdded={isAddedFavorite}
                                                  setIsAdded={setAddedFavorite}
                                                  itemType={1}/>
 
-                                    <ActionIcons type="watchLater"
+                                    <BookActionIcons type="watchLater"
                                                  id={bookItem.id}
                                                  isAdded={isAddedWatchLater}
                                                  setIsAdded={setIsWatchLater}
                                                  itemType={1}/>
                                 </View>
                                 <View style={styles.iconRow}>
-                                    <RatingStars movieId={bookItem.id} rating={rating} onRatingChange={setRating} type={1}/>
+                                    <BookRatingStars movieId={bookItem.id} rating={rating} onRatingChange={setRating} type={1}/>
                                 </View>
                             </View>
                         </View>
