@@ -79,7 +79,7 @@ export default function SearchPage(props) {
                     renderItem={({ item }) => (
                         <View style={{flex:1, flexDirection:'row', justifyContent:'space-between'}}>
                             <BookCard item={item} />
-                            <View style={{backgroundColor:BookColors.opacity_color, borderRadius:15, marginBottom:'3%', flex:1, borderWidth:2, borderColor:BookColors.opacity_color_strong}}>
+                            <View style={{backgroundColor:BookColors.opacity_color, borderRadius:15, marginBottom:'3%', flex:1, borderWidth:2, borderColor:BookColors.opacity_color_strong, justifyContent:'space-between',}}>
                                 <Text style={{color: BookColors.text_color_weak, margin:20}} numberOfLines={7} ellipsizeMode="tail">{item.volumeInfo.description}</Text>
                                 <Text style={{color: BookColors.text_color_weak, margin:20, fontSize:18}}>{item.volumeInfo.publishedDate}</Text>
                             </View>
