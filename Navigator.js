@@ -46,7 +46,8 @@ export const Navigator = () => {
 
              <Stack.Screen name="SearchPage" component={SwitchSearchPage} options={{
                 headerShown:false,
-                title:'SearchPage'
+                title:'SearchPage',
+                 animationEnabled:false,
             }}/>
               <Stack.Screen name="bookHome" component={SwitchBookHomePanel} options={{
                 headerShown:false,
@@ -64,7 +65,8 @@ export const Navigator = () => {
 
             <Stack.Screen name="bookSearchPage" component={SwitchBookSearchPanel} options={{
                 headerShown:false,
-                title:'bookSearchPage'
+                title:'bookSearchPage',
+                animationEnabled:false
             }}/>
 
             <Stack.Screen name="MoviePage" component={MoviePage} options={{

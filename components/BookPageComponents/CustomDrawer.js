@@ -59,7 +59,7 @@ const CustomDrawer = ({ isSwitch, setOnSwitchDone, ...props }) => {
           navigation.navigate('bookHome');
         }}
         icon={({ color }) => (
-          <Ionicons name="search-outline" size={20} color={BookColors.highlight_color} />
+          <Ionicons name="home-outline" size={20} color={BookColors.highlight_color} />
         )}
         labelStyle={{ color: text_color }}
         activeBackgroundColor={main_color}

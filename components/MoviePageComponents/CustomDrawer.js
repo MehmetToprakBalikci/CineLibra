@@ -49,9 +49,9 @@ const CustomDrawer = ({ isSwitch, setOnSwitchDone, ...props }) => {
       </SafeAreaView>
 
       <View style={styles.menuItem}>
-      
-        
-      
+
+
+
       {/* <DrawerItemList {...props} /> */}
       <DrawerItem
         label="Home"
@@ -60,13 +60,13 @@ const CustomDrawer = ({ isSwitch, setOnSwitchDone, ...props }) => {
           navigation.navigate('HomePage');
         }}
         icon={({ color }) => (
-          <Ionicons name="search-outline" size={20} color={accent_color_strong} />
+          <Ionicons name="home-outline" size={20} color={accent_color_strong} />
         )}
         labelStyle={{ color: text_color }}
         activeBackgroundColor={main_color}
         inactiveBackgroundColor={main_color}
       />
- 
+
  <DrawerItem
         label="Profile"
         onPress={() => {
@@ -93,7 +93,7 @@ const CustomDrawer = ({ isSwitch, setOnSwitchDone, ...props }) => {
         activeBackgroundColor={main_color}
         inactiveBackgroundColor={main_color}
       />
-          
+
       </View>
 
       <View style={styles.switchIcon}>
