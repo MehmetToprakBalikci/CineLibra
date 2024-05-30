@@ -15,6 +15,7 @@ import BookPage from "./pages/BookPages/BookPage";
 import {forModalPresentationIOS} from "@react-navigation/stack/src/TransitionConfigs/CardStyleInterpolators";
 import {Dimensions} from "react-native";
 import { SignOutScreen } from './screens/SignOutScreen';
+import BookProfile from "./screens/BookProfile";
 
 const Stack = createStackNavigator();
 const windowHeight = Dimensions.get('window').height;
@@ -79,6 +80,11 @@ export const Navigator = () => {
                 gestureDirection:'horizontal',
             }}/>
             <Stack.Screen name="Profile" component={Profile} options={{
+                headerShown:false,
+                animationEnabled:false,
+
+            }}/>
+            <Stack.Screen name="BookProfile" component={BookProfile} options={{
                 headerShown:false,
                 animationEnabled:false,
 

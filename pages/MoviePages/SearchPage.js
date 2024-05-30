@@ -40,7 +40,7 @@ export default function SearchPage(props) {
         //searchQuery = 'dune';
         try {
             data = await fetchMovieSearch(searchQuery);
-            //console.log(data.results);
+            console.log(data.results);
 
 
         } catch (error) {
@@ -62,7 +62,7 @@ export default function SearchPage(props) {
                     renderItem={({ item }) => (
                         <View style={{flex:1, flexDirection:'row', justifyContent:'space-between'}}>
                                 <MovieCard item={item} />
-                            <View style={{backgroundColor:colors.opacity_color, borderRadius:15, marginBottom:'3%', flex:1, borderWidth:2, borderColor:colors.opacity_color_strong}}>
+                            <View style={{backgroundColor:colors.opacity_color, borderRadius:15, marginBottom:'3%', flex:1, borderWidth:2, borderColor:colors.opacity_color_strong, justifyContent:'space-between'}}>
                                 <Text style={{color: colors.text_color_weak, margin:20,}} numberOfLines={7} ellipsizeMode="tail">{item.overview}</Text>
                                 <Text style={{color: colors.text_color_weak, margin:20, fontSize:18}}>{item.release_date}</Text>
                             </View>

@@ -70,7 +70,7 @@ const CustomDrawer = ({ isSwitch, setOnSwitchDone, ...props }) => {
         label="Profile"
         onPress={() => {
           // Navigate to CustomMovieSearchScreen when this item is pressed
-          navigation.navigate('Profile');
+          navigation.navigate('BookProfile');
         }}
         icon={({ color }) => (
           <Ionicons name="person-outline" size={20} color={BookColors.highlight_color} />
