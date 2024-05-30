@@ -13,6 +13,7 @@ const text_color_weak = BookColors.text_color_weak
 const bg_filter_color = BookColors.bg_filter_color
 const bg_filter_color_strong = BookColors.bg_filter_color_strong
 import { listTypes } from '../components/MoviePageComponents/MovieList';
+import ProfileBookLists from "../components/BookPageComponents/ProfileBookLists";
 
 export default function BookProfile() {
     const navigation = useNavigation();
@@ -75,7 +76,7 @@ export default function BookProfile() {
                     </View>
 
                     <View style={{flex:4}}>
-                        <ProfileLists></ProfileLists>
+                        <ProfileBookLists></ProfileBookLists>
                     </View>
 
 

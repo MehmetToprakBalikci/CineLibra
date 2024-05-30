@@ -33,7 +33,7 @@ const db = getFirestore();
 
 
 
-async function fetchFavoriteMovieIDs(type) {
+async function fetchFavoriteMovieIDs(type =0 ) {
 
   const userid = auth.currentUser.uid;
   const userRef = doc(db,"users",userid);
@@ -50,7 +50,7 @@ async function fetchFavoriteMovieIDs(type) {
   //console.log("favorite movies: "+movieIDs);
   return movieIDs;
 }
-async function fetchWatchedMovieIDs(type) {
+async function fetchWatchedMovieIDs(type = 0) {
   const userid = auth.currentUser.uid;
   const userRef = doc(db, "users", userid);
   let collectionName = (type === 0) ? "WatchedMovies" : "WatchedBooks";
@@ -64,7 +64,7 @@ async function fetchWatchedMovieIDs(type) {
   return watchedIDs;
 }
 
-async function fetchWatchLaterMovieIDs(type) {
+async function fetchWatchLaterMovieIDs(type =0) {
   const userid = auth.currentUser.uid;
   const userRef = doc(db,"users",userid);
   let collectionName = (type === 0) ? "WatchLaterMovies" : "WatchedBooks";

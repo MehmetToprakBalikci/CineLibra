@@ -47,7 +47,7 @@ export default function SearchPage(props) {
             console.error('Error fetching cast:', error);
         }
 
-        setBookList(data.results || []);
+        setBookList(data.items  || []);
 
         if (data.items) {
             const uniqueBooks = [];

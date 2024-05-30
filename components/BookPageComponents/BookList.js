@@ -2,7 +2,13 @@ import React, { useEffect, useState } from 'react';
 import {Text, View, FlatList, StyleSheet, Dimensions, ActivityIndicator} from 'react-native';
 import { BookColors } from "../MoviePageComponents/colorProfile"
 import BookCard from "./BookCard";
-import {fetchNewBooks, fetchPopularBooks} from "../../api/bookAPI/BookAPICall";
+import {
+    fetchFavoritesBooks,
+    fetchNewBooks,
+    fetchPopularBooks,
+    fetchWatchedBooks,
+    fetchWatchLaterBooks
+} from "../../api/bookAPI/BookAPICall";
 
 const text_color_weak = BookColors.text_color_weak
 const opacity_color = BookColors.opacity_color
@@ -11,6 +17,9 @@ const opacity_color_strong = BookColors.opacity_color_strong
 const listTypes = {
     POPULAR: 'popular',
     NEW: 'new',
+    WATCHED: 'watched',
+    FAVORITES: 'favorites',
+    WATCHLATER: 'watchLater',
 };
 
 const List = ({ title, data }) => {
@@ -50,6 +59,18 @@ const BookList = ({ listType }) => {
                 data = await fetchNewBooks();
                 //console.log(data);
                 break;
+            case listTypes.WATCHED:
+                data = await fetchWatchedBooks();
+                //console.log(data);
+                break;
+            case listTypes.FAVORITES:
+                data = await fetchFavoritesBooks();
+                //console.log(data);
+                break;
+            case listTypes.WATCHLATER:
+                data = await fetchWatchLaterBooks();
+                //console.log(data);
+                break;
             default:
                 data = [];
         }
@@ -77,6 +98,9 @@ const BookList = ({ listType }) => {
         <>
             {listType === listTypes.POPULAR && <List title="Popular Books" data={bookList} />}
             {listType === listTypes.NEW && <List title="New Publishes" data={bookList} />}
+            {listType === listTypes.FAVORITES && <List title="Favorites" data={bookList} />}
+            {listType === listTypes.WATCHLATER && <List title="Read Later" data={bookList} />}
+            {listType === listTypes.WATCHED && <List title="Read" data={bookList} />}
         </>
     );
 };
