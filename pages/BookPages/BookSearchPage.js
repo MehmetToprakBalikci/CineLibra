@@ -24,6 +24,7 @@ import movie from "../../components/MoviePageComponents/Movie";
 import BookSearchBar from "../../components/BookPageComponents/BookSearchBar";
 import BookCard from "../../components/BookPageComponents/BookCard";
 import {fetchBooksByQuery} from "../../api/bookAPI/BookAPICall";
+import fallbackImage from "../../assets/book.png";
 
 const bg_filter_color = BookColors.bg_filter_color
 const opacity_color = BookColors.opacity_color
@@ -42,14 +43,28 @@ export default function SearchPage(props) {
         let data;
         try {
             data = await fetchBooksByQuery(searchQuery);
-            console.log(data);
-
-
         } catch (error) {
             console.error('Error fetching cast:', error);
         }
 
-        setBookList(data || []);
+        setBookList(data.results || []);
+
+        if (data.items) {
+            const uniqueBooks = [];
+            const bookIds = new Set();
+
+            data.items.forEach((item) => {
+                if (!bookIds.has(item.id)) {
+                    bookIds.add(item.id);
+                    uniqueBooks.push(item);
+                }
+            });
+
+            //console.log("Unique Book IDs:", [...bookIds]);
+            setBookList(uniqueBooks);
+        } else {
+            setBookList([]);
+        }
     };
 
     const List = ({ title, data}) => {
@@ -65,8 +80,8 @@ export default function SearchPage(props) {
                         <View style={{flex:1, flexDirection:'row', justifyContent:'space-between'}}>
                             <BookCard item={item} />
                             <View style={{backgroundColor:BookColors.opacity_color, borderRadius:15, marginBottom:'3%', flex:1, borderWidth:2, borderColor:BookColors.opacity_color_strong}}>
-                                //<Text style={{color: BookColors.text_color_weak, margin:20,}} numberOfLines={7} ellipsizeMode="tail">{item.volumeInfo}</Text>
-                                //<Text style={{color: BookColors.text_color_weak, margin:20, fontSize:18}}>{item.releaseDate}</Text>
+                                <Text style={{color: BookColors.text_color_weak, margin:20}} numberOfLines={7} ellipsizeMode="tail">{item.volumeInfo.description}</Text>
+                                <Text style={{color: BookColors.text_color_weak, margin:20, fontSize:18}}>{item.volumeInfo.publishedDate}</Text>
                             </View>
                         </View>
                     )}
