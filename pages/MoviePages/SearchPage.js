@@ -40,7 +40,7 @@ export default function SearchPage(props) {
         //searchQuery = 'dune';
         try {
             data = await fetchMovieSearch(searchQuery);
-            //console.log(data.results);
+            console.log(data.results);
 
 
         } catch (error) {

@@ -42,17 +42,17 @@ export default function SearchPage(props) {
         let data;
         try {
             data = await fetchBooksByQuery(searchQuery);
-            console.log(data.sesarchInfo);
+            console.log(data);
 
 
         } catch (error) {
             console.error('Error fetching cast:', error);
         }
 
-        setBookList(data.searchInfo || []);
+        setBookList(data || []);
     };
 
-    const List = ({ title, data }) => {
+    const List = ({ title, data}) => {
         return (
             <View style={styles.listContainer}>
                 <View style={styles.textContainer}>
@@ -65,8 +65,8 @@ export default function SearchPage(props) {
                         <View style={{flex:1, flexDirection:'row', justifyContent:'space-between'}}>
                             <BookCard item={item} />
                             <View style={{backgroundColor:BookColors.opacity_color, borderRadius:15, marginBottom:'3%', flex:1, borderWidth:2, borderColor:BookColors.opacity_color_strong}}>
-                                <Text style={{color: BookColors.text_color_weak, margin:20,}} numberOfLines={7} ellipsizeMode="tail">{item.volumeInfo}</Text>
-                                <Text style={{color: BookColors.text_color_weak, margin:20, fontSize:18}}>{item.releaseDate}</Text>
+                                //<Text style={{color: BookColors.text_color_weak, margin:20,}} numberOfLines={7} ellipsizeMode="tail">{item.volumeInfo}</Text>
+                                //<Text style={{color: BookColors.text_color_weak, margin:20, fontSize:18}}>{item.releaseDate}</Text>
                             </View>
                         </View>
                     )}
