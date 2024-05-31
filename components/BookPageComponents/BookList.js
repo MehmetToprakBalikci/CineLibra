@@ -23,6 +23,7 @@ const listTypes = {
 };
 
 const List = ({ title, data }) => {
+    //console.log('List component rendered with data:', data);
     return (
         <View style={styles.listContainer}>
             <View style={styles.textContainer}>
@@ -40,7 +41,6 @@ const List = ({ title, data }) => {
         </View>
     );
 };
-
 const BookList = ({ listType }) => {
     const [bookList, setBookList] = useState([]);
 
@@ -69,31 +69,31 @@ const BookList = ({ listType }) => {
                 break;
             case listTypes.WATCHLATER:
                 data = await fetchWatchLaterBooks();
-                //console.log(data);
+                console.log(data);
                 break;
             default:
                 data = [];
         }
-        //setBookList(data.items || []);
 
-        if (data.items) {
+        const items = data.items || data.results;
+
+        if (items) {
             const uniqueBooks = [];
             const bookIds = new Set();
 
-            data.items.forEach((item) => {
+            items.forEach((item) => {
                 if (!bookIds.has(item.id)) {
                     bookIds.add(item.id);
                     uniqueBooks.push(item);
                 }
             });
-
-            //console.log("Unique Book IDs:", [...bookIds]);
             setBookList(uniqueBooks);
         } else {
+
             setBookList([]);
         }
     };
-
+    //console.log(bookList) // It logs data
     return (
         <>
             {listType === listTypes.POPULAR && <List title="Popular Books" data={bookList} />}

@@ -67,7 +67,7 @@ async function fetchWatchedMovieIDs(type = 0) {
 async function fetchWatchLaterMovieIDs(type =0) {
   const userid = auth.currentUser.uid;
   const userRef = doc(db,"users",userid);
-  let collectionName = (type === 0) ? "WatchLaterMovies" : "WatchedBooks";
+  let collectionName = (type === 0) ? "WatchLaterMovies" : "WatchLaterBooks";
   const WatchLaterMoviesCollectionRef = collection(userRef,collectionName);
   // console.log(WatchLaterMoviesCollectionRef.path);
    const q = query(WatchLaterMoviesCollectionRef);

@@ -5,6 +5,7 @@ import {fetchFavoriteMovieIDs, fetchWatchedMovieIDs, fetchWatchLaterMovieIDs} fr
 import {fetchMovieDetails} from "../tmdbAPI/APICalls"; // You should define this function to retrieve your API key
 
 const searchBooksURL = 'https://www.googleapis.com/books/v1/volumes?q=';
+const bookDetailsURL = 'https://www.googleapis.com/books/v1/volumes/';
 const maxResults = 20;
 
 const bookAPICall = async (url) => {
@@ -28,7 +29,7 @@ export const fetchBooksByQuery = (query) => {
 }
 
 export const fetchBookDetails = (bookId) => {
-    return bookAPICall(`${searchBooksURL}${bookId}?key=${getGoogleBooksApiKey()}`);
+    return bookAPICall(`${bookDetailsURL}${bookId}?key=${getGoogleBooksApiKey()}`);
 }
 
 export const fetchBooksByCategory = (category) => {
@@ -53,6 +54,7 @@ export const fetchFavoritesBooks = async () => {
     const movieIDs = await fetchFavoriteMovieIDs(1);
     const movieDetailsPromises = movieIDs.map(id => fetchBookDetails(id));
     const movieDetails = await Promise.all(movieDetailsPromises);
+    //console.log(movieDetails)
     return { results: movieDetails }; // Wrapping movieDetails in an object with a results key
 }
 export const fetchWatchLaterBooks = async () => {
