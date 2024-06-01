@@ -6,7 +6,7 @@ import {
     TouchableOpacity,
     SafeAreaView,
     Appearance,
-    KeyboardAvoidingView, StatusBar, Dimensions, Platform
+    KeyboardAvoidingView, StatusBar, Dimensions, Platform,Alert
 } from 'react-native';
 
 import { LoginButton } from '../../components/MoviePageComponents/LoginButton';
@@ -18,6 +18,9 @@ import {modeDependencies} from "../../components/MoviePageComponents/colorProfil
 import React, { useEffect } from 'react';
 import { auth } from '../../firebase';
 import {signInWithEmailAndPassword } from 'firebase/auth';
+import { GoogleAuthProvider } from 'firebase/auth/cordova';
+import { signInWithCredential,getAuth } from 'firebase/auth';
+import { GoogleSignin,statusCodes } from '@react-native-google-signin/google-signin';
 
 const background = require('../../assets/bg_alt.jpg')
 
@@ -35,6 +38,9 @@ StatusBar.setBarStyle(statusbar_color)
 
 
 export default function StartPage() {
+    GoogleSignin.configure({
+        webClientId: '116023352283-ubtm327b0tabq4v02eqfnt9ovu2fp8uu.apps.googleusercontent.com',
+    });
     //console.log("start page içindeyim");
     const [email,setEmail] = React.useState('');
     const [password,setPassword] = React.useState('');
@@ -75,6 +81,41 @@ export default function StartPage() {
           }
 
       }
+    
+      const handleGoogleLogIn = async () => {
+        const auth = getAuth();
+        try {
+            console.log("Checking Play Services...");
+            await GoogleSignin.hasPlayServices();
+            console.log("Play Services Available");
+
+            const { idToken } = await GoogleSignin.signIn();
+            console.log("Google Sign-In successful, idToken:", idToken);
+
+            const googleCredentials = GoogleAuthProvider.credential(idToken);
+            // console.log("Google Credentials:", googleCredentials);
+
+            await signInWithCredential(auth, googleCredentials);
+            console.log("Firebase Sign-In successful");
+
+            alert("Başarıyla giriş yapıldı");
+        } catch (error) {
+            console.log("Google Sign-In error:", error.message);
+            if (error.code === statusCodes.SIGN_IN_CANCELLED) {
+                console.log("Sign-In Cancelled");
+                Alert.alert("Sign-In Cancelled", "You cancelled the sign-in process.");
+            } else if (error.code === statusCodes.IN_PROGRESS) {
+                console.log("Sign-In In Progress");
+                Alert.alert("Sign-In In Progress", "Sign-in is already in progress.");
+            } else if (error.code === statusCodes.PLAY_SERVICES_NOT_AVAILABLE) {
+                console.log("Play Services Not Available");
+                Alert.alert("Play Services Not Available", "Google Play Services are not available or outdated.");
+            } else {
+                console.log("Other Sign-In Error");
+                Alert.alert("Sign-In Error", "An error occurred during the sign-in process. Please try again.");
+            }
+        }
+    };
 
     const windowHeight = Dimensions.get('window').height;
 
@@ -106,7 +147,7 @@ export default function StartPage() {
                             <LoginButton message={'Log In'}/>
                         </TouchableOpacity>
 
-                        <TouchableOpacity>
+                        <TouchableOpacity onPress={()=>{console.log("google log in pressed");handleGoogleLogIn()}}>
                             <LoginButton message={'Continue W/ Google'}/>
                         </TouchableOpacity>
 
